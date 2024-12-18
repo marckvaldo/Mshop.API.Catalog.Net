@@ -1,0 +1,1 @@
+dotnet ef --startup-project ../Mshop.API.Catalog/ migrations add inicial --project ../Mshop.infra.Data

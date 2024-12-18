@@ -1,0 +1,46 @@
+version: "3.8"
+
+services:
+  MShop.catalago.dev:
+    container_name: catalagoDb-dev
+    hostname: catalagoDb-dev
+    image: mariadb:10.6.3
+    ports:
+      - 3308:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: "mshop"
+      MYSQL_USER: "mshop"
+      MYSQL_PASSWORD: "mshop"
+      MYSQL_DATABASE: "mshop"
+    networks:
+      - app-catalago
+  
+  Mshop.Rabbitmq.dev:
+    container_name: rabbitmq-dev
+    image: rabbitmq:3-management
+    hostname: rabbitmq-dev
+    environment:
+      - RABBITMQ_DEFAULT_USER=admin
+      - RABBITMQ_DEFAULT_PASS=123456
+      - RABBITMQ_DEFAULT_VHOST=catalago
+    volumes:
+      - ./dateRabbitMQ:var/lib/rabbitmq/
+    ports:
+      - 15672:15672 #potaHost : Porta Container
+      - 5672:5672
+    networks:
+      - app-catalago
+  
+
+  #MShop.Redis.dev:
+    #container_name: redis-dev
+    #hostname: redis-dev
+    #image: redis
+    #ports:
+    #  - "8378:6379" 
+    #networks:
+    #  - app-catalago
+
+networks:
+  app-catalago:
+    driver: bridge

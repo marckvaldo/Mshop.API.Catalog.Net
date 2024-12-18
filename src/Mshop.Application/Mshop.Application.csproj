@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+	
+	<ItemGroup>
+		<PackageReference Include="FluentValidation.AspNetCore" Version="11.3.0" />
+		<PackageReference Include="MediatR" Version="12.1.1" />
+	</ItemGroup>
+	
+  <ItemGroup>
+    <ProjectReference Include="..\Mshop.Core\Mshop.Core.csproj" />
+    <ProjectReference Include="..\Mshop.Domain\Mshop.Domain.csproj" />
+    <ProjectReference Include="..\Mshop.Infra.Cache\Mshop.Infra.Cache.csproj" />
+    <ProjectReference Include="..\Mshop.Infra.Data\Mshop.Infra.Data.csproj" />
+  </ItemGroup>
+
+</Project>

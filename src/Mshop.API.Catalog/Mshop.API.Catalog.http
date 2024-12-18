@@ -1,0 +1,6 @@
+@Mshop.API.Catalog_HostAddress = http://localhost:5090
+
+GET {{Mshop.API.Catalog_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
