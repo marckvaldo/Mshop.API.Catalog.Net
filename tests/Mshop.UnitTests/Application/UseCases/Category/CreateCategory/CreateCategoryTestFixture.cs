@@ -1,5 +1,6 @@
 ﻿using Mshop.Application.UseCases.Category.Common;
 using Mshop.Application.UseCases.Category.CreateCategory;
+using Mshop.Core.Test.UseCase;
 
 namespace Mshop.UnitTests.Application.UseCases.Category.CreateCategory
 {

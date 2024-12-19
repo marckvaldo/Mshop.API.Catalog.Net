@@ -16,7 +16,8 @@ namespace Mshop.Application.UseCases.Product.ListProducts
             var repository = new Mock<IProductRepository>();
             var notification = new Mock<INotification>();
 
-            var productsFake = GetListProduts();
+            var category = FakerCategory();
+            var productsFake = FakerProducts(10, category);
 
             var useCase = new useCase.ListProducts(repository.Object, notification.Object);
 

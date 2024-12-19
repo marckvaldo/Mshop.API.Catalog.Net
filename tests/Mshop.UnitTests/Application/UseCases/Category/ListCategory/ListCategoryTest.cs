@@ -5,10 +5,11 @@ using Mshop.Infra.Data.Interface;
 using Mshop.Core.Message;
 using Mshop.Core.Paginated;
 using Mshop.Application.UseCases.Category.ListCategorys;
+using Mshop.Application.UseCases.Category.Common;
 
 namespace Mshop.Application.UseCases.Category.ListCategory
 {
-    public class ListCategoryTest : ListCategoryFixtureTest
+    public class ListCategoryTest : CategoryBaseFixtureTest
     {
         [Fact(DisplayName = nameof(ListCategory))]
         [Trait("Application-UseCase", "List Categogry")]

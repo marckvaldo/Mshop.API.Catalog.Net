@@ -1,31 +1,31 @@
-﻿using Mshop.Application.Common;
-using Mshop.Application.UseCases.Product.CreateProducts;
-using Mshop.UnitTests.Common;
-using System.Text;
+﻿using Mshop.Application.UseCases.Product.CreateProducts;
+using Mshop.Core.Test.UseCase;
 using useCase = Mshop.Application.UseCases.Product.CreateProducts;
 
 
 namespace Mshop.Application.UseCases.Product.CreateProduct
 {
-    public class CreateProductTestFixture : BaseFixture
+    public class CreateProductTestFixture : UseCaseBaseFixture
     {
-        private readonly Guid _categoryId;
         public CreateProductTestFixture():base()
         {
-            _categoryId = Guid.NewGuid();
+    
         }
 
         protected CreateProductInPut Faker()
         {
+            var category = FakerCategory();
+            var product = FakerProduct(category);
+
             return new useCase.CreateProductInPut
             {
-                Name = faker.Commerce.ProductName(),
-                Description = faker.Commerce.ProductDescription(),
-                Price = Convert.ToDecimal(faker.Commerce.Price()),
+                Name = product.Name,
+                Description = product.Description,
+                Price = product.Price,
                 Thumb = ImageFake64(),
-                CategoryId = _categoryId,
-                Stock = faker.Random.UInt(),
-                IsActive = true
+                CategoryId = product.CategoryId,
+                Stock = product.Stock,
+                IsActive = product.IsActive,
             };
         }
 
@@ -43,12 +43,6 @@ namespace Mshop.Application.UseCases.Product.CreateProduct
                 IsActive = isActive
             };
         }
-
-        protected static FileInput ImageFake()
-        {
-            return new FileInput("jpg", new MemoryStream(Encoding.ASCII.GetBytes(fakerStatic.Image.LoremFlickrUrl())));
-        }
-
 
         public static IEnumerable<object[]> GetCreateProductInPutInvalid()
         {

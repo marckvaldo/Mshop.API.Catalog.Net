@@ -21,7 +21,7 @@ namespace Mshop.Application.UseCases.Product.GetProduts
             
             var productFake = FakerProduct(FakerCategory());
             var guid = productFake.Id;
-            var imagesFaker = FakerImage(guid);
+            var imagesFaker = FakerImages(guid,3);
 
             repository.Setup(r => r.GetProductWithCategory(It.IsAny<Guid>())).ReturnsAsync(productFake);
             repositoryImage.Setup(r => r.Filter(It.IsAny<Expression<Func<DomainEntity.Image, bool>>>())).ReturnsAsync(imagesFaker);
@@ -65,7 +65,7 @@ namespace Mshop.Application.UseCases.Product.GetProduts
 
             var productFake = FakerProduct(FakerCategory());
             var guid = productFake.Id;
-            var imagesFaker = FakerImage(guid);
+            var imagesFaker = FakerImages(guid, 3);
 
             repository.Setup(r => r.GetProductWithCategory(It.IsAny<Guid>())).ReturnsAsync(productFake);
             repositoryImage.Setup(r => r.Filter(It.IsAny<Expression<Func<DomainEntity.Image, bool>>>())).ReturnsAsync(new List<DomainEntity.Image>());

@@ -130,3 +130,4 @@ C:\Users\IQ SISTEMAS\Documents\mShopping\new\Mshopping\MShop.API.Catalog\tests\C
 C:\Users\IQ SISTEMAS\Documents\mShopping\new\Mshopping\MShop.API.Catalog\tests\Core.Test\obj\Debug\net8.0\Mshop.Core.Test.pdb
 C:\Users\IQ SISTEMAS\Documents\mShopping\new\Mshopping\MShop.API.Catalog\tests\Core.Test\obj\Debug\net8.0\Mshop.Core.Test.genruntimeconfig.cache
 C:\Users\IQ SISTEMAS\Documents\mShopping\new\Mshopping\MShop.API.Catalog\tests\Core.Test\obj\Debug\net8.0\ref\Mshop.Core.Test.dll
+C:\Users\IQ SISTEMAS\Documents\mShopping\new\Mshopping\MShop.API.Catalog\tests\Core.Test\obj\Debug\net8.0\Mshop.Core.Test.sourcelink.json

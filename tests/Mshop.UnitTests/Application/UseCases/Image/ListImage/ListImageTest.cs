@@ -21,7 +21,7 @@ namespace Mshop.Application.UseCases.Image.ListImage
             var productId = Guid.NewGuid();
             var imagens = FakerImages(productId, 3);
 
-            var request = Faker(productId);
+            var request = FakerImage(productId);
             repository.Setup(r => r.Filter(It.IsAny<Expression<Func<DomainEntity.Image, bool>>>())).ReturnsAsync(imagens);
 
             var useCase = new useCase.ListImage(notification.Object, repository.Object);

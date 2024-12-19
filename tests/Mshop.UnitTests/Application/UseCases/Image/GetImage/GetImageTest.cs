@@ -17,7 +17,7 @@ namespace Mshop.Application.UseCases.Image.GetImage
             var notification = new Mock<INotification>();
             var storageService = new Mock<IStorageService>();
 
-            var request = Faker(Guid.NewGuid());
+            var request = FakerImage(Guid.NewGuid());
             repository.Setup(r => r.GetById(It.IsAny<Guid>())).ReturnsAsync(request);
             
 
@@ -41,7 +41,7 @@ namespace Mshop.Application.UseCases.Image.GetImage
             var notification = new Mock<INotification>();
             var storageService = new Mock<IStorageService>();
 
-            var request = Faker(Guid.NewGuid());
+            var request = FakerImage(Guid.NewGuid());
 
             var useCase = new useCase.GetImage(notification.Object, repository.Object, storageService.Object);
             var outPut = useCase.Handle(new useCase.GetImageInPut(Guid.NewGuid()), CancellationToken.None);

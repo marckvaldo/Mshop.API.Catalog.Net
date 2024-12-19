@@ -26,10 +26,12 @@ namespace Mshop.Application.UseCases.Product.UpdateStockProduct
         [Trait("Application-UseCase", "Update Stock Product")]
         public async void UpdateStockProduct()
         {
-            var request = UpdateStockProductInPut();
+            var category = FakerCategory();
+            var productFaker = FakerProduct(category);
+            var request = UpdateStockProductInPut(productFaker.Stock);
 
             _productRepository.Setup(r => r.GetById(It.IsAny<Guid>()))
-                .ReturnsAsync(Faker());
+                .ReturnsAsync(productFaker);
             
             var useCase = new useCase.UpdateStockProducts(
                 _productRepository.Object,
@@ -55,7 +57,9 @@ namespace Mshop.Application.UseCases.Product.UpdateStockProduct
         [Trait("Application-UseCase", "Update Stock Product")]
         public void SholdReturnErrorCantUpdateStockProduct()
         {
-            var request = UpdateStockProductInPut();
+            var category = FakerCategory();
+            var productFaker = FakerProduct(category);
+            var request = UpdateStockProductInPut(productFaker.Stock);
             request.Stock = request.Stock * -1;  
 
             _notifications.Setup(n=>n.HasErrors()).Returns(true);

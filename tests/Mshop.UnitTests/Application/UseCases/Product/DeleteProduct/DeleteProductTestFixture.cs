@@ -1,19 +1,19 @@
-﻿using Mshop.UnitTests.Common;
-using DomainEntity = Mshop.Domain.Entity;
+﻿using Mshop.Core.Test.UseCase;
 
 
 namespace Mshop.Application.UseCases.Product.DeleteProduct
 {
-    public abstract class DeleteProductTestFixture : BaseFixture
+    public abstract class DeleteProductTestFixture : UseCaseBaseFixture
     {
-        private readonly Guid _categoryId;
-        private readonly Guid _id;
+        //private readonly Guid _categoryId;
+        //private readonly Guid _id;
         public DeleteProductTestFixture() : base()
         {
-            _categoryId = Guid.NewGuid();
-            _id = Guid.NewGuid();
+            //_categoryId = Guid.NewGuid();
+            //_id = Guid.NewGuid();
         }
 
+        /*
         protected DomainEntity.Product Faker()
         {
             var product = (new DomainEntity.Product
@@ -28,5 +28,6 @@ namespace Mshop.Application.UseCases.Product.DeleteProduct
             ));
             return product;
         }
+        */
     }
 }

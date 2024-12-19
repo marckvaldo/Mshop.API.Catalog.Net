@@ -21,11 +21,14 @@ namespace Mshop.Application.UseCases.Product.DeleteProduct
             var notification = new Mock<INotification>();
             var repositoryImage = new Mock<IImageRepository>();
             var storageService = new Mock<IStorageService>();
-            var unitOfWork = new Mock<IUnitOfWork>();   
+            var unitOfWork = new Mock<IUnitOfWork>();
 
-            repository.Setup(repository => repository.GetById(It.IsAny<Guid>())).ReturnsAsync(Faker());
+            var category = FakerCategory();
+            var productFaker = FakerProduct(category);
 
-            var guid = Faker().Id;
+            repository.Setup(repository => repository.GetById(It.IsAny<Guid>())).ReturnsAsync(productFaker);
+
+            var guid = productFaker.Id;
 
             var product = new useCase.DeleteProduct(
                 repository.Object, 
@@ -58,6 +61,9 @@ namespace Mshop.Application.UseCases.Product.DeleteProduct
             var storageService = new Mock<IStorageService>();
             var unitOfWork = new Mock<IUnitOfWork>();
 
+            var category = FakerCategory();
+            var productFaker = FakerProduct(category);
+
             //repository.Setup(r => r.GetById(It.IsAny<Guid>())).ThrowsAsync(new NotFoundException("your search returned null"));
             repository.Setup(r => r.GetById(It.IsAny<Guid>())).ReturnsAsync((DomainEntity.Product?)null);
 
@@ -68,7 +74,7 @@ namespace Mshop.Application.UseCases.Product.DeleteProduct
                 storageService.Object,
                 unitOfWork.Object);
 
-            var guid = Faker().Id;
+            var guid = productFaker.Id;
 
             //var action = async () => await product.Handle(new useCase.DeleteProductInPut(guid), CancellationToken.None);
             //var exception = Assert.ThrowsAsync<NotFoundException>(action);

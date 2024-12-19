@@ -4,10 +4,11 @@ using CoreMessage = Mshop.Core.Message;
 using Mshop.Infra.Data.Interface;
 using DomainEntity = Mshop.Domain.Entity;
 using useCase = Mshop.Application.UseCases.Category.DeleteCategory;
+using Mshop.Application.UseCases.Category.Common;
 
 namespace Mshop.Application.UseCases.Category.DeleteCategory
 {
-    public class DeleteCategoryTest : DeleteCategoryTestFixture
+    public class DeleteCategoryTest : CategoryBaseFixtureTest
     {
         [Fact(DisplayName = nameof(DeleteCategory))]
         [Trait("Application-UseCase", "Delete Category")]

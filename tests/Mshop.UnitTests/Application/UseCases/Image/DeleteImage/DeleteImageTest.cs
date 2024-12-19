@@ -23,7 +23,7 @@ namespace Mshop.Application.UseCases.Image.DelteImage
 
 
             var id = Guid.NewGuid();
-            var images = Faker(id);
+            var images = FakerImage(id);
             var request = FakerRequest();
 
             repository.Setup(r => r.GetById(It.IsAny<Guid>())).ReturnsAsync(images);
@@ -61,7 +61,7 @@ namespace Mshop.Application.UseCases.Image.DelteImage
             var unitOfWork = new Mock<IUnitOfWork>();
 
             var id = Guid.NewGuid();
-            var images = Faker(id);
+            var images = FakerImage(id);
             var request = FakerRequest();
          
 

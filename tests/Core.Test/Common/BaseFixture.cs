@@ -29,6 +29,7 @@ namespace Mshop.Core.Test.Common
         {
             return new DomainEntity.Category(GetNameCategoryValid());
         }
+
         protected string GetNameCategoryValid()
         {
             string category = faker.Commerce.Categories(1)[0];
@@ -43,13 +44,18 @@ namespace Mshop.Core.Test.Common
             return category;
         }
 
-        public List<DomainEntity.Image> FakerImage(Guid productId, int quantity = 3)
+        public List<DomainEntity.Image> FakerImages(Guid productId, int quantity = 3)
         {
             List<DomainEntity.Image> images = new();
             for (int i = 1; i <= quantity; i++)
                 images.Add(new DomainEntity.Image(fakerStatic.Image.LoremFlickrUrl(), productId));
 
             return images;
+        }
+
+        public DomainEntity.Image FakerImage(Guid productId)
+        {
+            return new DomainEntity.Image(fakerStatic.Image.LoremFlickrUrl(), productId);
         }
     }
 }

@@ -1,81 +1,55 @@
-﻿using Mshop.Application.Common;
-using Mshop.Application.UseCases.Product.Common;
-using Mshop.UnitTests.Common;
-using System.Text;
-using DomainEntity = Mshop.Domain.Entity;
+﻿using Mshop.Application.UseCases.Product.Common;
+using Mshop.Core.Test.UseCase;
 using useCase = Mshop.Application.UseCases.Product.UpdateProduct;
 
 namespace Mshop.Application.UseCases.Product.UpdateProduct
 {
-    public class UpdateProductTestFixture : BaseFixture
+    public class UpdateProductTestFixture : UseCaseBaseFixture
     {
-        private readonly Guid _categoryId;
-        private readonly Guid _id;
+       
         public UpdateProductTestFixture() : base()
         {
-            _categoryId = Guid.NewGuid();
-            _id = Guid.NewGuid();
+           
         }
 
-        protected static FileInput ImageFake()
-        {
-            return new FileInput("jpg", new MemoryStream(Encoding.ASCII.GetBytes(fakerStatic.Image.LoremFlickrUrl())));
-        }
+       
        
 
         protected useCase.UpdateProductInPut ProductInPut()
         {
+            var category = FakerCategory();
+            var products = FakerProduct(category);
+
             return new useCase.UpdateProductInPut
             {
-                Id = _id,
-                Name = Faker().Name,
-                Description = Faker().Description,
-                Price = Faker().Price,
+                Id = products.Id,
+                Name = products.Name,
+                Description = products.Description,
+                Price = products.Price,
                 Thumb = ImageFake64(),
-                CategoryId = Faker().CategoryId,
-                IsActive = Faker().IsActive
+                CategoryId = products.CategoryId,
+                IsActive = products.IsActive
             };
             
         }
 
         protected ProductModelOutPut ProductModelOutPut()
         {
+            var category = FakerCategory();
+            var products = FakerProduct(category);
             return new ProductModelOutPut
-            ( 
-                _id,
-                Faker().Description,
-                Faker().Name,
-                Faker().Price,
-                Faker().Thumb.Path,
-                Faker().Stock,
-                Faker().IsActive,
-                Faker().CategoryId
+            (
+                products.Id,
+                products.Description,
+                products.Name,
+                products.Price,
+                products.Thumb.Path,
+                products.Stock,
+                products.IsActive,
+                products.CategoryId
             );
 
         }
-
-        protected DomainEntity.Product Faker()
-        {
-            DomainEntity.Product product = (new DomainEntity.Product
-            (
-                faker.Commerce.ProductName(),
-                faker.Commerce.ProductDescription(),
-                Convert.ToDecimal(faker.Commerce.Price()),
-                _categoryId,
-                faker.Random.UInt(),
-                true
-            ));
-
-            product.UpdateThumb(faker.Image.LoremFlickrUrl());
-            return product;
-        }
-
-        protected DomainEntity.Category FakerCategory()
-        {
-            return new(faker.Commerce.Categories(1)[0]);
-        }
-
-
 
         public static IEnumerable<object[]> GetUpdateProductInPutInvalid()
         {

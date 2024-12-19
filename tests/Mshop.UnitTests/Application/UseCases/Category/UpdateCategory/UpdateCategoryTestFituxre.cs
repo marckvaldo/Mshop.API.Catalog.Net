@@ -1,9 +1,10 @@
 ﻿using Mshop.Application.UseCases.Category.Common;
 using Mshop.Application.UseCases.Category.UpdateCategory;
+using Mshop.Core.Test.UseCase;
 
 namespace Mshop.UnitTests.Application.UseCases.Category.UpdateCategory
 {
-    public class UpdateCategoryTestFituxre : CategoryBaseFixtureTest
+    public class UpdateCategoryTestFituxre : UseCaseBaseFixture
     {
         public UpdateCategoryInPut FakerRequest()
         {

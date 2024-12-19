@@ -36,7 +36,7 @@ namespace Mshop.UnitTests.Application.UseCases.Cache.Products.GetProductCache
             
             var category = FakerCategory();
             var dadosResult = FakerProduct(category);
-            var imagens = FakerImage(dadosResult.Id);
+            var imagens = FakerImages(dadosResult.Id);
 
             _productCacheRepository.Setup(r => r.GetProductById(It.IsAny<Guid>())).ReturnsAsync(dadosResult);
             _imageCacheRepository.Setup(r => r.GetImageByProductId(It.IsAny<Guid>())).ReturnsAsync(imagens);
@@ -89,7 +89,7 @@ namespace Mshop.UnitTests.Application.UseCases.Cache.Products.GetProductCache
             var listProducts = FakerProducts(10, category);
             var dadosResult = listProducts.First();
 
-            var listImages = FakerImage(dadosResult.Id);
+            var listImages = FakerImages(dadosResult.Id);
 
             _productCacheRepository.Setup(r => r.GetProductById(It.IsAny<Guid>())).ReturnsAsync((DomainEntity.Product?)null);
             _productRepository.Setup(r => r.GetProductWithCategory(It.IsAny<Guid>())).ReturnsAsync(dadosResult);

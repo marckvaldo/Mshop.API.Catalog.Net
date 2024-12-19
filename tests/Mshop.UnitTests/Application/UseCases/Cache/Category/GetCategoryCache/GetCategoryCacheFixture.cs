@@ -1,14 +1,8 @@
-﻿using Mshop.Application.UseCases.Category.Common;
-using Mshop.UnitTests.Common;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Mshop.Core.Test.UseCase;
 
 namespace Mshop.UnitTests.Application.UseCases.Cache.Category.GetCategoryCache
 {
-    public class GetCategoryCacheFixture : CategoryBaseFixtureTest
+    public class GetCategoryCacheFixture : UseCaseBaseFixture
     {
         public GetCategoryCacheFixture() : base()
         {

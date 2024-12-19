@@ -134,3 +134,4 @@ C:\Users\IQ SISTEMAS\Documents\mShopping\new\Mshopping\MShop.API.Catalog\tests\M
 C:\Users\IQ SISTEMAS\Documents\mShopping\new\Mshopping\MShop.API.Catalog\tests\Mshop.UnitTests\bin\Debug\net8.0\Mshop.Core.Test.runtimeconfig.json
 C:\Users\IQ SISTEMAS\Documents\mShopping\new\Mshopping\MShop.API.Catalog\tests\Mshop.UnitTests\bin\Debug\net8.0\Mshop.Core.Test.dll
 C:\Users\IQ SISTEMAS\Documents\mShopping\new\Mshopping\MShop.API.Catalog\tests\Mshop.UnitTests\bin\Debug\net8.0\Mshop.Core.Test.pdb
+C:\Users\IQ SISTEMAS\Documents\mShopping\new\Mshopping\MShop.API.Catalog\tests\Mshop.UnitTests\obj\Debug\net8.0\Mshop.UnitTests.sourcelink.json

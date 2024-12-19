@@ -1,4 +1,6 @@
-﻿using Mshop.Core.Test.Common;
+﻿using Mshop.Application.Common;
+using Mshop.Core.Test.Common;
+using System.Text;
 using DomainEntity = Mshop.Domain.Entity;
 
 namespace Mshop.Core.Test.UseCase
@@ -43,6 +45,11 @@ namespace Mshop.Core.Test.UseCase
                 listProduct.Add(FakerProduct(category));
 
             return listProduct;
+        }
+
+        public static FileInput FakerImageFileInput()
+        {
+            return new FileInput("jpg", new MemoryStream(Encoding.ASCII.GetBytes(fakerStatic.Image.LoremFlickrUrl())));
         }
 
     }

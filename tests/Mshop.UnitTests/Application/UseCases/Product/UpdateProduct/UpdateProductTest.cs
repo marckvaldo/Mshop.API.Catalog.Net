@@ -33,7 +33,8 @@ namespace Mshop.Application.UseCases.Product.UpdateProduct
             var request = ProductInPut();
             var productRepository = ProductModelOutPut();
 
-            var productFake = Faker();
+            var category = FakerCategory();
+            var productFake = FakerProduct(category);
 
             _productRepository.Setup(r => r.GetById(It.IsAny<Guid>())).ReturnsAsync(productFake);
 

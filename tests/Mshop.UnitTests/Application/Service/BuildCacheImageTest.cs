@@ -1,16 +1,10 @@
 ﻿using Moq;
+using Mshop.Core.Test.UseCase;
 using Mshop.Infra.Cache.Interface;
 using Mshop.Infra.Data.Interface;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ServiceBuilder = Mshop.Application.Service;
-using DomainEntity = Mshop.Domain.Entity;
 using System.Linq.Expressions;
-using Mshop.UnitTests.Application.UseCases.Common;
-using Mshop.Infra.Data.Repository;
+using DomainEntity = Mshop.Domain.Entity;
+using ServiceBuilder = Mshop.Application.Service;
 
 namespace Mshop.UnitTests.Application.Service
 {
@@ -30,7 +24,7 @@ namespace Mshop.UnitTests.Application.Service
 
         public void ShouldBuilderCacheImage()
         {
-            var listImage = FakerImage(Guid.NewGuid());
+            var listImage = FakerImages(Guid.NewGuid());
 
             _imageCacheRepository.Setup(c => c.AddImage(It.IsAny<DomainEntity.Image>(), It.IsAny<DateTime>(), CancellationToken.None)).ReturnsAsync(true);
             _imageRepository.Setup(c => c.Filter(It.IsAny<Expression<Func<DomainEntity.Image, bool>>>())).ReturnsAsync(listImage);
