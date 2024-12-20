@@ -33,7 +33,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mshop.UnitTests", "..\..\te
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mshop.Core.Test", "..\..\tests\Core.Test\Mshop.Core.Test.csproj", "{753C047A-D3EB-4104-817C-CCE754DDE525}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mshop.IntegrationTest", "..\..\tests\Mshop.IntegrationTest\Mshop.IntegrationTest.csproj", "{E865B79C-6B00-4733-B915-96778D553F23}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mshop.IntegrationTests", "..\..\tests\Mshop.IntegrationTest\Mshop.IntegrationTests.csproj", "{E865B79C-6B00-4733-B915-96778D553F23}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

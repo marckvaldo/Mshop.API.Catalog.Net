@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Mshop.API.Catalog")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a36f654761e8a565701c691ac42bb0b107f8d6ea")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c2ccd60a7963cc3bfdaf42fda0aae391ecce2a55")]
 [assembly: System.Reflection.AssemblyProductAttribute("Mshop.API.Catalog")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Mshop.API.Catalog")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
