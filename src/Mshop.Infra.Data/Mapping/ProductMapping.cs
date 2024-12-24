@@ -26,9 +26,9 @@ namespace Mshop.Infra.Data.Mapping
                 .IsRequired()
                 .HasColumnType("decimal(16,2)");
 
-            /*builder.Property(x=>x.IsSale)
+            builder.Property(x=>x.IsSale)
                 .IsRequired()
-                .HasColumnType("bool");*/
+                .HasColumnType("bool");
 
             builder.OwnsOne(x => x.Thumb,
                 x => x.Property(x => x.Path).HasColumnName("Thumb"));

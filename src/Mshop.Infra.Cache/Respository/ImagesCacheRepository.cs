@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc.RazorPages;
+using Mshop.Core.Common;
 using Mshop.Core.Paginated;
 using Mshop.Domain.Entity;
 using Mshop.Infra.Cache.Interface;
@@ -23,18 +24,18 @@ namespace Mshop.Infra.Cache.Respository
             _database = database.GetDatabase();
             _search = _database.FT();
 
-            _indexName = $"{IndexName.Product}Index";
-            _keyPrefix = $"{IndexName.Product}:";
+            _indexName = $"{IndexName.Image}Index";
+            _keyPrefix = $"{IndexName.Image}:";
         }
-        public async Task<bool> AddImage(Image entity, DateTime? ExpirationDate, CancellationToken cancellationToken)
+        public async Task<bool> Create(Image entity, DateTime? ExpirationDate, CancellationToken cancellationToken)
         {
-            var key = $"{_keyPrefix}:{entity.Id}";
+            var key = $"{_keyPrefix}{entity.Id}";
 
             var hash = new HashEntry[]
             {   
                 new("Id", entity.Id.ToString()),
                 new("FileName", entity.FileName),
-                new("ProductId", entity.ProductId.ToString())
+                new("ProductId", Helpers.ClearString(entity.ProductId.ToString()))
             };
 
             await _database.HashSetAsync(key, hash);
@@ -46,12 +47,12 @@ namespace Mshop.Infra.Cache.Respository
 
             return true;
         }
-        public async Task<bool> DeleteImage(Image entity, CancellationToken cancellationToken)
+        public async Task<bool> DeleteById(Image entity, CancellationToken cancellationToken)
         {
-            var key = $"{_keyPrefix}:{entity.Id.ToString()}";
+            var key = $"{_keyPrefix}{entity.Id.ToString()}";
             return await _database.KeyDeleteAsync(key);
         }        
-        public async Task<Image?> GetImageById(Guid id)
+        public async Task<Image?> GetById(Guid id)
         {
             var key = $"{_keyPrefix}{id}";
             var hash = await _database.HashGetAllAsync(key);
@@ -63,11 +64,15 @@ namespace Mshop.Infra.Cache.Respository
         }
         public async Task<IEnumerable<Image>?> GetImageByProductId(Guid productId)
         {
-            var query = $"@ProductId:{productId.ToString()}";
+            var id = Helpers.ClearString(productId.ToString());
 
-            var result = await _search.SearchAsync(_indexName, new Query(query).Limit(0, 100));
+            var query = string.IsNullOrEmpty(id)
+                ? new Query("*")
+                : new Query($"@ProductId:{{{id}}}");
 
-            if (result is null)
+            var result = await _search.SearchAsync(_indexName, query.Limit(0, 10));
+
+            if (result.Documents.Count == 0)
                 return null;
 
             var imagens = result.Documents.Select(doc => RedisToImage(doc)).ToList();
@@ -75,10 +80,16 @@ namespace Mshop.Infra.Cache.Respository
             return imagens;
        
         }
-        public async Task<bool> UpadteImage(Image entity, DateTime? ExpirationDate, CancellationToken cancellationToken)
+        public async Task<bool> Update(Image entity, DateTime? ExpirationDate, CancellationToken cancellationToken)
         {
-            return await AddImage(entity, ExpirationDate, cancellationToken);
+            return await Create(entity, ExpirationDate, cancellationToken);
         }
+        public Task<PaginatedOutPut<Image>>? FilterPaginated(PaginatedInPut input, CancellationToken cancellationToken)
+        {
+            throw new NotImplementedException();
+        }
+
+
 
 
 
@@ -117,9 +128,10 @@ namespace Mshop.Infra.Cache.Respository
         private Image RedisToImage(HashEntry[] hash )
         {
             var image = new Image(
-                hash.FirstOrDefault(x => x.Name == "FileName").Value.ToString() ?? string.Empty,
-                Guid.Parse(hash.FirstOrDefault(x => x.Name == "ProductId").Value.ToString() ?? string.Empty)
-                );
+                fileName: hash.FirstOrDefault(x => x.Name == "FileName").Value.ToString(),
+                productId: Guid.Parse(hash.FirstOrDefault(x => x.Name == "ProductId").Value.ToString()),
+                id: Guid.Parse(hash.FirstOrDefault(x => x.Name == "Id").Value.ToString())
+                ); 
 
             return image;
   
@@ -128,8 +140,9 @@ namespace Mshop.Infra.Cache.Respository
         private Image RedisToImage(Document doc)
         {
             var Image = new Image(
-                doc["FileName"].ToString() ?? string.Empty,
-                Guid.Parse(doc["ProductId"].ToString())             
+                fileName: doc["FileName"].ToString() ?? string.Empty,
+                productId: Guid.Parse(doc["ProductId"].ToString()),
+                id: Guid.Parse(doc["Id"].ToString())
                 );
 
             return Image;

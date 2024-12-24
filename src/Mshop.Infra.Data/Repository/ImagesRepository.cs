@@ -1,4 +1,5 @@
-﻿using Mshop.Domain.Entity;
+﻿using Microsoft.EntityFrameworkCore;
+using Mshop.Domain.Entity;
 using Mshop.Infra.Data.Context;
 using Mshop.Infra.Data.Interface;
 
@@ -14,7 +15,6 @@ namespace Mshop.Infra.Data.Repository
         public async Task CreateRange(List<Image> images, CancellationToken cancellationToken)
         {
             await _dbSet.AddRangeAsync(images,cancellationToken);
-            //await SaveChanges();
         }
 
         public async Task DeleteByIdProduct(Guid productId)
@@ -24,6 +24,11 @@ namespace Mshop.Infra.Data.Repository
              _dbSet.Remove(image);
 
             await SaveChanges();
+        }
+
+        public async Task<IEnumerable<Image>> GetImagesByProductId(Guid productId)
+        {
+            return await _dbSet.Where(x => x.ProductId == productId).ToListAsync();
         }
 
     }

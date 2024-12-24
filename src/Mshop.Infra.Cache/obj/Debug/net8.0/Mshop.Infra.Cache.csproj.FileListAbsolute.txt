@@ -15,3 +15,4 @@ C:\Users\IQ SISTEMAS\Documents\mShopping\new\Mshopping\MShop.API.Catalog\src\Msh
 C:\Users\IQ SISTEMAS\Documents\mShopping\new\Mshopping\MShop.API.Catalog\src\Mshop.Infra.Cache\obj\Debug\net8.0\refint\Mshop.Infra.Cache.dll
 C:\Users\IQ SISTEMAS\Documents\mShopping\new\Mshopping\MShop.API.Catalog\src\Mshop.Infra.Cache\obj\Debug\net8.0\Mshop.Infra.Cache.pdb
 C:\Users\IQ SISTEMAS\Documents\mShopping\new\Mshopping\MShop.API.Catalog\src\Mshop.Infra.Cache\obj\Debug\net8.0\ref\Mshop.Infra.Cache.dll
+C:\Users\IQ SISTEMAS\Documents\mShopping\new\Mshopping\MShop.API.Catalog\src\Mshop.Infra.Cache\obj\Debug\net8.0\Mshop.Infra.Cache.sourcelink.json

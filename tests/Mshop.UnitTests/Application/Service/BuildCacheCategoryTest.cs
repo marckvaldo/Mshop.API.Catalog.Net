@@ -26,13 +26,13 @@ namespace Mshop.UnitTests.Application.Service
         {
             var listCategory = FakerCategories(50);
 
-            _categoryCacheRepository.Setup(c => c.AddCategory(It.IsAny<DomainEntity.Category>(), It.IsAny<DateTime>(), CancellationToken.None)).ReturnsAsync(true);
+            _categoryCacheRepository.Setup(c => c.Create(It.IsAny<DomainEntity.Category>(), It.IsAny<DateTime>(), CancellationToken.None)).ReturnsAsync(true);
             _categoryRepository.Setup(c => c.Filter(It.IsAny<Expression<Func<DomainEntity.Category, bool>>>())).ReturnsAsync(listCategory);
 
             var service = new ServiceBuilder.BuildCacheCategory(_categoryCacheRepository.Object, _categoryRepository.Object);
             service.Handle();
 
-            _categoryCacheRepository.Verify(c=>c.AddCategory(It.IsAny<DomainEntity.Category>(), It.IsAny<DateTime>(), CancellationToken.None), Times.AtMost(50));
+            _categoryCacheRepository.Verify(c=>c.Create(It.IsAny<DomainEntity.Category>(), It.IsAny<DateTime>(), CancellationToken.None), Times.AtMost(50));
             _categoryRepository.Verify(c => c.Filter(It.IsAny<Expression<Func<DomainEntity.Category, bool>>>()), Times.Once);
         }
 

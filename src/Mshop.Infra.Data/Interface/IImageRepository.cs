@@ -10,5 +10,7 @@ namespace Mshop.Infra.Data.Interface
 
         Task DeleteByIdProduct(Guid productId);
 
+        Task<IEnumerable<Image>> GetImagesByProductId(Guid productId);
+
     }
 }

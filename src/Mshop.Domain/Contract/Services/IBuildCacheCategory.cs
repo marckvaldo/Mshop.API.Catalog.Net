@@ -2,6 +2,6 @@
 {
     public interface IBuildCacheCategory
     {
-        void Handle();
+        Task Handle();
     }
 }

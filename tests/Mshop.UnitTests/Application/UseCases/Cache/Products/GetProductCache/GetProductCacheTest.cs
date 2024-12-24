@@ -38,7 +38,7 @@ namespace Mshop.UnitTests.Application.UseCases.Cache.Products.GetProductCache
             var dadosResult = FakerProduct(category);
             var imagens = FakerImages(dadosResult.Id);
 
-            _productCacheRepository.Setup(r => r.GetProductById(It.IsAny<Guid>())).ReturnsAsync(dadosResult);
+            _productCacheRepository.Setup(r => r.GetById(It.IsAny<Guid>())).ReturnsAsync(dadosResult);
             _imageCacheRepository.Setup(r => r.GetImageByProductId(It.IsAny<Guid>())).ReturnsAsync(imagens);
 
 
@@ -54,7 +54,7 @@ namespace Mshop.UnitTests.Application.UseCases.Cache.Products.GetProductCache
             var outPut = useCase.Handle(new useCases.GetProductCacheInPut(dadosResult.Id), CancellationToken.None);
 
             _notification.Verify(r => r.AddNotifications(It.IsAny<string>()), Times.Never);
-            _productCacheRepository.Verify(r => r.GetProductById(It.IsAny<Guid>()), Times.Once);
+            _productCacheRepository.Verify(r => r.GetById(It.IsAny<Guid>()), Times.Once);
             _productRepository.Verify(r => r.GetById(It.IsAny<Guid>()), Times.Never);
 
             _imageCacheRepository.Verify(r=>r.GetImageByProductId(It.IsAny<Guid>()), Times.Once);
@@ -91,16 +91,16 @@ namespace Mshop.UnitTests.Application.UseCases.Cache.Products.GetProductCache
 
             var listImages = FakerImages(dadosResult.Id);
 
-            _productCacheRepository.Setup(r => r.GetProductById(It.IsAny<Guid>())).ReturnsAsync((DomainEntity.Product?)null);
+            _productCacheRepository.Setup(r => r.GetById(It.IsAny<Guid>())).ReturnsAsync((DomainEntity.Product?)null);
             _productRepository.Setup(r => r.GetProductWithCategory(It.IsAny<Guid>())).ReturnsAsync(dadosResult);
             _productRepository.Setup(r => r.Filter(It.IsAny<Expression<Func<DomainEntity.Product, bool>>>())).ReturnsAsync(listProducts);
-            _productCacheRepository.Setup(r => r.AddProduct(It.IsAny<DomainEntity.Product>(), It.IsAny<DateTime>(), CancellationToken.None)).ReturnsAsync(true);
+            _productCacheRepository.Setup(r => r.Create(It.IsAny<DomainEntity.Product>(), It.IsAny<DateTime>(), CancellationToken.None)).ReturnsAsync(true);
 
 
 
             _imageCacheRepository.Setup(r => r.GetImageByProductId(It.IsAny<Guid>())).ReturnsAsync((List<DomainEntity.Image>?)null);
             _imageRepository.Setup(r => r.Filter(It.IsAny<Expression<Func<DomainEntity.Image, bool>>>())).ReturnsAsync(listImages);
-            _imageCacheRepository.Setup(r => r.AddImage(It.IsAny<DomainEntity.Image>(), It.IsAny<DateTime>(), CancellationToken.None)).ReturnsAsync(true);
+            _imageCacheRepository.Setup(r => r.Create(It.IsAny<DomainEntity.Image>(), It.IsAny<DateTime>(), CancellationToken.None)).ReturnsAsync(true);
 
 
             var useCase = new useCases.GetProductCache(
@@ -116,7 +116,7 @@ namespace Mshop.UnitTests.Application.UseCases.Cache.Products.GetProductCache
 
 
             _notification.Verify(r => r.AddNotifications(It.IsAny<string>()), Times.Never);
-            _productCacheRepository.Verify(r => r.GetProductById(It.IsAny<Guid>()), Times.Once);
+            _productCacheRepository.Verify(r => r.GetById(It.IsAny<Guid>()), Times.Once);
             _productRepository.Verify(r => r.GetProductWithCategory(It.IsAny<Guid>()), Times.Once);
 
             _imageCacheRepository.Verify(r => r.GetImageByProductId(It.IsAny<Guid>()), Times.Once);
@@ -150,17 +150,17 @@ namespace Mshop.UnitTests.Application.UseCases.Cache.Products.GetProductCache
            /*var listCategories = FakerCategories(10);
             var dadosResult = listCategories.First();
 
-            _productCacheRepository.Setup(r => r.GetCategoryById(It.IsAny<Guid>())).ReturnsAsync((DomainEntity.Category?)null);
+            _productCacheRepository.Setup(r => r.GetById(It.IsAny<Guid>())).ReturnsAsync((DomainEntity.Category?)null);
             _productRepository.Setup(r => r.GetById(It.IsAny<Guid>())).ReturnsAsync((DomainEntity.Category?)null);
             _productRepository.Setup(r => r.Filter(It.IsAny<Expression<Func<DomainEntity.Category, bool>>>())).ReturnsAsync(listCategories);
-            _productCacheRepository.Setup(r => r.AddCategory(It.IsAny<DomainEntity.Category>(), It.IsAny<DateTime>(), CancellationToken.None)).ReturnsAsync(true);
+            _productCacheRepository.Setup(r => r.Create(It.IsAny<DomainEntity.Category>(), It.IsAny<DateTime>(), CancellationToken.None)).ReturnsAsync(true);
 
             var useCase = new useCase.GetCategoryCache(_notification.Object, _productCacheRepository.Object, _productRepository.Object, _buildCacheCategory.Object);
             var outPut = useCase.Handle(new useCase.GetCategoryCacheInPut(dadosResult.Id), CancellationToken.None);
 
             _notification.Verify(r => r.AddNotifications(It.IsAny<string>()), Times.Once);
-            _productCacheRepository.Verify(r => r.GetCategoryById(It.IsAny<Guid>()), Times.Once);
-            _productCacheRepository.Verify(r => r.AddCategory(It.IsAny<DomainEntity.Category>(), It.IsAny<DateTime>(), CancellationToken.None), Times.AtMost(10));
+            _productCacheRepository.Verify(r => r.GetById(It.IsAny<Guid>()), Times.Once);
+            _productCacheRepository.Verify(r => r.Create(It.IsAny<DomainEntity.Category>(), It.IsAny<DateTime>(), CancellationToken.None), Times.AtMost(10));
             _buildCacheCategory.Verify(r => r.Handle(), Times.Once);
             _productRepository.Verify(r => r.GetById(It.IsAny<Guid>()), Times.Once);
 

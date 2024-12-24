@@ -19,10 +19,9 @@ namespace Mshop.Domain.Entity
         {
             Name = name;
             IsActive = isActive;
-            AddId(Guid.NewGuid());
         }
 
-        public Category(string name, Guid id, bool isActive = true) : base()
+        public Category(string name, Guid id, bool isActive = true)
         {
             Name = name;
             IsActive = isActive;

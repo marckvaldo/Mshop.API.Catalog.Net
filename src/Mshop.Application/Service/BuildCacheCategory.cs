@@ -16,7 +16,7 @@ namespace Mshop.Application.Service
             _categoryRepository = categoryRepository;
         }
 
-        public async void Handle()
+        public async Task Handle()
         {
             var expirationDate = DateTime.UtcNow.AddHours(1);
 
@@ -24,7 +24,7 @@ namespace Mshop.Application.Service
 
             foreach (var category in categories)
             {
-                await _categoryCacheRepository.AddCategory(category, expirationDate, CancellationToken.None);
+                await _categoryCacheRepository.Create(category, expirationDate, CancellationToken.None);
             }
         }
     }

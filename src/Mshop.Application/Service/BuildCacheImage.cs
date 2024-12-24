@@ -15,7 +15,7 @@ namespace Mshop.Application.Service
             _imageRepository = imageRepository;
         }
 
-        public async void Handle()
+        public async Task Handle()
         {
             var expirationDate = DateTime.UtcNow.AddHours(1);
 
@@ -23,7 +23,7 @@ namespace Mshop.Application.Service
 
             foreach (var image in images)
             {
-                await _imageCacheRepository.AddImage(image, expirationDate, CancellationToken.None);
+                await _imageCacheRepository.Create(image, expirationDate, CancellationToken.None);
             }
         }
     }

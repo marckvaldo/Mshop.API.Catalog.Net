@@ -26,7 +26,7 @@ namespace Mshop.Application.UseCases.Cache.Category.GetCategory
 
         public async Task<Result<CategoryModelOutPut>> Handle(GetCategoryCacheInPut request, CancellationToken cancellationToken)
         {
-            var category = await _categoryCacheRepository.GetCategoryById(request.Id);
+            var category = await _categoryCacheRepository.GetById(request.Id);
 
             if(category is null)
             {

@@ -38,7 +38,7 @@ namespace Mshop.Application.UseCases.Cache.Products.GetProductCache
 
         public async Task<Result<GetProductCacheOutPut>> Handle(GetProductCacheInPut request, CancellationToken cancellation)
         {
-            var product = await _productCacheRepository.GetProductById(request.Id);
+            var product = await _productCacheRepository.GetById(request.Id);
 
             if(product is null)
             {

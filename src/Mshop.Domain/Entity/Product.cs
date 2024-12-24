@@ -29,7 +29,7 @@ namespace Mshop.Domain.Entity
 
         public FileImage? Thumb { get; private set; }  
 
-        public Product(string description, string name, decimal price, Guid categoryId, decimal stock = 0, bool isActive = false) : base()
+        public Product(string description, string name, decimal price, Guid categoryId, decimal stock = 0, bool isActive = false, bool isSale = false) : base()
         {
             Description = description;
             Name = name;
@@ -37,9 +37,10 @@ namespace Mshop.Domain.Entity
             Stock = stock;
             IsActive = isActive;
             CategoryId = categoryId;
+            IsSale = isSale;
         }
 
-        public Product(string description, string name, decimal price, Guid categoryId, Guid id, decimal stock = 0, bool isActive = false) : base()
+        public Product(string description, string name, decimal price, Guid categoryId, Guid id, decimal stock = 0, bool isActive = false, bool isSale = false)
         {
             Description = description;
             Name = name;
@@ -47,6 +48,7 @@ namespace Mshop.Domain.Entity
             Stock = stock;
             IsActive = isActive;
             CategoryId = categoryId;
+            IsSale = isSale;
             AddId(id);
         }
 

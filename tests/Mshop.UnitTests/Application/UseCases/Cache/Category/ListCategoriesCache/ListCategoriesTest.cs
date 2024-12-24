@@ -81,7 +81,7 @@ namespace Mshop.UnitTests.Application.UseCases.Cache.Category.ListCategoriesCach
             _categoryCacheRepository.Setup(r => r.FilterPaginated(It.IsAny<PaginatedInPut>(), CancellationToken.None)).ReturnsAsync((PaginatedOutPut<DomainEntity.Category>?)null);
             _categoryRepository.Setup(r => r.Filter(It.IsAny<Expression<Func<DomainEntity.Category, bool>>>())).ReturnsAsync(listOrdenada);
             _categoryRepository.Setup(r => r.FilterPaginated(It.IsAny<PaginatedInPut>(), CancellationToken.None)).ReturnsAsync(paginateOutPut);
-            _categoryCacheRepository.Setup(r => r.AddCategory(It.IsAny<DomainEntity.Category>(), It.IsAny<DateTime>(), CancellationToken.None)).ReturnsAsync(true);
+            _categoryCacheRepository.Setup(r => r.Create(It.IsAny<DomainEntity.Category>(), It.IsAny<DateTime>(), CancellationToken.None)).ReturnsAsync(true);
             
 
             var useCase = new useCases.ListCategoriesCache(_categoryCacheRepository.Object, _categoryRepository.Object, _buildCacheCategory.Object, _notification.Object);
@@ -98,7 +98,7 @@ namespace Mshop.UnitTests.Application.UseCases.Cache.Category.ListCategoriesCach
             _buildCacheCategory.Verify(r => r.Handle(), Times.Once);
             _categoryRepository.Verify(r => r.FilterPaginated(It.IsAny<PaginatedInPut>(), CancellationToken.None), Times.Once);
             //_productRepository.Verify(r => r.Filter(It.IsAny<Expression<Func<DomainEntity.Category, bool>>>()), Times.Once);
-            _categoryCacheRepository.Verify(r => r.AddCategory(It.IsAny<DomainEntity.Category>(), It.IsAny<DateTime>(), CancellationToken.None),Times.AtMost(50));
+            _categoryCacheRepository.Verify(r => r.Create(It.IsAny<DomainEntity.Category>(), It.IsAny<DateTime>(), CancellationToken.None),Times.AtMost(50));
             _notification.Verify(r => r.AddNotifications(It.IsAny<string>()), Times.Never);
 
             Assert.NotNull(outPut.Result);
@@ -128,7 +128,7 @@ namespace Mshop.UnitTests.Application.UseCases.Cache.Category.ListCategoriesCach
             _categoryCacheRepository.Setup(r => r.FilterPaginated(It.IsAny<PaginatedInPut>(), CancellationToken.None)).ReturnsAsync((PaginatedOutPut<DomainEntity.Category>?)null);
             _categoryRepository.Setup(r => r.Filter(It.IsAny<Expression<Func<DomainEntity.Category, bool>>>())).ReturnsAsync(listOrdenada);
             _categoryRepository.Setup(r => r.FilterPaginated(It.IsAny<PaginatedInPut>(), CancellationToken.None)).ReturnsAsync((PaginatedOutPut<DomainEntity.Category>?)null);
-            _categoryCacheRepository.Setup(r => r.AddCategory(It.IsAny<DomainEntity.Category>(), It.IsAny<DateTime>(), CancellationToken.None)).ReturnsAsync(true);
+            _categoryCacheRepository.Setup(r => r.Create(It.IsAny<DomainEntity.Category>(), It.IsAny<DateTime>(), CancellationToken.None)).ReturnsAsync(true);
 
 
             var useCase = new useCases.ListCategoriesCache(_categoryCacheRepository.Object, _categoryRepository.Object, _buildCacheCategory.Object, _notification.Object);
@@ -144,7 +144,7 @@ namespace Mshop.UnitTests.Application.UseCases.Cache.Category.ListCategoriesCach
             _categoryCacheRepository.Verify(r => r.FilterPaginated(It.IsAny<PaginatedInPut>(), CancellationToken.None), Times.Once);
             _buildCacheCategory.Verify(r => r.Handle(), Times.Once);
             _categoryRepository.Verify(r => r.FilterPaginated(It.IsAny<PaginatedInPut>(), CancellationToken.None), Times.Once);
-            _categoryCacheRepository.Verify(r => r.AddCategory(It.IsAny<DomainEntity.Category>(), It.IsAny<DateTime>(), CancellationToken.None), Times.AtMost(50));
+            _categoryCacheRepository.Verify(r => r.Create(It.IsAny<DomainEntity.Category>(), It.IsAny<DateTime>(), CancellationToken.None), Times.AtMost(50));
             _notification.Verify(r => r.AddNotifications(It.IsAny<string>()), Times.Once);
 
             

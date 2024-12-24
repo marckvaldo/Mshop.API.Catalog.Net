@@ -7,11 +7,17 @@ namespace Mshop.Domain.Entity
 {
     public class Image : Core.DomainObject.Entity
     {
-        public Image(string fileName, Guid productId)
+        public Image(string fileName, Guid productId) : base()
         {
             FileName = fileName;
             ProductId = productId;
-            AddId(Guid.NewGuid());
+        }
+
+        public Image(string fileName, Guid id, Guid productId)
+        {
+            FileName = fileName;
+            ProductId = productId;
+            AddId(id);  
         }
 
         public string FileName { get; set; }

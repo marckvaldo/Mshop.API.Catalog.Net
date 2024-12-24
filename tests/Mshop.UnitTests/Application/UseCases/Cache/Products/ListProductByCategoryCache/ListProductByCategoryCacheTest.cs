@@ -92,7 +92,7 @@ namespace Mshop.UnitTests.Application.UseCases.Cache.Products.ListProductByCateg
             _productCacheRepository.Setup(r => r.FilterPaginatedByCategory(It.IsAny<PaginatedInPut>(),It.IsAny<Guid>() ,CancellationToken.None)).ReturnsAsync((PaginatedOutPut<DomainEntity.Product>?)null);
             _productRepository.Setup(r => r.FilterPaginatedByCategoryId(It.IsAny<PaginatedInPut>(), It.IsAny<Guid>(), CancellationToken.None)).ReturnsAsync(paginateOutPut);
             _productRepository.Setup(r => r.GetProductAll(It.IsAny<bool>())).ReturnsAsync(listOrdenada);
-            _productCacheRepository.Setup(r => r.AddProduct(It.IsAny<DomainEntity.Product>(), It.IsAny<DateTime>(), CancellationToken.None)).ReturnsAsync(true);
+            _productCacheRepository.Setup(r => r.Create(It.IsAny<DomainEntity.Product>(), It.IsAny<DateTime>(), CancellationToken.None)).ReturnsAsync(true);
 
 
 
@@ -142,7 +142,7 @@ namespace Mshop.UnitTests.Application.UseCases.Cache.Products.ListProductByCateg
             _productCacheRepository.Setup(r => r.FilterPaginatedByCategory(It.IsAny<PaginatedInPut>(), It.IsAny<Guid>(), CancellationToken.None)).ReturnsAsync((PaginatedOutPut<DomainEntity.Product>?)null);
             _productRepository.Setup(r => r.FilterPaginatedByCategoryId(It.IsAny<PaginatedInPut>(), It.IsAny<Guid>(), CancellationToken.None)).ReturnsAsync((PaginatedOutPut<DomainEntity.Product>?)null);
             _productRepository.Setup(r => r.GetProductAll(It.IsAny<bool>())).ReturnsAsync((List<DomainEntity.Product>?)null);
-            _productCacheRepository.Setup(r => r.AddProduct(It.IsAny<DomainEntity.Product>(), It.IsAny<DateTime>(), CancellationToken.None)).ReturnsAsync(true);
+            _productCacheRepository.Setup(r => r.Create(It.IsAny<DomainEntity.Product>(), It.IsAny<DateTime>(), CancellationToken.None)).ReturnsAsync(true);
 
             var useCase = new useCases.ListProductByCategoryCache(_productRepository.Object, _productCacheRepository.Object, _buildCacheProduct.Object, _notification.Object);
             var outPut = useCase.Handle(

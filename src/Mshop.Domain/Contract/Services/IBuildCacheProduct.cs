@@ -2,6 +2,6 @@
 {
     public interface IBuildCacheProduct
     {
-        void Handle();
+        Task Handle();
     }
 }

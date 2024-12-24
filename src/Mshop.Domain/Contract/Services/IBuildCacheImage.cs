@@ -2,6 +2,6 @@
 {
     public interface IBuildCacheImage
     {
-        void Handle();
+        Task Handle();
     }
 }

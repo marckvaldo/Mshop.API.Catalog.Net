@@ -40,7 +40,7 @@ namespace Mshop.Infra.Cache.StartIndex
                        .AddNumericField("Stock")
                        .AddTagField("IsActive")
                        .AddTagField("IsSale")
-                       .AddTextField("CategoryId")
+                       .AddTagField("CategoryId")
                        .AddTextField("Category")
                        .AddTextField("Thumb")
                    );
@@ -94,12 +94,17 @@ namespace Mshop.Infra.Cache.StartIndex
             
             // Nome dos índices a serem excluídos
             var indexNameProduct = $"{IndexName.Product}Index"; 
-            var indexNameCategory = $"{IndexName.Category}Index"; 
-            
-            // Excluindo os índices
-            await ft.DropIndexAsync(indexNameProduct); 
-            await ft.DropIndexAsync(indexNameCategory); 
+            var indexNameCategory = $"{IndexName.Category}Index";
 
+            // Excluindo os índices
+            try
+            {
+                await ft.DropIndexAsync(indexNameProduct);
+                await ft.DropIndexAsync(indexNameCategory);
+            }
+            catch (Exception ex)
+            {
+            }
         }
     }
 }

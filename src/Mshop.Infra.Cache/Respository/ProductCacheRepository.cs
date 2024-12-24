@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc.RazorPages;
+using Mshop.Core.Common;
 using Mshop.Core.Paginated;
 using Mshop.Domain.Entity;
 using Mshop.Infra.Cache.Interface;
@@ -26,20 +27,20 @@ namespace Mshop.Infra.Cache.Respository
             _indexName = $"{IndexName.Product}Index";
             _keyPrefix = $"{IndexName.Product}:";
         }
-        public async Task<bool> AddProduct(Product entity, DateTime? ExpirationDate, CancellationToken cancellationToken)
+        public async Task<bool> Create(Product entity, DateTime? ExpirationDate, CancellationToken cancellationToken)
         {
-            var key = $"{_keyPrefix}:{entity.Id}";
+            var key = $"{_keyPrefix}{entity.Id}";
 
             var hash = new HashEntry[]
             {
                 new("Id", entity.Id.ToString()),
                 new("Name", entity.Name),
                 new("Description", entity.Description),
-                new("Price", entity.Price.ToString()),
-                new("Stock", entity.Stock.ToString()),
+                new("Price", entity.Price.ToString(System.Globalization.CultureInfo.CreateSpecificCulture("en-US"))),
+                new("Stock", entity.Stock.ToString(System.Globalization.CultureInfo.CreateSpecificCulture("en-US"))),
                 new("IsActive", entity.IsActive),
                 new("IsSale", entity.IsSale),
-                new("CategoryId", entity.CategoryId.ToString()),
+                new("CategoryId", Helpers.ClearString(entity.CategoryId.ToString())),
                 new("Category", entity.Category.Name),
                 new("Thumb", entity.Thumb?.Path)
             };
@@ -53,19 +54,21 @@ namespace Mshop.Infra.Cache.Respository
 
             return true;
         }
-        public async Task<bool> DeleteProduct(Product entity, CancellationToken cancellationToken)
+        public async Task<bool> DeleteById(Product entity, CancellationToken cancellationToken)
         {
-            var key = $"{_keyPrefix}:{entity.Id.ToString()}";
+            var key = $"{_keyPrefix}{entity.Id.ToString()}";
             return await _database.KeyDeleteAsync(key);
         }
         public async Task<PaginatedOutPut<Product>>? FilterPaginated(PaginatedInPut input, CancellationToken cancellationToken)
         {
             var offset = (input.Page - 1) * input.PerPage;
 
-            //var query = $"@Name:{input.Search}*";
-            var query = string.IsNullOrEmpty(input.Search) ? new Query("*") : new Query($"@Name:{input.Search}*");
+            var query = string.IsNullOrEmpty(input.Search)
+                ? new Query("*")
+                : new Query($"@Name:{input.Search}*");
 
-            var result = await _search.SearchAsync(_indexName, query.Limit(offset,input.PerPage));
+            var result = await _search.SearchAsync(_indexName, query.Limit(offset, input.PerPage));
+
 
             if (result.Documents.Count == 0)
                 return null;
@@ -105,10 +108,12 @@ namespace Mshop.Infra.Cache.Respository
         {
             var offset = (input.Page - 1) * input.PerPage;
 
-            var query = $"@Name:{input.Search}* CategoryId:{categoryId}";
+            var Id = Helpers.ClearString(categoryId.ToString());
+
+            var query = $"@Name:{input.Search}* CategoryId:{Id}";
 
             if (string.IsNullOrWhiteSpace(input.Search))
-                query = $"CategoryId:{categoryId}";
+                query = $"CategoryId:{Id}";
 
            
 
@@ -125,7 +130,7 @@ namespace Mshop.Infra.Cache.Respository
                 (int)result.TotalResults,
                 products);
         }
-        public async Task<Product?> GetProductById(Guid id)
+        public async Task<Product?> GetById(Guid id)
         {
             var key = $"{_keyPrefix}{id}";
             var hash = await _database.HashGetAllAsync(key);
@@ -135,10 +140,14 @@ namespace Mshop.Infra.Cache.Respository
 
             return RedisToProduct(hash);
         }
-        public async Task<bool> UpadteProduct(Product entity, DateTime? ExpirationDate, CancellationToken cancellationToken)
+        public async Task<bool> Update(Product entity, DateTime? ExpirationDate, CancellationToken cancellationToken)
         {
-            return await AddProduct(entity, ExpirationDate, cancellationToken);
+            return await Create(entity, ExpirationDate, cancellationToken);
         }
+
+
+
+
 
 
 
@@ -176,23 +185,30 @@ namespace Mshop.Infra.Cache.Respository
 
         private Product RedisToProduct(HashEntry[] hash )
         {
-            var product = new Product(
-                hash.FirstOrDefault(x => x.Name == "Name").Value.ToString() ?? string.Empty,
-                hash.FirstOrDefault(x => x.Name == "Description").Value.ToString() ?? string.Empty,
-                decimal.Parse(hash.FirstOrDefault(x => x.Name == "Price").Value.ToString()),
-                Guid.Parse(hash.FirstOrDefault(x => x.Name == "CategoryId").Value.ToString()),
-                decimal.Parse(hash.FirstOrDefault(x => x.Name == "Stock").Value.ToString()),
-                bool.Parse(hash.FirstOrDefault(x => x.Name == "IsActive").Value.ToString())
-                );
+            bool isActive = hash.FirstOrDefault(x => x.Name == "IsActive").Value.ToString() == "1" ? true : false;
+            bool isPromotion = hash.FirstOrDefault(x => x.Name == "IsSales").Value.ToString() == "1" ? true : false;
 
+            var product = new Product(
+                description: hash.FirstOrDefault(x => x.Name == "Description").Value.ToString() ?? string.Empty,
+                name: hash.FirstOrDefault(x => x.Name == "Name").Value.ToString() ?? string.Empty,
+                price: decimal.Parse(hash.FirstOrDefault(x => x.Name == "Price").Value.ToString(), System.Globalization.CultureInfo.InvariantCulture),
+                categoryId: Guid.Parse(hash.FirstOrDefault(x => x.Name == "CategoryId").Value.ToString()),
+                stock: decimal.Parse(hash.FirstOrDefault(x => x.Name == "Stock").Value.ToString()),
+                isActive: isActive,
+                id: Guid.Parse(hash.FirstOrDefault(x => x.Name == "Id").Value.ToString()),
+                isSale: isPromotion
+                );
+            
             product.AddCategory(
                     new Category(
-                        hash.FirstOrDefault(x => x.Name == "Category").Value.ToString()
+                        name:hash.FirstOrDefault(x => x.Name == "Category").Value.ToString(),
+                        id: Guid.Parse(hash.FirstOrDefault(x => x.Name == "CategoryId").Value.ToString())
                         )
                     );
             product.UpdateThumb(
                     hash.FirstOrDefault(x => x.Name == "Thumb").Value.ToString()
                     );
+
 
             return product;
   
@@ -201,18 +217,24 @@ namespace Mshop.Infra.Cache.Respository
 
         private Product RedisToProduct(Document doc)
         {
+            bool isActive = doc["IsActive"].ToString() == "1" ? true : false;
+            bool isPromotion = doc["IsSale"].ToString() == "1" ? true : false;
+
             var product = new Product(
-                doc["Name"].ToString() ?? string.Empty,
-                doc["Description"].ToString() ?? string.Empty,
-                decimal.Parse(doc["Price"].ToString() ?? string.Empty),
-                Guid.Parse(doc["CategoryId"].ToString() ?? string.Empty),
-                decimal.Parse(doc["Stock"].ToString() ?? "0"),
-                bool.Parse(doc["IsActive"].ToString() ?? "False")
+                name: doc["Name"].ToString() ?? string.Empty,
+                description: doc["Description"].ToString() ?? string.Empty,
+                price: decimal.Parse(doc["Price"].ToString(), System.Globalization.CultureInfo.InvariantCulture),
+                categoryId: Guid.Parse(doc["CategoryId"].ToString() ?? string.Empty),
+                stock: decimal.Parse(doc["Stock"].ToString() ?? "0"),
+                isActive: isActive,
+                id: Guid.Parse(doc["Id"].ToString() ?? string.Empty),
+                isSale:isPromotion
                 );
 
             product.AddCategory(
                     new Category(
-                        doc["Category"].ToString() ?? string.Empty
+                        name: doc["Category"].ToString() ?? string.Empty,
+                        id: Guid.Parse(doc["CategoryId"].ToString() ?? string.Empty)
                         )
                     );
             product.UpdateThumb(

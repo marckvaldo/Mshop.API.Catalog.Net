@@ -10,3 +10,4 @@ C:\Users\IQ SISTEMAS\Documents\mShopping\new\Mshopping\MShop.API.Catalog\src\Msh
 C:\Users\IQ SISTEMAS\Documents\mShopping\new\Mshopping\MShop.API.Catalog\src\Mshop.Core\obj\Debug\net8.0\refint\Mshop.Core.dll
 C:\Users\IQ SISTEMAS\Documents\mShopping\new\Mshopping\MShop.API.Catalog\src\Mshop.Core\obj\Debug\net8.0\Mshop.Core.pdb
 C:\Users\IQ SISTEMAS\Documents\mShopping\new\Mshopping\MShop.API.Catalog\src\Mshop.Core\obj\Debug\net8.0\ref\Mshop.Core.dll
+C:\Users\IQ SISTEMAS\Documents\mShopping\new\Mshopping\MShop.API.Catalog\src\Mshop.Core\obj\Debug\net8.0\Mshop.Core.sourcelink.json

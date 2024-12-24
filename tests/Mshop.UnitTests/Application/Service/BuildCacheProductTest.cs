@@ -26,13 +26,13 @@ namespace Mshop.UnitTests.Application.Service
             var category = FakerCategory();
             var listProduct = FakerProducts(50, category);
 
-            _productCacheRepository.Setup(c => c.AddProduct(It.IsAny<DomainEntity.Product>(), It.IsAny<DateTime>(), CancellationToken.None)).ReturnsAsync(true);
+            _productCacheRepository.Setup(c => c.Create(It.IsAny<DomainEntity.Product>(), It.IsAny<DateTime>(), CancellationToken.None)).ReturnsAsync(true);
             _productRepository.Setup(c => c.GetProductAll(It.IsAny<bool>())).ReturnsAsync(listProduct);
 
             var service = new ServiceBuilder.BuildCacheProduct(_productCacheRepository.Object, _productRepository.Object);
             service.Handle();
 
-            _productCacheRepository.Verify(c=>c.AddProduct(It.IsAny<DomainEntity.Product>(), It.IsAny<DateTime>(), CancellationToken.None), Times.AtMost(50));
+            _productCacheRepository.Verify(c=>c.Create(It.IsAny<DomainEntity.Product>(), It.IsAny<DateTime>(), CancellationToken.None), Times.AtMost(50));
             _productRepository.Verify(c => c.GetProductAll(It.IsAny<bool>()), Times.Once);
         }
 

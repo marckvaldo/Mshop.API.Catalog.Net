@@ -26,13 +26,13 @@ namespace Mshop.UnitTests.Application.Service
         {
             var listImage = FakerImages(Guid.NewGuid());
 
-            _imageCacheRepository.Setup(c => c.AddImage(It.IsAny<DomainEntity.Image>(), It.IsAny<DateTime>(), CancellationToken.None)).ReturnsAsync(true);
+            _imageCacheRepository.Setup(c => c.Create(It.IsAny<DomainEntity.Image>(), It.IsAny<DateTime>(), CancellationToken.None)).ReturnsAsync(true);
             _imageRepository.Setup(c => c.Filter(It.IsAny<Expression<Func<DomainEntity.Image, bool>>>())).ReturnsAsync(listImage);
 
             var service = new ServiceBuilder.BuildCacheImage(_imageCacheRepository.Object, _imageRepository.Object);
             service.Handle();
 
-            _imageCacheRepository.Verify(c=>c.AddImage(It.IsAny<DomainEntity.Image>(), It.IsAny<DateTime>(), CancellationToken.None), Times.AtMost(50));
+            _imageCacheRepository.Verify(c=>c.Create(It.IsAny<DomainEntity.Image>(), It.IsAny<DateTime>(), CancellationToken.None), Times.AtMost(50));
             _imageRepository.Verify(c => c.Filter(It.IsAny<Expression<Func<DomainEntity.Image, bool>>>()), Times.Once);
         }
 

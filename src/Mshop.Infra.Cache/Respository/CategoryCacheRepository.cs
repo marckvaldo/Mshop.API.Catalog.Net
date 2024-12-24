@@ -24,9 +24,9 @@ namespace Mshop.Infra.Cache.Respository
             _indexName = $"{IndexName.Category}Index";
             _keyPrefix = $"{IndexName.Category}:";
         }
-        public async Task<bool> AddCategory(Category entity, DateTime? ExpirationDate, CancellationToken cancellationToken)
+        public async Task<bool> Create(Category entity, DateTime? ExpirationDate, CancellationToken cancellationToken)
         {
-            var key = $"{_keyPrefix}:{entity.Id}";
+            var key = $"{_keyPrefix}{entity.Id}";
 
             var hash = new HashEntry[]
             {
@@ -44,16 +44,18 @@ namespace Mshop.Infra.Cache.Respository
 
             return true;
         }
-        public async Task<bool> DeleteCategory(Category entity, CancellationToken cancellationToken)
+        public async Task<bool> DeleteById(Category entity, CancellationToken cancellationToken)
         {
-            var key = $"{_keyPrefix}:{entity.Id.ToString()}";
+            var key = $"{_keyPrefix}{entity.Id}";
             return await _database.KeyDeleteAsync(key);
         }
         public async Task<PaginatedOutPut<Category>>? FilterPaginated(PaginatedInPut input, CancellationToken cancellationToken)
         {
             var offset = (input.Page - 1) * input.PerPage;
 
-            var query = string.IsNullOrEmpty(input.Search) ? new Query("*") : new Query($"@Name:{input.Search}*");
+            var query = string.IsNullOrEmpty(input.Search) 
+                ? new Query("*") 
+                : new Query($"@Name:{input.Search}*");
 
             var result = await _search.SearchAsync(_indexName, query.Limit(offset, input.PerPage));
 
@@ -68,7 +70,7 @@ namespace Mshop.Infra.Cache.Respository
                 (int)result.TotalResults,
                 cartegory);
         }
-        public async Task<Category?> GetCategoryById(Guid id)
+        public async Task<Category?> GetById(Guid id)
         {
             var key = $"{_keyPrefix}{id}";
             var hash = await _database.HashGetAllAsync(key);
@@ -78,6 +80,14 @@ namespace Mshop.Infra.Cache.Respository
 
             return RedisToCategory(hash);
         }
+        public async Task<bool> Update(Category entity, DateTime? ExpirationDate, CancellationToken cancellationToken)
+        {
+            return await Create(entity, ExpirationDate, cancellationToken);
+        }
+
+
+
+
 
 
         public Task DeleteKey(string key)
@@ -105,18 +115,16 @@ namespace Mshop.Infra.Cache.Respository
             throw new NotImplementedException();
         }
 
-        public async Task<bool> UpadteProduct(Category entity, DateTime? ExpirationDate, CancellationToken cancellationToken)
-        {
-            return await AddCategory(entity, ExpirationDate, cancellationToken);
-        }
+        
 
 
 
         private Category RedisToCategory(HashEntry[] hash)
         {
             var category = new Category(
-                    hash.FirstOrDefault(x => x.Name == "Name").Value.ToString() ?? string.Empty,
-                    bool.Parse(hash.FirstOrDefault(x => x.Name == "IsActive").Value.ToString())
+                    name:hash.FirstOrDefault(x => x.Name == "Name").Value.ToString() ?? string.Empty,
+                    isActive:(hash.FirstOrDefault(x => x.Name == "IsActive").Value.ToString() == "1" ? true : false),
+                    id: Guid.Parse(hash.FirstOrDefault(x => x.Name == "Id").Value.ToString())
                 );
 
             return category;
