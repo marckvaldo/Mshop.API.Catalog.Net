@@ -2,7 +2,7 @@
 using Mshop.Core.DomainObject;
 using Mshop.Application.Common;
 
-namespace Mshop.Application.UseCases.Category.ListCategorys
+namespace Mshop.Application.UseCases.Category.ListCategories
 {
     public class ListCategoryOutPut : PaginatedListOutPut<CategoryModelOutPut>, IModelOutPut
     {

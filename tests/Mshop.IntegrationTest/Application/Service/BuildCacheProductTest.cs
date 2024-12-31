@@ -39,7 +39,7 @@ namespace Mshop.IntegrationTests.Application.Service
         }
 
         [Fact(DisplayName = nameof(ShouldBuilderCacheProduct))]
-        [Trait("Application-Service", "Builder Product Cache")]
+        [Trait("Integration - Application.Service", "Builder Product Cache")]
 
         public async Task ShouldBuilderCacheProduct()
         {
@@ -52,7 +52,7 @@ namespace Mshop.IntegrationTests.Application.Service
             }
             await _unitOfWork.CommitAsync();
 
-            var service = new ServiceBuilder.BuildCacheProduct(_productCacheRepository, _productRepository);
+            var service = new ServiceBuilder.BuildCacheProduct(_serviceProvider);
             await service.Handle();
 
             var products = await _productCacheRepository.FilterPaginated(

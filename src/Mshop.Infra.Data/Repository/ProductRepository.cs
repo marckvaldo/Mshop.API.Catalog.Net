@@ -21,7 +21,7 @@ namespace Mshop.Infra.Data.Repository
                 .Include(c => c.Category)
                 .FirstOrDefaultAsync();
         }
-        public async Task<PaginatedOutPut<Product>> FilterPaginated(PaginatedInPut input)
+        public async Task<PaginatedOutPut<Product>> FilterPaginated(PaginatedInPut input, CancellationToken cancellationToken)
         {
             var toSkip = (input.Page - 1) * input.PerPage;
             var query = _dbSet.AsNoTracking();

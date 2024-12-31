@@ -4,7 +4,7 @@ using Mshop.Core.Message;
 using Mshop.Core.Paginated;
 using Mshop.Infra.Data.Interface;
 
-namespace Mshop.Application.UseCases.Category.ListCategorys
+namespace Mshop.Application.UseCases.Category.ListCategories
 {
     public class ListCategory : Core.Base.BaseUseCase, IListCategory
     {
@@ -25,7 +25,7 @@ namespace Mshop.Application.UseCases.Category.ListCategorys
                 request.Sort,
                 request.Dir);
 
-            var categorys = await _categoryRepositiry.FilterPaginated(paginate);
+            var categorys = await _categoryRepositiry.FilterPaginated(paginate, CancellationToken.None);
 
             var listCategory = new ListCategoryOutPut(
                 categorys.CurrentPage,

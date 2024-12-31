@@ -122,7 +122,7 @@ namespace Mshop.IntegrationTests.Infra.Repository.Data.CategoryRepository
 
             var request = new Core.Paginated.PaginatedInPut(1, perPage, "", "", Core.Enum.Paginated.SearchOrder.Desc);
 
-            var outPut = await _categoryRepository.FilterPaginated(request);
+            var outPut = await _categoryRepository.FilterPaginated(request,CancellationToken.None);
 
             Assert.NotNull(outPut);
             Assert.NotNull(outPut?.Itens);
@@ -148,7 +148,7 @@ namespace Mshop.IntegrationTests.Infra.Repository.Data.CategoryRepository
         {
             var perPage = 20;
             var input = new Core.Paginated.PaginatedInPut(1, perPage, "", "", Core.Enum.Paginated.SearchOrder.Asc);
-            var outPut = await _categoryRepository.FilterPaginated(input);
+            var outPut = await _categoryRepository.FilterPaginated(input, CancellationToken.None);
 
             Assert.NotNull(outPut);
             Assert.True(outPut.Itens.Count == 0);
@@ -169,7 +169,7 @@ namespace Mshop.IntegrationTests.Infra.Repository.Data.CategoryRepository
             await _persistenceCategory.CreateList(categoryList);
 
             var input = new Core.Paginated.PaginatedInPut(page, perPage, "", "", Core.Enum.Paginated.SearchOrder.Asc);
-            var outPut = await _categoryRepository.FilterPaginated(input);
+            var outPut = await _categoryRepository.FilterPaginated(input, CancellationToken.None);
 
             Assert.NotNull(outPut);
             Assert.NotNull(outPut.Itens);

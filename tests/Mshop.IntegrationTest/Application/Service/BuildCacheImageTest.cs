@@ -39,7 +39,7 @@ namespace Mshop.IntegrationTests.Application.Service
         }
 
         [Fact(DisplayName = nameof(ShouldBuilderCacheImage))]
-        [Trait("Application-Service", "Builder Image Cache")]
+        [Trait("Integration - Application.Service", "Builder Image Cache")]
 
         public async Task ShouldBuilderCacheImage()
         {
@@ -52,7 +52,7 @@ namespace Mshop.IntegrationTests.Application.Service
             }
             await _unitOfWork.CommitAsync();
 
-            var service = new ServiceBuilder.BuildCacheImage(_imagesCacheRepository, _imagesRepository);
+            var service = new ServiceBuilder.BuildCacheImage(_serviceProvider);
             await service.Handle();
 
             var Images = await _imagesCacheRepository.GetImageByProductId(productId);

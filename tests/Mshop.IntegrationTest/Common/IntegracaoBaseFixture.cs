@@ -23,7 +23,7 @@ namespace Mshop.IntegrationTests.Common
 
         protected IServiceProvider _serviceProvider;
 
-        public IntegracaoBaseFixture()
+        public IntegracaoBaseFixture() : base()
         {
             _serviceProvider = BuilderProvider();
         }
@@ -63,13 +63,20 @@ namespace Mshop.IntegrationTests.Common
                 if (dbContext != null)
                     await dbContext.Database.EnsureDeletedAsync();
 
-                if (disposeDBContext)
+                if (disposeDBContext && dbContext != null)
                     await dbContext.DisposeAsync();
         }
 
         protected async Task DeleteCache(StackExchange.Redis.IDatabase database)
         {
             await database.ExecuteAsync("FLUSHALL");
+        }
+
+        protected (IServiceScope scope, T ServiceInstance) CreateScopedService<T>() where T : class
+        {
+            var scope = _serviceProvider.CreateScope();
+            var serviceInstance = scope.ServiceProvider.GetRequiredService<T>();
+            return (scope, serviceInstance);
         }
     }
 }

@@ -70,7 +70,7 @@ namespace Mshop.Core.Test.Common
         }
 
 
-        public DomainEntity.Product FakerProduct(DomainEntity.Category category)
+        public DomainEntity.Product FakerProduct(DomainEntity.Category category, bool isPromotion=false)
         {
             var product = (new DomainEntity.Product
             (
@@ -79,7 +79,8 @@ namespace Mshop.Core.Test.Common
                 Convert.ToDecimal(faker.Commerce.Price()),
                 category.Id,
                 faker.Random.UInt(),
-                true
+                true,
+                isPromotion
             ));
 
             product.UpdateThumb(faker.Image.LoremFlickrUrl());
@@ -87,11 +88,11 @@ namespace Mshop.Core.Test.Common
             return product;
         }
 
-        public List<DomainEntity.Product> FakerProducts(int quantity, DomainEntity.Category category)
+        public List<DomainEntity.Product> FakerProducts(int quantity, DomainEntity.Category category, bool isPromotion = false)
         {
             List<DomainEntity.Product> listProduct = new List<DomainEntity.Product>();
             for (int i = 1; i <= quantity; i++)
-                listProduct.Add(FakerProduct(category));
+                listProduct.Add(FakerProduct(category,isPromotion));
 
             return listProduct;
         }

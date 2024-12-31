@@ -16,7 +16,7 @@ namespace Mshop.Infra.Data
             var ConnectionString = configuration.GetConnectionString("RepositoryMysql");
             services.AddDbContext<RepositoryDbContext>(options =>
                 options.UseMySql(ConnectionString, ServerVersion.AutoDetect(ConnectionString),
-                b=>b.MigrationsAssembly("Mshop.Infra.Data")));
+                b=>b.MigrationsAssembly("Mshop.Infra.Data")), ServiceLifetime.Scoped);
 
 
             services.AddScoped<IUnitOfWork, UnitOfWork.UnitOfWork>();

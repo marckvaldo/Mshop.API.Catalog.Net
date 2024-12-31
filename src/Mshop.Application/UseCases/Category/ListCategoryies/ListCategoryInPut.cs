@@ -3,7 +3,7 @@ using Mshop.Application.Common;
 using Mshop.Core.DomainObject;
 using Mshop.Core.Enum.Paginated;
 
-namespace Mshop.Application.UseCases.Category.ListCategorys
+namespace Mshop.Application.UseCases.Category.ListCategories
 {
     public class ListCategoryInPut : PaginatedListInput, IRequest<Result<ListCategoryOutPut>>
     {

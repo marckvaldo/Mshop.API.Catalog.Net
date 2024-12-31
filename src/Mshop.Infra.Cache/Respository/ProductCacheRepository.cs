@@ -67,6 +67,10 @@ namespace Mshop.Infra.Cache.Respository
                 ? new Query("*")
                 : new Query($"@Name:{input.Search}*");
 
+            // Obter o total de resultados sem paginação
+            var totalResult = await _search.SearchAsync(_indexName, query);
+            var totalItems = (int)totalResult.TotalResults;
+
             var result = await _search.SearchAsync(_indexName, query.Limit(offset, input.PerPage));
 
 
@@ -78,22 +82,24 @@ namespace Mshop.Infra.Cache.Respository
             return new PaginatedOutPut<Product>(
                 input.Page,
                 input.PerPage,
-                (int)result.TotalResults,
+                totalItems,
                 products);
         }
         public async Task<PaginatedOutPut<Product>>? FilterPaginatedPromotion(PaginatedInPut input, CancellationToken cancellationToken)
         {
             var offset = (input.Page - 1) * input.PerPage;
 
-            var query = $"@Name:{input.Search}* @IsSale:True";
+            var query = $"@Name:{input.Search}* @IsSale:{{{1}}}";
             if (string.IsNullOrWhiteSpace(input.Search))
-                query = $"@IsSale:True";
+                query = $"@IsSale:{{{1}}}";
 
-            
+            // Obter o total de resultados sem paginação
+            var totalResult = await _search.SearchAsync(_indexName, new Query(query));
+            var totalItems = (int)totalResult.TotalResults;
 
             var result = await _search.SearchAsync(_indexName, new Query(query).Limit(offset, input.PerPage));
 
-            if (result is null)
+            if (result.Documents.Count == 0)
                 return null;
 
             var products = result.Documents.Select(doc => RedisToProduct(doc)).ToList();
@@ -101,7 +107,7 @@ namespace Mshop.Infra.Cache.Respository
             return new PaginatedOutPut<Product>(
                 input.Page,
                 input.PerPage,
-                (int)result.TotalResults,
+                totalItems,
                 products);
         }
         public async Task<PaginatedOutPut<Product>>? FilterPaginatedByCategory(PaginatedInPut input, Guid categoryId, CancellationToken cancellationToken)
@@ -110,16 +116,18 @@ namespace Mshop.Infra.Cache.Respository
 
             var Id = Helpers.ClearString(categoryId.ToString());
 
-            var query = $"@Name:{input.Search}* CategoryId:{Id}";
+            var query = $"@Name:{input.Search}* CategoryId:{{{Id}}}";
 
             if (string.IsNullOrWhiteSpace(input.Search))
-                query = $"CategoryId:{Id}";
+                query = $"@CategoryId:{{{Id}}}";
 
-           
+            // Obter o total de resultados sem paginação
+            var totalResult = await _search.SearchAsync(_indexName, new Query(query));
+            var totalItems = (int)totalResult.TotalResults;
 
             var result = await _search.SearchAsync(_indexName, new Query(query).Limit(offset, input.PerPage));
 
-            if (result is null)
+            if (result.Documents.Count == 0)
                 return null;
 
             var products = result.Documents.Select(doc => RedisToProduct(doc)).ToList();
@@ -127,7 +135,7 @@ namespace Mshop.Infra.Cache.Respository
             return new PaginatedOutPut<Product>(
                 input.Page,
                 input.PerPage,
-                (int)result.TotalResults,
+                totalItems,
                 products);
         }
         public async Task<Product?> GetById(Guid id)
@@ -193,7 +201,7 @@ namespace Mshop.Infra.Cache.Respository
                 name: hash.FirstOrDefault(x => x.Name == "Name").Value.ToString() ?? string.Empty,
                 price: decimal.Parse(hash.FirstOrDefault(x => x.Name == "Price").Value.ToString(), System.Globalization.CultureInfo.InvariantCulture),
                 categoryId: Guid.Parse(hash.FirstOrDefault(x => x.Name == "CategoryId").Value.ToString()),
-                stock: decimal.Parse(hash.FirstOrDefault(x => x.Name == "Stock").Value.ToString()),
+                stock: decimal.Parse(hash.FirstOrDefault(x => x.Name == "Stock").Value.ToString(), System.Globalization.CultureInfo.InvariantCulture),
                 isActive: isActive,
                 id: Guid.Parse(hash.FirstOrDefault(x => x.Name == "Id").Value.ToString()),
                 isSale: isPromotion

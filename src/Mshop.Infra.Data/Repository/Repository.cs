@@ -18,7 +18,7 @@ namespace Mshop.Infra.Data.Repository
             _dbSet = _db.Set<TEntity>();
         }
 
-        public async Task<List<TEntity>> Filter(Expression<Func<TEntity, bool>> predicate)
+        public async Task<List<TEntity>?> Filter(Expression<Func<TEntity, bool>> predicate)
         {
             var result = await _dbSet.AsNoTracking().Where(predicate).ToListAsync();
             return result;
@@ -62,7 +62,7 @@ namespace Mshop.Infra.Data.Repository
         {
             return await _db.SaveChangesAsync();
         }
-        
+
         public virtual Task<PaginatedOutPut<TEntity>> FilterPaginated(PaginatedInPut input, CancellationToken cancellationToken)
         {
             throw new NotImplementedException();

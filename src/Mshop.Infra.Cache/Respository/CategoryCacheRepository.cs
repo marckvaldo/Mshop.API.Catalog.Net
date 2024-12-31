@@ -57,6 +57,13 @@ namespace Mshop.Infra.Cache.Respository
                 ? new Query("*") 
                 : new Query($"@Name:{input.Search}*");
 
+
+            // Obter o total de resultados sem paginação
+            var totalResult = await _search.SearchAsync(_indexName, query);
+            var totalItems = (int)totalResult.TotalResults;
+
+
+
             var result = await _search.SearchAsync(_indexName, query.Limit(offset, input.PerPage));
 
             if (result.Documents.Count == 0)
@@ -67,7 +74,7 @@ namespace Mshop.Infra.Cache.Respository
             return new PaginatedOutPut<Category>(
                 input.Page,
                 input.PerPage,
-                (int)result.TotalResults,
+                totalItems,
                 cartegory);
         }
         public async Task<Category?> GetById(Guid id)

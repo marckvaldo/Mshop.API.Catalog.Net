@@ -8,7 +8,7 @@ namespace Mshop.Infra.Data.Interface
     {
         Task<Category> GetCategoryProducts(Guid id);
 
-        Task<PaginatedOutPut<Category>> FilterPaginated(PaginatedInPut input);
+        //Task<PaginatedOutPut<Category>> FilterPaginated(PaginatedInPut input);
 
         Task<Category> GetByName(string name);
     }

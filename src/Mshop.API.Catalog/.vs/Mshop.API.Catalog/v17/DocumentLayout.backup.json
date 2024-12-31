@@ -3,34 +3,49 @@
   "WorkspaceRootPath": "C:\\Users\\IQ SISTEMAS\\Documents\\mShopping\\new\\Mshopping\\MShop.API.Catalog\\src\\Mshop.API.Catalog\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{E865B79C-6B00-4733-B915-96778D553F23}|..\\..\\tests\\Mshop.IntegrationTest\\Mshop.IntegrationTests.csproj|c:\\users\\iq sistemas\\documents\\mshopping\\new\\mshopping\\mshop.api.catalog\\tests\\mshop.integrationtest\\infra\\configuration\\configurationtests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E865B79C-6B00-4733-B915-96778D553F23}|..\\..\\tests\\Mshop.IntegrationTest\\Mshop.IntegrationTests.csproj|c:\\users\\iq sistemas\\documents\\mshopping\\new\\mshopping\\mshop.api.catalog\\tests\\mshop.integrationtest\\common\\integracaobasefixture.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E865B79C-6B00-4733-B915-96778D553F23}|..\\..\\tests\\Mshop.IntegrationTest\\Mshop.IntegrationTests.csproj|c:\\users\\iq sistemas\\documents\\mshopping\\new\\mshopping\\mshop.api.catalog\\tests\\mshop.integrationtest\\application\\service\\buildcacheproducttest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E865B79C-6B00-4733-B915-96778D553F23}|..\\..\\tests\\Mshop.IntegrationTest\\Mshop.IntegrationTests.csproj|c:\\users\\iq sistemas\\documents\\mshopping\\new\\mshopping\\mshop.api.catalog\\tests\\mshop.integrationtest\\application\\service\\buildcacheimagetest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E865B79C-6B00-4733-B915-96778D553F23}|..\\..\\tests\\Mshop.IntegrationTest\\Mshop.IntegrationTests.csproj|c:\\users\\iq sistemas\\documents\\mshopping\\new\\mshopping\\mshop.api.catalog\\tests\\mshop.integrationtest\\infra\\repository.data\\unitofowork\\unitofworktest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{E865B79C-6B00-4733-B915-96778D553F23}|..\\..\\tests\\Mshop.IntegrationTest\\Mshop.IntegrationTests.csproj|c:\\users\\iq sistemas\\documents\\mshopping\\new\\mshopping\\mshop.api.catalog\\tests\\mshop.integrationtest\\application\\service\\buildcachecategorytest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E865B79C-6B00-4733-B915-96778D553F23}|..\\..\\tests\\Mshop.IntegrationTest\\Mshop.IntegrationTests.csproj|c:\\users\\iq sistemas\\documents\\mshopping\\new\\mshopping\\mshop.api.catalog\\tests\\mshop.integrationtest\\xunit.runner.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+      "AbsoluteMoniker": "D:0:0:{500FA508-8667-4060-89A8-07947D225242}|..\\Mshop.Application\\Mshop.Application.csproj|c:\\users\\iq sistemas\\documents\\mshopping\\new\\mshopping\\mshop.api.catalog\\src\\mshop.application\\service\\buildcachecategory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E865B79C-6B00-4733-B915-96778D553F23}|..\\..\\tests\\Mshop.IntegrationTest\\Mshop.IntegrationTests.csproj|c:\\users\\iq sistemas\\documents\\mshopping\\new\\mshopping\\mshop.api.catalog\\tests\\mshop.integrationtest\\infra\\repository.data\\categoryrepository\\categoryrepositorytest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{500FA508-8667-4060-89A8-07947D225242}|..\\Mshop.Application\\Mshop.Application.csproj|c:\\users\\iq sistemas\\documents\\mshopping\\new\\mshopping\\mshop.api.catalog\\src\\mshop.application\\service\\buildcacheimage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E865B79C-6B00-4733-B915-96778D553F23}|..\\..\\tests\\Mshop.IntegrationTest\\Mshop.IntegrationTests.csproj|c:\\users\\iq sistemas\\documents\\mshopping\\new\\mshopping\\mshop.api.catalog\\tests\\mshop.integrationtest\\infra\\repository.cache\\productrepository\\productrepositorycachetest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E865B79C-6B00-4733-B915-96778D553F23}|..\\..\\tests\\Mshop.IntegrationTest\\Mshop.IntegrationTests.csproj|c:\\users\\iq sistemas\\documents\\mshopping\\new\\mshopping\\mshop.api.catalog\\tests\\mshop.integrationtest\\application\\usercases\\cache\\products\\listproduct\\listproductcachetest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E865B79C-6B00-4733-B915-96778D553F23}|..\\..\\tests\\Mshop.IntegrationTest\\Mshop.IntegrationTests.csproj|c:\\users\\iq sistemas\\documents\\mshopping\\new\\mshopping\\mshop.api.catalog\\tests\\mshop.integrationtest\\infra\\repository.data\\imagesrepository\\imagesrepositorytest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C22075C8-17D3-48B6-9052-F9060A5B261B}|..\\Mshop.Infra.Data\\Mshop.Infra.Data.csproj|c:\\users\\iq sistemas\\documents\\mshopping\\new\\mshopping\\mshop.api.catalog\\src\\mshop.infra.data\\repository\\productrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E865B79C-6B00-4733-B915-96778D553F23}|..\\..\\tests\\Mshop.IntegrationTest\\Mshop.IntegrationTests.csproj|c:\\users\\iq sistemas\\documents\\mshopping\\new\\mshopping\\mshop.api.catalog\\tests\\mshop.integrationtest\\infra\\repository.cache\\imagesrepository\\imagesrepositorycachetest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E865B79C-6B00-4733-B915-96778D553F23}|..\\..\\tests\\Mshop.IntegrationTest\\Mshop.IntegrationTests.csproj|c:\\users\\iq sistemas\\documents\\mshopping\\new\\mshopping\\mshop.api.catalog\\tests\\mshop.integrationtest\\application\\usercases\\cache\\products\\getproduct\\getproductcachetest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{500FA508-8667-4060-89A8-07947D225242}|..\\Mshop.Application\\Mshop.Application.csproj|c:\\users\\iq sistemas\\documents\\mshopping\\new\\mshopping\\mshop.api.catalog\\src\\mshop.application\\usecases\\cache\\products\\getproductcache\\getproductcache.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E865B79C-6B00-4733-B915-96778D553F23}|..\\..\\tests\\Mshop.IntegrationTest\\Mshop.IntegrationTests.csproj|c:\\users\\iq sistemas\\documents\\mshopping\\new\\mshopping\\mshop.api.catalog\\tests\\mshop.integrationtest\\application\\service\\buildcacheimagetest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{500FA508-8667-4060-89A8-07947D225242}|..\\Mshop.Application\\Mshop.Application.csproj|c:\\users\\iq sistemas\\documents\\mshopping\\new\\mshopping\\mshop.api.catalog\\src\\mshop.application\\service\\buildcacheproduct.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{500FA508-8667-4060-89A8-07947D225242}|..\\Mshop.Application\\Mshop.Application.csproj|c:\\users\\iq sistemas\\documents\\mshopping\\new\\mshopping\\mshop.api.catalog\\src\\mshop.application\\serviceresgistrationextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E865B79C-6B00-4733-B915-96778D553F23}|..\\..\\tests\\Mshop.IntegrationTest\\Mshop.IntegrationTests.csproj|c:\\users\\iq sistemas\\documents\\mshopping\\new\\mshopping\\mshop.api.catalog\\tests\\mshop.integrationtest\\application\\service\\buildcacheproducttest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DAA65056-C766-48F9-B077-28B45CAEF262}|..\\Mshop.Infra.Cache\\Mshop.Infra.Cache.csproj|c:\\users\\iq sistemas\\documents\\mshopping\\new\\mshopping\\mshop.api.catalog\\src\\mshop.infra.cache\\respository\\productcacherepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E865B79C-6B00-4733-B915-96778D553F23}|..\\..\\tests\\Mshop.IntegrationTest\\Mshop.IntegrationTests.csproj|c:\\users\\iq sistemas\\documents\\mshopping\\new\\mshopping\\mshop.api.catalog\\tests\\mshop.integrationtest\\common\\integracaobasefixture.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C22075C8-17D3-48B6-9052-F9060A5B261B}|..\\Mshop.Infra.Data\\Mshop.Infra.Data.csproj|c:\\users\\iq sistemas\\documents\\mshopping\\new\\mshopping\\mshop.api.catalog\\src\\mshop.infra.data\\serviceregistrationextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -40,8 +55,21 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 8,
+          "SelectedChildIndex": 0,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "UnitOfWorkTest.cs",
+              "DocumentMoniker": "C:\\Users\\IQ SISTEMAS\\Documents\\mShopping\\new\\Mshopping\\MShop.API.Catalog\\tests\\Mshop.IntegrationTest\\Infra\\Repository.Data\\UnitOfOwork\\UnitOfWorkTest.cs",
+              "RelativeDocumentMoniker": "..\\..\\tests\\Mshop.IntegrationTest\\Infra\\Repository.Data\\UnitOfOwork\\UnitOfWorkTest.cs",
+              "ToolTip": "C:\\Users\\IQ SISTEMAS\\Documents\\mShopping\\new\\Mshopping\\MShop.API.Catalog\\tests\\Mshop.IntegrationTest\\Infra\\Repository.Data\\UnitOfOwork\\UnitOfWorkTest.cs",
+              "RelativeToolTip": "..\\..\\tests\\Mshop.IntegrationTest\\Infra\\Repository.Data\\UnitOfOwork\\UnitOfWorkTest.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAIAwwBUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-29T14:17:35.492Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{e1b7d1f8-9b3c-49b1-8f4f-bfc63a88835d}"
@@ -72,132 +100,184 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "xunit.runner.json",
-              "DocumentMoniker": "C:\\Users\\IQ SISTEMAS\\Documents\\mShopping\\new\\Mshopping\\MShop.API.Catalog\\tests\\Mshop.IntegrationTest\\xunit.runner.json",
-              "RelativeDocumentMoniker": "..\\..\\tests\\Mshop.IntegrationTest\\xunit.runner.json",
-              "ToolTip": "C:\\Users\\IQ SISTEMAS\\Documents\\mShopping\\new\\Mshopping\\MShop.API.Catalog\\tests\\Mshop.IntegrationTest\\xunit.runner.json",
-              "RelativeToolTip": "..\\..\\tests\\Mshop.IntegrationTest\\xunit.runner.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAdAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-12-24T19:56:46.497Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "ConfigurationTests.cs",
-              "DocumentMoniker": "C:\\Users\\IQ SISTEMAS\\Documents\\mShopping\\new\\Mshopping\\MShop.API.Catalog\\tests\\Mshop.IntegrationTest\\Infra\\Configuration\\ConfigurationTests.cs",
-              "RelativeDocumentMoniker": "..\\..\\tests\\Mshop.IntegrationTest\\Infra\\Configuration\\ConfigurationTests.cs",
-              "ToolTip": "C:\\Users\\IQ SISTEMAS\\Documents\\mShopping\\new\\Mshopping\\MShop.API.Catalog\\tests\\Mshop.IntegrationTest\\Infra\\Configuration\\ConfigurationTests.cs",
-              "RelativeToolTip": "..\\..\\tests\\Mshop.IntegrationTest\\Infra\\Configuration\\ConfigurationTests.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAqwA8AAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-24T19:25:03.962Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "CategoryRepositoryTest.cs",
-              "DocumentMoniker": "C:\\Users\\IQ SISTEMAS\\Documents\\mShopping\\new\\Mshopping\\MShop.API.Catalog\\tests\\Mshop.IntegrationTest\\Infra\\Repository.Data\\CategoryRepository\\CategoryRepositoryTest.cs",
-              "RelativeDocumentMoniker": "..\\..\\tests\\Mshop.IntegrationTest\\Infra\\Repository.Data\\CategoryRepository\\CategoryRepositoryTest.cs",
-              "ToolTip": "C:\\Users\\IQ SISTEMAS\\Documents\\mShopping\\new\\Mshopping\\MShop.API.Catalog\\tests\\Mshop.IntegrationTest\\Infra\\Repository.Data\\CategoryRepository\\CategoryRepositoryTest.cs",
-              "RelativeToolTip": "..\\..\\tests\\Mshop.IntegrationTest\\Infra\\Repository.Data\\CategoryRepository\\CategoryRepositoryTest.cs",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAAAB4AAAAaAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-24T19:11:27.879Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "IntegracaoBaseFixture.cs",
-              "DocumentMoniker": "C:\\Users\\IQ SISTEMAS\\Documents\\mShopping\\new\\Mshopping\\MShop.API.Catalog\\tests\\Mshop.IntegrationTest\\Common\\IntegracaoBaseFixture.cs",
-              "RelativeDocumentMoniker": "..\\..\\tests\\Mshop.IntegrationTest\\Common\\IntegracaoBaseFixture.cs",
-              "ToolTip": "C:\\Users\\IQ SISTEMAS\\Documents\\mShopping\\new\\Mshopping\\MShop.API.Catalog\\tests\\Mshop.IntegrationTest\\Common\\IntegracaoBaseFixture.cs",
-              "RelativeToolTip": "..\\..\\tests\\Mshop.IntegrationTest\\Common\\IntegracaoBaseFixture.cs",
-              "ViewState": "AgIAABwAAAAAAAAAAAAawCMAAABIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-24T19:24:51.698Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "BuildCacheCategoryTest.cs",
-              "DocumentMoniker": "C:\\Users\\IQ SISTEMAS\\Documents\\mShopping\\new\\Mshopping\\MShop.API.Catalog\\tests\\Mshop.IntegrationTest\\Application\\Service\\BuildCacheCategoryTest.cs",
-              "RelativeDocumentMoniker": "..\\..\\tests\\Mshop.IntegrationTest\\Application\\Service\\BuildCacheCategoryTest.cs",
-              "ToolTip": "C:\\Users\\IQ SISTEMAS\\Documents\\mShopping\\new\\Mshopping\\MShop.API.Catalog\\tests\\Mshop.IntegrationTest\\Application\\Service\\BuildCacheCategoryTest.cs",
-              "RelativeToolTip": "..\\..\\tests\\Mshop.IntegrationTest\\Application\\Service\\BuildCacheCategoryTest.cs",
-              "ViewState": "AgIAACIAAAAAAAAAAAAgwCsAAAAZAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-24T19:02:26.298Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "BuildCacheProductTest.cs",
-              "DocumentMoniker": "C:\\Users\\IQ SISTEMAS\\Documents\\mShopping\\new\\Mshopping\\MShop.API.Catalog\\tests\\Mshop.IntegrationTest\\Application\\Service\\BuildCacheProductTest.cs",
-              "RelativeDocumentMoniker": "..\\..\\tests\\Mshop.IntegrationTest\\Application\\Service\\BuildCacheProductTest.cs",
-              "ToolTip": "C:\\Users\\IQ SISTEMAS\\Documents\\mShopping\\new\\Mshopping\\MShop.API.Catalog\\tests\\Mshop.IntegrationTest\\Application\\Service\\BuildCacheProductTest.cs",
-              "RelativeToolTip": "..\\..\\tests\\Mshop.IntegrationTest\\Application\\Service\\BuildCacheProductTest.cs",
-              "ViewState": "AgIAABYAAAAAAAAAAAAgwCQAAAAtAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-24T18:58:30.428Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 8,
               "Title": "BuildCacheImageTest.cs",
               "DocumentMoniker": "C:\\Users\\IQ SISTEMAS\\Documents\\mShopping\\new\\Mshopping\\MShop.API.Catalog\\tests\\Mshop.IntegrationTest\\Application\\Service\\BuildCacheImageTest.cs",
               "RelativeDocumentMoniker": "..\\..\\tests\\Mshop.IntegrationTest\\Application\\Service\\BuildCacheImageTest.cs",
               "ToolTip": "C:\\Users\\IQ SISTEMAS\\Documents\\mShopping\\new\\Mshopping\\MShop.API.Catalog\\tests\\Mshop.IntegrationTest\\Application\\Service\\BuildCacheImageTest.cs",
               "RelativeToolTip": "..\\..\\tests\\Mshop.IntegrationTest\\Application\\Service\\BuildCacheImageTest.cs",
-              "ViewState": "AgIAABsAAAAAAAAAAAAmwCsAAAAZAAAAAAAAAA==",
+              "ViewState": "AgIAACEAAAAAAAAAAAAEwDYAAABNAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-24T18:58:40.308Z",
+              "WhenOpened": "2024-12-29T14:08:32.8Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "ImagesRepositoryTest.cs",
-              "DocumentMoniker": "C:\\Users\\IQ SISTEMAS\\Documents\\mShopping\\new\\Mshopping\\MShop.API.Catalog\\tests\\Mshop.IntegrationTest\\Infra\\Repository.Data\\ImagesRepository\\ImagesRepositoryTest.cs",
-              "RelativeDocumentMoniker": "..\\..\\tests\\Mshop.IntegrationTest\\Infra\\Repository.Data\\ImagesRepository\\ImagesRepositoryTest.cs",
-              "ToolTip": "C:\\Users\\IQ SISTEMAS\\Documents\\mShopping\\new\\Mshopping\\MShop.API.Catalog\\tests\\Mshop.IntegrationTest\\Infra\\Repository.Data\\ImagesRepository\\ImagesRepositoryTest.cs",
-              "RelativeToolTip": "..\\..\\tests\\Mshop.IntegrationTest\\Infra\\Repository.Data\\ImagesRepository\\ImagesRepositoryTest.cs",
-              "ViewState": "AgIAAI0AAAAAAAAAAAAmwJYAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "BuildCacheCategory.cs",
+              "DocumentMoniker": "C:\\Users\\IQ SISTEMAS\\Documents\\mShopping\\new\\Mshopping\\MShop.API.Catalog\\src\\Mshop.Application\\Service\\BuildCacheCategory.cs",
+              "RelativeDocumentMoniker": "..\\Mshop.Application\\Service\\BuildCacheCategory.cs",
+              "ToolTip": "C:\\Users\\IQ SISTEMAS\\Documents\\mShopping\\new\\Mshopping\\MShop.API.Catalog\\src\\Mshop.Application\\Service\\BuildCacheCategory.cs",
+              "RelativeToolTip": "..\\Mshop.Application\\Service\\BuildCacheCategory.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAA1wB8AAAAwAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-24T19:11:27.897Z",
+              "WhenOpened": "2024-12-29T14:06:48.539Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "ProductRepositoryCacheTest.cs",
-              "DocumentMoniker": "C:\\Users\\IQ SISTEMAS\\Documents\\mShopping\\new\\Mshopping\\MShop.API.Catalog\\tests\\Mshop.IntegrationTest\\Infra\\Repository.Cache\\ProductRepository\\ProductRepositoryCacheTest.cs",
-              "RelativeDocumentMoniker": "..\\..\\tests\\Mshop.IntegrationTest\\Infra\\Repository.Cache\\ProductRepository\\ProductRepositoryCacheTest.cs",
-              "ToolTip": "C:\\Users\\IQ SISTEMAS\\Documents\\mShopping\\new\\Mshopping\\MShop.API.Catalog\\tests\\Mshop.IntegrationTest\\Infra\\Repository.Cache\\ProductRepository\\ProductRepositoryCacheTest.cs",
-              "RelativeToolTip": "..\\..\\tests\\Mshop.IntegrationTest\\Infra\\Repository.Cache\\ProductRepository\\ProductRepositoryCacheTest.cs",
-              "ViewState": "AgIAAAEAAAAAAAAAAAAwwBMAAAArAAAAAAAAAA==",
+              "DocumentIndex": 3,
+              "Title": "BuildCacheImage.cs",
+              "DocumentMoniker": "C:\\Users\\IQ SISTEMAS\\Documents\\mShopping\\new\\Mshopping\\MShop.API.Catalog\\src\\Mshop.Application\\Service\\BuildCacheImage.cs",
+              "RelativeDocumentMoniker": "..\\Mshop.Application\\Service\\BuildCacheImage.cs",
+              "ToolTip": "C:\\Users\\IQ SISTEMAS\\Documents\\mShopping\\new\\Mshopping\\MShop.API.Catalog\\src\\Mshop.Application\\Service\\BuildCacheImage.cs",
+              "RelativeToolTip": "..\\Mshop.Application\\Service\\BuildCacheImage.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAQwBcAAABqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-24T18:10:25.816Z",
+              "WhenOpened": "2024-12-29T14:06:37.906Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "BuildCacheProductTest.cs",
+              "DocumentMoniker": "C:\\Users\\IQ SISTEMAS\\Documents\\mShopping\\new\\Mshopping\\MShop.API.Catalog\\tests\\Mshop.IntegrationTest\\Application\\Service\\BuildCacheProductTest.cs",
+              "RelativeDocumentMoniker": "..\\..\\tests\\Mshop.IntegrationTest\\Application\\Service\\BuildCacheProductTest.cs",
+              "ToolTip": "C:\\Users\\IQ SISTEMAS\\Documents\\mShopping\\new\\Mshopping\\MShop.API.Catalog\\tests\\Mshop.IntegrationTest\\Application\\Service\\BuildCacheProductTest.cs",
+              "RelativeToolTip": "..\\..\\tests\\Mshop.IntegrationTest\\Application\\Service\\BuildCacheProductTest.cs",
+              "ViewState": "AgIAACoAAAAAAAAAAAAvwDYAAABPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-29T13:59:11.684Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "ServiceResgistrationExtensions.cs",
+              "DocumentMoniker": "C:\\Users\\IQ SISTEMAS\\Documents\\mShopping\\new\\Mshopping\\MShop.API.Catalog\\src\\Mshop.Application\\ServiceResgistrationExtensions.cs",
+              "RelativeDocumentMoniker": "..\\Mshop.Application\\ServiceResgistrationExtensions.cs",
+              "ToolTip": "C:\\Users\\IQ SISTEMAS\\Documents\\mShopping\\new\\Mshopping\\MShop.API.Catalog\\src\\Mshop.Application\\ServiceResgistrationExtensions.cs",
+              "RelativeToolTip": "..\\Mshop.Application\\ServiceResgistrationExtensions.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAsAAABGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-29T13:49:39.802Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 9,
-              "Title": "ImagesRepositoryCacheTest.cs",
-              "DocumentMoniker": "C:\\Users\\IQ SISTEMAS\\Documents\\mShopping\\new\\Mshopping\\MShop.API.Catalog\\tests\\Mshop.IntegrationTest\\Infra\\Repository.Cache\\ImagesRepository\\ImagesRepositoryCacheTest.cs",
-              "RelativeDocumentMoniker": "..\\..\\tests\\Mshop.IntegrationTest\\Infra\\Repository.Cache\\ImagesRepository\\ImagesRepositoryCacheTest.cs",
-              "ToolTip": "C:\\Users\\IQ SISTEMAS\\Documents\\mShopping\\new\\Mshopping\\MShop.API.Catalog\\tests\\Mshop.IntegrationTest\\Infra\\Repository.Cache\\ImagesRepository\\ImagesRepositoryCacheTest.cs",
-              "RelativeToolTip": "..\\..\\tests\\Mshop.IntegrationTest\\Infra\\Repository.Cache\\ImagesRepository\\ImagesRepositoryCacheTest.cs",
-              "ViewState": "AgIAAF8AAAAAAAAAAAAmwGsAAAAjAAAAAAAAAA==",
+              "Title": "BuildCacheProduct.cs",
+              "DocumentMoniker": "C:\\Users\\IQ SISTEMAS\\Documents\\mShopping\\new\\Mshopping\\MShop.API.Catalog\\src\\Mshop.Application\\Service\\BuildCacheProduct.cs",
+              "RelativeDocumentMoniker": "..\\Mshop.Application\\Service\\BuildCacheProduct.cs",
+              "ToolTip": "C:\\Users\\IQ SISTEMAS\\Documents\\mShopping\\new\\Mshopping\\MShop.API.Catalog\\src\\Mshop.Application\\Service\\BuildCacheProduct.cs",
+              "RelativeToolTip": "..\\Mshop.Application\\Service\\BuildCacheProduct.cs",
+              "ViewState": "AgIAABYAAAAAAAAAAAAgwCAAAABtAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-24T18:10:25.833Z",
+              "WhenOpened": "2024-12-29T13:45:33.838Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "GetProductCache.cs",
+              "DocumentMoniker": "C:\\Users\\IQ SISTEMAS\\Documents\\mShopping\\new\\Mshopping\\MShop.API.Catalog\\src\\Mshop.Application\\UseCases\\Cache\\Products\\GetProductCache\\GetProductCache.cs",
+              "RelativeDocumentMoniker": "..\\Mshop.Application\\UseCases\\Cache\\Products\\GetProductCache\\GetProductCache.cs",
+              "ToolTip": "C:\\Users\\IQ SISTEMAS\\Documents\\mShopping\\new\\Mshopping\\MShop.API.Catalog\\src\\Mshop.Application\\UseCases\\Cache\\Products\\GetProductCache\\GetProductCache.cs",
+              "RelativeToolTip": "..\\Mshop.Application\\UseCases\\Cache\\Products\\GetProductCache\\GetProductCache.cs",
+              "ViewState": "AgIAACYAAAAAAAAAAAAywDsAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-29T13:44:53.851Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "IntegracaoBaseFixture.cs",
+              "DocumentMoniker": "C:\\Users\\IQ SISTEMAS\\Documents\\mShopping\\new\\Mshopping\\MShop.API.Catalog\\tests\\Mshop.IntegrationTest\\Common\\IntegracaoBaseFixture.cs",
+              "RelativeDocumentMoniker": "..\\..\\tests\\Mshop.IntegrationTest\\Common\\IntegracaoBaseFixture.cs",
+              "ToolTip": "C:\\Users\\IQ SISTEMAS\\Documents\\mShopping\\new\\Mshopping\\MShop.API.Catalog\\tests\\Mshop.IntegrationTest\\Common\\IntegracaoBaseFixture.cs",
+              "RelativeToolTip": "..\\..\\tests\\Mshop.IntegrationTest\\Common\\IntegracaoBaseFixture.cs",
+              "ViewState": "AgIAABoAAAAAAAAAAAAmwDYAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-29T13:30:14.673Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "GetProductCacheTest.cs",
+              "DocumentMoniker": "C:\\Users\\IQ SISTEMAS\\Documents\\mShopping\\new\\Mshopping\\MShop.API.Catalog\\tests\\Mshop.IntegrationTest\\Application\\UserCases\\Cache\\Products\\GetProduct\\GetProductCacheTest.cs",
+              "RelativeDocumentMoniker": "..\\..\\tests\\Mshop.IntegrationTest\\Application\\UserCases\\Cache\\Products\\GetProduct\\GetProductCacheTest.cs",
+              "ToolTip": "C:\\Users\\IQ SISTEMAS\\Documents\\mShopping\\new\\Mshopping\\MShop.API.Catalog\\tests\\Mshop.IntegrationTest\\Application\\UserCases\\Cache\\Products\\GetProduct\\GetProductCacheTest.cs",
+              "RelativeToolTip": "..\\..\\tests\\Mshop.IntegrationTest\\Application\\UserCases\\Cache\\Products\\GetProduct\\GetProductCacheTest.cs",
+              "ViewState": "AgIAACYAAAAAAAAAAAAUwCsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-29T13:27:11.859Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "ServiceRegistrationExtensions.cs",
+              "DocumentMoniker": "C:\\Users\\IQ SISTEMAS\\Documents\\mShopping\\new\\Mshopping\\MShop.API.Catalog\\src\\Mshop.Infra.Data\\ServiceRegistrationExtensions.cs",
+              "RelativeDocumentMoniker": "..\\Mshop.Infra.Data\\ServiceRegistrationExtensions.cs",
+              "ToolTip": "C:\\Users\\IQ SISTEMAS\\Documents\\mShopping\\new\\Mshopping\\MShop.API.Catalog\\src\\Mshop.Infra.Data\\ServiceRegistrationExtensions.cs",
+              "RelativeToolTip": "..\\Mshop.Infra.Data\\ServiceRegistrationExtensions.cs",
+              "ViewState": "AgIAABkAAAAAAAAAAAAgwCgAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-29T13:24:57.366Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "BuildCacheCategoryTest.cs",
+              "DocumentMoniker": "C:\\Users\\IQ SISTEMAS\\Documents\\mShopping\\new\\Mshopping\\MShop.API.Catalog\\tests\\Mshop.IntegrationTest\\Application\\Service\\BuildCacheCategoryTest.cs",
+              "RelativeDocumentMoniker": "..\\..\\tests\\Mshop.IntegrationTest\\Application\\Service\\BuildCacheCategoryTest.cs",
+              "ToolTip": "C:\\Users\\IQ SISTEMAS\\Documents\\mShopping\\new\\Mshopping\\MShop.API.Catalog\\tests\\Mshop.IntegrationTest\\Application\\Service\\BuildCacheCategoryTest.cs",
+              "RelativeToolTip": "..\\..\\tests\\Mshop.IntegrationTest\\Application\\Service\\BuildCacheCategoryTest.cs",
+              "ViewState": "AgIAABgAAAAAAAAAAAAowCEAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-29T13:04:48.019Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ProductRepository.cs",
+              "DocumentMoniker": "C:\\Users\\IQ SISTEMAS\\Documents\\mShopping\\new\\Mshopping\\MShop.API.Catalog\\src\\Mshop.Infra.Data\\Repository\\ProductRepository.cs",
+              "RelativeDocumentMoniker": "..\\Mshop.Infra.Data\\Repository\\ProductRepository.cs",
+              "ToolTip": "C:\\Users\\IQ SISTEMAS\\Documents\\mShopping\\new\\Mshopping\\MShop.API.Catalog\\src\\Mshop.Infra.Data\\Repository\\ProductRepository.cs",
+              "RelativeToolTip": "..\\Mshop.Infra.Data\\Repository\\ProductRepository.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAgwBkAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-29T13:04:48.073Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ListProductCacheTest.cs",
+              "DocumentMoniker": "C:\\Users\\IQ SISTEMAS\\Documents\\mShopping\\new\\Mshopping\\MShop.API.Catalog\\tests\\Mshop.IntegrationTest\\Application\\UserCases\\Cache\\Products\\ListProduct\\ListProductCacheTest.cs",
+              "RelativeDocumentMoniker": "..\\..\\tests\\Mshop.IntegrationTest\\Application\\UserCases\\Cache\\Products\\ListProduct\\ListProductCacheTest.cs",
+              "ToolTip": "C:\\Users\\IQ SISTEMAS\\Documents\\mShopping\\new\\Mshopping\\MShop.API.Catalog\\tests\\Mshop.IntegrationTest\\Application\\UserCases\\Cache\\Products\\ListProduct\\ListProductCacheTest.cs",
+              "RelativeToolTip": "..\\..\\tests\\Mshop.IntegrationTest\\Application\\UserCases\\Cache\\Products\\ListProduct\\ListProductCacheTest.cs",
+              "ViewState": "AgIAAEUAAAAAAAAAAAAuwFUAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-29T13:04:48.086Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "ProductCacheRepository.cs",
+              "DocumentMoniker": "C:\\Users\\IQ SISTEMAS\\Documents\\mShopping\\new\\Mshopping\\MShop.API.Catalog\\src\\Mshop.Infra.Cache\\Respository\\ProductCacheRepository.cs",
+              "RelativeDocumentMoniker": "..\\Mshop.Infra.Cache\\Respository\\ProductCacheRepository.cs",
+              "ToolTip": "C:\\Users\\IQ SISTEMAS\\Documents\\mShopping\\new\\Mshopping\\MShop.API.Catalog\\src\\Mshop.Infra.Cache\\Respository\\ProductCacheRepository.cs",
+              "RelativeToolTip": "..\\Mshop.Infra.Cache\\Respository\\ProductCacheRepository.cs",
+              "ViewState": "AgIAAIIAAAAAAAAAAAAcwJUAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-29T13:04:48.098Z",
               "EditorCaption": ""
             }
           ]

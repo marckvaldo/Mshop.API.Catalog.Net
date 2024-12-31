@@ -6,7 +6,7 @@ using Mshop.Application.UseCases.Category.CreateCategory;
 using Mshop.Application.UseCases.Category.DeleteCategory;
 using Mshop.Application.UseCases.Category.GetCategory;
 using Mshop.Application.UseCases.Category.GetCatetoryWithProducts;
-using Mshop.Application.UseCases.Category.ListCategorys;
+using Mshop.Application.UseCases.Category.ListCategories;
 using Mshop.Application.UseCases.Category.UpdateCategory;
 using Mshop.Application.UseCases.GetCatetoryWithProducts.GetCatetory;
 using Mshop.Core.Enum.Paginated;

@@ -4,7 +4,7 @@ using Mshop.Core.Paginated;
 
 namespace Mshop.Infra.Data.Interface
 {
-    public interface IProductRepository : IRepository<Product>, IPaginated<Product>
+    public interface IProductRepository : IRepository<Product>
     {
         Task<List<Product>> GetProductsPromotions();
 

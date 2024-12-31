@@ -24,7 +24,8 @@ namespace Mshop.Application.UseCases.Product.ListProducts
                 request.Dir
                 );
 
-            var paginateOutPut = await _productRepostory.FilterPaginated(paginatedInPut);
+            var paginateOutPut = await _productRepostory.FilterPaginated(paginatedInPut, CancellationToken.None);
+
 
             var listProdutosOutPut = new ListProductsOutPut(
                 paginateOutPut.CurrentPage,

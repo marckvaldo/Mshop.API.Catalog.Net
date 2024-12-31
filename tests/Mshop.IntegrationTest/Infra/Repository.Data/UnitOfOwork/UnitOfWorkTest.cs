@@ -17,7 +17,9 @@ namespace Mshop.IntegrationTests.Infra.Repository.Data.UnitOfOwork
         public UnitOfWorkTest() : base()
         {
             _DbContext = _serviceProvider.GetRequiredService<RepositoryDbContext>();
-            AddMigartion(_DbContext);
+            DeleteDataBase(_DbContext, false).Wait();
+            AddMigartion(_DbContext).Wait();
+
             _unitOfWork = new UnitOfWork(_DbContext);
            
         }

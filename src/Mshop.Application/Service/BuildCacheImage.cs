@@ -1,4 +1,5 @@
-﻿using Mshop.Domain.Contract.Services;
+﻿using Microsoft.Extensions.DependencyInjection;
+using Mshop.Domain.Contract.Services;
 using Mshop.Infra.Cache.Interface;
 using Mshop.Infra.Data.Interface;
 
@@ -6,24 +7,29 @@ namespace Mshop.Application.Service
 {
     public class BuildCacheImage : IBuildCacheImage
     {
-        private IImagesCacheRepository _imageCacheRepository;
-        private IImageRepository _imageRepository;
+        //private IImagesCacheRepository _imageCacheRepository;
+        //private IImageRepository _imageRepository;
 
-        public BuildCacheImage(IImagesCacheRepository iamgeCacheRepository, IImageRepository imageRepository)
+        private IServiceProvider _serviceProvider;
+
+        public BuildCacheImage(IServiceProvider serviceProvider)
         {
-            _imageCacheRepository = iamgeCacheRepository;
-            _imageRepository = imageRepository;
+            _serviceProvider = serviceProvider;
         }
 
         public async Task Handle()
         {
+            using var scope = _serviceProvider.CreateScope();
+            var imageRepository = scope.ServiceProvider.GetRequiredService<IImageRepository>();
+            var imageCacheRepository = scope.ServiceProvider.GetRequiredService<IImagesCacheRepository>();
+
             var expirationDate = DateTime.UtcNow.AddHours(1);
 
-            var images = await _imageRepository.Filter(x => x.FileName != "");
+            var images = await imageRepository.Filter(x => x.FileName != "");
 
             foreach (var image in images)
             {
-                await _imageCacheRepository.Create(image, expirationDate, CancellationToken.None);
+                await imageCacheRepository.Create(image, expirationDate, CancellationToken.None);
             }
         }
     }

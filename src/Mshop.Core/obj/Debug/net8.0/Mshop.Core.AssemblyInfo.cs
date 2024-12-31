@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Mshop.Core")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+84cf4a3bfca3644babe33ee119ce097ee755c185")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+56514fe9a6a400d60745143643001f94a0c6623a")]
 [assembly: System.Reflection.AssemblyProductAttribute("Mshop.Core")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Mshop.Core")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

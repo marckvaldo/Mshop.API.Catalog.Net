@@ -44,20 +44,20 @@ namespace Mshop.Application.UseCases.Cache.Products.GetProductCache
             {
                 _buildCache.Handle();
                 product = await _productRepository.GetProductWithCategory(request.Id);
-                
             }
+
+            if (NotifyErrorIfNull(product, "Não foi possivel localizar a produto da base de dados!"))
+                return Result<GetProductCacheOutPut>.Error();
 
             var images = await _imageCacheRepository.GetImageByProductId(request.Id);
 
             if(images is null)
             {
                 _buildCacheImage.Handle();
-
                 images = await _imageRepository.Filter(x=> x.ProductId == product.Id);
             }
 
-            if (NotifyErrorIfNull(product, "Não foi possivel localizar a produto da base de dados!"))
-                return Result<GetProductCacheOutPut>.Error();
+            
 
             
 

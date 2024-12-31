@@ -50,7 +50,7 @@ namespace Mshop.IntegrationTests.Infra.Repository.Cache.CategoryRepository
         [Fact(DisplayName = nameof(GetByIdCategory))]
         [Trait("Integration - Infra.Cache", "Category Repositorio")]
 
-        public async void GetByIdCategory()
+        public async Task GetByIdCategory()
         {
             var categoryFaker = FakerCategory();
 
@@ -66,7 +66,7 @@ namespace Mshop.IntegrationTests.Infra.Repository.Cache.CategoryRepository
         [Fact(DisplayName = nameof(UpdateProduct))]
         [Trait("Integration - Infra.Cache", "Category Repositorio")]
 
-        public async void UpdateProduct()
+        public async Task UpdateProduct()
         {
             var categoryFaker = FakerCategories(3);
             foreach (var item in categoryFaker)

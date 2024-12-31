@@ -39,7 +39,7 @@ namespace Mshop.IntegrationTests.Application.Service
         }
 
         [Fact(DisplayName = nameof(ShouldBuilderCacheCategory))]
-        [Trait("Application-Service", "Builder Category Cache")]
+        [Trait("Integration - Application.Service", "Builder Category Cache")]
 
         public async Task ShouldBuilderCacheCategory()
         {
@@ -52,7 +52,7 @@ namespace Mshop.IntegrationTests.Application.Service
 
             await _unitOfWork.CommitAsync();
 
-            var service = new ServiceBuilder.BuildCacheCategory(_categoryCacheRepository, _categoryRepository);
+            var service = new ServiceBuilder.BuildCacheCategory(_serviceProvider);
             await service.Handle();
 
             var categories = await _categoryCacheRepository.FilterPaginated(
