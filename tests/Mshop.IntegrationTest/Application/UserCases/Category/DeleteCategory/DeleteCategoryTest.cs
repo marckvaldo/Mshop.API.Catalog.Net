@@ -20,7 +20,7 @@ namespace Mshop.IntegrationTests.Application.UserCases.Category.DeleteCategory
         private readonly RepositoryDbContext _DbContext;
 
 
-        public DeleteCategoryTest()
+        public DeleteCategoryTest() : base()
         {
             _DbContext = _serviceProvider.GetRequiredService<RepositoryDbContext>();
             _categoryRepository = _serviceProvider.GetRequiredService<ICategoryRepository>();

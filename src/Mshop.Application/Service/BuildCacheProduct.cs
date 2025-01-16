@@ -13,15 +13,8 @@ namespace Mshop.Application.Service
 
        private IServiceProvider _serviceProvider;
 
-        /*public BuildCacheProduct(IProductCacheRepository productCacheRepository, IProductRepository productRepository)
-        {
-            _productCacheRepository = productCacheRepository;
-            _productRepository = productRepository;
-        }*/
-
         public BuildCacheProduct(IServiceProvider serviceProvider)
         {
-            //_serviceCollection = serviceCollection;
             _serviceProvider = serviceProvider;
         }
 

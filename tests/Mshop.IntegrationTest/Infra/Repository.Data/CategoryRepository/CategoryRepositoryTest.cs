@@ -20,7 +20,7 @@ namespace Mshop.IntegrationTests.Infra.Repository.Data.CategoryRepository
         private readonly CategoryRepositoryPertsistence _persistenceCategory;
         
 
-        public CategoryRepositoryTest()
+        public CategoryRepositoryTest(): base()
         {
             _DbContext = _serviceProvider.GetRequiredService<RepositoryDbContext>();
             _categoryRepository = _serviceProvider.GetRequiredService<ICategoryRepository>();
@@ -51,10 +51,10 @@ namespace Mshop.IntegrationTests.Infra.Repository.Data.CategoryRepository
         [Fact(DisplayName = nameof(GetByIdCategory))]
         [Trait("Integration - Infra.Data", "Category Repositorio")]
 
-        public async void GetByIdCategory()
+        public async Task GetByIdCategory()
         {
             var categoryFaker = FakerCategory();
-            _persistenceCategory.Create(categoryFaker);
+            await _persistenceCategory.Create(categoryFaker);
 
             var category = await _categoryRepository.GetById(categoryFaker.Id);
 
@@ -67,7 +67,7 @@ namespace Mshop.IntegrationTests.Infra.Repository.Data.CategoryRepository
         [Fact(DisplayName = nameof(UpdateProduct))]
         [Trait("Integration - Infra.Data", "Category Repositorio")]
 
-        public async void UpdateProduct()
+        public async Task UpdateProduct()
         {
             var categoryFaker = FakerCategories(3);
             await _persistenceCategory.CreateList(categoryFaker);

@@ -45,7 +45,8 @@ namespace Mshop.Application.UseCases.Product.ListProducts
                     && SearchInput.Search == request.Search
                     && SearchInput.OrderBy == request.Sort
                     && SearchInput.Order == request.Dir
-                    )
+                    ),
+                It.IsAny<CancellationToken>()
                 )).ReturnsAsync(outPutRepository);
 
 

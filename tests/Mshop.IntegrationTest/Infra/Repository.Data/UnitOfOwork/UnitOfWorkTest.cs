@@ -12,8 +12,7 @@ namespace Mshop.IntegrationTests.Infra.Repository.Data.UnitOfOwork
     {
         private readonly RepositoryDbContext _DbContext;
         private readonly UnitOfWork _unitOfWork;
-        //private readonly ServiceCollection _serviceColletion;
-
+      
         public UnitOfWorkTest() : base()
         {
             _DbContext = _serviceProvider.GetRequiredService<RepositoryDbContext>();
@@ -42,7 +41,7 @@ namespace Mshop.IntegrationTests.Infra.Repository.Data.UnitOfOwork
 
         public async void Dispose()
         {
-            await DeleteDataBase(_DbContext);
+            //await DeleteDataBase(_DbContext);
         }
     }
 }

@@ -16,7 +16,7 @@ namespace Mshop.IntegrationTests.Application.UserCases.Category.UpdateCategory
         private readonly IUnitOfWork _unitOfWork;
         private readonly RepositoryDbContext _DbContext;
 
-        public UpdateCategoryTest()
+        public UpdateCategoryTest() : base()
         {
             _DbContext = _serviceProvider.GetRequiredService<RepositoryDbContext>();
             _categoryRepository = _serviceProvider.GetRequiredService<ICategoryRepository>();            

@@ -40,7 +40,6 @@ namespace Mshop.IntegrationTests.Application.UserCases.Category.CreateCategory
                 _unitOfWork);
 
             var outPut = await useCase.Handle(request, CancellationToken.None);
-
             var categoryDB = await _categoryRepository.GetById(outPut.Data.Id);
 
             Assert.False(_notification.HasErrors());

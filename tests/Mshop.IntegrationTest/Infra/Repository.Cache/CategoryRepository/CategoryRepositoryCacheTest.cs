@@ -16,7 +16,7 @@ namespace Mshop.IntegrationTests.Infra.Repository.Cache.CategoryRepository
         private readonly DateTime _expirationDate;
         private readonly StartIndex _startIndex;
 
-        public CategoryRepositoryCacheTest()
+        public CategoryRepositoryCacheTest() : base() 
         {
             var connection = _serviceProvider.GetRequiredService<StackExchange.Redis.IConnectionMultiplexer>();
             _database = connection.GetDatabase();
