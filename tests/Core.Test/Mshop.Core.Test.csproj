@@ -19,7 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Mshop.Application\Mshop.Application.csproj" />
+    <ProjectReference Include="..\..\src\Mshop.API.Catalog\Mshop.API.Catalog.csproj" />
   </ItemGroup>
 
   <ItemGroup>

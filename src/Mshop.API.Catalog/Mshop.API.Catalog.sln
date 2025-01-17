@@ -35,6 +35,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mshop.Core.Test", "..\..\te
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mshop.IntegrationTests", "..\..\tests\Mshop.IntegrationTest\Mshop.IntegrationTests.csproj", "{E865B79C-6B00-4733-B915-96778D553F23}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MShop.Catalog.E2ETests", "..\..\tests\MShop.Catalog.E2ETest\MShop.Catalog.E2ETests.csproj", "{1DF8FE75-D9AC-4B5A-93E2-B81B9629755D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -77,6 +79,10 @@ Global
 		{E865B79C-6B00-4733-B915-96778D553F23}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E865B79C-6B00-4733-B915-96778D553F23}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E865B79C-6B00-4733-B915-96778D553F23}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1DF8FE75-D9AC-4B5A-93E2-B81B9629755D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1DF8FE75-D9AC-4B5A-93E2-B81B9629755D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1DF8FE75-D9AC-4B5A-93E2-B81B9629755D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1DF8FE75-D9AC-4B5A-93E2-B81B9629755D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -94,5 +100,6 @@ Global
 		{FB354B6E-BAD6-4568-A90D-C55964AE5168} = {9EB94BE9-1AA9-4832-96BC-54CB19A60094}
 		{753C047A-D3EB-4104-817C-CCE754DDE525} = {9EB94BE9-1AA9-4832-96BC-54CB19A60094}
 		{E865B79C-6B00-4733-B915-96778D553F23} = {9EB94BE9-1AA9-4832-96BC-54CB19A60094}
+		{1DF8FE75-D9AC-4B5A-93E2-B81B9629755D} = {9EB94BE9-1AA9-4832-96BC-54CB19A60094}
 	EndGlobalSection
 EndGlobal
