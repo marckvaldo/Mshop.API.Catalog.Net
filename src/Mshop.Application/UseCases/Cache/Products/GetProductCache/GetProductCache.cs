@@ -1,4 +1,5 @@
 ﻿using Mshop.Application.UseCases.Category.Common;
+using Mshop.Application.UseCases.Product.Common;
 using Mshop.Core.Base;
 using Mshop.Core.DomainObject;
 using Mshop.Core.Message;
@@ -56,10 +57,6 @@ namespace Mshop.Application.UseCases.Cache.Products.GetProductCache
                 _buildCacheImage.Handle();
                 images = await _imageRepository.Filter(x=> x.ProductId == product.Id);
             }
-
-            
-
-            
 
             var imagesOutPut = new GetProductCacheOutPut(
                 product.Id,

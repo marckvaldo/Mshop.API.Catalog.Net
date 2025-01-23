@@ -1,6 +1,8 @@
 ﻿using Mshop.Application.UseCases.Product.CreateProducts;
 using Mshop.Application.UseCases.Product.UpdateProduct;
+using Entity = Mshop.Domain.Entity;
 using MShop.Catalog.E2ETests.Base;
+
 
 
 namespace MShop.Catalog.E2ETests.API.Product
@@ -11,9 +13,9 @@ namespace MShop.Catalog.E2ETests.API.Product
         {
         }
 
-        public async Task<CreateProductInPut> RequestCreate()
+        public async Task<CreateProductInPut> RequestCreate(Entity.Category category)
         {
-            var fakerProduct = FakerProduct(FakerCategory());
+            var fakerProduct = FakerProduct(category);
             return new CreateProductInPut
             {
                 Name = fakerProduct.Name,
@@ -26,9 +28,9 @@ namespace MShop.Catalog.E2ETests.API.Product
             };
         }
 
-        public async Task<UpdateProductInPut> RequestUpdate()
+        public async Task<UpdateProductInPut> RequestUpdate(Entity.Category Category)
         {
-            var fakerProduct = FakerProduct(FakerCategory());
+            var fakerProduct = FakerProduct(Category);
             return new UpdateProductInPut
             {
                 Name = fakerProduct.Name,

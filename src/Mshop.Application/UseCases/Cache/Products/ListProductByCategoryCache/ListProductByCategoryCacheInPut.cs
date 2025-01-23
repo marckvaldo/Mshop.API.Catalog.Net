@@ -14,5 +14,10 @@ namespace Mshop.Application.UseCases.Cache.Products.ListProductByCategoryCache
         {
             this.CategoryId = CategoryId;
         }
+
+        public ListProductByCategoryCacheInPut() : base(1, 15, "", "", SearchOrder.Asc)
+        {
+
+        }
     }
 }

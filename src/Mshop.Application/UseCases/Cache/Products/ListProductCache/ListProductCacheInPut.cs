@@ -13,5 +13,10 @@ namespace Mshop.Application.UseCases.Cache.Products.ListProductCache
         {
             this.onlyProductsOnSale = onlyProductsOnSale;
         }
+
+        public ListProductCacheInPut() : base(1, 15, "", "", SearchOrder.Asc)
+        {
+
+        }
     }
 }

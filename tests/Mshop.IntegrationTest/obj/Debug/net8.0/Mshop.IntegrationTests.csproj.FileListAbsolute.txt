@@ -149,3 +149,4 @@ C:\Users\IQ SISTEMAS\Documents\mShopping\new\Mshopping\MShop.API.Catalog\tests\M
 C:\Users\IQ SISTEMAS\Documents\mShopping\new\Mshopping\MShop.API.Catalog\tests\Mshop.IntegrationTest\bin\Debug\net8.0\Mshop.API.Catalog.dll
 C:\Users\IQ SISTEMAS\Documents\mShopping\new\Mshopping\MShop.API.Catalog\tests\Mshop.IntegrationTest\bin\Debug\net8.0\Mshop.API.Catalog.pdb
 C:\Users\IQ SISTEMAS\Documents\mShopping\new\Mshopping\MShop.API.Catalog\tests\Mshop.IntegrationTest\bin\Debug\net8.0\xunit.runner.json
+C:\Users\IQ SISTEMAS\Documents\mShopping\new\Mshopping\MShop.API.Catalog\tests\Mshop.IntegrationTest\bin\Debug\net8.0\appsettings.E2ETests.json

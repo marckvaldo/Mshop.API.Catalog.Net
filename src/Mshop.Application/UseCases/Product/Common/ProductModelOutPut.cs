@@ -58,7 +58,9 @@ namespace Mshop.Application.UseCases.Product.Common
                 product.Thumb?.Path,
                 product.Stock,
                 product.IsActive,
-                product.CategoryId);
+                product.CategoryId,
+                new CategoryModelOutPut(product.CategoryId, product.Category.Name, product.Category.IsActive),
+                product.IsSale);
         }
     }
 }

@@ -41,7 +41,7 @@ namespace Mshop.Infra.Cache
         {
             using var scope = app.Services.CreateScope();
             var redisService = scope.ServiceProvider.GetRequiredService<StartIndex.StartIndex>();
-            redisService.CreateIndex().Wait() ;
+            redisService.CreateIndex().Wait();
             return app;
         }
     }

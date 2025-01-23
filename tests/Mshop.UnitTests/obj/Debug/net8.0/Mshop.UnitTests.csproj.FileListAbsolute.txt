@@ -135,3 +135,17 @@ C:\Users\IQ SISTEMAS\Documents\mShopping\new\Mshopping\MShop.API.Catalog\tests\M
 C:\Users\IQ SISTEMAS\Documents\mShopping\new\Mshopping\MShop.API.Catalog\tests\Mshop.UnitTests\bin\Debug\net8.0\Mshop.Core.Test.dll
 C:\Users\IQ SISTEMAS\Documents\mShopping\new\Mshopping\MShop.API.Catalog\tests\Mshop.UnitTests\bin\Debug\net8.0\Mshop.Core.Test.pdb
 C:\Users\IQ SISTEMAS\Documents\mShopping\new\Mshopping\MShop.API.Catalog\tests\Mshop.UnitTests\obj\Debug\net8.0\Mshop.UnitTests.sourcelink.json
+C:\Users\IQ SISTEMAS\Documents\mShopping\new\Mshopping\MShop.API.Catalog\tests\Mshop.UnitTests\bin\Debug\net8.0\Mshop.API.Catalog.deps.json
+C:\Users\IQ SISTEMAS\Documents\mShopping\new\Mshopping\MShop.API.Catalog\tests\Mshop.UnitTests\bin\Debug\net8.0\Mshop.API.Catalog.runtimeconfig.json
+C:\Users\IQ SISTEMAS\Documents\mShopping\new\Mshopping\MShop.API.Catalog\tests\Mshop.UnitTests\bin\Debug\net8.0\appsettings.Development.json
+C:\Users\IQ SISTEMAS\Documents\mShopping\new\Mshopping\MShop.API.Catalog\tests\Mshop.UnitTests\bin\Debug\net8.0\appsettings.E2ETests.json
+C:\Users\IQ SISTEMAS\Documents\mShopping\new\Mshopping\MShop.API.Catalog\tests\Mshop.UnitTests\bin\Debug\net8.0\appsettings.IntegrationTests.json
+C:\Users\IQ SISTEMAS\Documents\mShopping\new\Mshopping\MShop.API.Catalog\tests\Mshop.UnitTests\bin\Debug\net8.0\appsettings.json
+C:\Users\IQ SISTEMAS\Documents\mShopping\new\Mshopping\MShop.API.Catalog\tests\Mshop.UnitTests\bin\Debug\net8.0\Mshop.API.Catalog.staticwebassets.endpoints.json
+C:\Users\IQ SISTEMAS\Documents\mShopping\new\Mshopping\MShop.API.Catalog\tests\Mshop.UnitTests\bin\Debug\net8.0\Mshop.API.Catalog.exe
+C:\Users\IQ SISTEMAS\Documents\mShopping\new\Mshopping\MShop.API.Catalog\tests\Mshop.UnitTests\bin\Debug\net8.0\Microsoft.OpenApi.dll
+C:\Users\IQ SISTEMAS\Documents\mShopping\new\Mshopping\MShop.API.Catalog\tests\Mshop.UnitTests\bin\Debug\net8.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\IQ SISTEMAS\Documents\mShopping\new\Mshopping\MShop.API.Catalog\tests\Mshop.UnitTests\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\IQ SISTEMAS\Documents\mShopping\new\Mshopping\MShop.API.Catalog\tests\Mshop.UnitTests\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\IQ SISTEMAS\Documents\mShopping\new\Mshopping\MShop.API.Catalog\tests\Mshop.UnitTests\bin\Debug\net8.0\Mshop.API.Catalog.dll
+C:\Users\IQ SISTEMAS\Documents\mShopping\new\Mshopping\MShop.API.Catalog\tests\Mshop.UnitTests\bin\Debug\net8.0\Mshop.API.Catalog.pdb

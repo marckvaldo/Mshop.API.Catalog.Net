@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MShop.Catalog.E2ETests")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7b5404d710ead2f8a51b957ecfed716bd74284d0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e831b3d30e2f90c92826bb32e0737ce1495d4979")]
 [assembly: System.Reflection.AssemblyProductAttribute("MShop.Catalog.E2ETests")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MShop.Catalog.E2ETests")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

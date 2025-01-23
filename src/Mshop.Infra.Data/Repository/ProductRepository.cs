@@ -1,10 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Mshop.Domain.Entity;
 using Mshop.Core.Enum.Paginated;
 using Mshop.Core.Paginated;
+using Mshop.Domain.Entity;
 using Mshop.Infra.Data.Context;
 using Mshop.Infra.Data.Interface;
-using Microsoft.AspNetCore.DataProtection.XmlEncryption;
 
 
 namespace Mshop.Infra.Data.Repository

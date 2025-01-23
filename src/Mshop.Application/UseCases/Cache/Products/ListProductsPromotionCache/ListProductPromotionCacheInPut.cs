@@ -10,9 +10,15 @@ namespace Mshop.Application.UseCases.Cache.Products.ListProductsPromotionCache
     public class ListProductPromotionCacheInPut : PaginatedInPut, IRequest<Result<ListProductPromotionCacheOutPut>>
     {
         public bool onlyProductsOnSale = false;
-        public ListProductPromotionCacheInPut(int page, int perPage, string search, string sort, SearchOrder dir, bool onlyProductsOnSale) : base(page, perPage, search, sort, dir)
+        public ListProductPromotionCacheInPut(int page, int perPage, string search, string sort, SearchOrder dir, bool onlyProductsOnSale) : 
+            base(page, perPage, search, sort, dir)
         {
             this.onlyProductsOnSale = onlyProductsOnSale;
+        }
+
+        public ListProductPromotionCacheInPut() : 
+            base(1, 15, "", "", SearchOrder.Asc)
+        {
         }
     }
 }

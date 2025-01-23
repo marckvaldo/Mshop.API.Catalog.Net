@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Mshop.Application;
@@ -8,12 +7,6 @@ using Mshop.Infra.Cache;
 using Mshop.Infra.Data;
 using Mshop.Infra.Data.Context;
 using Mshop.IntegrationTests.Infra.Configuration;
-using StackExchange.Redis;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Mshop.IntegrationTests.Common
 {

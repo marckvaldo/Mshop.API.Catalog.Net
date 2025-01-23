@@ -1,21 +1,13 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 using Mshop.Application.UseCases.Category.Common;
 using Mshop.Application.UseCases.Category.ListCategories;
 using Mshop.Core.Data;
 using Mshop.Core.Enum.Paginated;
-using Mshop.Domain.Entity;
 using Mshop.Infra.Cache.Interface;
 using Mshop.Infra.Data.Context;
 using Mshop.Infra.Data.Interface;
-using Mshop.Infra.Data.UnitOfWork;
 using MShop.Catalog.E2ETest.Base;
 using MShop.Catalog.E2ETests.API.Common;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MShop.Catalog.E2ETests.API.Category
 {

@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MediatR;
+using Mshop.Core.DomainObject;
 
 namespace Mshop.Application.UseCases.Cache.Products.GetProductCache
 {
-    public interface IGetProductCache
+    public interface IGetProductCache : IRequestHandler<GetProductCacheInPut, Result<GetProductCacheOutPut>>
     {
     }
 }

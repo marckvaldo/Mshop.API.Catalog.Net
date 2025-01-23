@@ -1,13 +1,10 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using Microsoft.VisualStudio.TestPlatform.Utilities;
 using Mshop.Application.UseCases.Product.Common;
 using Mshop.Application.UseCases.Product.ListProducts;
 using Mshop.Core.Data;
-using Mshop.Domain.Entity;
 using Mshop.Infra.Cache.Interface;
 using Mshop.Infra.Data.Context;
 using Mshop.Infra.Data.Interface;
-using Mshop.Infra.Data.Repository;
 using MShop.Catalog.E2ETest.Base;
 using MShop.Catalog.E2ETests.API.Common;
 
@@ -39,7 +36,12 @@ namespace MShop.Catalog.E2ETests.API.Product
         [Trait("EndToEnd/API","Product - Endpoints")]
         public async Task CreateProductAPI()
         {
-            var request = await RequestCreate();
+            var category = FakerCategory();
+            
+            await _categoryRepository.Create(category,CancellationToken.None);
+            await _unitOfWork.CommitAsync(CancellationToken.None); 
+
+            var request = await RequestCreate(category);
             var (response, outPut) = await _apiClient.Post<CustomResponse<ProductModelOutPut>>(Configuration.URL_API_PRODUCT, request);
 
             Assert.NotNull(response);
@@ -65,12 +67,14 @@ namespace MShop.Catalog.E2ETests.API.Product
         [Trait("EndToEnd/API", "Product - Endpoints")]
         public async Task UpdateProduct()
         {
+            var category = FakerCategory();
+            var product = FakerProduct(category);
 
-            var product = FakerProduct(FakerCategory());
             await _productRepository.Create(product,CancellationToken.None);
+            await _categoryRepository.Create(category,CancellationToken.None);
             await _unitOfWork.CommitAsync(CancellationToken.None);
 
-            var request = await RequestUpdate();
+            var request = await RequestUpdate(category);
             request.Id = product.Id;
                                    
 
@@ -150,7 +154,12 @@ namespace MShop.Catalog.E2ETests.API.Product
         [InlineData(-1)]
         public async Task SholdReturnErrorWhenCantCreatePoduct(decimal price)
         {
-            var request = await RequestCreate();
+            var category = FakerCategory();
+
+            await _categoryRepository.Create(category, CancellationToken.None);
+            await _unitOfWork.CommitAsync(CancellationToken.None);
+
+            var request = await RequestCreate(category);
             request.Price = price;
 
             var (response, outPut) = await _apiClient.Post<CustomResponseErro>(Configuration.URL_API_PRODUCT, request);
@@ -168,7 +177,7 @@ namespace MShop.Catalog.E2ETests.API.Product
         [InlineData(-1)]
         public async Task SholdReturnErrorWhenCantUpdatePoduct(decimal price)
         {
-            var request =  await RequestUpdate();
+            var request =  await RequestUpdate(FakerCategory());
             request.Price = price;
 
             var (response, outPut) = await _apiClient.Post<CustomResponseErro>(Configuration.URL_API_PRODUCT, request);
@@ -215,7 +224,7 @@ namespace MShop.Catalog.E2ETests.API.Product
             }
             await _unitOfWork.CommitAsync();
 
-            var productDbBefore = (await _categoryRepository.Filter(p=>p.Name != null)).ToList(); 
+            var productDbBefore = (await _productRepository.Filter(p=>p.Name != "")).ToList(); 
             
             var (response, outPut) = await _apiClient.Get<CustomResponse<ListProductsOutPut>>($"{Configuration.URL_API_PRODUCT}list-products/");
 
@@ -263,7 +272,7 @@ namespace MShop.Catalog.E2ETests.API.Product
         [InlineData(17, 3, 10, 0)]
         public async Task ListProductWithPaginated(int quantityProduct, int page, int perPage, int expectedQuantityItems)
         {
-            var products = FakerProducts(20, FakerCategory());
+            var products = FakerProducts(quantityProduct, FakerCategory());
             foreach (var item in products)
             {
                 await _productRepository.Create(item, CancellationToken.None);
@@ -297,47 +306,5 @@ namespace MShop.Catalog.E2ETests.API.Product
         {
             //TearDownRabbitMQ();
         }
-
-        /*
-        [Fact(DisplayName = nameof(ListProductPromotions))]
-        [Trait("EndToEnd/API", "Product - Endpoints")]
-        public async void ListProductPromotions()
-        {
-            var products = await GetProducts(5);
-            await Persistence.CreateList(products);
-
-            var (response, outPut) = await apiClient.Get<CustomResponse<List<ProductModelOutPut>>>($"{Configuration.URL_API_PRODUCT}list-products-promotions");
-
-            Assert.NotNull(response);
-            Assert.Equal(System.Net.HttpStatusCode.OK, response!.StatusCode);
-            Assert.NotNull(outPut);
-            Assert.True(outPut.Success);
-
-            foreach(var item in outPut.Data)
-            {
-                var expectItem = products.FirstOrDefault(p=>p.Id == item.Id);
-                Assert.NotNull(expectItem);
-                Assert.Equal(expectItem.Name, item.Name);   
-                Assert.Equal(expectItem.Description,expectItem.Description);
-                Assert.Equal(expectItem.Thumb, expectItem.Thumb);
-                Assert.Equal(expectItem.Price, expectItem.Price);
-                Assert.Equal(expectItem.Activate, expectItem.Activate); 
-            }
-        }
-
-
-        [Fact(DisplayName = nameof(SholdReturnErrorWhenCantGetProductPromotion))]
-        [Trait("EndToEnd/API", "Product - Endpoints")]
-        public async void SholdReturnErrorWhenCantGetProductPromotion()
-        {
-            await ProductPersistenceCache.DeleteKey("promocao");
-            var (response, outPut) = await apiClient.Get<CustomResponseErro>($"{Configuration.URL_API_PRODUCT}list-products-promotions");
-
-            Assert.NotNull(response);
-            Assert.Equal(System.Net.HttpStatusCode.BadRequest, response!.StatusCode);
-            Assert.NotNull(outPut);
-            Assert.False(outPut.Success);
-        }
-        */
     }
 }

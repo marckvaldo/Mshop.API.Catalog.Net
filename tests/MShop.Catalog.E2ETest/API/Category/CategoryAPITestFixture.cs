@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Builder;
-using Mshop.Application.UseCases.Category.CreateCategory;
-using Mshop.Core.Test.Common;
+﻿using Mshop.Application.UseCases.Category.CreateCategory;
 using MShop.Catalog.E2ETests.Base;
 
 namespace MShop.Catalog.E2ETests.API.Category

@@ -1,8 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Mshop.Core.Test.Common;
+using Mshop.Infra.Cache.StartIndex;
 using Mshop.Infra.Data.Context;
 using MShop.Catalog.E2ETest.Base;
+using NRedisStack.RedisStackCommands;
+using StackExchange.Redis;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -39,6 +42,24 @@ namespace MShop.Catalog.E2ETests.Base
         {
             if (dbContext != null)
                 await Task.Run(() => dbContext.Database.Migrate());
+        }
+
+        protected async Task DeleteIndexCache(IDatabase database)
+        {
+            string indexNameCategory = $"{IndexName.Category}Index";
+            await database.ExecuteAsync("FT.DROPINDEX", indexNameCategory, "DD");
+
+            string indexNameProduct = $"{IndexName.Product}Index";
+            await database.ExecuteAsync("FT.DROPINDEX", indexNameProduct, "DD");
+
+            string indexNameImage = $"{IndexName.Image}Index";
+            await database.ExecuteAsync("FT.DROPINDEX", indexNameImage, "DD");
+
+        }
+
+        protected async Task CreateIndexCahce(StartIndex startIndex)
+        {
+            await startIndex.CreateIndex();
         }
     }
 

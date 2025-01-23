@@ -1,5 +1,4 @@
 ﻿using MediatR;
-using Mshop.Application.Common;
 using Mshop.Core.DomainObject;
 using Mshop.Core.Enum.Paginated;
 using Mshop.Core.Paginated;
@@ -15,6 +14,11 @@ namespace Mshop.Application.UseCases.Cache.Category.ListCategoriesCache
             string sort,
             SearchOrder dir)
             : base(page, perPage, search, sort, dir)
+        {
+
+        }
+
+        public ListCategoriesCacheInPut() : base(1, 15, "", "", SearchOrder.Asc)
         {
 
         }

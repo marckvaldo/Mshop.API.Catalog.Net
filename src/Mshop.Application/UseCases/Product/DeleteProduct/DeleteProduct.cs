@@ -11,6 +11,7 @@ namespace Mshop.Application.UseCases.Product.DeleteProduct
     public class DeleteProduct : BaseUseCase, IDeleteProduct
     {
         private readonly IProductRepository _productRespository;
+        private readonly ICategoryRepository _categoryRepository;
         private readonly IImageRepository _imageRepository;
         private readonly IStorageService _storageService;
         private readonly IUnitOfWork _unitOfWork;
@@ -19,9 +20,11 @@ namespace Mshop.Application.UseCases.Product.DeleteProduct
             IImageRepository imageRepository,
             INotification notification,
             IStorageService storageService,
+            ICategoryRepository categoryRepository,
             IUnitOfWork unitOfWork):base(notification)
         {
             _productRespository = productRespository;
+            _categoryRepository = categoryRepository;
             _imageRepository = imageRepository;
             _storageService = storageService;
             _unitOfWork = unitOfWork;
@@ -30,9 +33,12 @@ namespace Mshop.Application.UseCases.Product.DeleteProduct
         public async Task<Result<ProductModelOutPut>> Handle(DeleteProductInPut request, CancellationToken cancellationToken)
         {
             var product = await _productRespository.GetById(request.Id);
-            
+
             if (NotifyErrorIfNull(product, "Não foi possivel localizar a produto da base de dados!"))
                 return Result<ProductModelOutPut>.Error();
+
+            var category = await _categoryRepository.GetById(product.CategoryId);
+            product.AddCategory(category);
 
             var hasImages = await _imageRepository.Filter(x => x.ProductId == product!.Id);
             if(hasImages?.Count > 0)
