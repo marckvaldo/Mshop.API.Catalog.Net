@@ -1,4 +1,4 @@
-﻿namespace MShop.Catalog.E2ETest.Base
+﻿namespace Mshop.Catalog.E2ETest.Base
 {
     public static class Configuration
     {

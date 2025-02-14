@@ -23,7 +23,7 @@ namespace Mshop.Application.UseCases.Product.GetProduct
         public async Task<Result<GetProductOutPut>> Handle(GetProductInPut request, CancellationToken cancellation)
         {
             var product = await _productRepository.GetProductWithCategory(request.Id);
-            //NotifyExceptionIfNull(product, "Não foi possivel localizar a produto da base de dados!");
+           
             if (NotifyErrorIfNull(product, "Não foi possivel localizar a produto da base de dados!"))
                 return Result<GetProductOutPut>.Error();
 

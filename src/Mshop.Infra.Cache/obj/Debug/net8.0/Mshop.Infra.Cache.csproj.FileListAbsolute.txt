@@ -10,9 +10,9 @@ C:\Users\IQ SISTEMAS\Documents\mShopping\new\Mshopping\MShop.API.Catalog\src\Msh
 C:\Users\IQ SISTEMAS\Documents\mShopping\new\Mshopping\MShop.API.Catalog\src\Mshop.Infra.Cache\obj\Debug\net8.0\Mshop.Infra.Cache.AssemblyInfoInputs.cache
 C:\Users\IQ SISTEMAS\Documents\mShopping\new\Mshopping\MShop.API.Catalog\src\Mshop.Infra.Cache\obj\Debug\net8.0\Mshop.Infra.Cache.AssemblyInfo.cs
 C:\Users\IQ SISTEMAS\Documents\mShopping\new\Mshopping\MShop.API.Catalog\src\Mshop.Infra.Cache\obj\Debug\net8.0\Mshop.Infra.Cache.csproj.CoreCompileInputs.cache
+C:\Users\IQ SISTEMAS\Documents\mShopping\new\Mshopping\MShop.API.Catalog\src\Mshop.Infra.Cache\obj\Debug\net8.0\Mshop.Infra.Cache.sourcelink.json
 C:\Users\IQ SISTEMAS\Documents\mShopping\new\Mshopping\MShop.API.Catalog\src\Mshop.Infra.Cache\obj\Debug\net8.0\Mshop.In.E3A97D61.Up2Date
 C:\Users\IQ SISTEMAS\Documents\mShopping\new\Mshopping\MShop.API.Catalog\src\Mshop.Infra.Cache\obj\Debug\net8.0\Mshop.Infra.Cache.dll
 C:\Users\IQ SISTEMAS\Documents\mShopping\new\Mshopping\MShop.API.Catalog\src\Mshop.Infra.Cache\obj\Debug\net8.0\refint\Mshop.Infra.Cache.dll
 C:\Users\IQ SISTEMAS\Documents\mShopping\new\Mshopping\MShop.API.Catalog\src\Mshop.Infra.Cache\obj\Debug\net8.0\Mshop.Infra.Cache.pdb
 C:\Users\IQ SISTEMAS\Documents\mShopping\new\Mshopping\MShop.API.Catalog\src\Mshop.Infra.Cache\obj\Debug\net8.0\ref\Mshop.Infra.Cache.dll
-C:\Users\IQ SISTEMAS\Documents\mShopping\new\Mshopping\MShop.API.Catalog\src\Mshop.Infra.Cache\obj\Debug\net8.0\Mshop.Infra.Cache.sourcelink.json

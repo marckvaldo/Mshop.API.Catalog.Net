@@ -1,13 +1,13 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Mshop.Application.UseCases.Category.Common;
 using Mshop.Application.UseCases.Category.ListCategories;
+using Mshop.Catalog.E2ETest.Base;
+using Mshop.Catalog.E2ETests.API.Common;
 using Mshop.Core.Data;
 using Mshop.Core.Enum.Paginated;
 using Mshop.Infra.Cache.Interface;
 using Mshop.Infra.Data.Context;
 using Mshop.Infra.Data.Interface;
-using MShop.Catalog.E2ETest.Base;
-using MShop.Catalog.E2ETests.API.Common;
 
 namespace MShop.Catalog.E2ETests.API.Category
 {

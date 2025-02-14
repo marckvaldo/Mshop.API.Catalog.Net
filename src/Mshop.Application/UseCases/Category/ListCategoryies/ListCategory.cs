@@ -9,15 +9,16 @@ namespace Mshop.Application.UseCases.Category.ListCategories
     public class ListCategory : Core.Base.BaseUseCase, IListCategory
     {
         private readonly ICategoryRepository _categoryRepositiry;
-        private readonly List<CategoryModelOutPut> _listCategory;
+        //private readonly List<CategoryModelOutPut> _listCategory;
         public ListCategory(ICategoryRepository categoryRepositiry, INotification notification) : base(notification)
         {
             _categoryRepositiry = categoryRepositiry;
-            _listCategory = new List<CategoryModelOutPut>();
+            //_listCategory = new List<CategoryModelOutPut>();
         }
 
         public async Task<Result<ListCategoryOutPut>> Handle(ListCategoryInPut request, CancellationToken cancellation)
         {
+            
             var paginate = new PaginatedInPut(
                 request.Page, 
                 request.PerPage, 

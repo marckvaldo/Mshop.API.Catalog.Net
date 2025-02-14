@@ -2,7 +2,7 @@
 using System.Text;
 using System.Text.Json;
 
-namespace MShop.Catalog.E2ETest.Base
+namespace Mshop.Catalog.E2ETest.Base
 {
     public class APIClient
     {

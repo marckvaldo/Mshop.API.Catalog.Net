@@ -3,16 +3,16 @@ using Mshop.Application.UseCases.Cache.Products.GetProductCache;
 using Mshop.Application.UseCases.Cache.Products.ListProductByCategoryCache;
 using Mshop.Application.UseCases.Cache.Products.ListProductCache;
 using Mshop.Application.UseCases.Cache.Products.ListProductsPromotionCache;
+using Mshop.Catalog.E2ETest.Base;
+using Mshop.Catalog.E2ETests.API.Common;
 using Mshop.Core.Data;
 using Mshop.Infra.Cache.Interface;
 using Mshop.Infra.Cache.StartIndex;
 using Mshop.Infra.Data.Context;
 using Mshop.Infra.Data.Interface;
-using MShop.Catalog.E2ETest.Base;
-using MShop.Catalog.E2ETests.API.Common;
 using StackExchange.Redis;
 
-namespace MShop.Catalog.E2ETests.API.Cache.Product
+namespace Mshop.Catalog.E2ETests.API.Cache.Product
 {
     [Collection("Crud Products Collection")]
     [CollectionDefinition("Crud Products Collection", DisableParallelization = true)]

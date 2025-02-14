@@ -1,5 +1,5 @@
 ﻿using Mshop.Application.UseCases.Category.CreateCategory;
-using MShop.Catalog.E2ETests.Base;
+using Mshop.Catalog.E2ETests.Base;
 
 namespace MShop.Catalog.E2ETests.API.Category
 {

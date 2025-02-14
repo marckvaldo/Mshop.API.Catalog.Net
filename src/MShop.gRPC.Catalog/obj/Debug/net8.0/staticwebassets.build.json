@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "+1oU2VJVFvp6kWIZL+aJqTMrwLUMI4VN6osKz8sb+78=",
+  "Source": "Mshop.gRPC.Catalog",
+  "BasePath": "_content/Mshop.gRPC.Catalog",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}

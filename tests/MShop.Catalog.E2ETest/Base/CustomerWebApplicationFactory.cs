@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
 
-namespace MShop.Catalog.E2ETests.Base
+namespace Mshop.Catalog.E2ETests.Base
 {
     public class CustomerWebApplicationFactory<TStartup> : WebApplicationFactory<TStartup> where TStartup : class
     {

@@ -1,9 +1,9 @@
 ﻿using Mshop.Application.Common;
 using Mshop.Application.UseCases.Images.CreateImage;
+using Mshop.Catalog.E2ETests.Base;
 using Mshop.Core.Test.Common;
-using MShop.Catalog.E2ETests.Base;
 
-namespace MShop.Catalog.E2ETests.API.Images
+namespace Mshop.Catalog.E2ETests.API.Images
 {
     public class ImageAPITestFixture : BaseWebApplication
     {

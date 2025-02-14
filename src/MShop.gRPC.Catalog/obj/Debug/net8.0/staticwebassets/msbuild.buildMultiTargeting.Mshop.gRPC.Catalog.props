@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\Mshop.gRPC.Catalog.props" />
+</Project>

@@ -52,6 +52,7 @@ namespace Mshop.IntegrationTests.Application.UserCases.Product.DeleteProduct
                 _imageRepository, 
                 _notification, 
                 _storageService,
+                _categoryRepository,
                 _unitOfWork);
 
             var OutPut = await useCase.Handle(new ApplicationUseCase.DeleteProductInPut(product.Id), CancellationToken.None);

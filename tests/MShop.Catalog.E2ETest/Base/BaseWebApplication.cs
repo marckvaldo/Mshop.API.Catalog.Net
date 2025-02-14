@@ -3,29 +3,31 @@ using Microsoft.Extensions.DependencyInjection;
 using Mshop.Core.Test.Common;
 using Mshop.Infra.Cache.StartIndex;
 using Mshop.Infra.Data.Context;
-using MShop.Catalog.E2ETest.Base;
-using NRedisStack.RedisStackCommands;
+using Mshop.Catalog.E2ETest.Base;
 using StackExchange.Redis;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace MShop.Catalog.E2ETests.Base
+namespace Mshop.Catalog.E2ETests.Base
 {
     public class BaseWebApplication : BaseFixture
     {
-        protected CustomerWebApplicationFactory<Program> _webApp;
+        protected CustomerWebApplicationFactory<Mshop.API.Catalog.Program> _webApp;
+        protected GrpcWebApplicationFactory<Mshop.gRPC.Catalog.Program> _webAppGrpc;
         protected IServiceProvider _serviceProvider;
         protected HttpClient _httpClient;
         protected APIClient _apiClient;
-        protected BaseWebApplication() : base()
+        protected GrpcClient _grpcClient;
+        protected BaseWebApplication(TypeProjetct typeProjetct = TypeProjetct.Http) : base()
         {
-           _webApp = new CustomerWebApplicationFactory<Program>();
-           _serviceProvider = _webApp.Services.GetRequiredService<IServiceProvider>();
-           _httpClient = _webApp.CreateClient();
-           _apiClient = new APIClient(_httpClient);
+            /*_webApp = new CustomerWebApplicationFactory<Program>();
+            _serviceProvider = _webApp.Services.GetRequiredService<IServiceProvider>();
+            _httpClient = _webApp.CreateClient();
+            _apiClient = new APIClient(_httpClient);*/
+
+            if(typeProjetct == TypeProjetct.Http)
+                BuildWebAplicationAPI().Wait(); 
+
+            if(typeProjetct == TypeProjetct.Grpc)
+                BuildWebAplicationGrpc().Wait();
         }
 
         protected async Task DeleteDataBase(RepositoryDbContext dbContext, bool disposeDBContext = true)
@@ -60,6 +62,22 @@ namespace MShop.Catalog.E2ETests.Base
         protected async Task CreateIndexCahce(StartIndex startIndex)
         {
             await startIndex.CreateIndex();
+        }
+
+        protected async Task BuildWebAplicationAPI()
+        {
+            _webApp = new CustomerWebApplicationFactory<Mshop.API.Catalog.Program>();
+            _serviceProvider = _webApp.Services.GetRequiredService<IServiceProvider>();
+            _httpClient = _webApp.CreateClient();
+            _apiClient = new APIClient(_httpClient);
+        }
+
+        protected async Task BuildWebAplicationGrpc()
+        {
+            _webAppGrpc = new GrpcWebApplicationFactory<Mshop.gRPC.Catalog.Program>();
+            _serviceProvider = _webAppGrpc.Services.GetRequiredService<IServiceProvider>();
+            _httpClient = _webAppGrpc.CreateClient();
+            _grpcClient = new GrpcClient(_httpClient);
         }
     }
 

@@ -1,14 +1,14 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Mshop.Application.UseCases.Product.Common;
 using Mshop.Application.UseCases.Product.ListProducts;
+using Mshop.Catalog.E2ETest.Base;
+using Mshop.Catalog.E2ETests.API.Common;
 using Mshop.Core.Data;
 using Mshop.Infra.Cache.Interface;
 using Mshop.Infra.Data.Context;
 using Mshop.Infra.Data.Interface;
-using MShop.Catalog.E2ETest.Base;
-using MShop.Catalog.E2ETests.API.Common;
 
-namespace MShop.Catalog.E2ETests.API.Product
+namespace Mshop.Catalog.E2ETests.API.Product
 {
     [Collection("Crud Products Collection")]
     [CollectionDefinition("Crud Products Collection", DisableParallelization = true)]

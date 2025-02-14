@@ -1,13 +1,12 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Mshop.Application.UseCases.Images.Common;
+using Mshop.Catalog.E2ETest.Base;
+using Mshop.Catalog.E2ETests.API.Common;
 using Mshop.Core.Data;
 using Mshop.Infra.Data.Context;
 using Mshop.Infra.Data.Interface;
-using MShop.Catalog.E2ETest.Base;
-using MShop.Catalog.E2ETests.API.Common;
-using MShop.Catalog.E2ETests.API.Common;
 
-namespace MShop.Catalog.E2ETests.API.Images
+namespace Mshop.Catalog.E2ETests.API.Images
 {
     [Collection("Crud Image Collection")]
     [CollectionDefinition("Crud Image Collection", DisableParallelization = true)]

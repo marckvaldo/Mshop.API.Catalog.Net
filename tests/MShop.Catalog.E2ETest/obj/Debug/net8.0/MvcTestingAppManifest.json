@@ -1,9 +1,10 @@
 {
-  "Mshop.API.Catalog, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "C:\\Users\\IQ SISTEMAS\\Documents\\mShopping\\new\\Mshopping\\MShop.API.Catalog\\src\\Mshop.API.Catalog",
+  "Mshop.API.Catalog": "C:\\Users\\IQ SISTEMAS\\Documents\\mShopping\\new\\Mshopping\\MShop.API.Catalog\\src\\Mshop.API.Catalog",
   "Mshop.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "C:\\Users\\IQ SISTEMAS\\Documents\\mShopping\\new\\Mshopping\\MShop.API.Catalog\\src\\Mshop.Application",
   "Mshop.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "C:\\Users\\IQ SISTEMAS\\Documents\\mShopping\\new\\Mshopping\\MShop.API.Catalog\\src\\Mshop.Core",
-  "Mshop.Core.Test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "C:\\Users\\IQ SISTEMAS\\Documents\\mShopping\\new\\Mshopping\\MShop.API.Catalog\\tests\\Core.Test",
+  "Mshop.Core.Test": "C:\\Users\\IQ SISTEMAS\\Documents\\mShopping\\new\\Mshopping\\MShop.API.Catalog\\tests\\Core.Test",
   "Mshop.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "C:\\Users\\IQ SISTEMAS\\Documents\\mShopping\\new\\Mshopping\\MShop.API.Catalog\\src\\Mshop.Domain",
+  "Mshop.gRPC.Catalog, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "C:\\Users\\IQ SISTEMAS\\Documents\\mShopping\\new\\Mshopping\\MShop.API.Catalog\\src\\MShop.gRPC.Catalog",
   "Mshop.Infra.Cache, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "C:\\Users\\IQ SISTEMAS\\Documents\\mShopping\\new\\Mshopping\\MShop.API.Catalog\\src\\Mshop.Infra.Cache",
   "Mshop.Infra.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "C:\\Users\\IQ SISTEMAS\\Documents\\mShopping\\new\\Mshopping\\MShop.API.Catalog\\src\\Mshop.Infra.Data"
 }

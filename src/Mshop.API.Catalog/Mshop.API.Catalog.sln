@@ -35,7 +35,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mshop.Core.Test", "..\..\te
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mshop.IntegrationTests", "..\..\tests\Mshop.IntegrationTest\Mshop.IntegrationTests.csproj", "{E865B79C-6B00-4733-B915-96778D553F23}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MShop.Catalog.E2ETests", "..\..\tests\MShop.Catalog.E2ETest\MShop.Catalog.E2ETests.csproj", "{1DF8FE75-D9AC-4B5A-93E2-B81B9629755D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mshop.Catalog.E2ETests", "..\..\tests\MShop.Catalog.E2ETest\Mshop.Catalog.E2ETests.csproj", "{1DF8FE75-D9AC-4B5A-93E2-B81B9629755D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mshop.gRPC.Catalog", "..\MShop.gRPC.Catalog\Mshop.gRPC.Catalog.csproj", "{566EF520-FE04-42A6-8E84-09CC812E50D7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mshop.API.GraphQL", "..\Mshop.GraphQL.API\Mshop.API.GraphQL.csproj", "{7BF4D45E-D132-417A-A2F0-BC36CAF22BC2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -83,6 +87,14 @@ Global
 		{1DF8FE75-D9AC-4B5A-93E2-B81B9629755D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1DF8FE75-D9AC-4B5A-93E2-B81B9629755D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1DF8FE75-D9AC-4B5A-93E2-B81B9629755D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{566EF520-FE04-42A6-8E84-09CC812E50D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{566EF520-FE04-42A6-8E84-09CC812E50D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{566EF520-FE04-42A6-8E84-09CC812E50D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{566EF520-FE04-42A6-8E84-09CC812E50D7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7BF4D45E-D132-417A-A2F0-BC36CAF22BC2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7BF4D45E-D132-417A-A2F0-BC36CAF22BC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7BF4D45E-D132-417A-A2F0-BC36CAF22BC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7BF4D45E-D132-417A-A2F0-BC36CAF22BC2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -101,5 +113,7 @@ Global
 		{753C047A-D3EB-4104-817C-CCE754DDE525} = {9EB94BE9-1AA9-4832-96BC-54CB19A60094}
 		{E865B79C-6B00-4733-B915-96778D553F23} = {9EB94BE9-1AA9-4832-96BC-54CB19A60094}
 		{1DF8FE75-D9AC-4B5A-93E2-B81B9629755D} = {9EB94BE9-1AA9-4832-96BC-54CB19A60094}
+		{566EF520-FE04-42A6-8E84-09CC812E50D7} = {388BECB3-F455-41D6-AF09-F0CB060540B5}
+		{7BF4D45E-D132-417A-A2F0-BC36CAF22BC2} = {388BECB3-F455-41D6-AF09-F0CB060540B5}
 	EndGlobalSection
 EndGlobal

@@ -1,4 +1,4 @@
-﻿namespace MShop.Catalog.E2ETests.API.Common
+﻿namespace Mshop.Catalog.E2ETests.API.Common
 {
     public class CustomResponse<TResult>
     {

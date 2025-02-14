@@ -17,30 +17,33 @@ namespace Mshop.Application.UseCases.Product.DeleteProduct
 
         public async void DeleteProduct()
         {
-            var repository = new Mock<IProductRepository>();
+            var productRepository = new Mock<IProductRepository>();
             var notification = new Mock<INotification>();
             var repositoryImage = new Mock<IImageRepository>();
             var storageService = new Mock<IStorageService>();
+            var categoryRepository = new Mock<ICategoryRepository>();
             var unitOfWork = new Mock<IUnitOfWork>();
 
             var category = FakerCategory();
             var productFaker = FakerProduct(category);
 
-            repository.Setup(repository => repository.GetById(It.IsAny<Guid>())).ReturnsAsync(productFaker);
+            productRepository.Setup(repository => repository.GetById(It.IsAny<Guid>())).ReturnsAsync(productFaker);
+            categoryRepository.Setup(repository => repository.GetById(It.IsAny<Guid>())).ReturnsAsync(category);
 
             var guid = productFaker.Id;
 
             var product = new useCase.DeleteProduct(
-                repository.Object, 
+                productRepository.Object, 
                 repositoryImage.Object, 
                 notification.Object, 
                 storageService.Object,
+                categoryRepository.Object,
                 unitOfWork.Object);
 
             var outPut = await product.Handle(new useCase.DeleteProductInPut(guid), CancellationToken.None);
 
-            repository.Verify(r => r.DeleteById(It.IsAny<DomainEntity.Product>(), CancellationToken.None),Times.Once);
-            repository.Verify(r => r.GetById(It.IsAny<Guid>()), Times.Once);
+            productRepository.Verify(r => r.DeleteById(It.IsAny<DomainEntity.Product>(), CancellationToken.None),Times.Once);
+            productRepository.Verify(r => r.GetById(It.IsAny<Guid>()), Times.Once);
             notification.Verify(n => n.AddNotifications(It.IsAny<string>()), Times.Never);
             unitOfWork.Verify(r => r.CommitAsync(It.IsAny<CancellationToken>()), Times.Once);
 
@@ -58,13 +61,14 @@ namespace Mshop.Application.UseCases.Product.DeleteProduct
             var repository = new Mock<IProductRepository>();
             var notification = new Mock<INotification>();
             var repositoryImage = new Mock<IImageRepository>();
+            var categoryRespository = new Mock<ICategoryRepository>();
             var storageService = new Mock<IStorageService>();
             var unitOfWork = new Mock<IUnitOfWork>();
 
             var category = FakerCategory();
             var productFaker = FakerProduct(category);
 
-            //repository.Setup(r => r.GetById(It.IsAny<Guid>())).ThrowsAsync(new NotFoundException("your search returned null"));
+            //productRepository.Setup(r => r.GetById(It.IsAny<Guid>())).ThrowsAsync(new NotFoundException("your search returned null"));
             repository.Setup(r => r.GetById(It.IsAny<Guid>())).ReturnsAsync((DomainEntity.Product?)null);
 
             var product = new useCase.DeleteProduct(
@@ -72,6 +76,7 @@ namespace Mshop.Application.UseCases.Product.DeleteProduct
                 repositoryImage.Object, 
                 notification.Object, 
                 storageService.Object,
+                categoryRespository.Object,
                 unitOfWork.Object);
 
             var guid = productFaker.Id;

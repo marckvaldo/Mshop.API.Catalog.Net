@@ -14,6 +14,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddConfigurationController()
     .AddConfigurationModelState()
+    .AddCircuitOptions()
     .AddDataBaseAndRepository(builder.Configuration)
     .AddCache(builder.Configuration)
     .AddRepositoryCache()
@@ -40,5 +41,10 @@ app.MapControllers();
 
 app.Run();
 
-public partial class Program
-{ }
+namespace Mshop.API.Catalog
+{
+    public partial class Program
+    {
+
+    }
+}

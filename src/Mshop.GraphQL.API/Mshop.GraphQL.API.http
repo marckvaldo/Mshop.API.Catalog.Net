@@ -1,0 +1,6 @@
+@Mshop.GraphQL.API_HostAddress = http://localhost:5251
+
+GET {{Mshop.GraphQL.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

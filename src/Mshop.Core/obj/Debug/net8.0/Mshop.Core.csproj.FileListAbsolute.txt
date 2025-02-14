@@ -1,13 +1,13 @@
+C:\Users\IQ SISTEMAS\Documents\mShopping\new\Mshopping\MShop.API.Catalog\src\Mshop.Core\bin\Debug\net8.0\Mshop.Core.deps.json
+C:\Users\IQ SISTEMAS\Documents\mShopping\new\Mshopping\MShop.API.Catalog\src\Mshop.Core\bin\Debug\net8.0\Mshop.Core.dll
+C:\Users\IQ SISTEMAS\Documents\mShopping\new\Mshopping\MShop.API.Catalog\src\Mshop.Core\bin\Debug\net8.0\Mshop.Core.pdb
 C:\Users\IQ SISTEMAS\Documents\mShopping\new\Mshopping\MShop.API.Catalog\src\Mshop.Core\obj\Debug\net8.0\Mshop.Core.csproj.AssemblyReference.cache
 C:\Users\IQ SISTEMAS\Documents\mShopping\new\Mshopping\MShop.API.Catalog\src\Mshop.Core\obj\Debug\net8.0\Mshop.Core.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\IQ SISTEMAS\Documents\mShopping\new\Mshopping\MShop.API.Catalog\src\Mshop.Core\obj\Debug\net8.0\Mshop.Core.AssemblyInfoInputs.cache
 C:\Users\IQ SISTEMAS\Documents\mShopping\new\Mshopping\MShop.API.Catalog\src\Mshop.Core\obj\Debug\net8.0\Mshop.Core.AssemblyInfo.cs
 C:\Users\IQ SISTEMAS\Documents\mShopping\new\Mshopping\MShop.API.Catalog\src\Mshop.Core\obj\Debug\net8.0\Mshop.Core.csproj.CoreCompileInputs.cache
-C:\Users\IQ SISTEMAS\Documents\mShopping\new\Mshopping\MShop.API.Catalog\src\Mshop.Core\bin\Debug\net8.0\Mshop.Core.deps.json
-C:\Users\IQ SISTEMAS\Documents\mShopping\new\Mshopping\MShop.API.Catalog\src\Mshop.Core\bin\Debug\net8.0\Mshop.Core.dll
-C:\Users\IQ SISTEMAS\Documents\mShopping\new\Mshopping\MShop.API.Catalog\src\Mshop.Core\bin\Debug\net8.0\Mshop.Core.pdb
+C:\Users\IQ SISTEMAS\Documents\mShopping\new\Mshopping\MShop.API.Catalog\src\Mshop.Core\obj\Debug\net8.0\Mshop.Core.sourcelink.json
 C:\Users\IQ SISTEMAS\Documents\mShopping\new\Mshopping\MShop.API.Catalog\src\Mshop.Core\obj\Debug\net8.0\Mshop.Core.dll
 C:\Users\IQ SISTEMAS\Documents\mShopping\new\Mshopping\MShop.API.Catalog\src\Mshop.Core\obj\Debug\net8.0\refint\Mshop.Core.dll
 C:\Users\IQ SISTEMAS\Documents\mShopping\new\Mshopping\MShop.API.Catalog\src\Mshop.Core\obj\Debug\net8.0\Mshop.Core.pdb
 C:\Users\IQ SISTEMAS\Documents\mShopping\new\Mshopping\MShop.API.Catalog\src\Mshop.Core\obj\Debug\net8.0\ref\Mshop.Core.dll
-C:\Users\IQ SISTEMAS\Documents\mShopping\new\Mshopping\MShop.API.Catalog\src\Mshop.Core\obj\Debug\net8.0\Mshop.Core.sourcelink.json

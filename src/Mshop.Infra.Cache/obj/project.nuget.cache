@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "CwBbK1ZK8BA=",
+  "dgSpecHash": "5dgHY5XWhHY=",
   "success": true,
   "projectFilePath": "C:\\Users\\IQ SISTEMAS\\Documents\\mShopping\\new\\Mshopping\\MShop.API.Catalog\\src\\Mshop.Infra.Cache\\Mshop.Infra.Cache.csproj",
   "expectedPackageFiles": [
@@ -14,6 +14,8 @@
     "C:\\Users\\IQ SISTEMAS\\.nuget\\packages\\nettopologysuite\\2.5.0\\nettopologysuite.2.5.0.nupkg.sha512",
     "C:\\Users\\IQ SISTEMAS\\.nuget\\packages\\nredisstack\\0.13.1\\nredisstack.0.13.1.nupkg.sha512",
     "C:\\Users\\IQ SISTEMAS\\.nuget\\packages\\pipelines.sockets.unofficial\\2.2.8\\pipelines.sockets.unofficial.2.2.8.nupkg.sha512",
+    "C:\\Users\\IQ SISTEMAS\\.nuget\\packages\\polly\\8.5.2\\polly.8.5.2.nupkg.sha512",
+    "C:\\Users\\IQ SISTEMAS\\.nuget\\packages\\polly.core\\8.5.2\\polly.core.8.5.2.nupkg.sha512",
     "C:\\Users\\IQ SISTEMAS\\.nuget\\packages\\stackexchange.redis\\2.8.22\\stackexchange.redis.2.8.22.nupkg.sha512",
     "C:\\Users\\IQ SISTEMAS\\.nuget\\packages\\system.io.pipelines\\5.0.1\\system.io.pipelines.5.0.1.nupkg.sha512",
     "C:\\Users\\IQ SISTEMAS\\.nuget\\packages\\system.memory\\4.5.4\\system.memory.4.5.4.nupkg.sha512"

@@ -1,11 +1,17 @@
-﻿using Mshop.Core.Paginated;
+﻿using Microsoft.AspNetCore.Mvc.Filters;
+using Mshop.Core.Paginated;
 using Mshop.Domain.Entity;
+using Mshop.Infra.Cache.CircuitBreakerPolicy;
 using Mshop.Infra.Cache.Interface;
 using Mshop.Infra.Cache.StartIndex;
 using NRedisStack;
 using NRedisStack.RedisStackCommands;
 using NRedisStack.Search;
+using Polly;
+using Polly.CircuitBreaker;
 using StackExchange.Redis;
+using System.Threading;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Mshop.Infra.Cache.Respository
 {
@@ -16,14 +22,27 @@ namespace Mshop.Infra.Cache.Respository
         private readonly string _indexName = "CategoryIndex";
         private readonly string _keyPrefix = "Category:";
 
-        public CategoryCacheRepository(IConnectionMultiplexer database)
+        private readonly ICircuitBreaker _circuitBreaker;
+
+        public CategoryCacheRepository(IConnectionMultiplexer database, ICircuitBreaker circuitBreaker)
         {
             _database = database.GetDatabase();
             _search = _database.FT();
 
             _indexName = $"{IndexName.Category}Index";
             _keyPrefix = $"{IndexName.Category}:";
+
+            _circuitBreaker = circuitBreaker;
+
+            circuitBreaker.Start(
+            ex =>
+            {
+                return ex is RedisConnectionException || ex is TimeoutException || ex is Exception;
+            }, 
+            1, 
+            TimeSpan.FromMinutes(1));
         }
+
         public async Task<bool> Create(Category entity, DateTime? ExpirationDate, CancellationToken cancellationToken)
         {
             var key = $"{_keyPrefix}{entity.Id}";
@@ -51,10 +70,29 @@ namespace Mshop.Infra.Cache.Respository
         }
         public async Task<PaginatedOutPut<Category>>? FilterPaginated(PaginatedInPut input, CancellationToken cancellationToken)
         {
+            try
+            {
+                return await _circuitBreaker.ExecuteActionAsync(async () => await SearchPaginate(input));              
+            }
+            catch(RedisConnectionException erro)
+            {
+                Console.WriteLine($"CircuitBreaker ativado devido a: {erro.Message}");
+                return null;
+            }
+            catch (Exception erro)
+            {
+                Console.WriteLine($"CircuitBreaker ativado devido a: {erro.Message}");
+                return null;
+            }
+       
+        }
+
+        private async Task<PaginatedOutPut<Category>>? SearchPaginate(PaginatedInPut input)
+        {
             var offset = (input.Page - 1) * input.PerPage;
 
-            var query = string.IsNullOrEmpty(input.Search) 
-                ? new Query("*") 
+            var query = string.IsNullOrEmpty(input.Search)
+                ? new Query("*")
                 : new Query($"@Name:{input.Search}*");
 
 
@@ -77,7 +115,27 @@ namespace Mshop.Infra.Cache.Respository
                 totalItems,
                 cartegory);
         }
+
         public async Task<Category?> GetById(Guid id)
+        {
+
+            try
+            {
+                return await _circuitBreaker.ExecuteActionAsync( async () => await FindById(id));
+            }
+            catch(RedisConnectionException erro)
+            {
+                Console.WriteLine($"CircuitBreaker ativado devido a: {erro.Message}");
+                return null;
+            }
+            catch(Exception erro)
+            {
+                Console.WriteLine($"CircuitBreaker ativado devido a: {erro.Message}");
+                return null;
+            }
+        }
+
+        private async Task<Category?> FindById(Guid id)
         {
             var key = $"{_keyPrefix}{id}";
             var hash = await _database.HashGetAllAsync(key);
@@ -87,6 +145,7 @@ namespace Mshop.Infra.Cache.Respository
 
             return RedisToCategory(hash);
         }
+
         public async Task<bool> Update(Category entity, DateTime? ExpirationDate, CancellationToken cancellationToken)
         {
             return await Create(entity, ExpirationDate, cancellationToken);

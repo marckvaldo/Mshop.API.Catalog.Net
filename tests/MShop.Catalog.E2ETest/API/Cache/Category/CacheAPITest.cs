@@ -1,18 +1,17 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Mshop.Application.UseCases.Cache.Category.ListCategoriesCache;
 using Mshop.Application.UseCases.Category.Common;
-using Mshop.Application.UseCases.Category.ListCategories;
+using Mshop.Catalog.E2ETest.Base;
 using Mshop.Core.Data;
 using Mshop.Core.Enum.Paginated;
 using Mshop.Infra.Cache.Interface;
 using Mshop.Infra.Cache.StartIndex;
 using Mshop.Infra.Data.Context;
 using Mshop.Infra.Data.Interface;
-using MShop.Catalog.E2ETest.Base;
-using MShop.Catalog.E2ETests.API.Common;
+using Mshop.Catalog.E2ETests.API.Common;
 using StackExchange.Redis;
 
-namespace MShop.Catalog.E2ETests.API.Cache.Category
+namespace Mshop.Catalog.E2ETests.API.Cache.Category
 {
     public class CacheAPITest : CacheAPITestFixture
     {

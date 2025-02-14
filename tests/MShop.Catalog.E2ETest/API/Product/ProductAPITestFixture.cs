@@ -1,11 +1,11 @@
 ﻿using Mshop.Application.UseCases.Product.CreateProducts;
 using Mshop.Application.UseCases.Product.UpdateProduct;
+using Mshop.Catalog.E2ETests.Base;
 using Entity = Mshop.Domain.Entity;
-using MShop.Catalog.E2ETests.Base;
 
 
 
-namespace MShop.Catalog.E2ETests.API.Product
+namespace Mshop.Catalog.E2ETests.API.Product
 {
     public class ProductAPITestFixture : BaseWebApplication
     {
