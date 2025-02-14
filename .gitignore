@@ -27,3 +27,6 @@
 
  src/Mshop.Application/bin/*
  src/Mshop.Application/obj/*
+
+ src/Mshop.API.Catalog/obj/*
+ src/Mshop.API.Catalog/bin/*
