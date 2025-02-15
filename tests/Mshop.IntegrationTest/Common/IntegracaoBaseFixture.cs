@@ -36,7 +36,8 @@ namespace Mshop.IntegrationTests.Common
                 .AddInMemoryCollection(inMemorySettings)
                 .Build();
 
-            service.AddDataBaseAndRepository(configuration)
+            service.AddCircuitOptions()
+                .AddDataBaseAndRepository(configuration)
                 .AddCache(configuration)
                 .AddRepositoryCache()
                 .AddUseCase();

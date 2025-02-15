@@ -129,13 +129,13 @@ namespace Mshop.Catalog.E2ETests.API.Cache.Product
             await _unitOfWork.CommitAsync();
 
 
-            var productCacheNull = await _productCacheRepository.FilterPaginated( 
+            var productCacheNull = await _productCacheRepository.FilterPaginatedQuery( 
                 new Mshop.Core.Paginated.PaginatedInPut(
                     page, 
                     perPage, 
                     "", 
                     "", 
-                    Mshop.Core.Enum.Paginated.SearchOrder.Desc), CancellationToken.None);
+                    Mshop.Core.Enum.Paginated.SearchOrder.Desc),Guid.Empty, false, CancellationToken.None);
 
 
             var request = new ListProductCacheInPut(page, perPage, "", "", Mshop.Core.Enum.Paginated.SearchOrder.Desc, false);
@@ -143,13 +143,13 @@ namespace Mshop.Catalog.E2ETests.API.Cache.Product
 
            Thread.Sleep(2000);
 
-            var productCacheNotNull = await _productCacheRepository.FilterPaginated(
+            var productCacheNotNull = await _productCacheRepository.FilterPaginatedQuery(
                 new Mshop.Core.Paginated.PaginatedInPut(
                     page,
                     perPage,
                     "",
                     "",
-                    Mshop.Core.Enum.Paginated.SearchOrder.Desc), CancellationToken.None);
+                    Mshop.Core.Enum.Paginated.SearchOrder.Desc), Guid.Empty, false, CancellationToken.None);
 
 
             if(expectedQuantityItems == 0)
@@ -200,13 +200,13 @@ namespace Mshop.Catalog.E2ETests.API.Cache.Product
             await _unitOfWork.CommitAsync();
 
 
-            var productCacheNull = await _productCacheRepository.FilterPaginated(
+            var productCacheNull = await _productCacheRepository.FilterPaginatedQuery(
                 new Mshop.Core.Paginated.PaginatedInPut(
                     page,
                     perPage,
                     "",
                     "",
-                    Mshop.Core.Enum.Paginated.SearchOrder.Desc), CancellationToken.None);
+                    Mshop.Core.Enum.Paginated.SearchOrder.Desc), Guid.Empty, false, CancellationToken.None);
 
 
             var request = new ListProductByCategoryCacheInPut(page, perPage, "", "", Mshop.Core.Enum.Paginated.SearchOrder.Desc, category.Id);
@@ -214,13 +214,13 @@ namespace Mshop.Catalog.E2ETests.API.Cache.Product
 
             Thread.Sleep(2000);
 
-            var productCacheNotNull = await _productCacheRepository.FilterPaginated(
+            var productCacheNotNull = await _productCacheRepository.FilterPaginatedQuery(
                 new Mshop.Core.Paginated.PaginatedInPut(
                     page,
                     perPage,
                     "",
                     "",
-                    Mshop.Core.Enum.Paginated.SearchOrder.Desc), CancellationToken.None);
+                    Mshop.Core.Enum.Paginated.SearchOrder.Desc), Guid.Empty, false, CancellationToken.None);
 
 
             if (expectedQuantityItems == 0)
@@ -271,27 +271,27 @@ namespace Mshop.Catalog.E2ETests.API.Cache.Product
             await _unitOfWork.CommitAsync();
 
 
-            var productCacheNull = await _productCacheRepository.FilterPaginated(
+            var productCacheNull = await _productCacheRepository.FilterPaginatedQuery(
                 new Mshop.Core.Paginated.PaginatedInPut(
                     page,
                     perPage,
                     "",
                     "",
-                    Mshop.Core.Enum.Paginated.SearchOrder.Desc), CancellationToken.None);
+                    Mshop.Core.Enum.Paginated.SearchOrder.Desc),Guid.Empty, false, CancellationToken.None);
 
 
-            var request = new ListProductPromotionCacheInPut(page, perPage, "", "", Mshop.Core.Enum.Paginated.SearchOrder.Desc, true);
-            var (response, outPut) = await _apiClient.Get<CustomResponse<ListProductPromotionCacheOutPut>>($"{Configuration.URL_API_CACHE}list-products-promotion-cache/", request);
+            var request = new ListProductPromotionCacheInPut(page, perPage, "", "", Mshop.Core.Enum.Paginated.SearchOrder.Desc);
+            var (response, outPut) = await _apiClient.Get<CustomResponse<ListProductPromotionCacheOutPut>>($"{Configuration.URL_API_CACHE}list-products-onlyPromotion-cache/", request);
 
             Thread.Sleep(2000);
 
-            var productCacheNotNull = await _productCacheRepository.FilterPaginated(
+            var productCacheNotNull = await _productCacheRepository.FilterPaginatedQuery(
                 new Mshop.Core.Paginated.PaginatedInPut(
                     page,
                     perPage,
                     "",
                     "",
-                    Mshop.Core.Enum.Paginated.SearchOrder.Desc), CancellationToken.None);
+                    Mshop.Core.Enum.Paginated.SearchOrder.Desc), Guid.Empty, false, CancellationToken.None);
 
 
             if (expectedQuantityItems == 0)

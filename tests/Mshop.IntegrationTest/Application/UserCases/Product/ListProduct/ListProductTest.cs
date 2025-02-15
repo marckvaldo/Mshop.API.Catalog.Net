@@ -58,7 +58,7 @@ namespace Mshop.IntegrationTests.Application.UserCases.Product.ListProduct
                             perPage:5,
                             search: "",
                             sort: "name",
-                            dir: Mshop.Core.Enum.Paginated.SearchOrder.Asc
+                            dir: Mshop.Core.Enum.Paginated.SearchOrder.Asc,false,Guid.Empty
                             );
 
             var outPut = await useCase.Handle(request, CancellationToken.None);

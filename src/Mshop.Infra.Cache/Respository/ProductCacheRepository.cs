@@ -2,12 +2,14 @@
 using Mshop.Core.Common;
 using Mshop.Core.Paginated;
 using Mshop.Domain.Entity;
+using Mshop.Infra.Cache.CircuitBreakerPolicy;
 using Mshop.Infra.Cache.Interface;
 using Mshop.Infra.Cache.StartIndex;
 using NRedisStack;
 using NRedisStack.RedisStackCommands;
 using NRedisStack.Search;
 using StackExchange.Redis;
+using System.Text;
 
 namespace Mshop.Infra.Cache.Respository
 {
@@ -19,13 +21,26 @@ namespace Mshop.Infra.Cache.Respository
         private readonly string _indexName = "ProductIndex";
         private readonly string _keyPrefix = "Product:";
 
-        public ProductCacheRepository(IConnectionMultiplexer database)
+        private readonly ICircuitBreaker _circuitBreaker;
+
+        public ProductCacheRepository(IConnectionMultiplexer database, ICircuitBreaker circuitBreaker)
         {
             _database = database.GetDatabase();
             _search = _database.FT();
 
             _indexName = $"{IndexName.Product}Index";
             _keyPrefix = $"{IndexName.Product}:";
+
+            _circuitBreaker = circuitBreaker;
+
+            circuitBreaker.Start(
+            ex =>
+            {
+                return ex is RedisConnectionException || ex is TimeoutException || ex is Exception;
+            },
+            1,
+            TimeSpan.FromMinutes(1));
+
         }
         public async Task<bool> Create(Product entity, DateTime? ExpirationDate, CancellationToken cancellationToken)
         {
@@ -59,13 +74,67 @@ namespace Mshop.Infra.Cache.Respository
             var key = $"{_keyPrefix}{entity.Id.ToString()}";
             return await _database.KeyDeleteAsync(key);
         }
-        public async Task<PaginatedOutPut<Product>>? FilterPaginated(PaginatedInPut input, CancellationToken cancellationToken)
+        public Task<PaginatedOutPut<Product>>? FilterPaginated(PaginatedInPut input, CancellationToken cancellationToken)
         {
+            throw new NotImplementedException();
+        }
+        public async Task<PaginatedOutPut<Product>>? FilterPaginatedQuery(PaginatedInPut input, Guid categoryId, bool onlyPromotion, CancellationToken cancellationToken)
+        {
+            try
+            {
+                return await _circuitBreaker.ExecuteActionAsync(async () => await SearchProducts(input, categoryId, onlyPromotion));
+            }
+            catch (RedisConnectionException erro)
+            {
+                Console.WriteLine($"CircuitBreaker ativado devido a: {erro.Message}");
+                return null;
+            }
+            catch (Exception erro)
+            {
+                Console.WriteLine($"CircuitBreaker ativado devido a: {erro.Message}");
+                return null;
+            }
+        }
+
+        private async Task<PaginatedOutPut<Product>>? SearchProducts(PaginatedInPut input, Guid categoryId, bool onlyPromotion)
+        {
+            //FT.SEARCH "productsIndex" "@Name: @IsSale:{0} @CategoryId:{117e165769044bd0add3fffd8466cd03}"
+
             var offset = (input.Page - 1) * input.PerPage;
 
-            var query = string.IsNullOrEmpty(input.Search)
+            var Id = Helpers.ClearString(categoryId.ToString());
+
+            var queryBuilder = new StringBuilder();
+
+            if (string.IsNullOrEmpty(input.Search))
+                queryBuilder.Append($"@Name: ");
+            else
+                queryBuilder.Append($"@Name:{input.Search}*");
+
+            if (onlyPromotion)
+            {
+                if (queryBuilder.Length > 0) queryBuilder.Append(" ");
+                queryBuilder.Append($"@IsSale:{{1}}");
+            }
+
+            if (categoryId != Guid.Empty)
+            {
+                if (queryBuilder.Length > 0) queryBuilder.Append(" ");
+                queryBuilder.Append($"@CategoryId:{{{Id}}}");
+            }
+
+            if (!onlyPromotion && categoryId == Guid.Empty && string.IsNullOrEmpty(input.Search))
+            {
+                queryBuilder.Clear();
+                queryBuilder.Append("*");
+            }
+
+            /*var query = string.IsNullOrEmpty(input.Search)
                 ? new Query("*")
-                : new Query($"@Name:{input.Search}*");
+                : new Query($"@Name:{input.Search}*");*/
+
+            string querystring = queryBuilder.ToString();
+            var query = new Query(querystring);
 
             // Obter o total de resultados sem paginação
             var totalResult = await _search.SearchAsync(_indexName, query);
@@ -85,11 +154,14 @@ namespace Mshop.Infra.Cache.Respository
                 totalItems,
                 products);
         }
+
+
         public async Task<PaginatedOutPut<Product>>? FilterPaginatedPromotion(PaginatedInPut input, CancellationToken cancellationToken)
         {
             var offset = (input.Page - 1) * input.PerPage;
 
             var query = $"@Name:{input.Search}* @IsSale:{{{1}}}";
+
             if (string.IsNullOrWhiteSpace(input.Search))
                 query = $"@IsSale:{{{1}}}";
 
@@ -140,14 +212,34 @@ namespace Mshop.Infra.Cache.Respository
         }
         public async Task<Product?> GetById(Guid id)
         {
+            try
+            {
+                return await _circuitBreaker.ExecuteActionAsync(async () => await SearchById(id));
+            }
+            catch (RedisConnectionException erro)
+            {
+                Console.WriteLine($"CircuitBreaker ativado devido a: {erro.Message}");
+                return null;
+            }
+            catch (Exception erro)
+            {
+                Console.WriteLine($"CircuitBreaker ativado devido a: {erro.Message}");
+                return null;
+            }
+
+        }
+
+        private async Task<Product?> SearchById(Guid id)
+        {
             var key = $"{_keyPrefix}{id}";
             var hash = await _database.HashGetAllAsync(key);
 
-            if (hash.Length == 0) 
+            if (hash.Length == 0)
                 return null;
 
             return RedisToProduct(hash);
         }
+
         public async Task<bool> Update(Product entity, DateTime? ExpirationDate, CancellationToken cancellationToken)
         {
             return await Create(entity, ExpirationDate, cancellationToken);
@@ -254,5 +346,6 @@ namespace Mshop.Infra.Cache.Respository
 
         }
 
+        
     }
 }

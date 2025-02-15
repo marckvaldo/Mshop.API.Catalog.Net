@@ -13,5 +13,7 @@ namespace Mshop.Catalog.E2ETests.API.Cache.Category
                 Name = FakerCategory().Name
             };
         }
+
+       
     }
 }

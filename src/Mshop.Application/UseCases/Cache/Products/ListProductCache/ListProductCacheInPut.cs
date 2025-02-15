@@ -8,10 +8,13 @@ namespace Mshop.Application.UseCases.Cache.Products.ListProductCache
 {
     public class ListProductCacheInPut : PaginatedInPut, IRequest<Result<ListProductCacheOutPut>>
     {
-        public bool onlyProductsOnSale = false;
-        public ListProductCacheInPut(int page, int perPage, string search, string sort, SearchOrder dir, bool onlyProductsOnSale) : base(page, perPage, search, sort, dir)
+        public bool onlyPromotion = false;
+        public Guid categoryId = Guid.Empty;
+        public ListProductCacheInPut(int page, int perPage, string search, string sort, SearchOrder dir, bool onlyPromotion, Guid categoryId = default) 
+            : base(page, perPage, search, sort, dir)
         {
-            this.onlyProductsOnSale = onlyProductsOnSale;
+            this.onlyPromotion = onlyPromotion;
+            this.categoryId = categoryId;
         }
 
         public ListProductCacheInPut() : base(1, 15, "", "", SearchOrder.Asc)

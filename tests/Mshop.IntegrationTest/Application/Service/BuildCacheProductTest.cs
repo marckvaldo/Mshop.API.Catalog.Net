@@ -55,13 +55,13 @@ namespace Mshop.IntegrationTests.Application.Service
             var service = new ServiceBuilder.BuildCacheProduct(_serviceProvider);
             await service.Handle();
 
-            var products = await _productCacheRepository.FilterPaginated(
+            var products = await _productCacheRepository.FilterPaginatedQuery(
                                         new Core.Paginated.PaginatedInPut(
                                             page: 1,
                                             perPage: 50,
                                             search: "",
                                             orderBy: "",
-                                            order: SearchOrder.Desc),
+                                            order: SearchOrder.Desc),Guid.Empty, false,
                                         CancellationToken.None);
 
             Assert.NotNull(products.Itens);

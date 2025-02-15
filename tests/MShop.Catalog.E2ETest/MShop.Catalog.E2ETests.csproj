@@ -23,6 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\src\Mshop.GraphQL.API\Mshop.API.GraphQL.csproj" />
     <ProjectReference Include="..\..\src\MShop.gRPC.Catalog\Mshop.gRPC.Catalog.csproj" />
     <ProjectReference Include="..\Core.Test\Mshop.Core.Test.csproj" />
   </ItemGroup>
@@ -34,7 +35,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="GraphQL\" />
+    <Folder Include="GraphQL\Product\" />
   </ItemGroup>
 
 </Project>

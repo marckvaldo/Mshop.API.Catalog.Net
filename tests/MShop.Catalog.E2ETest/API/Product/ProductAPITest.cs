@@ -279,7 +279,7 @@ namespace Mshop.Catalog.E2ETests.API.Product
             }
             await _unitOfWork.CommitAsync();
 
-            var request = new ListProductInPut(page, perPage, "", "", Mshop.Core.Enum.Paginated.SearchOrder.Desc);
+            var request = new ListProductInPut(page, perPage, "", "", Mshop.Core.Enum.Paginated.SearchOrder.Desc,false,Guid.Empty);
             var (response, outPut) = await _apiClient.Get<CustomResponse<ListProductsOutPut>>($"{Configuration.URL_API_PRODUCT}list-products/", request);
 
             Assert.NotNull(response);

@@ -79,13 +79,13 @@ namespace Mshop.IntegrationTests.Application.UserCases.Cache.Product.ListProduct
                 _productsCacheRepository, 
                 _buildCacheProduct,
                 _notification);
+
             var request = new ApplicationUseCase.ListProductPromotionCacheInPut(
                             page: 1,
                             perPage:5,
                             search: "",
                             sort: "name",
-                            dir: Mshop.Core.Enum.Paginated.SearchOrder.Asc,
-                            onlyProductsOnSale: true
+                            dir: Mshop.Core.Enum.Paginated.SearchOrder.Asc
                             );
 
             var outPut = await useCase.Handle(request, CancellationToken.None);
@@ -101,13 +101,13 @@ namespace Mshop.IntegrationTests.Application.UserCases.Cache.Product.ListProduct
 
             Thread.Sleep(3000);
 
-            var productsCache = await _productsCacheRepository.FilterPaginatedPromotion(
+            var productsCache = await _productsCacheRepository.FilterPaginatedQuery(
                 new Core.Paginated.PaginatedInPut(
                     page: 1, 
                     perPage: 30,
                     search: "", 
                     orderBy: "", 
-                    order: SearchOrder.Asc),
+                    order: SearchOrder.Asc),Guid.Empty,true,
                 CancellationToken.None
                 );
 

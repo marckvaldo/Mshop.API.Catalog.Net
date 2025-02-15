@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using Moq;
 using Mshop.Infra.Cache.Interface;
 using Mshop.Infra.Cache.StartIndex;
 using Mshop.IntegrationTests.Common;
@@ -148,7 +149,7 @@ namespace Mshop.IntegrationTests.Infra.Repository.Cache.ProductRepository
 
             var perPage = 10;
             var input = new Core.Paginated.PaginatedInPut(1, perPage, "","",Core.Enum.Paginated.SearchOrder.Asc);
-            var outPut = await _productRepositoryCache.FilterPaginated(input, CancellationToken.None);
+            var outPut = await _productRepositoryCache.FilterPaginatedQuery(input, It.IsAny<Guid>(), It.IsAny<bool>(), CancellationToken.None);
 
             Assert.NotNull(outPut);
             Assert.NotNull(outPut.Itens);
@@ -175,20 +176,20 @@ namespace Mshop.IntegrationTests.Infra.Repository.Cache.ProductRepository
         {
             var perPage = 20;
             var input = new Core.Paginated.PaginatedInPut(1, perPage, "", "", Core.Enum.Paginated.SearchOrder.Asc);
-            var outPut = await _productRepositoryCache.FilterPaginated(input, CancellationToken.None);
+            var outPut = await _productRepositoryCache.FilterPaginatedQuery(input, It.IsAny<Guid>(), It.IsAny<bool>(), CancellationToken.None);
 
             Assert.Null(outPut);
            
         }
 
 
-        [Theory(DisplayName = nameof(SerachRestusPaginated))]
+        [Theory(DisplayName = nameof(SerachPaginated))]
         [Trait("Integration - Infra.Cache", "Product Repositorio")]
         [InlineData(10, 1, 10, 10)]
         [InlineData(17, 2, 10, 7)]
         [InlineData(21, 3, 10, 1)]
 
-        public async Task SerachRestusPaginated(int quantityProduct, int page, int perPage, int expectedQuantityItems)
+        public async Task SerachPaginated(int quantityProduct, int page, int perPage, int expectedQuantityItems)
         {
 
             var category = FakerCategory();
@@ -201,7 +202,7 @@ namespace Mshop.IntegrationTests.Infra.Repository.Cache.ProductRepository
             }
 
             var input = new Core.Paginated.PaginatedInPut(page, perPage, "", "", Core.Enum.Paginated.SearchOrder.Asc);
-            var outPut = await _productRepositoryCache.FilterPaginated(input, CancellationToken.None);
+            var outPut = await _productRepositoryCache.FilterPaginatedQuery(input, Guid.Empty, false, CancellationToken.None);
 
             Assert.NotNull(outPut);
             Assert.NotNull(outPut.Itens);

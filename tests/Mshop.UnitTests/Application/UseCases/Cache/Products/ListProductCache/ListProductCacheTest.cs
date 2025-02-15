@@ -45,7 +45,7 @@ namespace Mshop.UnitTests.Application.UseCases.Cache.Products.ListProductCache
             var listOrdenada = listProducts.Where(x=>x.Name == searchName).OrderBy(x=>x.Name.OrderDescending()).ToList();
             var paginateOutPut = new PaginatedOutPut<DomainEntity.Product>(1, 10, 50, listOrdenada);
 
-            _productCacheRepository.Setup(r => r.FilterPaginated(It.IsAny<PaginatedInPut>(), CancellationToken.None)).ReturnsAsync(paginateOutPut);
+            _productCacheRepository.Setup(r => r.FilterPaginatedQuery(It.IsAny<PaginatedInPut>(), It.IsAny<Guid>(), It.IsAny<bool>(), CancellationToken.None)).ReturnsAsync(paginateOutPut);
 
             var useCase = new useCases.ListProductCache(_productRepository.Object, _productCacheRepository.Object, _buildCacheProduct.Object, _notification.Object);
             var outPut = useCase.Handle(
@@ -55,10 +55,10 @@ namespace Mshop.UnitTests.Application.UseCases.Cache.Products.ListProductCache
                             search: searchName,
                             sort:"Name", 
                             dir: Core.Enum.Paginated.SearchOrder.Desc,
-                            onlyProductsOnSale: false
+                            onlyPromotion: false
                             ), CancellationToken.None);
 
-            _productCacheRepository.Verify(r=>r.FilterPaginated(It.IsAny<PaginatedInPut>(), CancellationToken.None), Times.Once);
+            _productCacheRepository.Verify(r=>r.FilterPaginatedQuery(It.IsAny<PaginatedInPut>(), It.IsAny<Guid>(), It.IsAny<bool>(), CancellationToken.None), Times.Once);
             _buildCacheProduct.Verify(r => r.Handle(), Times.Never);
             _productRepository.Verify(r=>r.GetById(It.IsAny<Guid>()), Times.Never);
             _notification.Verify(r => r.AddNotifications(It.IsAny<string>()),Times.Never);
@@ -89,8 +89,8 @@ namespace Mshop.UnitTests.Application.UseCases.Cache.Products.ListProductCache
             var listOrdenada = listProducts.Where(x => x.Name == searchName).OrderBy(x => x.Name.OrderDescending()).ToList();
             var paginateOutPut = new PaginatedOutPut<DomainEntity.Product>(1, 10, 50, listOrdenada);
 
-            _productCacheRepository.Setup(r => r.FilterPaginated(It.IsAny<PaginatedInPut>(), CancellationToken.None)).ReturnsAsync((PaginatedOutPut<DomainEntity.Product>?)null);
-            _productRepository.Setup(r => r.FilterPaginated(It.IsAny<PaginatedInPut>(), CancellationToken.None)).ReturnsAsync(paginateOutPut);
+            _productCacheRepository.Setup(r => r.FilterPaginatedQuery(It.IsAny<PaginatedInPut>(), It.IsAny<Guid>(), It.IsAny<bool>(), CancellationToken.None)).ReturnsAsync((PaginatedOutPut<DomainEntity.Product>?)null);
+            _productRepository.Setup(r => r.FilterPaginatedQuery(It.IsAny<PaginatedInPut>(), It.IsAny<Guid>(), It.IsAny<bool>(), CancellationToken.None)).ReturnsAsync(paginateOutPut);
             _productRepository.Setup(r => r.GetProductAll(It.IsAny<bool>())).ReturnsAsync(listOrdenada);
             _productCacheRepository.Setup(r => r.Create(It.IsAny<DomainEntity.Product>(), It.IsAny<DateTime>(), CancellationToken.None)).ReturnsAsync(true);
             
@@ -104,10 +104,10 @@ namespace Mshop.UnitTests.Application.UseCases.Cache.Products.ListProductCache
                             search: searchName,
                             sort: "Name",
                             dir: Core.Enum.Paginated.SearchOrder.Desc,
-                            onlyProductsOnSale: false
+                            onlyPromotion: false
                             ), CancellationToken.None);
 
-            _productCacheRepository.Verify(r => r.FilterPaginated(It.IsAny<PaginatedInPut>(), CancellationToken.None), Times.Once);
+            _productCacheRepository.Verify(r => r.FilterPaginatedQuery(It.IsAny<PaginatedInPut>(), It.IsAny<Guid>(), It.IsAny<bool>(), CancellationToken.None), Times.Once);
             _buildCacheProduct.Verify(r => r.Handle(), Times.Once);
             //_productRepository.Verify(r => r.GetProductAll(It.IsAny<bool>()), Times.Once);
             _notification.Verify(r => r.AddNotifications(It.IsAny<string>()), Times.Never);
@@ -139,8 +139,8 @@ namespace Mshop.UnitTests.Application.UseCases.Cache.Products.ListProductCache
             var listOrdenada = listProducts.Where(x => x.Name == searchName).OrderBy(x => x.Name.OrderDescending()).ToList();
             var paginateOutPut = new PaginatedOutPut<DomainEntity.Product>(1, 10, 50, listOrdenada);
 
-            _productCacheRepository.Setup(r => r.FilterPaginated(It.IsAny<PaginatedInPut>(), CancellationToken.None)).ReturnsAsync((PaginatedOutPut<DomainEntity.Product>?)null);
-            _productRepository.Setup(r => r.FilterPaginated(It.IsAny<PaginatedInPut>(), CancellationToken.None)).ReturnsAsync((PaginatedOutPut<DomainEntity.Product>?)null);
+            _productCacheRepository.Setup(r => r.FilterPaginatedQuery(It.IsAny<PaginatedInPut>(), It.IsAny<Guid>(), It.IsAny<bool>(), CancellationToken.None)).ReturnsAsync((PaginatedOutPut<DomainEntity.Product>?)null);
+            _productRepository.Setup(r => r.FilterPaginatedQuery(It.IsAny<PaginatedInPut>(), It.IsAny<Guid>(), It.IsAny<bool>(), CancellationToken.None)).ReturnsAsync((PaginatedOutPut<DomainEntity.Product>?)null);
             _productRepository.Setup(r => r.GetProductAll(It.IsAny<bool>())).ReturnsAsync((List<DomainEntity.Product>?)null);
             _productCacheRepository.Setup(r => r.Create(It.IsAny<DomainEntity.Product>(), It.IsAny<DateTime>(), CancellationToken.None)).ReturnsAsync(true);
 
@@ -152,10 +152,10 @@ namespace Mshop.UnitTests.Application.UseCases.Cache.Products.ListProductCache
                             search: searchName,
                             sort: "Name",
                             dir: Core.Enum.Paginated.SearchOrder.Desc,
-                            onlyProductsOnSale: false
+                            onlyPromotion: false
                             ), CancellationToken.None);
 
-            _productCacheRepository.Verify(r => r.FilterPaginated(It.IsAny<PaginatedInPut>(), CancellationToken.None), Times.Once);
+            _productCacheRepository.Verify(r => r.FilterPaginatedQuery(It.IsAny<PaginatedInPut>(), It.IsAny<Guid>(), It.IsAny<bool>(), CancellationToken.None), Times.Once);
             _buildCacheProduct.Verify(r => r.Handle(), Times.Once);
             _productRepository.Verify(r => r.GetProductAll(It.IsAny<bool>()), Times.Never);
             _notification.Verify(r => r.AddNotifications(It.IsAny<string>()), Times.Once);

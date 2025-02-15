@@ -28,19 +28,19 @@ namespace Mshop.API.GraphQL.GraphQL.Category
                 outPut.Data.IsActive);
         }
         
-        public async Task<CategorySeachPayload> GetCategories(
+        public async Task<CategorySeachPayload> ListCategories(
             [Service] IMediator mediator,
             [Service] Notification.INotification notification,
             int perPage = 10,
             int page = 1,
             string search = "",
-            string sort = "",
+            string orderBy = "",
             SearchOrder order = SearchOrder.Asc,
             CancellationToken cancellationToken = default)
         {
             
 
-            var request = new ListCategoriesCacheInPut(page, perPage, search, sort, order);
+            var request = new ListCategoriesCacheInPut(page, perPage, search, orderBy, order);
             var outPut = await mediator.Send(request, cancellationToken);
             
             RequestIsValid(notification);

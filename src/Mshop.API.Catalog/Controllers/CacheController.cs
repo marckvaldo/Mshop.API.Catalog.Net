@@ -53,7 +53,7 @@ namespace Mshop.API.Catalog.Controllers
         }
 
 
-        [HttpGet("list-products-promotion-cache")]
+        [HttpGet("list-products-onlyPromotion-cache")]
         public async Task<ActionResult<ListProductPromotionCacheOutPut>> ListProductsPromotionCache([FromQuery] ListProductPromotionCacheInPut request, CancellationToken cancellation)
         {
             return CustomResponse(await _mediator.Send(request, cancellation));

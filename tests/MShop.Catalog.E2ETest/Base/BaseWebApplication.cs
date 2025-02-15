@@ -12,10 +12,13 @@ namespace Mshop.Catalog.E2ETests.Base
     {
         protected CustomerWebApplicationFactory<Mshop.API.Catalog.Program> _webApp;
         protected GrpcWebApplicationFactory<Mshop.gRPC.Catalog.Program> _webAppGrpc;
+        protected GraphQLWebApplicationFactory<Mshop.API.GraphQL.Program> _webAppGraphQL;
+
         protected IServiceProvider _serviceProvider;
         protected HttpClient _httpClient;
         protected APIClient _apiClient;
         protected GrpcClient _grpcClient;
+        protected GraphQLClient _graphQLClient;
         protected BaseWebApplication(TypeProjetct typeProjetct = TypeProjetct.Http) : base()
         {
             /*_webApp = new CustomerWebApplicationFactory<Program>();
@@ -28,6 +31,11 @@ namespace Mshop.Catalog.E2ETests.Base
 
             if(typeProjetct == TypeProjetct.Grpc)
                 BuildWebAplicationGrpc().Wait();
+            
+            if(typeProjetct == TypeProjetct.GraphQL)
+            {
+                BuildWebAplicationGraphQL().Wait();
+            }
         }
 
         protected async Task DeleteDataBase(RepositoryDbContext dbContext, bool disposeDBContext = true)
@@ -78,6 +86,14 @@ namespace Mshop.Catalog.E2ETests.Base
             _serviceProvider = _webAppGrpc.Services.GetRequiredService<IServiceProvider>();
             _httpClient = _webAppGrpc.CreateClient();
             _grpcClient = new GrpcClient(_httpClient);
+        }
+
+        protected async Task BuildWebAplicationGraphQL()
+        {
+            _webAppGraphQL = new GraphQLWebApplicationFactory<Mshop.API.GraphQL.Program>();
+            _serviceProvider = _webAppGraphQL.Services.GetRequiredService<IServiceProvider>();
+            _httpClient = _webAppGraphQL.CreateClient();
+            _graphQLClient = new GraphQLClient(_httpClient);
         }
     }
 

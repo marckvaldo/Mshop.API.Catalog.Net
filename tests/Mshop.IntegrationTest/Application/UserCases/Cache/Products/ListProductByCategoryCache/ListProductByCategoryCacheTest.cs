@@ -104,14 +104,14 @@ namespace Mshop.IntegrationTests.Application.UserCases.Cache.Product.ListProduct
 
             Thread.Sleep(3000);
 
-            var productsCache = await _productsCacheRepository.FilterPaginatedByCategory(
+            var productsCache = await _productsCacheRepository.FilterPaginatedQuery(
                 new Core.Paginated.PaginatedInPut(
                     page: 1, 
                     perPage: 30,
                     search: "", 
                     orderBy: "", 
                     order: SearchOrder.Asc),
-                category.Id,
+                category.Id,false,
                 CancellationToken.None
                 );
 

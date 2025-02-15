@@ -14,8 +14,10 @@ namespace Mshop.Infra.Data.Interface
 
         Task<List<Product>> GetProductAll(bool OnlyActive = false);
 
-        Task<PaginatedOutPut<Product>> FilterPaginatedByCategoryId(PaginatedInPut input, Guid categoryId, CancellationToken cancellationToken);
+        //Task<PaginatedOutPut<Product>> FilterPaginatedByCategoryId(PaginatedInPut input, Guid categoryId, CancellationToken cancellationToken);
 
-        Task<PaginatedOutPut<Product>> FilterPaginatedPromotion(PaginatedInPut input, CancellationToken cancellationToken);
+        //Task<PaginatedOutPut<Product>> FilterPaginatedPromotion(PaginatedInPut input, CancellationToken cancellationToken);
+
+        Task<PaginatedOutPut<Product>> FilterPaginatedQuery(PaginatedInPut input, Guid categoryId, bool promotion, CancellationToken cancellationToken);
     }
 }

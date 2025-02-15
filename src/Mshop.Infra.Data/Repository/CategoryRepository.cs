@@ -70,7 +70,7 @@ namespace Mshop.Infra.Data.Repository
             query = AddOrderByToQuery(query, input.OrderBy, input.Order);
 
             if(!string.IsNullOrEmpty(input.Search))
-                query.Where(c => c.Name.Contains(input.Search));
+                query = query.Where(c => c.Name.StartsWith(input.Search));
             
             var total = await query.CountAsync(cancellationToken);
 

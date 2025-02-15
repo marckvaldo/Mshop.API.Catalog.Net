@@ -9,6 +9,8 @@
 
         public static string URL_API_IMAGE = "/api/image/";
         public static bool DATABASE_MEMORY = false;
+
+        public static string URI_GRAPHQL = "http://localhost:5000/graphql";
     }
 }
 

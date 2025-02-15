@@ -20,7 +20,8 @@ namespace Mshop.Infra.Data.Repository
                 .Include(c => c.Category)
                 .FirstOrDefaultAsync();
         }
-        public async Task<PaginatedOutPut<Product>> FilterPaginated(PaginatedInPut input, CancellationToken cancellationToken)
+        
+        public async Task<PaginatedOutPut<Product>> FilterPaginatedQuery(PaginatedInPut input, Guid categoryId, bool onlyPromotion, CancellationToken cancellationToken)
         {
             var toSkip = (input.Page - 1) * input.PerPage;
             var query = _dbSet.AsNoTracking();
@@ -29,6 +30,12 @@ namespace Mshop.Infra.Data.Repository
 
             if (!string.IsNullOrWhiteSpace(input.Search))
                 query.Where(p => p.Name.Contains(input.Search));
+
+            if(categoryId != Guid.Empty)
+                query.Where(p => p.CategoryId == categoryId);
+
+            if (onlyPromotion)
+                query.Where(p => p.IsSale == true);
 
             var total = await query.CountAsync();
             var product = await query.Skip(toSkip).Take(input.PerPage)
@@ -118,7 +125,6 @@ namespace Mshop.Infra.Data.Repository
                 _ => query.OrderBy(x => x.Name)
             };
         }
-
 
     }
 }

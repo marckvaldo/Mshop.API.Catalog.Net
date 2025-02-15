@@ -147,7 +147,7 @@ namespace Mshop.IntegrationTests.Infra.Repository.Data.ProductRepository
 
             var perPage = 10;
             var input = new Core.Paginated.PaginatedInPut(1, perPage, "","",Core.Enum.Paginated.SearchOrder.Asc);
-            var outPut = await _repositoryProduct.FilterPaginated(input, CancellationToken.None);
+            var outPut = await _repositoryProduct.FilterPaginatedQuery(input, Guid.Empty, false, CancellationToken.None);
 
             Assert.NotNull(outPut);
             Assert.NotNull(outPut.Itens);
@@ -174,7 +174,7 @@ namespace Mshop.IntegrationTests.Infra.Repository.Data.ProductRepository
         {
             var perPage = 20;
             var input = new Core.Paginated.PaginatedInPut(1, perPage, "", "", Core.Enum.Paginated.SearchOrder.Asc);
-            var outPut = await _repositoryProduct.FilterPaginated(input, CancellationToken.None);
+            var outPut = await _repositoryProduct.FilterPaginatedQuery(input, Guid.Empty, false, CancellationToken.None);
 
             Assert.NotNull(outPut);
             Assert.True(outPut.Itens.Count == 0);
@@ -199,7 +199,7 @@ namespace Mshop.IntegrationTests.Infra.Repository.Data.ProductRepository
             await _persistenceProduct.CreateList(productList);
 
             var input = new Core.Paginated.PaginatedInPut(page, perPage, "", "", Core.Enum.Paginated.SearchOrder.Asc);
-            var outPut = await _repositoryProduct.FilterPaginated(input, CancellationToken.None);
+            var outPut = await _repositoryProduct.FilterPaginatedQuery(input, Guid.Empty, false, CancellationToken.None);
 
             Assert.NotNull(outPut);
             Assert.NotNull(outPut.Itens);

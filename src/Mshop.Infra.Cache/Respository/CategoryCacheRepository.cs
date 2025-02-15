@@ -94,6 +94,8 @@ namespace Mshop.Infra.Cache.Respository
             var query = string.IsNullOrEmpty(input.Search)
                 ? new Query("*")
                 : new Query($"@Name:{input.Search}*");
+            
+            query = await Ordering(input, query);
 
 
             // Obter o total de resultados sem paginação
@@ -104,7 +106,7 @@ namespace Mshop.Infra.Cache.Respository
 
             var result = await _search.SearchAsync(_indexName, query.Limit(offset, input.PerPage));
 
-            if (result.Documents.Count == 0)
+            if (result.Documents.Count == 0 && totalItems == 0)
                 return null;
 
             var cartegory = result.Documents.Select(doc => RedisToCategory(doc)).ToList();
@@ -114,6 +116,30 @@ namespace Mshop.Infra.Cache.Respository
                 input.PerPage,
                 totalItems,
                 cartegory);
+        }
+
+        private async Task<Query> Ordering(PaginatedInPut input, Query query)
+        {
+            switch (input.Order, input.OrderBy.ToLower())
+            {
+                case (Core.Enum.Paginated.SearchOrder.Asc, "name"):
+                    query.SetSortBy("Name", true);
+                    break;
+                case (Core.Enum.Paginated.SearchOrder.Desc, "name"):
+                    query.SetSortBy("Name", false);
+                    break;
+                case (Core.Enum.Paginated.SearchOrder.Asc, "id"):
+                    query.SetSortBy("Id", true);
+                    break;
+                case (Core.Enum.Paginated.SearchOrder.Desc, "id"):
+                    query.SetSortBy("Id", false);
+                    break;
+                default:
+                    query.SetSortBy("Name", true);
+                    break;
+            }
+
+            return query;
         }
 
         public async Task<Category?> GetById(Guid id)

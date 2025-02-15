@@ -28,7 +28,9 @@ namespace Mshop.Application.UseCases.Product.ListProducts
                             perPage: random.Next(10,20),
                             search: faker.Commerce.ProductName(),
                             sort:"name",
-                            dir:Core.Enum.Paginated.SearchOrder.Asc
+                            dir:Core.Enum.Paginated.SearchOrder.Asc,
+                            false,
+                            Guid.Empty
                             );
 
             var outPutRepository = new PaginatedOutPut<DomainEntity.Product>(
@@ -38,14 +40,14 @@ namespace Mshop.Application.UseCases.Product.ListProducts
                                     total: 10
                                     );
 
-            repository.Setup(r => r.FilterPaginated(
+            repository.Setup(r => r.FilterPaginatedQuery(
                 It.Is<PaginatedInPut>(
                     SearchInput => SearchInput.Page == request.Page
                     && SearchInput.PerPage == request.PerPage
                     && SearchInput.Search == request.Search
                     && SearchInput.OrderBy == request.Sort
                     && SearchInput.Order == request.Dir
-                    ),
+                    ),Guid.Empty, false,
                 It.IsAny<CancellationToken>()
                 )).ReturnsAsync(outPutRepository);
 

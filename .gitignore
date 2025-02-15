@@ -30,3 +30,8 @@
 
  src/Mshop.API.Catalog/obj/*
  src/Mshop.API.Catalog/bin/*
+ src/Mshop.API.Catalog/.vs/*
+
+ src/MShop.gRPC.Catalog/bin/*
+
+

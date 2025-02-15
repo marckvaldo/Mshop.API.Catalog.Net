@@ -30,12 +30,12 @@ namespace Mshop.Application.UseCases.Cache.Products.ListProductsPromotionCache
         public async Task<Result<ListProductPromotionCacheOutPut>> Handle(ListProductPromotionCacheInPut request, CancellationToken cancellationToken)
         {
 
-            var result = await _productCacheRepository.FilterPaginatedPromotion(request, cancellationToken);
+            var result = await _productCacheRepository.FilterPaginatedQuery(request, Guid.Empty, true, cancellationToken);
 
             if (result is null)
             {
                 _buildCache.Handle();
-                result = await _productRepository.FilterPaginatedPromotion(request, cancellationToken);
+                result = await _productRepository.FilterPaginatedQuery(request, Guid.Empty, true, cancellationToken);
             }
 
             if (NotifyErrorIfNull(result, "não foi possivel localizar os produtos em promoção na base de dados!"))

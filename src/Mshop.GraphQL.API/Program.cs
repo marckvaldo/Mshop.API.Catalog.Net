@@ -1,4 +1,5 @@
 using Mshop.API.GraphQL.GraphQL.Category;
+using Mshop.API.GraphQL.GraphQL.Product;
 using Mshop.Application;
 using Mshop.Infra.Cache;
 using Mshop.Infra.Data;
@@ -20,7 +21,8 @@ builder.Services
     .AddRepositoryCache()
     .AddGraphQLServer()
     .AddQueryType()
-    .AddTypeExtension<CategoryQueries>();
+    .AddTypeExtension<CategoryQueries>()
+    .AddTypeExtension<ProductQueries>();
 
 
 
@@ -42,3 +44,9 @@ app.MapGraphQL();
 app.MapControllers();
 
 app.Run();
+
+namespace Mshop.API.GraphQL
+{
+    public partial class Program
+    { }
+}

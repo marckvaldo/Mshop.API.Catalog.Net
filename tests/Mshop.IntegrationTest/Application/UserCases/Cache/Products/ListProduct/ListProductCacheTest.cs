@@ -84,13 +84,13 @@ namespace Mshop.IntegrationTests.Application.UserCases.Cache.Product.ListProduct
 
             var outPut = await useCase.Handle(request, CancellationToken.None);
             Thread.Sleep(2000);
-            var productsCache = await _productsCacheRepository.FilterPaginated(
+            var productsCache = await _productsCacheRepository.FilterPaginatedQuery(
                 new Core.Paginated.PaginatedInPut(
                     page: 1, 
                     perPage: 20, 
                     search: "", 
                     orderBy: "", 
-                    SearchOrder.Desc),
+                    SearchOrder.Desc),Guid.Empty,false,
                 CancellationToken.None
                 );
 

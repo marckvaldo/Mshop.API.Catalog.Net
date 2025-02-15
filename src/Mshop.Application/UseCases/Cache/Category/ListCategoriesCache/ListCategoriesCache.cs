@@ -28,6 +28,12 @@ namespace Mshop.Application.UseCases.Cache.Category.ListCategoriesCache
 
         public async Task<Result<ListCategoriesCacheOutPut>> Handle(ListCategoriesCacheInPut request, CancellationToken cancellationToken)
         {
+            if (request.OrderBy is null)
+                request.OrderBy = "";
+
+            if (request.Search is null)
+                request.Search = "";
+
             var categories = await _categoryCacheRepository.FilterPaginated(request, cancellationToken);
             if (categories is null)
             {

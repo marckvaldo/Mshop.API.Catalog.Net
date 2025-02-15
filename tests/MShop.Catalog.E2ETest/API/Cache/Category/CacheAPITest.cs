@@ -101,9 +101,9 @@ namespace Mshop.Catalog.E2ETests.API.Cache.Category
 
 
 
-        [Fact(DisplayName = nameof(ListCategoryWithOutCache))]
+        [Fact(DisplayName = nameof(ListCategoryNoCache))]
         [Trait("EndToEnd/API", "Cache-Category - Endpoints")]
-        public async Task ListCategoryWithOutCache()
+        public async Task ListCategoryNoCache()
         {
             var qtdCategory = 20;
             var perPager = 10;

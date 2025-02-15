@@ -2,6 +2,7 @@
 using Mshop.Core.Common;
 using Mshop.Core.Paginated;
 using Mshop.Domain.Entity;
+using Mshop.Infra.Cache.CircuitBreakerPolicy;
 using Mshop.Infra.Cache.Interface;
 using Mshop.Infra.Cache.StartIndex;
 using NRedisStack;
@@ -19,13 +20,24 @@ namespace Mshop.Infra.Cache.Respository
         private readonly string _indexName = "ImagesIndex";
         private readonly string _keyPrefix = "Images:";
 
-        public ImagesCacheRepository(IConnectionMultiplexer database)
+        private readonly ICircuitBreaker _circuitBreaker;
+        public ImagesCacheRepository(IConnectionMultiplexer database, ICircuitBreaker circuitBreaker)
         {
             _database = database.GetDatabase();
             _search = _database.FT();
 
             _indexName = $"{IndexName.Image}Index";
             _keyPrefix = $"{IndexName.Image}:";
+
+            _circuitBreaker = circuitBreaker;
+
+            circuitBreaker.Start(
+            ex =>
+            {
+                return ex is RedisConnectionException || ex is TimeoutException || ex is Exception;
+            },
+            1,
+            TimeSpan.FromMinutes(1));
         }
         public async Task<bool> Create(Image entity, DateTime? ExpirationDate, CancellationToken cancellationToken)
         {
@@ -64,6 +76,25 @@ namespace Mshop.Infra.Cache.Respository
         }
         public async Task<IEnumerable<Image>?> GetImageByProductId(Guid productId)
         {
+            try
+            {
+                return await _circuitBreaker.ExecuteActionAsync(async () => await SearchImageByProductId(productId));
+            }
+            catch (RedisConnectionException erro)
+            {
+                Console.WriteLine($"CircuitBreaker ativado devido a: {erro.Message}");
+                return null;
+            }
+            catch (Exception erro)
+            {
+                Console.WriteLine($"CircuitBreaker ativado devido a: {erro.Message}");
+                return null;
+            }
+
+        }
+
+        private async Task<IEnumerable<Image>?> SearchImageByProductId(Guid productId)
+        {
             var id = Helpers.ClearString(productId.ToString());
 
             var query = string.IsNullOrEmpty(id)
@@ -78,8 +109,8 @@ namespace Mshop.Infra.Cache.Respository
             var imagens = result.Documents.Select(doc => RedisToImage(doc)).ToList();
 
             return imagens;
-       
         }
+
         public async Task<bool> Update(Image entity, DateTime? ExpirationDate, CancellationToken cancellationToken)
         {
             return await Create(entity, ExpirationDate, cancellationToken);

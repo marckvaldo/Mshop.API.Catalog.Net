@@ -68,3 +68,5 @@ C:\Users\IQ SISTEMAS\Documents\mShopping\new\Mshopping\MShop.API.Catalog\src\MSh
 C:\Users\IQ SISTEMAS\Documents\mShopping\new\Mshopping\MShop.API.Catalog\src\MShop.gRPC.Catalog\obj\Debug\net8.0\Mshop.gRPC.Catalog.pdb
 C:\Users\IQ SISTEMAS\Documents\mShopping\new\Mshopping\MShop.API.Catalog\src\MShop.gRPC.Catalog\obj\Debug\net8.0\Mshop.gRPC.Catalog.genruntimeconfig.cache
 C:\Users\IQ SISTEMAS\Documents\mShopping\new\Mshopping\MShop.API.Catalog\src\MShop.gRPC.Catalog\obj\Debug\net8.0\ref\Mshop.gRPC.Catalog.dll
+C:\Users\IQ SISTEMAS\Documents\mShopping\new\Mshopping\MShop.API.Catalog\src\MShop.gRPC.Catalog\bin\Debug\net8.0\Polly.dll
+C:\Users\IQ SISTEMAS\Documents\mShopping\new\Mshopping\MShop.API.Catalog\src\MShop.gRPC.Catalog\bin\Debug\net8.0\Polly.Core.dll
