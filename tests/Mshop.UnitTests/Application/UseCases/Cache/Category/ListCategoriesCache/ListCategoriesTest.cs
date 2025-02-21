@@ -59,9 +59,9 @@ namespace Mshop.UnitTests.Application.UseCases.Cache.Category.ListCategoriesCach
 
             var listOutPut = outPut.Result.Data;
 
-            for (int i = 0;i<listOutPut.Itens.Count;i++)
+            for (int i = 0;i<listOutPut.Data.Count;i++)
             {
-                if(listCategory[i].Equals(listOutPut.Itens[i]))
+                if(listCategory[i].Equals(listOutPut.Data[i]))
                     Assert.False(true);
             }
         }
@@ -106,9 +106,9 @@ namespace Mshop.UnitTests.Application.UseCases.Cache.Category.ListCategoriesCach
 
             var listOutPut = outPut.Result.Data;
 
-            for (int i = 0; i < listOutPut.Itens.Count; i++)
+            for (int i = 0; i < listOutPut.Data.Count; i++)
             {
-                if (listCategory[i].Equals(listOutPut.Itens[i]))
+                if (listCategory[i].Equals(listOutPut.Data[i]))
                     Assert.False(true);
             }
         }

@@ -155,12 +155,12 @@ namespace MShop.Catalog.E2ETests.API.Category
             Assert.NotNull(outPut);
             Assert.True(outPut.Success);
             Assert.Equal(System.Net.HttpStatusCode.OK, response.StatusCode);
-            Assert.NotNull(outPut.Data.Itens);
+            Assert.NotNull(outPut.Data.Data);
             Assert.Equal(perPager, outPut.Data.PerPage);
-            Assert.Equal(page, outPut.Data.Page);
+            Assert.Equal(page, outPut.Data.CurrentPage);
             Assert.Equal(qtdCategory, outPut.Data.Total);
 
-            foreach (var item in outPut.Data.Itens)
+            foreach (var item in outPut.Data.Data)
             {
                 var category = (await _categoryRepository.Filter(c=>c.Id == item.Id)).First();
                 Assert.NotNull(category);

@@ -152,14 +152,14 @@ namespace Mshop.Catalog.E2ETests.API.Cache.Product
                     Mshop.Core.Enum.Paginated.SearchOrder.Desc), Guid.Empty, false, CancellationToken.None);
 
 
-            if(expectedQuantityItems == 0)
+            if(expectedQuantityItems == 0 && productCacheNotNull == null)
             {
                 Assert.Null(productCacheNotNull);
             }
             else
             {
                 Assert.NotNull(productCacheNotNull);
-                Assert.True(productCacheNotNull!.Itens.Count() == expectedQuantityItems);
+                Assert.True(productCacheNotNull!.Data.Count() == expectedQuantityItems);
             }
 
             Assert.Null(productCacheNull);
@@ -168,10 +168,10 @@ namespace Mshop.Catalog.E2ETests.API.Cache.Product
             Assert.NotNull(outPut);
             Assert.True(outPut.Success);
             Assert.True(outPut.Data.PerPage == perPage);
-            Assert.True(outPut.Data.Page == page);
-            Assert.True(outPut.Data.Itens.Count() == expectedQuantityItems);
+            Assert.True(outPut.Data.CurrentPage == page);
+            Assert.True(outPut.Data.Data.Count() == expectedQuantityItems);
 
-            foreach (var item in outPut.Data.Itens)
+            foreach (var item in outPut.Data.Data)
             {
                 var expectItem = products.FirstOrDefault(x => x.Id == item.Id);
 
@@ -223,14 +223,14 @@ namespace Mshop.Catalog.E2ETests.API.Cache.Product
                     Mshop.Core.Enum.Paginated.SearchOrder.Desc), Guid.Empty, false, CancellationToken.None);
 
 
-            if (expectedQuantityItems == 0)
+            if (expectedQuantityItems == 0 && productCacheNotNull is null)
             {
                 Assert.Null(productCacheNotNull);
             }
             else
             {
                 Assert.NotNull(productCacheNotNull);
-                Assert.True(productCacheNotNull!.Itens.Count() == expectedQuantityItems);
+                Assert.True(productCacheNotNull!.Data.Count() == expectedQuantityItems);
             }
 
             Assert.Null(productCacheNull);
@@ -239,10 +239,10 @@ namespace Mshop.Catalog.E2ETests.API.Cache.Product
             Assert.NotNull(outPut);
             Assert.True(outPut.Success);
             Assert.True(outPut.Data.PerPage == perPage);
-            Assert.True(outPut.Data.Page == page);
-            Assert.True(outPut.Data.Itens.Count() == expectedQuantityItems);
+            Assert.True(outPut.Data.CurrentPage == page);
+            Assert.True(outPut.Data.Data.Count() == expectedQuantityItems);
 
-            foreach (var item in outPut.Data.Itens)
+            foreach (var item in outPut.Data.Data)
             {
                 var expectItem = products.FirstOrDefault(x => x.Id == item.Id);
 
@@ -294,14 +294,14 @@ namespace Mshop.Catalog.E2ETests.API.Cache.Product
                     Mshop.Core.Enum.Paginated.SearchOrder.Desc), Guid.Empty, false, CancellationToken.None);
 
 
-            if (expectedQuantityItems == 0)
+            if (expectedQuantityItems == 0 && productCacheNotNull is null)
             {
                 Assert.Null(productCacheNotNull);
             }
             else
             {
                 Assert.NotNull(productCacheNotNull);
-                Assert.True(productCacheNotNull!.Itens.Count() == expectedQuantityItems);
+                Assert.True(productCacheNotNull!.Data.Count() == expectedQuantityItems);
             }
 
             Assert.Null(productCacheNull);
@@ -310,10 +310,10 @@ namespace Mshop.Catalog.E2ETests.API.Cache.Product
             Assert.NotNull(outPut);
             Assert.True(outPut.Success);
             Assert.True(outPut.Data.PerPage == perPage);
-            Assert.True(outPut.Data.Page == page);
-            Assert.True(outPut.Data.Itens.Count() == expectedQuantityItems);
+            Assert.True(outPut.Data.CurrentPage == page);
+            Assert.True(outPut.Data.Data.Count() == expectedQuantityItems);
 
-            foreach (var item in outPut.Data.Itens)
+            foreach (var item in outPut.Data.Data)
             {
                 var expectItem = products.FirstOrDefault(x => x.Id == item.Id);
 

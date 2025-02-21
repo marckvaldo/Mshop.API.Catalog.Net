@@ -67,10 +67,10 @@ namespace Mshop.IntegrationTests.Application.UserCases.Product.ListProduct
 
             Assert.NotNull(result);
             Assert.Equal(productsFake.Count, result.Total);
-            Assert.Equal(request.Page, result.Page);
+            Assert.Equal(request.Page, result.CurrentPage);
             Assert.Equal(request.PerPage, result.PerPage);
-            Assert.NotNull(result.Itens);
-            Assert.True(result.Itens.Any());
+            Assert.NotNull(result.Data);
+            Assert.True(result.Data.Any());
         }
 
         public void Dispose()

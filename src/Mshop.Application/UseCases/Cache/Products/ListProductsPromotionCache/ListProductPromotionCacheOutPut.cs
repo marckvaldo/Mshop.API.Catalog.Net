@@ -6,8 +6,8 @@ namespace Mshop.Application.UseCases.Cache.Products.ListProductsPromotionCache
 {
     public class ListProductPromotionCacheOutPut : PaginatedListOutPut<ProductModelOutPut>, IModelOutPut
     {
-        public ListProductPromotionCacheOutPut(int page, int perPage, int total, IReadOnlyList<ProductModelOutPut> itens) :
-            base(page, perPage, total, itens)
+        public ListProductPromotionCacheOutPut(int currentPage, int perPage, int total, IReadOnlyList<ProductModelOutPut> data) :
+            base(currentPage, perPage, total, data)
         {
 
         }

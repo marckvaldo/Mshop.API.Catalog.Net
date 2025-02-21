@@ -18,7 +18,7 @@ namespace Mshop.API.GraphQL.GraphQL.Product
            Guid categoryId,
            CategoryPayload category,
            bool isPromotion)
-           : base(id, description, name, price, thumb, stock, isActive, categoryId, category, isPromotion) { Images = new List<string?>(); }
+           : base(id, description, name, price, thumb, stock, isActive, categoryId,category, isPromotion) { Images = new List<string?>(); }
 
         public void AddImages(string images)
         {

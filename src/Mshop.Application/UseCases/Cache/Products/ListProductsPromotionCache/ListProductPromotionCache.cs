@@ -46,7 +46,7 @@ namespace Mshop.Application.UseCases.Cache.Products.ListProductsPromotionCache
                     result.CurrentPage,
                     result.PerPage,
                     result.Total,
-                    result.Itens.Select(d=> ProductModelOutPut.FromProduct(d)).ToList())
+                    result.Data.Select(d=> ProductModelOutPut.FromProduct(d)).ToList())
                 );
         }
 

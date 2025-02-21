@@ -23,7 +23,7 @@ namespace Mshop.Infra.Data.Repository
         
         public async Task<PaginatedOutPut<Product>> FilterPaginatedQuery(PaginatedInPut input, Guid categoryId, bool onlyPromotion, CancellationToken cancellationToken)
         {
-            var toSkip = (input.Page - 1) * input.PerPage;
+            var toSkip = (input.CurrentPage - 1) * input.PerPage;
             var query = _dbSet.AsNoTracking();
 
             query = AddOrderToQuery(query, input.OrderBy, input.Order);
@@ -42,12 +42,12 @@ namespace Mshop.Infra.Data.Repository
                          .Include(c => c.Category).ToListAsync();
 
             //NotFoundException.ThrowIfnull(product);
-            return new PaginatedOutPut<Product>(input.Page, input.PerPage, total, product);
+            return new PaginatedOutPut<Product>(input.CurrentPage, input.PerPage, total, product);
 
         }
         public async Task<PaginatedOutPut<Product>> FilterPaginatedByCategoryId(PaginatedInPut input, Guid categoryId, CancellationToken cancellationToken)
         {
-            var toSkip = (input.Page - 1) * input.PerPage;
+            var toSkip = (input.CurrentPage - 1) * input.PerPage;
             var query = _dbSet.AsNoTracking();
 
             query = AddOrderToQuery(query, input.OrderBy, input.Order);
@@ -62,12 +62,12 @@ namespace Mshop.Infra.Data.Repository
                          .Include(c => c.Category).ToListAsync();
 
             //NotFoundException.ThrowIfnull(product);
-            return new PaginatedOutPut<Product>(input.Page, input.PerPage, total, product);
+            return new PaginatedOutPut<Product>(input.CurrentPage, input.PerPage, total, product);
 
         }
         public async Task<PaginatedOutPut<Product>> FilterPaginatedPromotion(PaginatedInPut input, CancellationToken cancellationToken)
         {
-            var toSkip = (input.Page - 1) * input.PerPage;
+            var toSkip = (input.CurrentPage - 1) * input.PerPage;
             var query = _dbSet.AsNoTracking();
 
             query = AddOrderToQuery(query, input.OrderBy, input.Order);
@@ -82,7 +82,7 @@ namespace Mshop.Infra.Data.Repository
                          .Include(c => c.Category).ToListAsync();
 
             //NotFoundException.ThrowIfnull(product);
-            return new PaginatedOutPut<Product>(input.Page, input.PerPage, total, product);
+            return new PaginatedOutPut<Product>(input.CurrentPage, input.PerPage, total, product);
 
         }
 

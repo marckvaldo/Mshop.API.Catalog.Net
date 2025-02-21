@@ -234,9 +234,9 @@ namespace Mshop.Catalog.E2ETests.API.Product
             Assert.True(outPut.Success);
             Assert.True(productDbBefore.Count() == outPut.Data.Total);
             Assert.True(outPut.Data.PerPage == 15);
-            Assert.True(outPut.Data.Page == 1);
+            Assert.True(outPut.Data.CurrentPage == 1);
 
-            foreach (var item in outPut.Data.Itens)
+            foreach (var item in outPut.Data.Data)
             {
                 var expectItem = products.FirstOrDefault(x => x.Id == item.Id);
 
@@ -260,8 +260,8 @@ namespace Mshop.Catalog.E2ETests.API.Product
             Assert.NotNull(outPut);
             Assert.True(outPut.Success);
             Assert.True(outPut.Data.PerPage == 15);
-            Assert.True(outPut.Data.Page == 1);
-            Assert.True(outPut.Data.Itens.Count() == 0);
+            Assert.True(outPut.Data.CurrentPage == 1);
+            Assert.True(outPut.Data.Data.Count() == 0);
         }
 
 
@@ -287,10 +287,10 @@ namespace Mshop.Catalog.E2ETests.API.Product
             Assert.NotNull(outPut);
             Assert.True(outPut.Success);
             Assert.True(outPut.Data.PerPage == perPage);
-            Assert.True(outPut.Data.Page == page);
-            Assert.True(outPut.Data.Itens.Count() == expectedQuantityItems);
+            Assert.True(outPut.Data.CurrentPage == page);
+            Assert.True(outPut.Data.Data.Count() == expectedQuantityItems);
 
-            foreach (var item in outPut.Data.Itens)
+            foreach (var item in outPut.Data.Data)
             {
                 var expectItem = products.FirstOrDefault(x => x.Id == item.Id);
 

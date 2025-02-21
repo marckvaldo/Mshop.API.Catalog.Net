@@ -72,7 +72,7 @@ namespace Mshop.IntegrationTests.Application.UserCases.Cache.Category.ListCatego
 
             var outPut = await useCase.Handle(request, CancellationToken.None);
 
-            var paginate = new PaginatedInPut(page:1, perPage: 20, search:"", orderBy:"",order: Core.Enum.Paginated.SearchOrder.Desc);
+            var paginate = new PaginatedInPut(currentPage:1, perPage: 20, search:"", orderBy:"",order: Core.Enum.Paginated.SearchOrder.Desc);
             Thread.Sleep(2000);
             var categoryCache = await _categoryCacheRepository.FilterPaginated(paginate,CancellationToken.None);
 
@@ -81,10 +81,10 @@ namespace Mshop.IntegrationTests.Application.UserCases.Cache.Category.ListCatego
             Assert.False(_notification.HasErrors());
             Assert.NotNull(result);
             Assert.Equal(categoryFake.Count, result.Total);
-            Assert.Equal(request.Page, result.Page);
+            Assert.Equal(request.CurrentPage, result.CurrentPage);
             Assert.Equal(request.PerPage, result.PerPage);
-            Assert.NotNull(result.Itens);
-            Assert.True(result.Itens.Any());
+            Assert.NotNull(result.Data);
+            Assert.True(result.Data.Any());
 
             Assert.NotNull(categoryCache);
             Assert.Equal(20,categoryCache.Total);

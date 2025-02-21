@@ -12,7 +12,7 @@
         ],
         "parameters": [
           {
-            "name": "Page",
+            "name": "CurrentPage",
             "in": "query",
             "schema": {
               "type": "integer",
@@ -128,7 +128,7 @@
         ],
         "parameters": [
           {
-            "name": "Page",
+            "name": "CurrentPage",
             "in": "query",
             "schema": {
               "type": "integer",
@@ -204,7 +204,7 @@
         ],
         "parameters": [
           {
-            "name": "Page",
+            "name": "CurrentPage",
             "in": "query",
             "schema": {
               "type": "integer",
@@ -273,14 +273,14 @@
         }
       }
     },
-    "/api/Cache/list-products-promotion-cache": {
+    "/api/Cache/list-products-onlyPromotion-cache": {
       "get": {
         "tags": [
           "Cache"
         ],
         "parameters": [
           {
-            "name": "Page",
+            "name": "CurrentPage",
             "in": "query",
             "schema": {
               "type": "integer",
@@ -1015,6 +1015,21 @@
         ],
         "parameters": [
           {
+            "name": "OnlyPromotion",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "CategoryId",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
             "name": "Page",
             "in": "query",
             "schema": {
@@ -1489,7 +1504,7 @@
       "ListCategoriesCacheOutPut": {
         "type": "object",
         "properties": {
-          "page": {
+          "currentPage": {
             "type": "integer",
             "format": "int32"
           },
@@ -1501,7 +1516,7 @@
             "type": "integer",
             "format": "int32"
           },
-          "itens": {
+          "data": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/CategoryModelOutPut"
@@ -1531,7 +1546,7 @@
       "ListProductByCategoryCacheOutPut": {
         "type": "object",
         "properties": {
-          "page": {
+          "currentPage": {
             "type": "integer",
             "format": "int32"
           },
@@ -1543,7 +1558,7 @@
             "type": "integer",
             "format": "int32"
           },
-          "itens": {
+          "data": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/ProductModelOutPut"
@@ -1556,7 +1571,7 @@
       "ListProductCacheOutPut": {
         "type": "object",
         "properties": {
-          "page": {
+          "currentPage": {
             "type": "integer",
             "format": "int32"
           },
@@ -1568,7 +1583,7 @@
             "type": "integer",
             "format": "int32"
           },
-          "itens": {
+          "data": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/ProductModelOutPut"
@@ -1581,7 +1596,7 @@
       "ListProductPromotionCacheOutPut": {
         "type": "object",
         "properties": {
-          "page": {
+          "currentPage": {
             "type": "integer",
             "format": "int32"
           },
@@ -1593,7 +1608,7 @@
             "type": "integer",
             "format": "int32"
           },
-          "itens": {
+          "data": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/ProductModelOutPut"

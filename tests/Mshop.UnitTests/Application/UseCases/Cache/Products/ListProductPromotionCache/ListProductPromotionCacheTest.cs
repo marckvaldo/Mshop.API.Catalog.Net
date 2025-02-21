@@ -67,9 +67,9 @@ namespace Mshop.UnitTests.Application.UseCases.Cache.Products.ListProductSaleCac
 
             var listOutPut = outPut.Result.Data;
 
-            for (int i = 0;i<listOutPut.Itens.Count;i++)
+            for (int i = 0;i<listOutPut.Data.Count;i++)
             {
-                if(listOrdenada[i].Equals(listOutPut.Itens[i]))
+                if(listOrdenada[i].Equals(listOutPut.Data[i]))
                     Assert.False(true);
             }
         }
@@ -115,9 +115,9 @@ namespace Mshop.UnitTests.Application.UseCases.Cache.Products.ListProductSaleCac
 
             var listOutPut = outPut.Result.Data;
 
-            for (int i = 0; i < listOutPut.Itens.Count; i++)
+            for (int i = 0; i < listOutPut.Data.Count; i++)
             {
-                if (listOrdenada[i].Equals(listOutPut.Itens[i]))
+                if (listOrdenada[i].Equals(listOutPut.Data[i]))
                     Assert.False(true);
             }
         }

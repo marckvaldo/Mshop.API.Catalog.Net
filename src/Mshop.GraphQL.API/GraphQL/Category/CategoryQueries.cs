@@ -46,10 +46,10 @@ namespace Mshop.API.GraphQL.GraphQL.Category
             RequestIsValid(notification);
 
             return new CategorySeachPayload(
-                    outPut.Data.Page,
+                    outPut.Data.CurrentPage,
                     outPut.Data.PerPage,
                     outPut.Data.Total,
-                    outPut.Data.Itens.Select(x => new CategoryPayload(
+                    outPut.Data.Data.Select(x => new CategoryPayload(
                         x.Id,
                         x.Name,
                         x.IsActive)).ToList()

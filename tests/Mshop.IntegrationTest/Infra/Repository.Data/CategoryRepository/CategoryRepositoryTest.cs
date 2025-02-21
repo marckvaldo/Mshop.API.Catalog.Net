@@ -125,13 +125,13 @@ namespace Mshop.IntegrationTests.Infra.Repository.Data.CategoryRepository
             var outPut = await _categoryRepository.FilterPaginated(request,CancellationToken.None);
 
             Assert.NotNull(outPut);
-            Assert.NotNull(outPut?.Itens);
+            Assert.NotNull(outPut?.Data);
             Assert.Equal(outPut.Total, quantity);
             Assert.Equal(outPut?.PerPage, perPage);
-            Assert.Equal(outPut?.Itens.Count(), perPage);
+            Assert.Equal(outPut?.Data.Count(), perPage);
             Assert.Equal(outPut?.CurrentPage, 1);
 
-            foreach(var item in outPut?.Itens?.ToList())
+            foreach(var item in outPut?.Data?.ToList())
             {
                 var category = categories.Where(x => x.Id == item.Id).FirstOrDefault();
                 Assert.NotNull(category);
@@ -151,7 +151,7 @@ namespace Mshop.IntegrationTests.Infra.Repository.Data.CategoryRepository
             var outPut = await _categoryRepository.FilterPaginated(input, CancellationToken.None);
 
             Assert.NotNull(outPut);
-            Assert.True(outPut.Itens.Count == 0);
+            Assert.True(outPut.Data.Count == 0);
             Assert.True(outPut.Total == 0);
             Assert.Equal(input.PerPage, outPut.PerPage);
         }
@@ -172,13 +172,13 @@ namespace Mshop.IntegrationTests.Infra.Repository.Data.CategoryRepository
             var outPut = await _categoryRepository.FilterPaginated(input, CancellationToken.None);
 
             Assert.NotNull(outPut);
-            Assert.NotNull(outPut.Itens);
-            Assert.True(outPut.Itens.Count == expectedQuantityItems);
+            Assert.NotNull(outPut.Data);
+            Assert.True(outPut.Data.Count == expectedQuantityItems);
             Assert.Equal(outPut.PerPage, perPage);
             Assert.True(outPut.Total == quantityProduct);
             Assert.Equal(input.PerPage, outPut.PerPage);
 
-            foreach (var item in outPut.Itens)
+            foreach (var item in outPut.Data)
             {
                 var category = categoryList.Where(x => x.Id == item.Id).FirstOrDefault();
                 Assert.NotNull(category);

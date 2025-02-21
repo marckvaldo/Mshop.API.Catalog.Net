@@ -12,14 +12,14 @@ namespace Mshop.Core.Paginated
 
         public int TotalPages { get; set; }
 
-        public IReadOnlyList<TEntity> Itens { get; set; }
+        public IReadOnlyList<TEntity> Data { get; set; }
 
-        public PaginatedOutPut(int currentPage, int perPage, int total, IReadOnlyList<TEntity> itens)
+        public PaginatedOutPut(int currentPage, int perPage, int total, IReadOnlyList<TEntity> data)
         {
             CurrentPage = currentPage;
             PerPage = perPage;
             Total = total;
-            Itens = itens;
+            Data = data;
             TotalPages = (int)(total / perPage);
         }
 

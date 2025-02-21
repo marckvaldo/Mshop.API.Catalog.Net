@@ -5,7 +5,7 @@ namespace Mshop.Core.Paginated
 {
     public class PaginatedInPut
     {
-        public int Page { get; set; }
+        public int CurrentPage { get; set; }
 
         public int PerPage { get; set; }
 
@@ -18,11 +18,11 @@ namespace Mshop.Core.Paginated
         //(1-1)*10=0
         //(2-1)*10=10
         //(3-1)*10=20
-        public int From => (Page - 1) * PerPage;
+        public int From => (CurrentPage - 1) * PerPage;
 
-        public PaginatedInPut(int page = 1, int perPage = 20, string search = "", string orderBy = "", SearchOrder order = SearchOrder.Asc)
+        public PaginatedInPut(int currentPage = 1, int perPage = 20, string search = "", string orderBy = "", SearchOrder order = SearchOrder.Asc)
         {
-            Page = page;
+            CurrentPage = currentPage;
             PerPage = perPage;
             Search = search;
             OrderBy = orderBy;

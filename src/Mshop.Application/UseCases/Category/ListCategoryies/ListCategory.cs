@@ -32,7 +32,7 @@ namespace Mshop.Application.UseCases.Category.ListCategories
                 categorys.CurrentPage,
                 categorys.PerPage,
                 categorys.Total,
-                categorys.Itens.Select(x => new CategoryModelOutPut(
+                categorys.Data.Select(x => new CategoryModelOutPut(
                     x.Id, 
                     x.Name, 
                     x.IsActive

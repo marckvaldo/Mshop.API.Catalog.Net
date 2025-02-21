@@ -25,7 +25,7 @@ namespace Mshop.Infra.Data.Repository
 
         public async Task<PaginatedOutPut<Category>> FilterPaginated(PaginatedInPut input)
         {
-            var toSkip = (input.Page - 1) * input.PerPage;
+            var toSkip = (input.CurrentPage - 1) * input.PerPage;
             var query = _dbSet.AsNoTracking();
 
             query = AddOrderToQuery(query, input.OrderBy, input.Order);
@@ -38,7 +38,7 @@ namespace Mshop.Infra.Data.Repository
                          .ToListAsync();
 
             NotFoundException.ThrowIfnull(category);
-            return new PaginatedOutPut<Category>(input.Page, input.PerPage, total, category);
+            return new PaginatedOutPut<Category>(input.CurrentPage, input.PerPage, total, category);
         }
 
         private IQueryable<Category> AddOrderToQuery(IQueryable<Category> query, string orderBay, SearchOrder order)
@@ -64,7 +64,7 @@ namespace Mshop.Infra.Data.Repository
 
         public override async Task<PaginatedOutPut<Category>> FilterPaginated(PaginatedInPut input, CancellationToken cancellationToken)
         {
-            var toSkip = (input.Page - 1) * input.PerPage;
+            var toSkip = (input.CurrentPage - 1) * input.PerPage;
 
             var query = _dbSet.AsNoTracking();
             query = AddOrderByToQuery(query, input.OrderBy, input.Order);
@@ -77,7 +77,7 @@ namespace Mshop.Infra.Data.Repository
             var category = await query.Skip(toSkip).Take(input.PerPage)
                 .ToListAsync();
 
-            return new PaginatedOutPut<Category>(input.Page, input.PerPage, total, category);
+            return new PaginatedOutPut<Category>(input.CurrentPage, input.PerPage, total, category);
 
         }
 

@@ -108,7 +108,7 @@ namespace Mshop.IntegrationTests.Infra.Repository.Cache.CategoryRepository
             await _categoryRepositoryCache.DeleteById(categoryDelete, CancellationToken.None);
             var outPut = await _categoryRepositoryCache.FilterPaginated(
                 new Core.Paginated.PaginatedInPut(
-                   page:1,
+                   currentPage:1,
                     perPage: 10,
                     search: "",
                     orderBy: "",
@@ -117,8 +117,8 @@ namespace Mshop.IntegrationTests.Infra.Repository.Cache.CategoryRepository
                 CancellationToken.None);
 
             Assert.NotNull(outPut);
-            Assert.Equal(quantity - 1, outPut.Itens.Count());
-            Assert.Equal(0, outPut.Itens?.Where(x => x.Id == categoryDelete.Id).Count());
+            Assert.Equal(quantity - 1, outPut.Data.Count());
+            Assert.Equal(0, outPut.Data?.Where(x => x.Id == categoryDelete.Id).Count());
             
         }
 
@@ -141,13 +141,13 @@ namespace Mshop.IntegrationTests.Infra.Repository.Cache.CategoryRepository
             var outPut = await _categoryRepositoryCache.FilterPaginated(request, CancellationToken.None);
 
             Assert.NotNull(outPut);
-            Assert.NotNull(outPut?.Itens);
+            Assert.NotNull(outPut?.Data);
             Assert.Equal(outPut.Total, quantity);
             Assert.Equal(outPut?.PerPage, perPage);
-            Assert.Equal(outPut?.Itens.Count(), perPage);
+            Assert.Equal(outPut?.Data.Count(), perPage);
             Assert.Equal(outPut?.CurrentPage, 1);
 
-            foreach(var item in outPut?.Itens?.ToList())
+            foreach(var item in outPut?.Data?.ToList())
             {
                 var category = categories.Where(x => x.Id == item.Id).FirstOrDefault();
                 Assert.NotNull(category);
@@ -188,13 +188,13 @@ namespace Mshop.IntegrationTests.Infra.Repository.Cache.CategoryRepository
             var outPut = await _categoryRepositoryCache.FilterPaginated(input, CancellationToken.None);
 
             Assert.NotNull(outPut);
-            Assert.NotNull(outPut.Itens);
-            Assert.True(outPut.Itens.Count == expectedQuantityItems);
+            Assert.NotNull(outPut.Data);
+            Assert.True(outPut.Data.Count == expectedQuantityItems);
             Assert.Equal(outPut.PerPage, perPage);
             Assert.True(outPut.Total == quantityProduct);
             Assert.Equal(input.PerPage, outPut.PerPage);
 
-            foreach (var item in outPut.Itens)
+            foreach (var item in outPut.Data)
             {
                 var category = categoryList.Where(x => x.Id == item.Id).FirstOrDefault();
                 Assert.NotNull(category);

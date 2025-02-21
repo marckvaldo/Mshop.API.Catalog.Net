@@ -86,7 +86,7 @@ namespace Mshop.IntegrationTests.Application.UserCases.Cache.Product.ListProduct
             Thread.Sleep(2000);
             var productsCache = await _productsCacheRepository.FilterPaginatedQuery(
                 new Core.Paginated.PaginatedInPut(
-                    page: 1, 
+                    currentPage: 1, 
                     perPage: 20, 
                     search: "", 
                     orderBy: "", 
@@ -98,10 +98,10 @@ namespace Mshop.IntegrationTests.Application.UserCases.Cache.Product.ListProduct
 
             Assert.NotNull(result);
             Assert.Equal(productsFake.Count, result.Total);
-            Assert.Equal(request.Page, result.Page);
+            Assert.Equal(request.CurrentPage, result.CurrentPage);
             Assert.Equal(request.PerPage, result.PerPage);
-            Assert.NotNull(result.Itens);
-            Assert.True(result.Itens.Any());
+            Assert.NotNull(result.Data);
+            Assert.True(result.Data.Any());
             Assert.NotNull(productsCache);
             Assert.Equal(20,productsCache.Total);
         }

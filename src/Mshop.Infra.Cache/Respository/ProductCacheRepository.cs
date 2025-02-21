@@ -97,10 +97,9 @@ namespace Mshop.Infra.Cache.Respository
         }
 
         private async Task<PaginatedOutPut<Product>>? SearchProducts(PaginatedInPut input, Guid categoryId, bool onlyPromotion)
-        {
-            //FT.SEARCH "productsIndex" "@Name: @IsSale:{0} @CategoryId:{117e165769044bd0add3fffd8466cd03}"
+        {           
 
-            var offset = (input.Page - 1) * input.PerPage;
+            var offset = (input.CurrentPage - 1) * input.PerPage;
 
             var Id = Helpers.ClearString(categoryId.ToString());
 
@@ -143,13 +142,13 @@ namespace Mshop.Infra.Cache.Respository
             var result = await _search.SearchAsync(_indexName, query.Limit(offset, input.PerPage));
 
 
-            if (result.Documents.Count == 0)
+            if (result.Documents.Count == 0 && totalItems == 0)
                 return null;
 
             var products = result.Documents.Select(doc => RedisToProduct(doc)).ToList();
 
             return new PaginatedOutPut<Product>(
-                input.Page,
+                input.CurrentPage,
                 input.PerPage,
                 totalItems,
                 products);
@@ -158,7 +157,7 @@ namespace Mshop.Infra.Cache.Respository
 
         public async Task<PaginatedOutPut<Product>>? FilterPaginatedPromotion(PaginatedInPut input, CancellationToken cancellationToken)
         {
-            var offset = (input.Page - 1) * input.PerPage;
+            var offset = (input.CurrentPage - 1) * input.PerPage;
 
             var query = $"@Name:{input.Search}* @IsSale:{{{1}}}";
 
@@ -177,14 +176,14 @@ namespace Mshop.Infra.Cache.Respository
             var products = result.Documents.Select(doc => RedisToProduct(doc)).ToList();
 
             return new PaginatedOutPut<Product>(
-                input.Page,
+                input.CurrentPage,
                 input.PerPage,
                 totalItems,
                 products);
         }
         public async Task<PaginatedOutPut<Product>>? FilterPaginatedByCategory(PaginatedInPut input, Guid categoryId, CancellationToken cancellationToken)
         {
-            var offset = (input.Page - 1) * input.PerPage;
+            var offset = (input.CurrentPage - 1) * input.PerPage;
 
             var Id = Helpers.ClearString(categoryId.ToString());
 
@@ -205,7 +204,7 @@ namespace Mshop.Infra.Cache.Respository
             var products = result.Documents.Select(doc => RedisToProduct(doc)).ToList();
 
             return new PaginatedOutPut<Product>(
-                input.Page,
+                input.CurrentPage,
                 input.PerPage,
                 totalItems,
                 products);

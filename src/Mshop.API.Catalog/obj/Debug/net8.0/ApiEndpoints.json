@@ -34,7 +34,7 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "Page",
+        "Name": "CurrentPage",
         "Type": "System.Int32",
         "IsRequired": false
       },
@@ -85,7 +85,7 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "Page",
+        "Name": "CurrentPage",
         "Type": "System.Int32",
         "IsRequired": false
       },
@@ -136,7 +136,7 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "Page",
+        "Name": "CurrentPage",
         "Type": "System.Int32",
         "IsRequired": false
       },
@@ -181,13 +181,13 @@
   {
     "ContainingType": "Mshop.API.Catalog.Controllers.CacheController",
     "Method": "ListProductsPromotionCache",
-    "RelativePath": "api/Cache/list-products-promotion-cache",
+    "RelativePath": "api/Cache/list-products-onlyPromotion-cache",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "Page",
+        "Name": "CurrentPage",
         "Type": "System.Int32",
         "IsRequired": false
       },
@@ -657,6 +657,16 @@
     "IsController": true,
     "Order": 0,
     "Parameters": [
+      {
+        "Name": "OnlyPromotion",
+        "Type": "System.Boolean",
+        "IsRequired": false
+      },
+      {
+        "Name": "CategoryId",
+        "Type": "System.Guid",
+        "IsRequired": false
+      },
       {
         "Name": "Page",
         "Type": "System.Int32",

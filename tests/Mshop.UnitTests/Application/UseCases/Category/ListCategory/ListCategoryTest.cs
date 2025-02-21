@@ -33,11 +33,11 @@ namespace Mshop.Application.UseCases.Category.ListCategory
             var resultOutPu = outPut.Data;
 
             Assert.NotNull(resultOutPu);
-            Assert.NotNull(resultOutPu.Itens);
+            Assert.NotNull(resultOutPu.Data);
             Assert.Equal(resultOutPu.PerPage, request.PerPage);
             Assert.Equal(10, resultOutPu.Total);
-            Assert.Equal(resultOutPu.Page, request.Page);
-            Assert.Equal(10, resultOutPu.Itens.Count);
+            Assert.Equal(resultOutPu.CurrentPage, request.Page);
+            Assert.Equal(10, resultOutPu.Data.Count);
 
 
         }

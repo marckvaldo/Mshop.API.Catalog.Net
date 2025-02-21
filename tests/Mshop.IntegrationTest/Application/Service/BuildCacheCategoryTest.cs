@@ -57,15 +57,15 @@ namespace Mshop.IntegrationTests.Application.Service
 
             var categories = await _categoryCacheRepository.FilterPaginated(
                                         new Core.Paginated.PaginatedInPut(
-                                            page: 1,
+                                            currentPage: 1,
                                             perPage: 50,
                                             search: "",
                                             orderBy: "",
                                             order: SearchOrder.Desc),
                                         CancellationToken.None);
 
-            Assert.NotNull(categories.Itens);
-            Assert.Equal(50, categories.Itens.Count);
+            Assert.NotNull(categories.Data);
+            Assert.Equal(50, categories.Data.Count);
         }
 
 

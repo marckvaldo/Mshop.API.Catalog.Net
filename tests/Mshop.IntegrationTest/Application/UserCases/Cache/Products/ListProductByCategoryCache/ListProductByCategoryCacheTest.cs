@@ -94,7 +94,7 @@ namespace Mshop.IntegrationTests.Application.UserCases.Cache.Product.ListProduct
             var outPut = await useCase.Handle(request, CancellationToken.None);
            /* var productsCache = await _productsCacheRepository.FilterPaginated(
                 new Core.Paginated.PaginatedInPut(
-                    page: 1, 
+                    currentPage: 1, 
                     perPage: 20, 
                     search: "", 
                     orderBy: "", 
@@ -106,7 +106,7 @@ namespace Mshop.IntegrationTests.Application.UserCases.Cache.Product.ListProduct
 
             var productsCache = await _productsCacheRepository.FilterPaginatedQuery(
                 new Core.Paginated.PaginatedInPut(
-                    page: 1, 
+                    currentPage: 1, 
                     perPage: 30,
                     search: "", 
                     orderBy: "", 
@@ -119,12 +119,12 @@ namespace Mshop.IntegrationTests.Application.UserCases.Cache.Product.ListProduct
 
             Assert.NotNull(result);
             Assert.Equal(productsFake.Count, result.Total);
-            Assert.Equal(request.Page, result.Page);
+            Assert.Equal(request.CurrentPage, result.CurrentPage);
             Assert.Equal(request.PerPage, result.PerPage);
-            Assert.NotNull(result.Itens);
-            Assert.True(result.Itens.Any());
+            Assert.NotNull(result.Data);
+            Assert.True(result.Data.Any());
             Assert.NotNull(productsCache);
-            Assert.Equal(10, productsCache.Itens.Count());
+            Assert.Equal(10, productsCache.Data.Count());
         }
 
         public void Dispose()

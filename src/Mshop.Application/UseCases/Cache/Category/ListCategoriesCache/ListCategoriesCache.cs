@@ -50,7 +50,7 @@ namespace Mshop.Application.UseCases.Cache.Category.ListCategoriesCache
                     categories.CurrentPage,
                     categories.PerPage,
                     categories.Total,
-                    categories.Itens.Select(d=> CategoryModelOutPut.FromCategory(d)).ToList())
+                    categories.Data.Select(d=> CategoryModelOutPut.FromCategory(d)).ToList())
                 );
         }
     }

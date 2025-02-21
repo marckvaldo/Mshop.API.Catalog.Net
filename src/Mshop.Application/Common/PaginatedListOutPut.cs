@@ -2,16 +2,16 @@
 {
     public abstract class PaginatedListOutPut<TOutPutItens>
     {
-        public int Page { get; set; }
+        public int CurrentPage { get; set; }
         public int PerPage { get; set; }
         public int Total { get; set; }
-        public IReadOnlyList<TOutPutItens> Itens { get; set; }
-        protected PaginatedListOutPut(int page, int perPage, int total, IReadOnlyList<TOutPutItens> itens)
+        public IReadOnlyList<TOutPutItens> Data { get; set; }
+        protected PaginatedListOutPut(int currentPage, int perPage, int total, IReadOnlyList<TOutPutItens> data)
         {
-            Page = page;
+            CurrentPage = currentPage;
             PerPage = perPage;
             Total = total;
-            Itens = itens;
+            Data = data;
         }
 
     }

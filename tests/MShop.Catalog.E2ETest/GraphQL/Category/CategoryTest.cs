@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Mshop.Catalog.E2ETests.Base;
-using Mshop.Catalog.E2ETests.GraphQL.Common;
+using Mshop.Catalog.E2ETests.GraphQL.Common.Category;
 using Mshop.Core.Data;
 using Mshop.Core.Enum.Paginated;
 using Mshop.Infra.Cache.Interface;
@@ -103,9 +103,9 @@ namespace MShop.Catalog.E2ETest.GraphQL.Category
                             {{
                                 listCategories (page: {page}, perPage: {perPage}, search: ""{search}"", orderBy: ""name"" ,order: ASC) {{ 
                                     total,
-                                    page,
+                                    currentPage,
                                     perPage,
-                                    itens {{
+                                    data {{
                                         name,
                                         id
                                     }}
@@ -117,11 +117,11 @@ namespace MShop.Catalog.E2ETest.GraphQL.Category
 
             Assert.NotNull(result);
             Assert.True(result.Data.ListCategories.Total == expertedTotalCount);
-            Assert.True(result.Data.ListCategories.Itens.Count == expertedItemsCount);
-            Assert.True(result.Data.ListCategories.Page == page);
+            Assert.True(result.Data.ListCategories.Data.Count == expertedItemsCount);
+            Assert.True(result.Data.ListCategories.CurrentPage == page);
             Assert.True(result.Data.ListCategories.PerPage == perPage);
 
-            foreach (var item in result.Data.ListCategories.Itens)
+            foreach (var item in result.Data.ListCategories.Data)
             {
                 Assert.Equal(item.Name, listCategories.First(x => x.Id == item.Id).Name);
             }
@@ -157,17 +157,13 @@ namespace MShop.Catalog.E2ETest.GraphQL.Category
 
             Thread.Sleep(1500);
 
-            //await ElasticSearchOperation.SaveIndexAsync(_elasticClient, listCategory);
-            //await ElasticSearchOperation.RefreshAsync(_elasticClient, StartIndex.IndexName.Category);
-
-
             string query = $@"
                         {{
                             listCategories (page: {page}, perPage: {perPage}, search: ""{search}"", orderBy: ""{orderBy}"" ,order:{order.ToString().ToUpper()}) {{ 
                                 total,
-                                page,
                                 perPage,
-                                itens {{
+                                currentPage,
+                                data {{
                                     name,
                                     id
                                 }}
@@ -177,16 +173,16 @@ namespace MShop.Catalog.E2ETest.GraphQL.Category
             var result = await _graphQLClient.SendQuery<CategoryPaginateResponse>(query);
 
             Assert.NotNull(result);
-            Assert.NotNull(result.Data.ListCategories.Itens);
-            Assert.True(result.Data.ListCategories.Page == page);
+            Assert.NotNull(result.Data.ListCategories.Data);
+            Assert.True(result.Data.ListCategories.CurrentPage == page);
             Assert.True(result.Data.ListCategories.PerPage == perPage);
-            Assert.True(result.Data.ListCategories.Itens.Count() == listCategories.Count);
+            Assert.True(result.Data.ListCategories.Data.Count() == listCategories.Count);
             Assert.True(result.Data.ListCategories.Total == listCategories.Count);
 
-            for (int i = 0; i < result.Data.ListCategories.Itens.Count; i++)
+            for (int i = 0; i < result.Data.ListCategories.Data.Count; i++)
             {
                 var itemExpected = expectedList[i];
-                var itemOutPut = result.Data.ListCategories.Itens[i];
+                var itemOutPut = result.Data.ListCategories.Data[i];
                 Assert.NotNull(itemExpected);
                 Assert.NotNull(itemOutPut);
                 Assert.Equal(itemExpected.Name, itemOutPut.Name);

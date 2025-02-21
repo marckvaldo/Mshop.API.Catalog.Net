@@ -7,11 +7,11 @@ namespace Mshop.Application.UseCases.Category.ListCategories
     public class ListCategoryOutPut : PaginatedListOutPut<CategoryModelOutPut>, IModelOutPut
     {
         public ListCategoryOutPut(
-            int page, 
+            int currentPage, 
             int perPage, 
             int total, 
-            IReadOnlyList<CategoryModelOutPut> itens) 
-            : base(page, perPage, total, itens)
+            IReadOnlyList<CategoryModelOutPut> data) 
+            : base(currentPage, perPage, total, data)
         {
 
         }

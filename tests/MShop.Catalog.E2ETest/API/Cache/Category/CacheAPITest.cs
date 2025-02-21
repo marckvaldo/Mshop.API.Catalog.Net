@@ -139,19 +139,19 @@ namespace Mshop.Catalog.E2ETests.API.Cache.Category
 
             Assert.Null(categoryNull);
             Assert.NotNull(categoriesCache);
-            Assert.Equal(perPager, categoriesCache.Itens.Count);
+            Assert.Equal(perPager, categoriesCache.Data.Count);
             Assert.Equal(20, categoriesDb.Count);
             Assert.NotNull(categories);
             Assert.NotNull(response);
             Assert.NotNull(outPut);
             Assert.True(outPut.Success);
             Assert.Equal(System.Net.HttpStatusCode.OK, response.StatusCode);
-            Assert.NotNull(outPut.Data.Itens);
+            Assert.NotNull(outPut.Data.Data);
             Assert.Equal(perPager, outPut.Data.PerPage);
-            Assert.Equal(page, outPut.Data.Page);
+            Assert.Equal(page, outPut.Data.CurrentPage);
             Assert.Equal(qtdCategory, outPut.Data.Total);
 
-            foreach (var item in outPut.Data.Itens)
+            foreach (var item in outPut.Data.Data)
             {
                 var categoryCache = await _categoryCacheRepository.GetById(item.Id);
                 Assert.NotNull(categoryCache);
@@ -197,19 +197,19 @@ namespace Mshop.Catalog.E2ETests.API.Cache.Category
 
 
             Assert.NotNull(categoriesCache);
-            Assert.Equal(20, categoriesCache.Itens.Count);
+            Assert.Equal(20, categoriesCache.Data.Count);
             Assert.Equal(0,categoriesDb.Count);
             Assert.NotNull(categories);
             Assert.NotNull(response);
             Assert.NotNull(outPut);
             Assert.True(outPut.Success);
             Assert.Equal(System.Net.HttpStatusCode.OK, response.StatusCode);
-            Assert.NotNull(outPut.Data.Itens);
+            Assert.NotNull(outPut.Data.Data);
             Assert.Equal(perPager, outPut.Data.PerPage);
-            Assert.Equal(page, outPut.Data.Page);
+            Assert.Equal(page, outPut.Data.CurrentPage);
             Assert.Equal(qtdCategory, outPut.Data.Total);
 
-            foreach (var item in outPut.Data.Itens)
+            foreach (var item in outPut.Data.Data)
             {
                 var categoryCache = await _categoryCacheRepository.GetById(item.Id);
                 Assert.NotNull(categoryCache);

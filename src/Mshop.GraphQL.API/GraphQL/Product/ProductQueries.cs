@@ -36,7 +36,7 @@ namespace Mshop.API.GraphQL.GraphQL.Product
                     result.Stock,
                     result.IsActive,
                     result.CategoryId,
-                    new Category.CategoryPayload(result.Category.Id,result.Name,result.IsActive),
+                    new Category.CategoryPayload(result.Category.Id,result.Category.Name,result.Category.IsActive),
                     result.IsPromotion);
 
             resultImage.Images.ForEach(x => produto.AddImages(x.Image));
@@ -45,7 +45,7 @@ namespace Mshop.API.GraphQL.GraphQL.Product
             return produto;
         }
 
-        public async Task<ProductSearchOutPut> ListProductCacheOutPutAsync(
+        public async Task<ProductSearchOutPut> ListProduct(
             [Service] IMediator mediator,
             [Service] Notification.INotification notification,
             int perPage = 10,
@@ -54,28 +54,29 @@ namespace Mshop.API.GraphQL.GraphQL.Product
             string sort = "",
             SearchOrder order = SearchOrder.Asc,
             bool onlyPromotion = false,
-            Guid categoryId = default,
+            string categoryId = default,
             CancellationToken cancellationToken = default)
         {
-    
-        var request = new ListProductCacheInPut(page, perPage, search, sort, order, onlyPromotion, categoryId);
-        var outPut = await mediator.Send(request, cancellationToken);
 
-        RequestIsValid(notification);
+            var idCategory = categoryId == "" ? Guid.Empty : Guid.Parse(categoryId);
+            var request = new ListProductCacheInPut(page, perPage, search, sort, order, onlyPromotion, idCategory);
+            var outPut = await mediator.Send(request, cancellationToken);
 
-        var result = outPut.Data;
-        return new ProductSearchOutPut(result.Page, result.PerPage, result.Total,
-            result.Itens.Select(x => new ProductPayload(
-                x.Id,
-                x.Description,
-                x.Name,
-                x.Price,
-                x.Thumb,
-                x.Stock,
-                x.IsActive,
-                x.CategoryId,
-                new Category.CategoryPayload(x.CategoryId, x.Category.Name, x.Category.IsActive),
-                x.IsPromotion)).ToList());
+            RequestIsValid(notification);
+
+            var result = outPut.Data;
+            return new ProductSearchOutPut(result.CurrentPage, result.PerPage, result.Total,
+                result.Data.Select(x => new ProductPayload(
+                    x.Id,
+                    x.Description,
+                    x.Name,
+                    x.Price,
+                    x.Thumb,
+                    x.Stock,
+                    x.IsActive,
+                    x.CategoryId,
+                    new Category.CategoryPayload(x.CategoryId, x.Category.Name, x.Category.IsActive),
+                    x.IsPromotion)).ToList());
         }
     }
 }

@@ -59,10 +59,10 @@ namespace Mshop.IntegrationTests.Application.UserCases.Category.ListCategory
             Assert.False(_notification.HasErrors());
             Assert.NotNull(result);
             Assert.Equal(categoryFake.Count, result.Total);
-            Assert.Equal(request.Page, result.Page);
+            Assert.Equal(request.Page, result.CurrentPage);
             Assert.Equal(request.PerPage, result.PerPage);
-            Assert.NotNull(result.Itens);
-            Assert.True(result.Itens.Any());
+            Assert.NotNull(result.Data);
+            Assert.True(result.Data.Any());
 
         }
 

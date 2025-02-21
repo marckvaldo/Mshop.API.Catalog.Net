@@ -31,7 +31,7 @@ namespace Mshop.Application.UseCases.Product.ListProducts
                 paginateOutPut.CurrentPage,
                 paginateOutPut.PerPage,
                 paginateOutPut.Total,
-                paginateOutPut.Itens.Select(x => new ProductModelOutPut
+                paginateOutPut.Data.Select(x => new ProductModelOutPut
                 (
                     x.Id,
                     x.Description,

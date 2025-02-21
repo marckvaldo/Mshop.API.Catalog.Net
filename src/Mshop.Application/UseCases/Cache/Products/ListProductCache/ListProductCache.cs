@@ -42,7 +42,7 @@ namespace Mshop.Application.UseCases.Cache.Products.ListProductCache
                     produts.CurrentPage,
                     produts.PerPage,
                     produts.Total,
-                    produts.Itens.Select(d => ProductModelOutPut.FromProduct(d)).ToList())
+                    produts.Data.Select(d => ProductModelOutPut.FromProduct(d)).ToList())
                 );
         }
     }

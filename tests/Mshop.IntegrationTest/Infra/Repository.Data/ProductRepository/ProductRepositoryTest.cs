@@ -150,11 +150,11 @@ namespace Mshop.IntegrationTests.Infra.Repository.Data.ProductRepository
             var outPut = await _repositoryProduct.FilterPaginatedQuery(input, Guid.Empty, false, CancellationToken.None);
 
             Assert.NotNull(outPut);
-            Assert.NotNull(outPut.Itens);
-            Assert.True(outPut.Itens.Count == perPage);
+            Assert.NotNull(outPut.Data);
+            Assert.True(outPut.Data.Count == perPage);
             Assert.Equal(input.PerPage, outPut.PerPage);
 
-            foreach(DomainEntity.Product item in outPut.Itens)
+            foreach(DomainEntity.Product item in outPut.Data)
             {
                 var product = productList.Find(x => x.Id == item.Id);
                 Assert.NotNull(product);
@@ -177,7 +177,7 @@ namespace Mshop.IntegrationTests.Infra.Repository.Data.ProductRepository
             var outPut = await _repositoryProduct.FilterPaginatedQuery(input, Guid.Empty, false, CancellationToken.None);
 
             Assert.NotNull(outPut);
-            Assert.True(outPut.Itens.Count == 0);
+            Assert.True(outPut.Data.Count == 0);
             Assert.True(outPut.Total == 0);
             Assert.Equal(input.PerPage, outPut.PerPage);
         }
@@ -202,13 +202,13 @@ namespace Mshop.IntegrationTests.Infra.Repository.Data.ProductRepository
             var outPut = await _repositoryProduct.FilterPaginatedQuery(input, Guid.Empty, false, CancellationToken.None);
 
             Assert.NotNull(outPut);
-            Assert.NotNull(outPut.Itens);
-            Assert.True(outPut.Itens.Count == expectedQuantityItems);
+            Assert.NotNull(outPut.Data);
+            Assert.True(outPut.Data.Count == expectedQuantityItems);
             Assert.Equal(outPut.PerPage, perPage);   
             Assert.True(outPut.Total == quantityProduct);
             Assert.Equal(input.PerPage, outPut.PerPage);
 
-            foreach (DomainEntity.Product item in outPut.Itens)
+            foreach (DomainEntity.Product item in outPut.Data)
             {
                 var product = productList.Find(x => x.Id == item.Id);
                 Assert.NotNull(product);

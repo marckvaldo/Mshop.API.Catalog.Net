@@ -89,7 +89,7 @@ namespace Mshop.Infra.Cache.Respository
 
         private async Task<PaginatedOutPut<Category>>? SearchPaginate(PaginatedInPut input)
         {
-            var offset = (input.Page - 1) * input.PerPage;
+            var offset = (input.CurrentPage - 1) * input.PerPage;
 
             var query = string.IsNullOrEmpty(input.Search)
                 ? new Query("*")
@@ -102,8 +102,6 @@ namespace Mshop.Infra.Cache.Respository
             var totalResult = await _search.SearchAsync(_indexName, query);
             var totalItems = (int)totalResult.TotalResults;
 
-
-
             var result = await _search.SearchAsync(_indexName, query.Limit(offset, input.PerPage));
 
             if (result.Documents.Count == 0 && totalItems == 0)
@@ -112,7 +110,7 @@ namespace Mshop.Infra.Cache.Respository
             var cartegory = result.Documents.Select(doc => RedisToCategory(doc)).ToList();
 
             return new PaginatedOutPut<Category>(
-                input.Page,
+                input.CurrentPage,
                 input.PerPage,
                 totalItems,
                 cartegory);

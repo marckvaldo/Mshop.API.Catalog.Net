@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Mshop.Catalog.E2ETests.GraphQL.Common
+namespace Mshop.Catalog.E2ETests.GraphQL.Common.Category
 {
     public class CategoryByIdResponse
     {
@@ -18,6 +18,9 @@ namespace Mshop.Catalog.E2ETests.GraphQL.Common
 
     public class Category
     {
+        public Guid Id { get; set; }
         public string Name { get; set; }
+        public bool IsActive { get; set; }
     }
+
 }
