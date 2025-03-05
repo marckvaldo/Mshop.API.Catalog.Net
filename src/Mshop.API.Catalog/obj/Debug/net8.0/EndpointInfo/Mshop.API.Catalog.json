@@ -47,14 +47,6 @@
             "schema": {
               "$ref": "#/components/schemas/SearchOrder"
             }
-          },
-          {
-            "name": "From",
-            "in": "query",
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
           }
         ],
         "responses": {
@@ -128,81 +120,20 @@
         ],
         "parameters": [
           {
-            "name": "CurrentPage",
+            "name": "OnlyPromotion",
             "in": "query",
             "schema": {
-              "type": "integer",
-              "format": "int32"
+              "type": "boolean"
             }
           },
           {
-            "name": "PerPage",
+            "name": "CategoryId",
             "in": "query",
             "schema": {
-              "type": "integer",
-              "format": "int32"
+              "type": "string",
+              "format": "uuid"
             }
           },
-          {
-            "name": "Search",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "OrderBy",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "Order",
-            "in": "query",
-            "schema": {
-              "$ref": "#/components/schemas/SearchOrder"
-            }
-          },
-          {
-            "name": "From",
-            "in": "query",
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/ListProductCacheOutPut"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ListProductCacheOutPut"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ListProductCacheOutPut"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/Cache/list-products-by-category-cache": {
-      "get": {
-        "tags": [
-          "Cache"
-        ],
-        "parameters": [
           {
             "name": "CurrentPage",
             "in": "query",
@@ -239,14 +170,6 @@
             "schema": {
               "$ref": "#/components/schemas/SearchOrder"
             }
-          },
-          {
-            "name": "From",
-            "in": "query",
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
           }
         ],
         "responses": {
@@ -255,93 +178,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/ListProductByCategoryCacheOutPut"
+                  "$ref": "#/components/schemas/ListProductCacheOutPut"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ListProductByCategoryCacheOutPut"
+                  "$ref": "#/components/schemas/ListProductCacheOutPut"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ListProductByCategoryCacheOutPut"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/Cache/list-products-onlyPromotion-cache": {
-      "get": {
-        "tags": [
-          "Cache"
-        ],
-        "parameters": [
-          {
-            "name": "CurrentPage",
-            "in": "query",
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          },
-          {
-            "name": "PerPage",
-            "in": "query",
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          },
-          {
-            "name": "Search",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "OrderBy",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "Order",
-            "in": "query",
-            "schema": {
-              "$ref": "#/components/schemas/SearchOrder"
-            }
-          },
-          {
-            "name": "From",
-            "in": "query",
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/ListProductPromotionCacheOutPut"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ListProductPromotionCacheOutPut"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ListProductPromotionCacheOutPut"
+                  "$ref": "#/components/schemas/ListProductCacheOutPut"
                 }
               }
             }
@@ -1100,44 +947,6 @@
         }
       }
     },
-    "/api/Products/list-products-promotions": {
-      "get": {
-        "tags": [
-          "Products"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/ProductModelOutPut"
-                  }
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/ProductModelOutPut"
-                  }
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/ProductModelOutPut"
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
     "/api/Products": {
       "post": {
         "tags": [
@@ -1543,57 +1352,7 @@
         },
         "additionalProperties": false
       },
-      "ListProductByCategoryCacheOutPut": {
-        "type": "object",
-        "properties": {
-          "currentPage": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "perPage": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "total": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "data": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ProductModelOutPut"
-            },
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
       "ListProductCacheOutPut": {
-        "type": "object",
-        "properties": {
-          "currentPage": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "perPage": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "total": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "data": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ProductModelOutPut"
-            },
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "ListProductPromotionCacheOutPut": {
         "type": "object",
         "properties": {
           "currentPage": {

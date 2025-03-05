@@ -1,6 +1,8 @@
 ﻿using Mshop.Catalog.E2ETests.Base;
+using Mshop.Core.Data;
 using Mshop.Core.DomainObject;
 using Mshop.Core.Enum.Paginated;
+using Mshop.Infra.Data.Interface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -47,6 +49,17 @@ namespace Mshop.Catalog.E2ETests.GraphQL.Product
             int i = 0;
             products.ForEach(x => x.Update(x.Description, productName[i++], x.Price, x.CategoryId));
             return products;
+        }
+
+        public async void ClearProductDataBase(IProductRepository repository, IUnitOfWork unitOfWork)
+        {
+            var products = await repository.GetProductAll();
+            foreach(var item in products)
+            {
+                await repository.DeleteById(item, CancellationToken.None);
+            }
+
+            await unitOfWork.CommitAsync();
         }
     }
 }

@@ -24,7 +24,7 @@ namespace Mshop.Catalog.E2ETests.GraphQL.Common.Product
         public string Name { get; set; }
         public PayloadCategory.Category Category { get; set; }
         public string CategoryId { get; set; }
-        public long Stock { get; set; }
+        public decimal Stock { get; set; }
         public decimal Price { get; set; }
         public bool IsPromotion { get; set; }
         public string Thumb { get; set; }

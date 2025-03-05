@@ -57,67 +57,11 @@
         "Name": "Order",
         "Type": "System.String",
         "IsRequired": false
-      },
-      {
-        "Name": "From",
-        "Type": "System.Int32",
-        "IsRequired": false
       }
     ],
     "ReturnTypes": [
       {
         "Type": "Mshop.Application.UseCases.Cache.Category.ListCategoriesCache.ListCategoriesCacheOutPut",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
-  },
-  {
-    "ContainingType": "Mshop.API.Catalog.Controllers.CacheController",
-    "Method": "ListProductsByCategoryCache",
-    "RelativePath": "api/Cache/list-products-by-category-cache",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "CurrentPage",
-        "Type": "System.Int32",
-        "IsRequired": false
-      },
-      {
-        "Name": "PerPage",
-        "Type": "System.Int32",
-        "IsRequired": false
-      },
-      {
-        "Name": "Search",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "OrderBy",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "Order",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "From",
-        "Type": "System.Int32",
-        "IsRequired": false
-      }
-    ],
-    "ReturnTypes": [
-      {
-        "Type": "Mshop.Application.UseCases.Cache.Products.ListProductByCategoryCache.ListProductByCategoryCacheOutPut",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -136,6 +80,16 @@
     "Order": 0,
     "Parameters": [
       {
+        "Name": "OnlyPromotion",
+        "Type": "System.Boolean",
+        "IsRequired": false
+      },
+      {
+        "Name": "CategoryId",
+        "Type": "System.Guid",
+        "IsRequired": false
+      },
+      {
         "Name": "CurrentPage",
         "Type": "System.Int32",
         "IsRequired": false
@@ -158,68 +112,12 @@
       {
         "Name": "Order",
         "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "From",
-        "Type": "System.Int32",
         "IsRequired": false
       }
     ],
     "ReturnTypes": [
       {
         "Type": "Mshop.Application.UseCases.Cache.Products.ListProductCache.ListProductCacheOutPut",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
-  },
-  {
-    "ContainingType": "Mshop.API.Catalog.Controllers.CacheController",
-    "Method": "ListProductsPromotionCache",
-    "RelativePath": "api/Cache/list-products-onlyPromotion-cache",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "CurrentPage",
-        "Type": "System.Int32",
-        "IsRequired": false
-      },
-      {
-        "Name": "PerPage",
-        "Type": "System.Int32",
-        "IsRequired": false
-      },
-      {
-        "Name": "Search",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "OrderBy",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "Order",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "From",
-        "Type": "System.Int32",
-        "IsRequired": false
-      }
-    ],
-    "ReturnTypes": [
-      {
-        "Type": "Mshop.Application.UseCases.Cache.Products.ListProductsPromotionCache.ListProductPromotionCacheOutPut",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -693,26 +591,6 @@
         "IsRequired": false
       }
     ],
-    "ReturnTypes": [
-      {
-        "Type": "System.Collections.Generic.List\u00601[[Mshop.Application.UseCases.Product.Common.ProductModelOutPut, Mshop.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
-  },
-  {
-    "ContainingType": "Mshop.API.Catalog.Controllers.ProductsController",
-    "Method": "ListProdutcsPromotions",
-    "RelativePath": "api/Products/list-products-promotions",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
     "ReturnTypes": [
       {
         "Type": "System.Collections.Generic.List\u00601[[Mshop.Application.UseCases.Product.Common.ProductModelOutPut, Mshop.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",

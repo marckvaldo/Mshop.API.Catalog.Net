@@ -3,34 +3,8 @@
   "WorkspaceRootPath": "C:\\Users\\IQ SISTEMAS\\Documents\\mShopping\\new\\Mshopping\\MShop.API.Catalog\\src\\Mshop.API.Catalog\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{1DF8FE75-D9AC-4B5A-93E2-B81B9629755D}|..\\..\\tests\\MShop.Catalog.E2ETest\\Mshop.Catalog.E2ETests.csproj|c:\\users\\iq sistemas\\documents\\mshopping\\new\\mshopping\\mshop.api.catalog\\tests\\mshop.catalog.e2etest\\graphql\\product\\productteste.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DAA65056-C766-48F9-B077-28B45CAEF262}|..\\Mshop.Infra.Cache\\Mshop.Infra.Cache.csproj|c:\\users\\iq sistemas\\documents\\mshopping\\new\\mshopping\\mshop.api.catalog\\src\\mshop.infra.cache\\respository\\categorycacherepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{500FA508-8667-4060-89A8-07947D225242}|..\\Mshop.Application\\Mshop.Application.csproj|c:\\users\\iq sistemas\\documents\\mshopping\\new\\mshopping\\mshop.api.catalog\\src\\mshop.application\\usecases\\cache\\category\\getcategorycache\\getcategorycache.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1DF8FE75-D9AC-4B5A-93E2-B81B9629755D}|..\\..\\tests\\MShop.Catalog.E2ETest\\Mshop.Catalog.E2ETests.csproj|c:\\users\\iq sistemas\\documents\\mshopping\\new\\mshopping\\mshop.api.catalog\\tests\\mshop.catalog.e2etest\\graphql\\category\\categorytest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1DF8FE75-D9AC-4B5A-93E2-B81B9629755D}|..\\..\\tests\\MShop.Catalog.E2ETest\\Mshop.Catalog.E2ETests.csproj|c:\\users\\iq sistemas\\documents\\mshopping\\new\\mshopping\\mshop.api.catalog\\tests\\mshop.catalog.e2etest\\graphql\\common\\category\\categorypaginateresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1DF8FE75-D9AC-4B5A-93E2-B81B9629755D}|..\\..\\tests\\MShop.Catalog.E2ETest\\Mshop.Catalog.E2ETests.csproj|c:\\users\\iq sistemas\\documents\\mshopping\\new\\mshopping\\mshop.api.catalog\\tests\\mshop.catalog.e2etest\\base\\graphqlclient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{500FA508-8667-4060-89A8-07947D225242}|..\\Mshop.Application\\Mshop.Application.csproj|c:\\users\\iq sistemas\\documents\\mshopping\\new\\mshopping\\mshop.api.catalog\\src\\mshop.application\\usecases\\cache\\category\\listcategoriescache\\listcategoriescache.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7BF4D45E-D132-417A-A2F0-BC36CAF22BC2}|..\\Mshop.GraphQL.API\\Mshop.API.GraphQL.csproj|c:\\users\\iq sistemas\\documents\\mshopping\\new\\mshopping\\mshop.api.catalog\\src\\mshop.graphql.api\\graphql\\category\\categoryqueries.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7BF4D45E-D132-417A-A2F0-BC36CAF22BC2}|..\\Mshop.GraphQL.API\\Mshop.API.GraphQL.csproj|c:\\users\\iq sistemas\\documents\\mshopping\\new\\mshopping\\mshop.api.catalog\\src\\mshop.graphql.api\\graphql\\category\\categorypayload.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7BF4D45E-D132-417A-A2F0-BC36CAF22BC2}|..\\Mshop.GraphQL.API\\Mshop.API.GraphQL.csproj|c:\\users\\iq sistemas\\documents\\mshopping\\new\\mshopping\\mshop.api.catalog\\src\\mshop.graphql.api\\graphql\\category\\categoryseachpayload.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{08BE3ADD-392A-4990-8C43-63A086F7FAFE}|Mshop.API.Catalog.csproj|c:\\users\\iq sistemas\\documents\\mshopping\\new\\mshopping\\mshop.api.catalog\\src\\mshop.api.catalog\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{08BE3ADD-392A-4990-8C43-63A086F7FAFE}|Mshop.API.Catalog.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -40,7 +14,7 @@
       "DocumentGroups": [
         {
           "DockedHeight": 200,
-          "SelectedChildIndex": 13,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Bookmark",
@@ -72,132 +46,15 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "CategoryCacheRepository.cs",
-              "DocumentMoniker": "C:\\Users\\IQ SISTEMAS\\Documents\\mShopping\\new\\Mshopping\\MShop.API.Catalog\\src\\Mshop.Infra.Cache\\Respository\\CategoryCacheRepository.cs",
-              "RelativeDocumentMoniker": "..\\Mshop.Infra.Cache\\Respository\\CategoryCacheRepository.cs",
-              "ToolTip": "C:\\Users\\IQ SISTEMAS\\Documents\\mShopping\\new\\Mshopping\\MShop.API.Catalog\\src\\Mshop.Infra.Cache\\Respository\\CategoryCacheRepository.cs",
-              "RelativeToolTip": "..\\Mshop.Infra.Cache\\Respository\\CategoryCacheRepository.cs",
-              "ViewState": "AgIAAF8AAAAAAAAAAAAcwGoAAAAgAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-21T20:17:50.479Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "GetCategoryCache.cs",
-              "DocumentMoniker": "C:\\Users\\IQ SISTEMAS\\Documents\\mShopping\\new\\Mshopping\\MShop.API.Catalog\\src\\Mshop.Application\\UseCases\\Cache\\Category\\GetCategoryCache\\GetCategoryCache.cs",
-              "RelativeDocumentMoniker": "..\\Mshop.Application\\UseCases\\Cache\\Category\\GetCategoryCache\\GetCategoryCache.cs",
-              "ToolTip": "C:\\Users\\IQ SISTEMAS\\Documents\\mShopping\\new\\Mshopping\\MShop.API.Catalog\\src\\Mshop.Application\\UseCases\\Cache\\Category\\GetCategoryCache\\GetCategoryCache.cs",
-              "RelativeToolTip": "..\\Mshop.Application\\UseCases\\Cache\\Category\\GetCategoryCache\\GetCategoryCache.cs",
-              "ViewState": "AgIAABYAAAAAAAAAAAAgwBwAAABBAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-21T20:16:11.481Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "CategoryTest.cs",
-              "DocumentMoniker": "C:\\Users\\IQ SISTEMAS\\Documents\\mShopping\\new\\Mshopping\\MShop.API.Catalog\\tests\\MShop.Catalog.E2ETest\\GraphQL\\Category\\CategoryTest.cs",
-              "RelativeDocumentMoniker": "..\\..\\tests\\MShop.Catalog.E2ETest\\GraphQL\\Category\\CategoryTest.cs",
-              "ToolTip": "C:\\Users\\IQ SISTEMAS\\Documents\\mShopping\\new\\Mshopping\\MShop.API.Catalog\\tests\\MShop.Catalog.E2ETest\\GraphQL\\Category\\CategoryTest.cs",
-              "RelativeToolTip": "..\\..\\tests\\MShop.Catalog.E2ETest\\GraphQL\\Category\\CategoryTest.cs",
-              "ViewState": "AgIAAGoAAAAAAAAAAAAawGwAAAAtAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-21T20:09:27.088Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "CategoryPaginateResponse.cs",
-              "DocumentMoniker": "C:\\Users\\IQ SISTEMAS\\Documents\\mShopping\\new\\Mshopping\\MShop.API.Catalog\\tests\\MShop.Catalog.E2ETest\\GraphQL\\Common\\Category\\CategoryPaginateResponse.cs",
-              "RelativeDocumentMoniker": "..\\..\\tests\\MShop.Catalog.E2ETest\\GraphQL\\Common\\Category\\CategoryPaginateResponse.cs",
-              "ToolTip": "C:\\Users\\IQ SISTEMAS\\Documents\\mShopping\\new\\Mshopping\\MShop.API.Catalog\\tests\\MShop.Catalog.E2ETest\\GraphQL\\Common\\Category\\CategoryPaginateResponse.cs",
-              "RelativeToolTip": "..\\..\\tests\\MShop.Catalog.E2ETest\\GraphQL\\Common\\Category\\CategoryPaginateResponse.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAmwBUAAAAsAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-21T20:09:10.063Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "ListCategoriesCache.cs",
-              "DocumentMoniker": "C:\\Users\\IQ SISTEMAS\\Documents\\mShopping\\new\\Mshopping\\MShop.API.Catalog\\src\\Mshop.Application\\UseCases\\Cache\\Category\\ListCategoriesCache\\ListCategoriesCache.cs",
-              "RelativeDocumentMoniker": "..\\Mshop.Application\\UseCases\\Cache\\Category\\ListCategoriesCache\\ListCategoriesCache.cs",
-              "ToolTip": "C:\\Users\\IQ SISTEMAS\\Documents\\mShopping\\new\\Mshopping\\MShop.API.Catalog\\src\\Mshop.Application\\UseCases\\Cache\\Category\\ListCategoriesCache\\ListCategoriesCache.cs",
-              "RelativeToolTip": "..\\Mshop.Application\\UseCases\\Cache\\Category\\ListCategoriesCache\\ListCategoriesCache.cs",
-              "ViewState": "AgIAAA8AAAAAAAAAAAAawCEAAAAnAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-21T20:08:39.98Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "GraphQLClient.cs",
-              "DocumentMoniker": "C:\\Users\\IQ SISTEMAS\\Documents\\mShopping\\new\\Mshopping\\MShop.API.Catalog\\tests\\MShop.Catalog.E2ETest\\Base\\GraphQLClient.cs",
-              "RelativeDocumentMoniker": "..\\..\\tests\\MShop.Catalog.E2ETest\\Base\\GraphQLClient.cs",
-              "ToolTip": "C:\\Users\\IQ SISTEMAS\\Documents\\mShopping\\new\\Mshopping\\MShop.API.Catalog\\tests\\MShop.Catalog.E2ETest\\Base\\GraphQLClient.cs",
-              "RelativeToolTip": "..\\..\\tests\\MShop.Catalog.E2ETest\\Base\\GraphQLClient.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAkwCIAAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-21T20:08:39.994Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "ProductTeste.cs",
-              "DocumentMoniker": "C:\\Users\\IQ SISTEMAS\\Documents\\mShopping\\new\\Mshopping\\MShop.API.Catalog\\tests\\MShop.Catalog.E2ETest\\GraphQL\\Product\\ProductTeste.cs",
-              "RelativeDocumentMoniker": "..\\..\\tests\\MShop.Catalog.E2ETest\\GraphQL\\Product\\ProductTeste.cs",
-              "ToolTip": "C:\\Users\\IQ SISTEMAS\\Documents\\mShopping\\new\\Mshopping\\MShop.API.Catalog\\tests\\MShop.Catalog.E2ETest\\GraphQL\\Product\\ProductTeste.cs",
-              "RelativeToolTip": "..\\..\\tests\\MShop.Catalog.E2ETest\\GraphQL\\Product\\ProductTeste.cs",
-              "ViewState": "AgIAAFMAAAAAAAAAAAAEwF0AAAAAAAAAAAAAAA==",
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\IQ SISTEMAS\\Documents\\mShopping\\new\\Mshopping\\MShop.API.Catalog\\src\\Mshop.API.Catalog\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\IQ SISTEMAS\\Documents\\mShopping\\new\\Mshopping\\MShop.API.Catalog\\src\\Mshop.API.Catalog\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAABsAAAAAAAAAAAAAAB0AAAAGAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-21T20:08:40.008Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "CategoryPayload.cs",
-              "DocumentMoniker": "C:\\Users\\IQ SISTEMAS\\Documents\\mShopping\\new\\Mshopping\\MShop.API.Catalog\\src\\Mshop.GraphQL.API\\GraphQL\\Category\\CategoryPayload.cs",
-              "RelativeDocumentMoniker": "..\\Mshop.GraphQL.API\\GraphQL\\Category\\CategoryPayload.cs",
-              "ToolTip": "C:\\Users\\IQ SISTEMAS\\Documents\\mShopping\\new\\Mshopping\\MShop.API.Catalog\\src\\Mshop.GraphQL.API\\GraphQL\\Category\\CategoryPayload.cs",
-              "RelativeToolTip": "..\\Mshop.GraphQL.API\\GraphQL\\Category\\CategoryPayload.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-21T20:07:51.183Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "CategorySeachPayload.cs",
-              "DocumentMoniker": "C:\\Users\\IQ SISTEMAS\\Documents\\mShopping\\new\\Mshopping\\MShop.API.Catalog\\src\\Mshop.GraphQL.API\\GraphQL\\Category\\CategorySeachPayload.cs",
-              "RelativeDocumentMoniker": "..\\Mshop.GraphQL.API\\GraphQL\\Category\\CategorySeachPayload.cs",
-              "ToolTip": "C:\\Users\\IQ SISTEMAS\\Documents\\mShopping\\new\\Mshopping\\MShop.API.Catalog\\src\\Mshop.GraphQL.API\\GraphQL\\Category\\CategorySeachPayload.cs",
-              "RelativeToolTip": "..\\Mshop.GraphQL.API\\GraphQL\\Category\\CategorySeachPayload.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-21T20:07:34.761Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "CategoryQueries.cs",
-              "DocumentMoniker": "C:\\Users\\IQ SISTEMAS\\Documents\\mShopping\\new\\Mshopping\\MShop.API.Catalog\\src\\Mshop.GraphQL.API\\GraphQL\\Category\\CategoryQueries.cs",
-              "RelativeDocumentMoniker": "..\\Mshop.GraphQL.API\\GraphQL\\Category\\CategoryQueries.cs",
-              "ToolTip": "C:\\Users\\IQ SISTEMAS\\Documents\\mShopping\\new\\Mshopping\\MShop.API.Catalog\\src\\Mshop.GraphQL.API\\GraphQL\\Category\\CategoryQueries.cs",
-              "RelativeToolTip": "..\\Mshop.GraphQL.API\\GraphQL\\Category\\CategoryQueries.cs",
-              "ViewState": "AgIAACAAAAAAAAAAAAAowC4AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-21T20:07:33.536Z",
+              "WhenOpened": "2025-03-04T19:59:07.339Z",
               "EditorCaption": ""
             }
           ]

@@ -26,12 +26,12 @@ namespace Mshop.Application.UseCases.Cache.Products.ListProductCache
 
         public async Task<Result<ListProductCacheOutPut>> Handle(ListProductCacheInPut request, CancellationToken cancellationToken)
         {
-            var produts = await _productCacheRepository.FilterPaginatedQuery(request, request.categoryId, request.onlyPromotion, cancellationToken);
+            var produts = await _productCacheRepository.FilterPaginatedQuery(request, request.CategoryId, request.OnlyPromotion, cancellationToken);
 
             if (produts is null)
             {
                 _buildCache.Handle();
-                produts = await _productRepository.FilterPaginatedQuery(request, request.categoryId, request.onlyPromotion, cancellationToken);
+                produts = await _productRepository.FilterPaginatedQuery(request, request.CategoryId, request.OnlyPromotion, cancellationToken);
             }
 
             if (NotifyErrorIfNull(produts, "não foi possivel localizar as categorias na base de dados!"))

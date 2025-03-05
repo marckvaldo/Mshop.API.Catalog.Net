@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  msho-api:
+    build:
+      context: ../
+      dockerfile: docker/Dockerfile  # Caminho para o seu Dockerfile
+    ports:
+      - "88:8080"        # Porta para o REST API
+      #- "5000:5000"    # Porta para o gRPC API
+      #- "5001:5001"    # Porta para o GraphQL API
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+    networks:
+      - app-catalago
+    container_name: msho-api
+    restart: always
+
+networks:
+  app-catalago:
+    external: true

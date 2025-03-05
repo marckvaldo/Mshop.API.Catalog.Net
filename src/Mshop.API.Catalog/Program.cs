@@ -1,9 +1,13 @@
+using Microsoft.AspNetCore.Http;
 using Mshop.API.Catalog.Configuration;
 using Mshop.Application;
 using Mshop.Infra.Cache;
 using Mshop.Infra.Data;
+using Serilog;
+using Serilog.Extensions.Hosting;
 
 var builder = WebApplication.CreateBuilder(args);
+
 
 // Add services to the container.
 
@@ -18,13 +22,33 @@ builder.Services.AddConfigurationController()
     .AddDataBaseAndRepository(builder.Configuration)
     .AddCache(builder.Configuration)
     .AddRepositoryCache()
+    .AddConfigurationSeriLog(builder.Configuration)
+    .AddConfigurationHealthChecks()
     .AddUseCase();
 
+    builder.Host.UseSerilog();
+    //builder.WebHost.UseUrls("http://*8080");
+    
+    //aqui é seu quieser usar o logs nativo do asp.net para ser coletados com o filebeat
+    //.AddHttpLogging(opt =>
+    //{
+        //opt.LoggingFields = Microsoft.AspNetCore.HttpLogging.HttpLoggingFields.All; // Loga tudo
+    //});
+
 var app = builder.Build();
+
+//configurando o serilog para ler as requests
+app.AddLayoutSerilog();
+
+//aqui eu ativo os logs nativo do asp.net para ser coletoado com o filebeat
+//app.UseHttpLogging();
 
 app.AddMigrateDatabase();
 app.CrateIndexRedis();
 app.UseDocumentation();
+app.AddMapHealthCheck();
+ 
+Console.WriteLine($"Ambiente = {app.Configuration["EnvironmentCheck"]}");
 
 // Configure the HTTP request pipeline.
 /*if (app.Environment.IsDevelopment())

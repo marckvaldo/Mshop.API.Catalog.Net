@@ -64,12 +64,12 @@ namespace Mshop.API.Catalog.Controllers
             return CustomResponse(await _mediator.Send(request, cancellation));
         }
 
-        [HttpGet("list-products-promotions")]
+        /*[HttpGet("list-products-promotions")]
         public async Task<ActionResult<List<ProductModelOutPut>>> ListProdutcsPromotions()
         {
             //return CustomResponse(await _productPromotions.Handler());
             return CustomResponse();
-        }
+        }*/
 
         [HttpPost]
         public async Task<ActionResult<ProductModelOutPut>> Create([FromBody] CreateProductInPut product, CancellationToken cancellationToken)

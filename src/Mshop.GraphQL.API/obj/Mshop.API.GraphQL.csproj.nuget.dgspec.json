@@ -64,6 +64,10 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "Elastic.Serilog.Sinks": {
+              "target": "Package",
+              "version": "[8.12.3, )"
+            },
             "FluentValidation.AspNetCore": {
               "target": "Package",
               "version": "[11.3.0, )"
@@ -71,6 +75,18 @@
             "MediatR": {
               "target": "Package",
               "version": "[12.1.1, )"
+            },
+            "Serilog": {
+              "target": "Package",
+              "version": "[4.2.0, )"
+            },
+            "Serilog.AspNetCore": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
+            "Serilog.Extensions.Hosting": {
+              "target": "Package",
+              "version": "[9.0.0, )"
             }
           },
           "imports": [

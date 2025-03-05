@@ -1,10 +1,15 @@
 ﻿using Bogus.DataSets;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Mshop.Catalog.E2ETests.Base;
 using Mshop.Catalog.E2ETests.GraphQL.Common.Product;
+using Mshop.Core.Data;
 using Mshop.Domain.Entity;
 using Mshop.Infra.Cache.Interface;
 using Mshop.Infra.Cache.StartIndex;
+using Mshop.Infra.Data.Context;
+using Mshop.Infra.Data.Interface;
+using Mshop.Infra.Data.UnitOfWork;
 using StackExchange.Redis;
 using System;
 using System.Collections.Generic;
@@ -18,16 +23,23 @@ namespace Mshop.Catalog.E2ETests.GraphQL.Product
     {
         private IProductCacheRepository _productCacheRepository;
         private readonly DateTime _expirationDate;
-        private IConnectionMultiplexer _database;
+        private IConnectionMultiplexer _databaseCache;
         private readonly StartIndex _startIndex;
+        private readonly RepositoryDbContext _dbContext;
+        private readonly IUnitOfWork _unitOfWork;
+        private readonly IProductRepository _productRepository;
         public ProductTeste() 
         {
             _productCacheRepository = _serviceProvider.GetRequiredService<IProductCacheRepository>();
-            _database = _serviceProvider.GetRequiredService<IConnectionMultiplexer>();
+            _databaseCache = _serviceProvider.GetRequiredService<IConnectionMultiplexer>();
             _startIndex = _serviceProvider.GetRequiredService<StartIndex>();
             _expirationDate = DateTime.UtcNow.AddMinutes(1);
+            _dbContext = _serviceProvider.GetRequiredService<RepositoryDbContext>();
+            _unitOfWork = _serviceProvider.GetRequiredService<IUnitOfWork>();
+            _productRepository = _serviceProvider.GetRequiredService<IProductRepository>();
 
-            DeleteIndexCache(_database.GetDatabase()).Wait();
+            ClearProductDataBase(_productRepository,_unitOfWork);
+            DeleteIndexCache(_databaseCache.GetDatabase()).Wait();
             CreateIndexCahce(_startIndex).Wait();
         }
 

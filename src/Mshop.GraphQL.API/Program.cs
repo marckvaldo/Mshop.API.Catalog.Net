@@ -3,6 +3,7 @@ using Mshop.API.GraphQL.GraphQL.Product;
 using Mshop.Application;
 using Mshop.Infra.Cache;
 using Mshop.Infra.Data;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,14 +20,17 @@ builder.Services
     .AddDataBaseAndRepository(builder.Configuration)
     .AddCache(builder.Configuration)
     .AddRepositoryCache()
+    .AddConfigurationSeriLog(builder.Configuration)
     .AddGraphQLServer()
     .AddQueryType()
     .AddTypeExtension<CategoryQueries>()
     .AddTypeExtension<ProductQueries>();
 
-
+builder.Host.UseSerilog();
 
 var app = builder.Build();
+
+app.AddLayoutSerilog();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

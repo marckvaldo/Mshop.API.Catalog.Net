@@ -17,9 +17,10 @@ namespace Mshop.Infra.Data
             services.AddDbContext<RepositoryDbContext>(options =>
                 options.UseMySql(ConnectionString, ServerVersion.AutoDetect(ConnectionString),
                 b=>b.MigrationsAssembly("Mshop.Infra.Data"))
-                .EnableDetailedErrors()
-                .EnableSensitiveDataLogging(), 
-                ServiceLifetime.Scoped);
+                //.EnableDetailedErrors()
+                //.EnableSensitiveDataLogging(), 
+                //ServiceLifetime.Scoped
+                );
 
 
             services.AddScoped<IUnitOfWork, UnitOfWork.UnitOfWork>();

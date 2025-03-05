@@ -11,7 +11,14 @@ namespace Mshop.Application.UseCases.Product.ListProducts
     {
         public bool OnlyPromotion { get; }
         public Guid CategoryId { get;  }
-        public ListProductInPut(int page, int perPage, string search, string sort, SearchOrder dir, bool onlyPromotion, Guid categoryId) : base(page, perPage, search, sort, dir)
+        public ListProductInPut(int page, 
+                    int perPage, 
+                    string search, 
+                    string sort, 
+                    SearchOrder dir, 
+                    bool onlyPromotion, 
+                    Guid categoryId) : 
+            base(page, perPage, search, sort, dir)
         {
             OnlyPromotion = onlyPromotion;
             CategoryId = categoryId;

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Mshop.gRPC.Catalog")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+212c7a0a183210b3c14e125cc424d2836225b950")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4ce74eab1adbf1854997aeb24fad614b6210be78")]
 [assembly: System.Reflection.AssemblyProductAttribute("Mshop.gRPC.Catalog")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Mshop.gRPC.Catalog")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

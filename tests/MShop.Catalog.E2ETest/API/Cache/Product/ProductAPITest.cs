@@ -209,8 +209,8 @@ namespace Mshop.Catalog.E2ETests.API.Cache.Product
                     Mshop.Core.Enum.Paginated.SearchOrder.Desc), Guid.Empty, false, CancellationToken.None);
 
 
-            var request = new ListProductByCategoryCacheInPut(page, perPage, "", "", Mshop.Core.Enum.Paginated.SearchOrder.Desc, category.Id);
-            var (response, outPut) = await _apiClient.Get<CustomResponse<ListProductByCategoryCacheOutPut>>($"{Configuration.URL_API_CACHE}list-products-by-category-cache/", request);
+            var request = new ListProductCacheInPut(page, perPage, "", "", Mshop.Core.Enum.Paginated.SearchOrder.Desc,false, category.Id);
+            var (response, outPut) = await _apiClient.Get<CustomResponse<ListProductCacheOutPut>>($"{Configuration.URL_API_CACHE}list-products-cache/", request);
 
             Thread.Sleep(2000);
 
@@ -277,11 +277,11 @@ namespace Mshop.Catalog.E2ETests.API.Cache.Product
                     perPage,
                     "",
                     "",
-                    Mshop.Core.Enum.Paginated.SearchOrder.Desc),Guid.Empty, false, CancellationToken.None);
+                    Mshop.Core.Enum.Paginated.SearchOrder.Desc),Guid.Empty,true, CancellationToken.None);
 
 
-            var request = new ListProductPromotionCacheInPut(page, perPage, "", "", Mshop.Core.Enum.Paginated.SearchOrder.Desc);
-            var (response, outPut) = await _apiClient.Get<CustomResponse<ListProductPromotionCacheOutPut>>($"{Configuration.URL_API_CACHE}list-products-onlyPromotion-cache/", request);
+            var request = new ListProductCacheInPut(page, perPage, "", "", Mshop.Core.Enum.Paginated.SearchOrder.Desc,true);
+            var (response, outPut) = await _apiClient.Get<CustomResponse<ListProductCacheOutPut>>($"{Configuration.URL_API_CACHE}list-products-cache/", request);
 
             Thread.Sleep(2000);
 

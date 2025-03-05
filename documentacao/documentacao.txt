@@ -1,1 +1,6 @@
 dotnet ef --startup-project ../Mshop.API.Catalog/ migrations add inicial --project ../Mshop.infra.Data
+
+
+
+
+docker network create app-catalago

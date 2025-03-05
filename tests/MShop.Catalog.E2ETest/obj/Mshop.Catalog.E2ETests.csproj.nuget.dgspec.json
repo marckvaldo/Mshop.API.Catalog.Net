@@ -58,6 +58,18 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "AspNetCore.HealthChecks.UI.Client": {
+              "target": "Package",
+              "version": "[6.0.5, )"
+            },
+            "Elastic.Clients.Elasticsearch": {
+              "target": "Package",
+              "version": "[8.17.1, )"
+            },
+            "Elastic.Serilog.Sinks": {
+              "target": "Package",
+              "version": "[8.12.3, )"
+            },
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
@@ -71,6 +83,18 @@
             "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": {
               "target": "Package",
               "version": "[1.21.0, )"
+            },
+            "Serilog": {
+              "target": "Package",
+              "version": "[4.2.0, )"
+            },
+            "Serilog.AspNetCore": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
+            "Serilog.Extensions.Hosting": {
+              "target": "Package",
+              "version": "[9.0.0, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
@@ -160,6 +184,10 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "Elastic.Serilog.Sinks": {
+              "target": "Package",
+              "version": "[8.12.3, )"
+            },
             "FluentValidation.AspNetCore": {
               "target": "Package",
               "version": "[11.3.0, )"
@@ -167,6 +195,18 @@
             "MediatR": {
               "target": "Package",
               "version": "[12.1.1, )"
+            },
+            "Serilog": {
+              "target": "Package",
+              "version": "[4.2.0, )"
+            },
+            "Serilog.AspNetCore": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
+            "Serilog.Extensions.Hosting": {
+              "target": "Package",
+              "version": "[9.0.0, )"
             }
           },
           "imports": [

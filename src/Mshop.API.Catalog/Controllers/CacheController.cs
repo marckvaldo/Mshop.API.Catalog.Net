@@ -39,25 +39,25 @@ namespace Mshop.API.Catalog.Controllers
         }
 
 
-
         [HttpGet("list-products-cache")]
         public async Task<ActionResult<ListProductCacheOutPut>> ListProductsCache([FromQuery] ListProductCacheInPut request, CancellationToken cancellation)
         {
+            //request.
             return CustomResponse(await _mediator.Send(request, cancellation));
         }
 
-        [HttpGet("list-products-by-category-cache")]
+        /*[HttpGet("list-products-by-category-cache")]
         public async Task<ActionResult<ListProductByCategoryCacheOutPut>> ListProductsByCategoryCache([FromQuery] ListProductByCategoryCacheInPut request, CancellationToken cancellation)
         {
             return CustomResponse(await _mediator.Send(request, cancellation));
-        }
+        }*/
 
 
-        [HttpGet("list-products-onlyPromotion-cache")]
+        /*[HttpGet("list-products-onlyPromotion-cache")]
         public async Task<ActionResult<ListProductPromotionCacheOutPut>> ListProductsPromotionCache([FromQuery] ListProductPromotionCacheInPut request, CancellationToken cancellation)
         {
             return CustomResponse(await _mediator.Send(request, cancellation));
-        }
+        }*/
 
 
         [HttpGet("product-cache/{Id:Guid}")]

@@ -2,6 +2,7 @@ using Mshop.Application;
 using Mshop.Infra.Cache;
 using Mshop.Infra.Data;
 using Mshop.gRPC.Catalog.Services;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,11 +10,17 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services
     .AddDataBaseAndRepository(builder.Configuration)
     .AddCache(builder.Configuration)
+    .AddCircuitOptions()
     .AddRepositoryCache()
+    .AddConfigurationSeriLog(builder.Configuration)
     .AddUseCase()
     .AddGrpc();
 
+builder.Host.UseSerilog();
+
 var app = builder.Build();
+
+app.AddLayoutSerilog();
 
 // Configure the HTTP request pipeline.
 app.MapGrpcService<GreeterService>();
