@@ -14,20 +14,26 @@ namespace Mshop.Infra.Cache
     {
         public static IServiceCollection AddCache(this IServiceCollection services, IConfiguration configuration)
         {
-            var redisPassword = configuration["Redis:Password"];
-            var redisEndPoint = configuration["Redis:Endpoint"];
-            var redisUser = configuration["Redis:User"];
-
-            var conf = new ConfigurationOptions
+            try
             {
-                EndPoints = { redisEndPoint },
-                User = redisUser,
-                Password = redisPassword
-            };
 
-            var redis = ConnectionMultiplexer.Connect(conf);
-            services.AddSingleton<IConnectionMultiplexer>(redis);
-            services.AddSingleton<StartIndex.StartIndex>();
+                var redisPassword = configuration["Redis:Password"];
+                var redisEndPoint = configuration["Redis:Endpoint"];
+                var redisUser = configuration["Redis:User"];
+
+                var conf = new ConfigurationOptions
+                {
+                    EndPoints = { redisEndPoint },
+                    User = redisUser,
+                    Password = redisPassword
+                };
+
+                var redis = ConnectionMultiplexer.Connect(conf);
+                services.AddSingleton<IConnectionMultiplexer>(redis);
+                services.AddSingleton<StartIndex.StartIndex>();
+            }
+            catch { }
+
             return services;
         }
 

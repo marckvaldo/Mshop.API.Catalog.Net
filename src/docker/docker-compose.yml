@@ -7,14 +7,21 @@ services:
       dockerfile: docker/Dockerfile  # Caminho para o seu Dockerfile
     ports:
       - "88:8080"        # Porta para o REST API
-      #- "5000:5000"    # Porta para o gRPC API
-      #- "5001:5001"    # Porta para o GraphQL API
+      - "89:8081"        # Porta para o GraphQL API
+      - "90:8082"        # Porta para o gRPC API
+
     environment:
       - ASPNETCORE_ENVIRONMENT=Production
+    #command: tail -f /dev/null
     networks:
       - app-catalago
     container_name: msho-api
     restart: always
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 254M
 
 networks:
   app-catalago:

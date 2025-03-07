@@ -16,6 +16,7 @@ var builder = WebApplication.CreateBuilder(args);
 //builder.Services.AddEndpointsApiExplorer();
 //builder.Services.AddSwaggerGen();
 
+
 builder.Services.AddConfigurationController()
     .AddConfigurationModelState()
     .AddCircuitOptions()
@@ -27,15 +28,22 @@ builder.Services.AddConfigurationController()
     .AddUseCase();
 
     builder.Host.UseSerilog();
-    //builder.WebHost.UseUrls("http://*8080");
     
-    //aqui é seu quieser usar o logs nativo do asp.net para ser coletados com o filebeat
+    //builder.WebHost.UseUrls("http://*8080");
+
+    //aqui e seu quieser usar o logs nativo do asp.net para ser coletados com o filebeat
     //.AddHttpLogging(opt =>
     //{
-        //opt.LoggingFields = Microsoft.AspNetCore.HttpLogging.HttpLoggingFields.All; // Loga tudo
+    //opt.LoggingFields = Microsoft.AspNetCore.HttpLogging.HttpLoggingFields.All; // Loga tudo
     //});
 
+builder.Configuration.SetBasePath(Directory.GetCurrentDirectory());
 var app = builder.Build();
+
+
+Console.WriteLine($"Environment: {builder.Environment.EnvironmentName}");
+Console.WriteLine(Directory.GetCurrentDirectory());
+
 
 //configurando o serilog para ler as requests
 app.AddLayoutSerilog();
@@ -48,7 +56,7 @@ app.CrateIndexRedis();
 app.UseDocumentation();
 app.AddMapHealthCheck();
  
-Console.WriteLine($"Ambiente = {app.Configuration["EnvironmentCheck"]}");
+//Console.WriteLine($"Ambiente = {app.Configuration["EnvironmentCheck"]}");
 
 // Configure the HTTP request pipeline.
 /*if (app.Environment.IsDevelopment())

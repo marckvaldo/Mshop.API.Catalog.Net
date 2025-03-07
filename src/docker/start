@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# Inicia Mshop.API.Catalog
+dotnet /app/APICatalog/Mshop.API.Catalog.dll &
+
+# Inicia Mshop.API.GraphQL
+dotnet /app/GraphQL/Mshop.API.GraphQL.dll &
+
+# Aguarda processos (mantém o contêiner em execução)
+wait

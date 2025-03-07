@@ -5,6 +5,9 @@
     {
       "AbsoluteMoniker": "D:0:0:{08BE3ADD-392A-4990-8C43-63A086F7FAFE}|Mshop.API.Catalog.csproj|c:\\users\\iq sistemas\\documents\\mshopping\\new\\mshopping\\mshop.api.catalog\\src\\mshop.api.catalog\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{08BE3ADD-392A-4990-8C43-63A086F7FAFE}|Mshop.API.Catalog.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DAA65056-C766-48F9-B077-28B45CAEF262}|..\\Mshop.Infra.Cache\\Mshop.Infra.Cache.csproj|c:\\users\\iq sistemas\\documents\\mshopping\\new\\mshopping\\mshop.api.catalog\\src\\mshop.infra.cache\\serviceregistrationextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,7 +17,7 @@
       "DocumentGroups": [
         {
           "DockedHeight": 200,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 8,
           "Children": [
             {
               "$type": "Bookmark",
@@ -46,13 +49,26 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ServiceRegistrationExtensions.cs",
+              "DocumentMoniker": "C:\\Users\\IQ SISTEMAS\\Documents\\mShopping\\new\\Mshopping\\MShop.API.Catalog\\src\\Mshop.Infra.Cache\\ServiceRegistrationExtensions.cs",
+              "RelativeDocumentMoniker": "..\\Mshop.Infra.Cache\\ServiceRegistrationExtensions.cs",
+              "ToolTip": "C:\\Users\\IQ SISTEMAS\\Documents\\mShopping\\new\\Mshopping\\MShop.API.Catalog\\src\\Mshop.Infra.Cache\\ServiceRegistrationExtensions.cs",
+              "RelativeToolTip": "..\\Mshop.Infra.Cache\\ServiceRegistrationExtensions.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAqwCIAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-06T19:14:54.649Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\IQ SISTEMAS\\Documents\\mShopping\\new\\Mshopping\\MShop.API.Catalog\\src\\Mshop.API.Catalog\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
               "ToolTip": "C:\\Users\\IQ SISTEMAS\\Documents\\mShopping\\new\\Mshopping\\MShop.API.Catalog\\src\\Mshop.API.Catalog\\Program.cs",
               "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAABsAAAAAAAAAAAAAAB0AAAAGAAAAAAAAAA==",
+              "ViewState": "AgIAABsAAAAAAAAAAAAAADAAAAAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-04T19:59:07.339Z",
               "EditorCaption": ""
