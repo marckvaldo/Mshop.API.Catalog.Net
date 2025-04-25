@@ -8,11 +8,11 @@ import "google/protobuf/any.proto";
 
 service ProductProto {
 
-  rpc GetProductById (GetProductRequest) returns (CustomerResultGrpc);
+  rpc GetProductById (GetProductRequest) returns (CustomizedResultGrpc);
 
 }
 
-message CustomerResultGrpc {
+message CustomizedResultGrpc {
 	bool success = 1;
 	repeated string errors = 3;
 	//google.protobuf.Any data = 2;
@@ -32,5 +32,6 @@ message GetProductReply {
 	bool isActive = 6;
 	string categoryId = 7;
 	string thumb = 8;
-	string category	 = 9;   
+	string category	 = 9;  
+	bool IsPromotion = 10;
 }

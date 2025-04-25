@@ -18,7 +18,7 @@ namespace Mshop.gRPC.Catalog.Services
             _notification = notification;
         }
 
-        public override async Task<CustomerResultGrpc> GetProductById(GetProductRequest request, ServerCallContext context)
+        public override async Task<CustomizedResultGrpc> GetProductById(GetProductRequest request, ServerCallContext context)
         {
             IsCancelationToken(context);
             IsValidation(request);
@@ -40,7 +40,9 @@ namespace Mshop.gRPC.Catalog.Services
                     Stock = (float)product.Stock,
                     IsActive = product.IsActive,
                     CategoryId = product.CategoryId.ToString(),
-                    Category = product.Category.Name
+                    Category = product.Category.Name,
+                    IsPromotion = product.IsPromotion,
+                    Thumb = product.Thumb,
                 });
             }
 
@@ -56,9 +58,9 @@ namespace Mshop.gRPC.Catalog.Services
             return !_notification.HasErrors();
         }
 
-        private CustomerResultGrpc Sucess(GetProductReply result) /*where T : Google.Protobuf.IMessage<T>*/
+        private CustomizedResultGrpc Sucess(GetProductReply result) /*where T : Google.Protobuf.IMessage<T>*/
         {
-            return new CustomerResultGrpc
+            return new CustomizedResultGrpc
             {
                 Success = true,
                 //Data = Any.Pack(result),
@@ -67,9 +69,9 @@ namespace Mshop.gRPC.Catalog.Services
             };
         }
         
-        private CustomerResultGrpc Error()
+        private CustomizedResultGrpc Error()
         {
-            return new CustomerResultGrpc
+            return new CustomizedResultGrpc
             {
                 Success = false,
                 Data = null,

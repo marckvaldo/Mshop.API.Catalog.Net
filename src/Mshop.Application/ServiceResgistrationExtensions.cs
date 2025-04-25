@@ -48,7 +48,7 @@ namespace Mshop.Application
                 .CreateBootstrapLogger();*/
 
             Log.Logger = new LoggerConfiguration()
-                .MinimumLevel.Information()
+                .MinimumLevel.Information()                
                 .WriteTo.Console()
                 .WriteTo.Elasticsearch([new Uri($"http://{elasticUri}")], Opt =>
                 {

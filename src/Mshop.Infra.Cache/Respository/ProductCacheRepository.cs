@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc.RazorPages;
-using Mshop.Core.Common;
+﻿using Mshop.Core.Common;
 using Mshop.Core.Paginated;
 using Mshop.Domain.Entity;
 using Mshop.Infra.Cache.CircuitBreakerPolicy;
@@ -34,12 +33,13 @@ namespace Mshop.Infra.Cache.Respository
             _circuitBreaker = circuitBreaker;
 
             circuitBreaker.Start(
-            ex =>
-            {
-                return ex is RedisConnectionException || ex is TimeoutException || ex is Exception;
-            },
-            1,
-            TimeSpan.FromMinutes(1));
+                ex =>
+                    {
+                        return ex is RedisConnectionException || ex is TimeoutException || ex is Exception;
+                    },
+                1,
+                TimeSpan.FromMinutes(1)
+                );
 
         }
         public async Task<bool> Create(Product entity, DateTime? ExpirationDate, CancellationToken cancellationToken)

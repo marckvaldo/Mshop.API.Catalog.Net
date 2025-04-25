@@ -12,7 +12,7 @@ builder.Services
     .AddCache(builder.Configuration)
     .AddCircuitOptions()
     .AddRepositoryCache()
-    .AddConfigurationSeriLog(builder.Configuration)
+    //.AddConfigurationSeriLog(builder.Configuration)
     .AddUseCase()
     .AddGrpc();
 
@@ -20,7 +20,7 @@ builder.Host.UseSerilog();
 
 var app = builder.Build();
 
-app.AddLayoutSerilog();
+//app.AddLayoutSerilog();
 
 // Configure the HTTP request pipeline.
 app.MapGrpcService<GreeterService>();

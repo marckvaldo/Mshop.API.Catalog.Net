@@ -11,6 +11,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Catalog", "Catalog", "{E1C0
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{388BECB3-F455-41D6-AF09-F0CB060540B5}"
+	ProjectSection(SolutionItems) = preProject
+		..\docker\docker-compose.yml = ..\docker\docker-compose.yml
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{9EB94BE9-1AA9-4832-96BC-54CB19A60094}"
 EndProject
@@ -40,6 +43,13 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mshop.gRPC.Catalog", "..\MShop.gRPC.Catalog\Mshop.gRPC.Catalog.csproj", "{566EF520-FE04-42A6-8E84-09CC812E50D7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mshop.API.GraphQL", "..\Mshop.GraphQL.API\Mshop.API.GraphQL.csproj", "{7BF4D45E-D132-417A-A2F0-BC36CAF22BC2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docker", "docker", "{CB2AEA16-76B7-4EA8-8680-BAC07B288FFC}"
+	ProjectSection(SolutionItems) = preProject
+		..\docker\docker-compose.yml = ..\docker\docker-compose.yml
+		..\docker\Dockerfile = ..\docker\Dockerfile
+		..\docker\supervisord.conf = ..\docker\supervisord.conf
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -115,5 +125,6 @@ Global
 		{1DF8FE75-D9AC-4B5A-93E2-B81B9629755D} = {9EB94BE9-1AA9-4832-96BC-54CB19A60094}
 		{566EF520-FE04-42A6-8E84-09CC812E50D7} = {388BECB3-F455-41D6-AF09-F0CB060540B5}
 		{7BF4D45E-D132-417A-A2F0-BC36CAF22BC2} = {388BECB3-F455-41D6-AF09-F0CB060540B5}
+		{CB2AEA16-76B7-4EA8-8680-BAC07B288FFC} = {388BECB3-F455-41D6-AF09-F0CB060540B5}
 	EndGlobalSection
 EndGlobal

@@ -1,37 +1,42 @@
- src/Mshop.API.Catalog/.vs/*
- src/Mshop.API.Catalog/bin/*
+src/Mshop.API.Catalog/.vs/
+src/Mshop.API.Catalog/bin/
 
- tests/Mshop.UnitTests/obj/*
- tests/Mshop.UnitTests/bin/*
+tests/Mshop.UnitTests/obj/
+tests/Mshop.UnitTests/bin/
 
- tests/Mshop.IntegrationTest/obj/*
- tests/Mshop.IntegrationTest/bin/*
+tests/Mshop.IntegrationTest/obj/
+tests/Mshop.IntegrationTest/bin/
 
- tests/MShop.Catalog.E2ETest/obj/*
- tests/MShop.Catalog.E2ETest/bin/*
+tests/MShop.Catalog.E2ETest/obj/
+tests/MShop.Catalog.E2ETest/bin/
 
- tests/Core.Test/obj/*
- tests/Core.Test/bin/*
+tests/Core.Test/obj/
+tests/Core.Test/bin/
 
- src/Mshop.Infra.Data/obj/*
- src/Mshop.Infra.Data/bin/*
+src/Mshop.Infra.Data/obj/
+src/Mshop.Infra.Data/bin/
 
- src/Mshop.Infra.Cache/obj/*
- src/Mshop.Infra.Cache/bin/*
+src/Mshop.Infra.Cache/obj/
+src/Mshop.Infra.Cache/bin/
 
- src/Mshop.Domain/obj/*
- src/Mshop.Domain/bin/*
+src/Mshop.Domain/obj/
+src/Mshop.Domain/bin/
 
- src/Mshop.Core/obj/*
- src/Mshop.Core/bin/*
+src/Mshop.Core/obj/
+src/Mshop.Core/bin/
 
- src/Mshop.Application/bin/*
- src/Mshop.Application/obj/*
+src/Mshop.Application/bin/
+src/Mshop.Application/obj/
 
- src/Mshop.API.Catalog/obj/*
- src/Mshop.API.Catalog/bin/*
- src/Mshop.API.Catalog/.vs/*
+src/Mshop.API.Catalog/obj/
+src/Mshop.API.Catalog/bin/
+src/Mshop.API.Catalog/.vs/
 
- src/MShop.gRPC.Catalog/bin/*
+src/MShop.gRPC.Catalog/bin/
+src/MShop.gRPC.Catalog/obj/
+
+src/Mshop.GraphQL.API/obj/
+src/Mshop.GraphQL.API/bin/
+
 
 

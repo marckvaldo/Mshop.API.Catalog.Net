@@ -23,11 +23,11 @@ builder.Services.AddConfigurationController()
     .AddDataBaseAndRepository(builder.Configuration)
     .AddCache(builder.Configuration)
     .AddRepositoryCache()
-    .AddConfigurationSeriLog(builder.Configuration)
+    //.AddConfigurationSeriLog(builder.Configuration)
     .AddConfigurationHealthChecks()
     .AddUseCase();
 
-    builder.Host.UseSerilog();
+    //builder.Host.UseSerilog();
     
     //builder.WebHost.UseUrls("http://*8080");
 
@@ -41,12 +41,12 @@ builder.Configuration.SetBasePath(Directory.GetCurrentDirectory());
 var app = builder.Build();
 
 
-Console.WriteLine($"Environment: {builder.Environment.EnvironmentName}");
-Console.WriteLine(Directory.GetCurrentDirectory());
+//Console.WriteLine($"Environment: {builder.Environment.EnvironmentName}");
+//Console.WriteLine(Directory.GetCurrentDirectory());
 
 
 //configurando o serilog para ler as requests
-app.AddLayoutSerilog();
+//app.AddLayoutSerilog();
 
 //aqui eu ativo os logs nativo do asp.net para ser coletoado com o filebeat
 //app.UseHttpLogging();

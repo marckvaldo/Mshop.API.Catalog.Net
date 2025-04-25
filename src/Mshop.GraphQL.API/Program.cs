@@ -20,7 +20,7 @@ builder.Services
     .AddDataBaseAndRepository(builder.Configuration)
     .AddCache(builder.Configuration)
     .AddRepositoryCache()
-    .AddConfigurationSeriLog(builder.Configuration)
+    //.AddConfigurationSeriLog(builder.Configuration)
     .AddGraphQLServer()
     .AddQueryType()
     .AddTypeExtension<CategoryQueries>()
@@ -30,7 +30,7 @@ builder.Host.UseSerilog();
 
 var app = builder.Build();
 
-app.AddLayoutSerilog();
+//app.AddLayoutSerilog();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
