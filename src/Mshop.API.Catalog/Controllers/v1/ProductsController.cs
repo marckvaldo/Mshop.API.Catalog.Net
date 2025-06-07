@@ -1,5 +1,7 @@
-﻿using MediatR;
+﻿using Asp.Versioning;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Mshop.Application.UseCases.Category.Common;
 using Mshop.Application.UseCases.Product.Common;
 using Mshop.Application.UseCases.Product.CreateProducts;
 using Mshop.Application.UseCases.Product.DeleteProduct;
@@ -9,79 +11,59 @@ using Mshop.Application.UseCases.Product.UpdateProduct;
 using Mshop.Application.UseCases.Product.UpdateStockProduct;
 using Mshop.Application.UseCases.Product.UpdateThumb;
 
-namespace Mshop.API.Catalog.Controllers
+namespace Mshop.API.Catalog.Controllers.v1
 {
-    [Route("api/[controller]")]
+    [ApiVersion(1.0)]
+    [Route("api/v{version:apiVersion}/[controller]")]
     [ApiController]
     public class ProductsController : MainController
     {
-        /*private readonly IGetProduct _getProduct;
-        private readonly ICreateProduct _createProduct;
-        private readonly IUpdateProduct _updateProduct;
-        private readonly IDeleteProduct _deleteProduct;
-        private readonly IUpdateStockProduct _updateStoqueProduct;
-        private readonly IListProducts _listProducts;
-        private readonly IProductsPromotions _productPromotions;
-        private readonly IUpdateThumb _updateThumb;*/
-
         private readonly IMediator _mediator;
-
         public ProductsController(
-            /*IGetProduct getProduct, 
-            ICreateProduct createProduct, 
-            IUpdateProduct updateProduct, 
-            IDeleteProduct deleteProduct,
-            IUpdateStockProduct updateStoqueProduct,
-            IListProducts listProducts,
-            INotification notification,
-            IProductsPromotions productPromotions,
-            IUpdateThumb updateThumb*/
             Core.Message.INotification notification,
             IMediator mediator
             ) : base(notification)
         {
-            /*_getProduct = getProduct;
-            _createProduct = createProduct;
-            _updateProduct = updateProduct;
-            _deleteProduct = deleteProduct;
-            _updateStoqueProduct = updateStoqueProduct;
-            _listProducts = listProducts;
-            _productPromotions = productPromotions;
-            _updateThumb = updateThumb;*/
-
             _mediator = mediator;
         }
 
         [HttpGet("{id:guid}")]
+        [ProducesResponseType(typeof(CategoryModelOutPut), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult<IEnumerable<ProductModelOutPut>>> Product(Guid id, CancellationToken cancellation)
         {
-            return CustomResponse(await _mediator.Send(new GetProductInPut(id), cancellation));        
+            var result = await _mediator.Send(new GetProductInPut(id), cancellation);
+            if (result.Data is null) return CustomResponse(404);
+            return CustomResponse(result);
         }
 
-        [HttpGet("list-products")]
+        [HttpGet]
+        [ProducesResponseType(typeof(CategoryModelOutPut), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult<List<ProductModelOutPut>>> ListProdutcs([FromQuery] ListProductInPut request, CancellationToken cancellation)
         {
-            return CustomResponse(await _mediator.Send(request, cancellation));
+            if(!ModelState.IsValid) CustomResponse(ModelState);
+            var result = await _mediator.Send(request, cancellation);
+            return CustomResponse(result);
         }
 
-        /*[HttpGet("list-products-promotions")]
-        public async Task<ActionResult<List<ProductModelOutPut>>> ListProdutcsPromotions()
-        {
-            //return CustomResponse(await _productPromotions.Handler());
-            return CustomResponse();
-        }*/
-
         [HttpPost]
+        [ProducesResponseType(typeof(CategoryModelOutPut), StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult<ProductModelOutPut>> Create([FromBody] CreateProductInPut product, CancellationToken cancellationToken)
         {
             if (!ModelState.IsValid) return CustomResponse(ModelState);
-            return CustomResponse(await _mediator.Send(product, cancellationToken));      
+            return CustomResponse(await _mediator.Send(product, cancellationToken), 201);
         }
 
         [HttpPut("{id:guid}")]
+        [ProducesResponseType(typeof(CategoryModelOutPut), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult<ProductModelOutPut>> Update(Guid id, UpdateProductInPut product, CancellationToken cancellationToken)
         {
-        
+
             if (!ModelState.IsValid) return CustomResponse(ModelState);
 
             if (id != product.Id)
@@ -89,21 +71,30 @@ namespace Mshop.API.Catalog.Controllers
                 Notify("O id informado não é o mesmo passado como parametro");
                 return CustomResponse(product);
             }
+            var result = await _mediator.Send(product, cancellationToken);
+            if (result.Data is null) return CustomResponse(404);
+            return CustomResponse(result);
 
-            return CustomResponse(await _mediator.Send(product, cancellationToken));
-        
         }
 
         [HttpDelete("{id:guid}")]
+        [ProducesResponseType(typeof(CategoryModelOutPut), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult<ProductModelOutPut>> Delete(Guid id, CancellationToken cancellationToken)
         {
-            return CustomResponse(await _mediator.Send(new DeleteProductInPut(id), cancellationToken));
+            var result = await _mediator.Send(new DeleteProductInPut(id), cancellationToken);
+            if (result.Data is null) return CustomResponse(404);
+            return CustomResponse(result);
         }
 
-        [HttpPost("update-stock/{id:guid}")]
+        [HttpPut("update-stock/{id:guid}")]
+        [ProducesResponseType(typeof(CategoryModelOutPut), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult<ProductModelOutPut>> UpdateStock(Guid id, [FromBody] UpdateStockProductInPut product, CancellationToken cancellationToken)
         {
-       
+
             if (!ModelState.IsValid) return CustomResponse(ModelState);
 
             if (id != product.Id)
@@ -112,22 +103,28 @@ namespace Mshop.API.Catalog.Controllers
                 return CustomResponse(product);
             }
 
-            return CustomResponse(await _mediator.Send(product, cancellationToken));
-        
+            var result = await _mediator.Send(product, cancellationToken);
+            if (result.Data is null) return CustomResponse(404);
+            return CustomResponse(result);
+
         }
 
         [HttpPut("update-thump/{id:guid}")]
+        [ProducesResponseType(typeof(CategoryModelOutPut), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult<ProductModelOutPut>> UpdateThumb(Guid id, [FromBody] UpdateThumbInPut product, CancellationToken cancellationToken)
         {
             if (!ModelState.IsValid) CustomResponse(ModelState);
 
-            if(id != product.Id)
+            if (id != product.Id)
             {
                 Notify("O id informado não é o mesmo passado como parametro");
                 return CustomResponse(product);
             }
-
-            return CustomResponse(await _mediator.Send(product, cancellationToken));
+            var result = await _mediator.Send(product, cancellationToken);
+            if (result.Data is null) return CustomResponse(404);
+            return CustomResponse(result);
         }
     }
 }

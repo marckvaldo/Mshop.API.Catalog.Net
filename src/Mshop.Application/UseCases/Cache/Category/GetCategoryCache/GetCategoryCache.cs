@@ -11,12 +11,12 @@ namespace Mshop.Application.UseCases.Cache.Category.GetCategory
     {
         private readonly ICategoryCacheRepository _categoryCacheRepository;
         private readonly ICategoryRepository _categoryRepository;
-        private readonly IBuildCacheCategory _buildCache;
+        private readonly IServiceCacheCategory _buildCache;
         public GetCategoryCache(
             INotification notification, 
             ICategoryCacheRepository categoryCacheRepository, 
             ICategoryRepository categoryRepository,
-            IBuildCacheCategory buildCache) : base(notification)
+            IServiceCacheCategory buildCache) : base(notification)
         {
             _categoryCacheRepository = categoryCacheRepository;
             _categoryRepository = categoryRepository;
@@ -30,7 +30,7 @@ namespace Mshop.Application.UseCases.Cache.Category.GetCategory
 
             if(category is null)
             {
-                _buildCache.Handle();
+                _buildCache.BuildCache();
                 category = await _categoryRepository.GetById(request.Id);  
             }
 

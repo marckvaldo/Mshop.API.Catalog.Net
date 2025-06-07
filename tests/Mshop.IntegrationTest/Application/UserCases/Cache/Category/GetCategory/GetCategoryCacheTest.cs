@@ -20,7 +20,7 @@ namespace Mshop.IntegrationTests.Application.UserCases.Cache.Category.GetCategor
         private readonly ICategoryCacheRepository _categoryCacheRepository;
         private readonly INotification _notification;
         private readonly IUnitOfWork _unitOfWork;
-        private readonly IBuildCacheCategory _buildCacheCategory;
+        private readonly IServiceCacheCategory _buildCacheCategory;
         private readonly RepositoryDbContext _DbContext;
         private readonly StackExchange.Redis.IDatabase _database;
         private readonly StartIndex _startIndex;
@@ -33,7 +33,7 @@ namespace Mshop.IntegrationTests.Application.UserCases.Cache.Category.GetCategor
             _DbContext = _serviceProvider.GetRequiredService<RepositoryDbContext>();
             _categoryRepository = _serviceProvider.GetRequiredService<ICategoryRepository>();
             _categoryCacheRepository = _serviceProvider.GetRequiredService<ICategoryCacheRepository>();
-            _buildCacheCategory = _serviceProvider.GetRequiredService<IBuildCacheCategory>();   
+            _buildCacheCategory = _serviceProvider.GetRequiredService<IServiceCacheCategory>();   
             _notification = _serviceProvider.GetRequiredService<INotification>();
             _unitOfWork = _serviceProvider.GetRequiredService<IUnitOfWork>();
             _startIndex = _serviceProvider.GetRequiredService<StartIndex>();
@@ -82,7 +82,7 @@ namespace Mshop.IntegrationTests.Application.UserCases.Cache.Category.GetCategor
 
             var useCase = new ApplicationUseCase.GetCategoryCache(_notification, _categoryCacheRepository, _categoryRepository, _buildCacheCategory);
 
-            //var outPut = async () => await useCase.Handle(new ApplicationUseCase.GetCategoryInPut(Guid.NewGuid()), CancellationToken.None);
+            //var outPut = async () => await useCase.BuildCache(new ApplicationUseCase.GetCategoryInPut(Guid.NewGuid()), CancellationToken.None);
             //var exception = await Assert.ThrowsAsync<ApplicationValidationException>(outPut);
 
             var outPut = await useCase.Handle(new ApplicationUseCase.GetCategoryCacheInPut(Guid.NewGuid()), CancellationToken.None);

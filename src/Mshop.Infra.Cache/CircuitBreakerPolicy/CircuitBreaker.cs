@@ -15,7 +15,7 @@ namespace Mshop.Infra.Cache.CircuitBreakerPolicy
         public void Start(Func<Exception, bool> exceptionHandler, int allowBeforeBreaking, TimeSpan durationOfBreak)
         {
            _circuitBreaker = Policy
-                  //.Handle<RedisConnectionException>() // Exceção específica
+                  //.BuildCache<RedisConnectionException>() // Exceção específica
                   //.Or<Exception>() // Geral, caso necessário
                   .Handle(exceptionHandler)
                   .CircuitBreakerAsync(allowBeforeBreaking, durationOfBreak); // 1 erro em 30 segundos

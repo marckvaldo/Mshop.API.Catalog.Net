@@ -132,7 +132,7 @@ namespace Mshop.Catalog.E2ETests.API.Product
             var productStock = FakerProduct(FakerCategory());
             var stock = productStock.Stock;
 
-            var (response, outPut) = await _apiClient.Post<CustomResponse<ProductModelOutPut>>(
+            var (response, outPut) = await _apiClient.Put<CustomResponse<ProductModelOutPut>>(
                 $"{Configuration.URL_API_PRODUCT}update-stock/{product.Id}",new {product.Id, stock });
 
             var dbProduct = (await _productRepository.Filter(p => p.Id == outPut.Data.Id)).FirstOrDefault();
@@ -226,7 +226,7 @@ namespace Mshop.Catalog.E2ETests.API.Product
 
             var productDbBefore = (await _productRepository.Filter(p=>p.Name != "")).ToList(); 
             
-            var (response, outPut) = await _apiClient.Get<CustomResponse<ListProductsOutPut>>($"{Configuration.URL_API_PRODUCT}list-products/");
+            var (response, outPut) = await _apiClient.Get<CustomResponse<ListProductsOutPut>>($"{Configuration.URL_API_PRODUCT}");
 
             Assert.NotNull(response);
             Assert.Equal(System.Net.HttpStatusCode.OK, response!.StatusCode);
@@ -253,7 +253,7 @@ namespace Mshop.Catalog.E2ETests.API.Product
         [Trait("EndToEnd/API", "Product - Endpoints")]
         public async Task ListProductWhenItemsEmptyDefault()
         {
-            var (response, outPut) = await _apiClient.Get<CustomResponse<ListProductsOutPut>>($"{Configuration.URL_API_PRODUCT}list-products/");
+            var (response, outPut) = await _apiClient.Get<CustomResponse<ListProductsOutPut>>($"{Configuration.URL_API_PRODUCT}");
 
             Assert.NotNull(response);
             Assert.Equal(System.Net.HttpStatusCode.OK, response!.StatusCode);
@@ -280,7 +280,7 @@ namespace Mshop.Catalog.E2ETests.API.Product
             await _unitOfWork.CommitAsync();
 
             var request = new ListProductInPut(page, perPage, "", "", Mshop.Core.Enum.Paginated.SearchOrder.Desc,false,Guid.Empty);
-            var (response, outPut) = await _apiClient.Get<CustomResponse<ListProductsOutPut>>($"{Configuration.URL_API_PRODUCT}list-products/", request);
+            var (response, outPut) = await _apiClient.Get<CustomResponse<ListProductsOutPut>>($"{Configuration.URL_API_PRODUCT}", request);
 
             Assert.NotNull(response);
             Assert.Equal(System.Net.HttpStatusCode.OK, response!.StatusCode);

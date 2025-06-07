@@ -3,6 +3,7 @@ using Mshop.Application.UseCases.Category.CreateCategory;
 using Mshop.Core.Data;
 using Mshop.Core.DomainObject;
 using Mshop.Core.Message;
+using Mshop.Domain.Event.Category;
 using Mshop.Infra.Data.Interface;
 
 namespace Mshop.Application.UseCases.Category.UpdateCategory
@@ -38,7 +39,7 @@ namespace Mshop.Application.UseCases.Category.UpdateCategory
             if(!category.IsValid(Notifications))
                 return Result<CategoryModelOutPut>.Error();
 
-
+            category.RegisterEvent(new CategoryUpdatedEvent(category.Id));
             await _categoryRepository.Update(category,cancellationToken);
             await _unitOfWork.CommitAsync(cancellationToken);
 

@@ -13,7 +13,9 @@ namespace Mshop.Application.UseCases.Product.ListProducts
         private readonly IProductRepository _productRepostory;
 
         public ListProducts(IProductRepository productRepostory, INotification notification) : base(notification)
-            => _productRepostory = productRepostory;   
+        { 
+            _productRepostory = productRepostory;
+        }
         public async Task<Result<ListProductsOutPut>> Handle(ListProductInPut request, CancellationToken cancellation)
         {
             var paginatedInPut = new PaginatedInPut(

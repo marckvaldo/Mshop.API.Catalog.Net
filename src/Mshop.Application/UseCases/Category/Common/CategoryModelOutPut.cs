@@ -25,7 +25,7 @@ namespace Mshop.Application.UseCases.Category.Common
         public bool IsActive { get; private set; }
 
         public static CategoryModelOutPut FromCategory(Entity.Category category)
-            => new CategoryModelOutPut(category.Id, category.Name, category.IsActive);
+            => new (category.Id, category.Name, category.IsActive);
         
     }
 }

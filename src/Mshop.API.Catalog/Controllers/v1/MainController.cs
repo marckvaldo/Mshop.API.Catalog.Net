@@ -4,8 +4,9 @@ using CoreResult = Mshop.Core.DomainObject;
 using Mshop.Core.Message;
 using Mshop.ProductAPI.Extension;
 using Mshop.Core.DomainObject;
+using Microsoft.AspNetCore.Http.HttpResults;
 
-namespace Mshop.API.Catalog.Controllers
+namespace Mshop.API.Catalog.Controllers.v1
 {
     [ApiController]
     public abstract class MainController : ControllerBase
@@ -14,14 +15,14 @@ namespace Mshop.API.Catalog.Controllers
 
         protected MainController(INotification notification)
         {
-            _notification= notification;
+            _notification = notification;
         }
 
         protected bool OperationIsValid()
         {
             return !_notification.HasErrors();
         }
-        
+
         protected ActionResult CustomResponse(ModelStateDictionary modelState)
         {
             if (!modelState.IsValid) NotifyInvalidModelError(modelState);
@@ -29,17 +30,27 @@ namespace Mshop.API.Catalog.Controllers
             return CustomResponse();
         }
 
-        protected ActionResult CustomResponse<T>(CoreResult.Result<T> result) where T : IModelOutPut
+        protected ActionResult CustomResponse<T>(Result<T> result, int statusCode = StatusCodes.Status200OK) where T : IModelOutPut
         {
-            return CustomResponse(result.Data);
+            return CustomResponse(result.Data, statusCode);
         }
 
-        protected ActionResult CustomResponse(object result = null)
+        protected ActionResult CustomResponse(int statusCode)
+        {
+            return CustomResponse(null, statusCode);
+        }
+        protected ActionResult CustomResponse(object result = null, int statusCode = StatusCodes.Status200OK)
         {
             if (OperationIsValid())
             {
-                return Ok(ExtensionResponse.Success(result));
+                if (result is null)
+                    return NoContent();
+
+                return StatusCode(statusCode, ExtensionResponse.Success(result));
             }
+
+            if (result is null && statusCode == 404)
+                return NotFound(ExtensionResponse.Error(_notification.Errors().Select(x => x.Message).ToList()));
 
             return BadRequest(ExtensionResponse.Error(_notification.Errors().Select(x => x.Message).ToList()));
         }
@@ -47,8 +58,8 @@ namespace Mshop.API.Catalog.Controllers
         protected void NotifyInvalidModelError(ModelStateDictionary modelState)
         {
             var errors = modelState.Values.SelectMany(e => e.Errors);
-            
-            foreach(var error in errors)
+
+            foreach (var error in errors)
             {
                 var errorMsg = error.Exception == null ? error.ErrorMessage : error.Exception.Message;
                 Notify(errorMsg);
@@ -57,7 +68,7 @@ namespace Mshop.API.Catalog.Controllers
 
         protected void Notify(string messagem)
         {
-            if(messagem.Length > 0)
+            if (messagem.Length > 0)
                 _notification.AddNotifications(messagem);
         }
     }

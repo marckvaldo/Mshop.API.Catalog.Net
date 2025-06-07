@@ -98,7 +98,7 @@ namespace Mshop.IntegrationTests.Application.UserCases.Product.CreateProduct
                 _storageService, 
                 _unitOfWork);
 
-            //var outPut = async () => await productUseCase.Handle(request, CancellationToken.None);
+            //var outPut = async () => await productUseCase.BuildCache(request, CancellationToken.None);
             //var exception = await Assert.ThrowsAsync<ApplicationValidationException>(outPut);
             //Assert.Equal("Error", exception.Message);
 

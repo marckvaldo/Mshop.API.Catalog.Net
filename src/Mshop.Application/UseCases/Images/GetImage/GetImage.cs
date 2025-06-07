@@ -23,7 +23,7 @@ namespace Mshop.Application.UseCases.Images.GetImage
         {
             var image = await _imageRepository.GetById(request.Id);
            
-            if (NotifyErrorIfNull(image, ""))
+            if (NotifyErrorIfNull(image, "Imagem não localizada na base de dados"))
                 return Result<ImageOutPut>.Error();
 
             var imageOutPut =  new ImageOutPut(image!.ProductId, new ImageModelOutPut(image.FileName));

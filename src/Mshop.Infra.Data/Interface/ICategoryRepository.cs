@@ -6,7 +6,7 @@ namespace Mshop.Infra.Data.Interface
 {
     public interface ICategoryRepository : IRepository<Category>
     {
-        Task<Category> GetCategoryProducts(Guid id);
+        Task<Category> GetCategoryAndProducts(Guid id);
 
         //Task<PaginatedOutPut<Category>> FilterPaginated(PaginatedInPut input);
 

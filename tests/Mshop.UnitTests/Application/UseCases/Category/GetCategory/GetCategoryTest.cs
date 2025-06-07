@@ -44,7 +44,7 @@ namespace Mshop.Application.UseCases.Category.GetCategory
             repository.Setup(r => r.GetById(It.IsAny<Guid>())).ReturnsAsync((DomainEntity.Category?)null);
 
             var useCase = new useCase.GetCategory(notification.Object, repository.Object);
-            //var outPut = async () => await useCase.Handle(new useCase.GetCategoryInPut(Guid.NewGuid()), CancellationToken.None);
+            //var outPut = async () => await useCase.BuildCache(new useCase.GetCategoryInPut(Guid.NewGuid()), CancellationToken.None);
 
             var outPut = useCase.Handle(new useCase.GetCategoryInPut(Guid.NewGuid()), CancellationToken.None);
 

@@ -3,8 +3,12 @@ using Elastic.Transport;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Mshop.Application.Event;
+using Mshop.Application.Event.Category;
 using Mshop.Application.Service;
+using Mshop.Core.Message.DomainEvent;
 using Mshop.Domain.Contract.Services;
+using Mshop.Domain.Event.Category;
 using Serilog;
 using CoreMessage = Mshop.Core.Message;
 
@@ -14,9 +18,15 @@ namespace Mshop.Application
     {
         public static IServiceCollection AddUseCase(this IServiceCollection services)
         {
-            services.AddScoped<IBuildCacheCategory, BuildCacheCategory>();
+            services.AddScoped<IDomainEventPublisher, EventPublish>();
+            services.AddScoped<IServiceCacheCategory, ServiceCacheCategory>();
             services.AddScoped<IBuildCacheImage, BuildCacheImage>();
             services.AddScoped<IBuildCacheProduct, BuildCacheProduct>();
+
+            //events
+            services.AddScoped<IDomainEventHandler<CategoryCreatedEvent>, CategoryCreatedEventHandler>();
+            services.AddScoped<IDomainEventHandler<CategoryUpdatedEvent>, CategoryUpdatedEventHandler>();
+            services.AddScoped<IDomainEventHandler<CategoryRemovedEvent>, CategoryRemovedEventHandler>();
 
             services.AddScoped<CoreMessage.INotification, CoreMessage.Notifications>();
             services.AddScoped<IStorageService, StorageService>();

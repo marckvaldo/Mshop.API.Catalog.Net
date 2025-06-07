@@ -103,7 +103,7 @@ namespace Mshop.Application.UseCases.Product.GetProduts
 
             var caseUse = new useCase.GetProduct(repository.Object, repositoryImage.Object, notification.Object);
 
-            //var outPut = async () => await caseUse.Handle(new useCase.GetProductInPut(Guid.NewGuid()), CancellationToken.None);
+            //var outPut = async () => await caseUse.BuildCache(new useCase.GetProductInPut(Guid.NewGuid()), CancellationToken.None);
             //var exception = Assert.ThrowsAsync<ApplicationValidationException>(outPut);
 
             var outPut = caseUse.Handle(new useCase.GetProductInPut(Guid.NewGuid()), CancellationToken.None);

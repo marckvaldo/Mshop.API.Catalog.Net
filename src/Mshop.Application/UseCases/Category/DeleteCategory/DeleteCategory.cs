@@ -3,6 +3,7 @@ using Mshop.Core.Base;
 using Mshop.Core.Data;
 using Mshop.Core.DomainObject;
 using Mshop.Core.Message;
+using Mshop.Domain.Event.Category;
 using Mshop.Infra.Data.Interface;
 
 namespace Mshop.Application.UseCases.Category.DeleteCategory
@@ -37,7 +38,8 @@ namespace Mshop.Application.UseCases.Category.DeleteCategory
                 return Result<CategoryModelOutPut>.Error();
             }
             
-           
+            category.RegisterEvent(new CategoryRemovedEvent(category.Id));
+
             await _categoryRepository.DeleteById(category!,cancellationToken);
             await _unitOfWork.CommitAsync(cancellationToken);
 

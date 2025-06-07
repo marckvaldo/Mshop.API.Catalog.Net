@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using Mshop.Catalog.E2ETests.API.Common;
 using Mshop.Core.Data;
 using Mshop.gRPC.Catalog.Protos;
 using Mshop.Infra.Data.Context;
@@ -36,16 +37,16 @@ namespace Mshop.Catalog.E2ETests.gRPC.Product.GetProduct
             var request = new GetProductRequest { Id = "c56a4180-65aa-42ec-a945-5fd21dec0538" };
 
             //aqui eu estou definindo a função que será chamada no método SimpleCall
-            async Task<CustomerResultGrpc> GrpcCall(ProductProto.ProductProtoClient client, GetProductRequest request)
+            async Task<CustomizedResultGrpc> GrpcCall(ProductProto.ProductProtoClient client, GetProductRequest request)
             {
                 return await client.GetProductByIdAsync(request);
             }
 
 
-            var (metadata, result) = await _grpcClient.SimpleCall<ProductProto.ProductProtoClient, GetProductRequest, CustomerResultGrpc>(
+            var (metadata, result) = await _grpcClient.SimpleCall<ProductProto.ProductProtoClient, GetProductRequest, CustomizedResultGrpc>(
                                        
                                        //async (client, request) => await client.GetProductByIdAsync(request),
-                                       GrpcCall, // aqui estou ingetando a função que será chamada
+                                       GrpcCall, // aqui estou injetando a função que será chamada
                                        request // O parâmetro de requisição
                                     );
 
@@ -67,13 +68,13 @@ namespace Mshop.Catalog.E2ETests.gRPC.Product.GetProduct
             var request = new GetProductRequest { Id = product.Id.ToString() };
 
             //aqui eu estou definindo a função que será chamada no método SimpleCall
-            async Task<CustomerResultGrpc> GrpcCall(ProductProto.ProductProtoClient client, GetProductRequest request)
+            async Task<CustomizedResultGrpc> GrpcCall(ProductProto.ProductProtoClient client, GetProductRequest request)
             {
                 return await client.GetProductByIdAsync(request);
             }
 
 
-            var (metadata, result) = await _grpcClient.SimpleCall<ProductProto.ProductProtoClient, GetProductRequest, CustomerResultGrpc>(
+            var (metadata, result) = await _grpcClient.SimpleCall<ProductProto.ProductProtoClient, GetProductRequest, CustomizedResultGrpc>(
 
                                        //async (client, request) => await client.GetProductByIdAsync(request),
                                        GrpcCall, // aqui estou ingetando a função que será chamada

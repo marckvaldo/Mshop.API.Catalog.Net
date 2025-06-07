@@ -60,7 +60,7 @@ namespace Mshop.IntegrationTests.Application.UserCases.Category.GetCategory
 
             var useCase = new ApplicationUseCase.GetCategory(_notification,_categoryRepository);
 
-            //var outPut = async () => await useCase.Handle(new ApplicationUseCase.GetCategoryInPut(Guid.NewGuid()), CancellationToken.None);
+            //var outPut = async () => await useCase.BuildCache(new ApplicationUseCase.GetCategoryInPut(Guid.NewGuid()), CancellationToken.None);
             //var exception = await Assert.ThrowsAsync<ApplicationValidationException>(outPut);
 
             var outPut = await useCase.Handle(new ApplicationUseCase.GetCategoryInPut(Guid.NewGuid()), CancellationToken.None);

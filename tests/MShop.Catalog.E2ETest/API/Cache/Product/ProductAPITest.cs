@@ -60,7 +60,7 @@ namespace Mshop.Catalog.E2ETests.API.Cache.Product
 
             var productCacheNull = await _productCacheRepository.GetById(product.Id);
 
-            var (response, outPut) = await _apiClient.Get<CustomResponse<GetProductCacheOutPut>>($"{Configuration.URL_API_CACHE}product-cache/{product.Id}");
+            var (response, outPut) = await _apiClient.Get<CustomResponse<GetProductCacheOutPut>>($"{Configuration.URL_API_CACHE}products/{product.Id}");
             Thread.Sleep(2000);
             var productCacheNotNull = await _productCacheRepository.GetById(product.Id);
 
@@ -92,7 +92,7 @@ namespace Mshop.Catalog.E2ETests.API.Cache.Product
 
             var productCacheNotNull = await _productCacheRepository.GetById(product.Id);
 
-            var (response, outPut) = await _apiClient.Get<CustomResponse<GetProductCacheOutPut>>($"{Configuration.URL_API_CACHE}product-cache/{product.Id}");
+            var (response, outPut) = await _apiClient.Get<CustomResponse<GetProductCacheOutPut>>($"{Configuration.URL_API_CACHE}products/{product.Id}");
             Thread.Sleep(2000);
             productCacheNotNull = await _productCacheRepository.GetById(product.Id);
 
@@ -139,7 +139,7 @@ namespace Mshop.Catalog.E2ETests.API.Cache.Product
 
 
             var request = new ListProductCacheInPut(page, perPage, "", "", Mshop.Core.Enum.Paginated.SearchOrder.Desc, false);
-            var (response, outPut) = await _apiClient.Get<CustomResponse<ListProductCacheOutPut>>($"{Configuration.URL_API_CACHE}list-products-cache/", request);
+            var (response, outPut) = await _apiClient.Get<CustomResponse<ListProductCacheOutPut>>($"{Configuration.URL_API_CACHE}products/", request);
 
            Thread.Sleep(2000);
 
@@ -210,7 +210,7 @@ namespace Mshop.Catalog.E2ETests.API.Cache.Product
 
 
             var request = new ListProductCacheInPut(page, perPage, "", "", Mshop.Core.Enum.Paginated.SearchOrder.Desc,false, category.Id);
-            var (response, outPut) = await _apiClient.Get<CustomResponse<ListProductCacheOutPut>>($"{Configuration.URL_API_CACHE}list-products-cache/", request);
+            var (response, outPut) = await _apiClient.Get<CustomResponse<ListProductCacheOutPut>>($"{Configuration.URL_API_CACHE}products/", request);
 
             Thread.Sleep(2000);
 
@@ -281,7 +281,7 @@ namespace Mshop.Catalog.E2ETests.API.Cache.Product
 
 
             var request = new ListProductCacheInPut(page, perPage, "", "", Mshop.Core.Enum.Paginated.SearchOrder.Desc,true);
-            var (response, outPut) = await _apiClient.Get<CustomResponse<ListProductCacheOutPut>>($"{Configuration.URL_API_CACHE}list-products-cache/", request);
+            var (response, outPut) = await _apiClient.Get<CustomResponse<ListProductCacheOutPut>>($"{Configuration.URL_API_CACHE}products/", request);
 
             Thread.Sleep(2000);
 

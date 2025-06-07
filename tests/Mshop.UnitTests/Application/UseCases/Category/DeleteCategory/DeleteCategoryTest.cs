@@ -65,7 +65,7 @@ namespace Mshop.Application.UseCases.Category.DeleteCategory
                 notification.Object,
                 unitOfWork.Object);
 
-            //var action = async () => await useCase.Handle(new useCase.DeleteCategoryInPut(category.Id), CancellationToken.None);
+            //var action = async () => await useCase.BuildCache(new useCase.DeleteCategoryInPut(category.Id), CancellationToken.None);
             //var exception = Assert.ThrowsAsync<ApplicationValidationException>(action);
 
             var outPut = useCase.Handle(new useCase.DeleteCategoryInPut(category.Id), CancellationToken.None);
@@ -102,7 +102,7 @@ namespace Mshop.Application.UseCases.Category.DeleteCategory
                 notification.Object, 
                 unitOfWork.Object);
 
-            //var action = async () => await useCase.Handle(new useCase.DeleteCategoryInPut(category.Id), CancellationToken.None);
+            //var action = async () => await useCase.BuildCache(new useCase.DeleteCategoryInPut(category.Id), CancellationToken.None);
             //var exception = Assert.ThrowsAsync<ApplicationValidationException>(action);
 
             var outPut = useCase.Handle(new useCase.DeleteCategoryInPut(category.Id), CancellationToken.None);

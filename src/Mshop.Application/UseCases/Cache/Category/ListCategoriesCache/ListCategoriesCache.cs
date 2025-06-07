@@ -13,12 +13,12 @@ namespace Mshop.Application.UseCases.Cache.Category.ListCategoriesCache
     {
         private readonly ICategoryCacheRepository _categoryCacheRepository;
         private readonly ICategoryRepository _categoryRepository;
-        private readonly IBuildCacheCategory _buildCache;
+        private readonly IServiceCacheCategory _buildCache;
 
         public ListCategoriesCache(
             ICategoryCacheRepository categoryCacheRepository,
             ICategoryRepository categoryRepository,
-            IBuildCacheCategory buildCache,
+            IServiceCacheCategory buildCache,
             DomainMessage.INotification notification) : base(notification)
         {
             _categoryCacheRepository = categoryCacheRepository;
@@ -37,7 +37,7 @@ namespace Mshop.Application.UseCases.Cache.Category.ListCategoriesCache
             var categories = await _categoryCacheRepository.FilterPaginated(request, cancellationToken);
             if (categories is null)
             {
-                _buildCache.Handle();
+                _buildCache.BuildCache();
 
                 categories = await _categoryRepository.FilterPaginated(request, cancellationToken);
             }

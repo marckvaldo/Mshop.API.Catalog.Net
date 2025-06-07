@@ -117,7 +117,7 @@ namespace Mshop.Application.UseCases.Product.UpdateProduct
                 _storageService.Object,
                 _unitOfWork.Object);
 
-            //var outPut = async () => await useCase.Handle(request, CancellationToken.None);
+            //var outPut = async () => await useCase.BuildCache(request, CancellationToken.None);
             //var exception = Assert.ThrowsAsync<NotFoundException>(outPut);
 
             var outPut = await useCase.Handle(request, CancellationToken.None);

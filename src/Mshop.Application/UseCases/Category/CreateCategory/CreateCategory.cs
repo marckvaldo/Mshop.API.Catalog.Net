@@ -3,6 +3,8 @@ using Mshop.Core.Data;
 using Mshop.Core.DomainObject;
 using Message = Mshop.Core.Message;
 using Mshop.Infra.Data.Interface;
+using Mshop.Domain.Event.Category;
+using Mshop.Domain.Entity;
 
 namespace Mshop.Application.UseCases.Category.CreateCategory
 {
@@ -34,8 +36,9 @@ namespace Mshop.Application.UseCases.Category.CreateCategory
                 Notify("Categoria ja existe na base de dados");
                 return Result<CategoryModelOutPut>.Error(Notifications);
             }
-                
-       
+
+
+            category.RegisterEvent(new CategoryCreatedEvent(category.Id));
 
             await _categoryRepository.Create(category,cancellationToken);
             await _unitOfWork.CommitAsync(cancellationToken);

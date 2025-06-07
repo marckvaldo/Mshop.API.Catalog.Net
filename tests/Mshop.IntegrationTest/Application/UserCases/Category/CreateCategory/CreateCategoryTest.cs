@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Mshop.Core.Data;
 using Mshop.Core.Message;
+using Mshop.Infra.Cache.Interface;
 using Mshop.Infra.Data.Context;
 using Mshop.Infra.Data.Interface;
 using ApplicationUseCase = Mshop.Application.UseCases.Category.CreateCategory;
@@ -13,6 +14,7 @@ namespace Mshop.IntegrationTests.Application.UserCases.Category.CreateCategory
     public class CreateCategoryTest : CreateCategoryTestFixture, IDisposable
     {
         private readonly ICategoryRepository _categoryRepository;
+        private readonly ICategoryCacheRepository _categoryCacheRepository;
         private readonly INotification _notification;
         private readonly IUnitOfWork _unitOfWork;
         private readonly RepositoryDbContext _DbContext;
@@ -21,6 +23,7 @@ namespace Mshop.IntegrationTests.Application.UserCases.Category.CreateCategory
         {
             _DbContext = _serviceProvider.GetRequiredService<RepositoryDbContext>();
             _categoryRepository = _serviceProvider.GetRequiredService<ICategoryRepository>();
+            _categoryCacheRepository = _serviceProvider.GetRequiredService<ICategoryCacheRepository>();
             _notification = _serviceProvider.GetRequiredService<INotification>();
             _unitOfWork = _serviceProvider.GetRequiredService<IUnitOfWork>();
 
@@ -41,11 +44,16 @@ namespace Mshop.IntegrationTests.Application.UserCases.Category.CreateCategory
 
             var outPut = await useCase.Handle(request, CancellationToken.None);
             var categoryDB = await _categoryRepository.GetById(outPut.Data.Id);
+            var categoryCache = await _categoryCacheRepository.GetById(outPut.Data.Id);
 
             Assert.False(_notification.HasErrors());
             Assert.NotNull(outPut?.Data);
             Assert.Equal(outPut?.Data?.Name, categoryDB.Name);
             Assert.Equal(outPut?.Data?.IsActive, categoryDB.IsActive);
+            Assert.Equal(categoryCache.Name, categoryDB.Name);
+            Assert.Equal(categoryCache.IsActive, categoryDB.IsActive);
+            Assert.Equal(categoryCache.Id, categoryDB.Id);
+
         }
 
 
@@ -66,7 +74,7 @@ namespace Mshop.IntegrationTests.Application.UserCases.Category.CreateCategory
                 _categoryRepository,
                 _unitOfWork);
 
-            //var action = async () => await useCase.Handle(request, CancellationToken.None);
+            //var action = async () => await useCase.BuildCache(request, CancellationToken.None);
             //var exception = Assert.ThrowsAsync<EntityValidationException>(action);
 
             var outPut = await useCase.Handle(request, CancellationToken.None);

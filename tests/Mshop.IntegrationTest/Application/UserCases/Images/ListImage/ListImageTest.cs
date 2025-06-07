@@ -41,17 +41,19 @@ namespace Mshop.IntegrationTests.Application.UserCases.Images.ListImage
         public async Task ListImage()
         {
             var quantity = 20;
-            var productId = Guid.NewGuid();
+            var product = FakerProduct(FakerCategory());
+            var productId = product.Id;
             var imagesFake = FakerImages(productId, quantity);
             foreach(var item in imagesFake)
             {
                 await _imageRepository.Create(item, CancellationToken.None);
             }
+            await _productRepository.Create(product, CancellationToken.None);
 
             await _unitOfWork.CommitAsync(CancellationToken.None);
             
                
-            var useCase = new ApplicationUseCase.ListImage(_notification, _imageRepository);
+            var useCase = new ApplicationUseCase.ListImage(_notification, _imageRepository, _productRepository);
             var outPut = await useCase.Handle(new ListImageInPut(productId), CancellationToken.None);
 
             var result = outPut.Data;

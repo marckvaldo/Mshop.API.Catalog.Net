@@ -18,6 +18,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 
 builder.Services.AddConfigurationController()
+    .AddSwaggerCofing()
     .AddConfigurationModelState()
     .AddCircuitOptions()
     .AddDataBaseAndRepository(builder.Configuration)
@@ -26,6 +27,14 @@ builder.Services.AddConfigurationController()
     //.AddConfigurationSeriLog(builder.Configuration)
     .AddConfigurationHealthChecks()
     .AddUseCase();
+    //.AddApiVersioning().AddMvc().AddApiExplorer(setup =>
+    //{
+        //setup.GroupNameFormat = "'v'VVV";
+        //setup.SubstituteApiVersionInUrl = true;
+    //});//precisa instalar 2 pacotes
+
+    //builder.Services.ConfigureOptions<SwaggerConfig>();
+
 
     //builder.Host.UseSerilog();
     

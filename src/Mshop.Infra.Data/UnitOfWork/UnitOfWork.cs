@@ -10,10 +10,10 @@ namespace Mshop.Infra.Data.UnitOfWork
         private readonly RepositoryDbContext _repositoryDbContext;
         private readonly IDomainEventPublisher _publisher;
 
-        public UnitOfWork(RepositoryDbContext repositoryDbContext)
+        public UnitOfWork(RepositoryDbContext repositoryDbContext, IDomainEventPublisher publisher)
         {
             _repositoryDbContext = repositoryDbContext;
-            //_publisher = publisher;
+            _publisher = publisher;
         }
 
         public async Task CommitAsync(CancellationToken cancellationToken = default)

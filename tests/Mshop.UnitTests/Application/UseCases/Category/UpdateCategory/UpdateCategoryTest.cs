@@ -66,7 +66,7 @@ namespace Mshop.UnitTests.Application.UseCases.Category.UpdateCategory
                 _notifications.Object,
                 _unitOfWork.Object);
 
-            //var action = async () => await useCase.Handle(request, CancellationToken.None);
+            //var action = async () => await useCase.BuildCache(request, CancellationToken.None);
             //var exception = Assert.ThrowsAsync<NotFoundException>(action);
 
             var outPut = useCase.Handle(request, CancellationToken.None);

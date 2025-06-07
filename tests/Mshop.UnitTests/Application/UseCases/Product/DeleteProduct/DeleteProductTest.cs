@@ -81,7 +81,7 @@ namespace Mshop.Application.UseCases.Product.DeleteProduct
 
             var guid = productFaker.Id;
 
-            //var action = async () => await product.Handle(new useCase.DeleteProductInPut(guid), CancellationToken.None);
+            //var action = async () => await product.BuildCache(new useCase.DeleteProductInPut(guid), CancellationToken.None);
             //var exception = Assert.ThrowsAsync<NotFoundException>(action);
 
             var ouPut = product.Handle(new useCase.DeleteProductInPut(guid), CancellationToken.None);

@@ -136,7 +136,7 @@ namespace Mshop.Catalog.E2ETests.API.Images
             await _unitOfWork.CommitAsync();    
             var request = images.First();
 
-            var (response, outPut) = await _apiClient.Get<CustomResponse<ListImageOutPut>>($"{Configuration.URL_API_IMAGE}list-Images-by-id-production/{request.ProductId}");
+            var (response, outPut) = await _apiClient.Get<CustomResponse<ListImageOutPut>>($"{Configuration.URL_API_IMAGE}list-Images-by-productId/{request.ProductId}");
 
             Assert.NotNull(request);
             Assert.NotNull(images);

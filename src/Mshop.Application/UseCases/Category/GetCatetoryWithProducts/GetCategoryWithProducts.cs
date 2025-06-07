@@ -13,7 +13,7 @@ namespace Mshop.Application.UseCases.GetCatetoryWithProducts.GetCatetory
           => _categoryRepository = categoryRepository;
         public async Task<Result<GetCategoryWithProductsOutPut>> Handle(GetCategoryWithProductsInPut request, CancellationToken cancellationToken)
         {
-            var category = await  _categoryRepository.GetCategoryProducts(request.Id);
+            var category = await  _categoryRepository.GetCategoryAndProducts(request.Id);
             
             
             if (NotifyErrorIfNull(category, "não foi possivel localizar a categoria da base de dados!"))

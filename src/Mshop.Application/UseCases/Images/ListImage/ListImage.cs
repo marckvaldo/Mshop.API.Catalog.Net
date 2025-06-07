@@ -9,11 +9,21 @@ namespace Mshop.Application.UseCases.Images.ListImage
     public class ListImage : BaseUseCase, IListImage
     {
         private readonly IImageRepository _imageRepository;
-        public ListImage(INotification notification, IImageRepository imageRepository) : base(notification)
-            => _imageRepository = imageRepository;
+        private readonly IProductRepository _productRepository;
+        public ListImage(INotification notification, IImageRepository imageRepository, IProductRepository productRepositorys) : base(notification)
+        {
+            _imageRepository = imageRepository;
+            _productRepository = productRepositorys;
+        }
         public async Task<Result<ListImageOutPut>> Handle(ListImageInPut request, CancellationToken cancellation)
         {
+            var product = await _productRepository.GetById(request.Id);
+            
+            if(NotifyErrorIfNull(product, "Não foi possivel localizar o produto na base de dados"))
+                return Result<ListImageOutPut>.Error();
+
             var images = await _imageRepository.Filter(x=>x.ProductId == request.Id);
+
             var imagesOutPut = new ListImageOutPut
                     (
                         request.Id, 

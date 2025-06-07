@@ -70,7 +70,7 @@ namespace Mshop.Application.UseCases.Product.UpdateStockProduct
                 _unitOfWork.Object,
                 _categoryRepository.Object);
 
-            //var outPut = async () => await useCase.Handle(request, CancellationToken.None);
+            //var outPut = async () => await useCase.BuildCache(request, CancellationToken.None);
             //var excption = Assert.ThrowsAsync<NotFoundException>(outPut);
             
             var outPut = useCase.Handle(request, CancellationToken.None);

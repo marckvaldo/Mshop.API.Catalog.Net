@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Mshop.Core.Data;
+using Mshop.Core.Message.DomainEvent;
 using Mshop.Infra.Data.Context;
 using Mshop.Infra.Data.Interface;
 using Mshop.Infra.Data.Repository;
@@ -22,11 +23,11 @@ namespace Mshop.Infra.Data
                 //ServiceLifetime.Scoped
                 );
 
-
             services.AddScoped<IUnitOfWork, UnitOfWork.UnitOfWork>();
             services.AddScoped<ICategoryRepository,CategoryRepository>();
             services.AddScoped<IProductRepository,ProductRepository>();
             services.AddScoped<IImageRepository, ImagesRepository>();
+
 
             return services;
         }

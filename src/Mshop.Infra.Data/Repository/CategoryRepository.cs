@@ -18,7 +18,7 @@ namespace Mshop.Infra.Data.Repository
 
         }
 
-        public async Task<Category> GetCategoryProducts(Guid id)
+        public async Task<Category> GetCategoryAndProducts(Guid id)
         {
             return await _dbSet.Where(c => c.Id == id).Include(c => c.Products).FirstOrDefaultAsync();
         }

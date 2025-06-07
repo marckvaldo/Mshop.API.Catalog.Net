@@ -48,6 +48,7 @@ namespace Mshop.Infra.Cache
             services.AddScoped<IProductCacheRepository, ProductCacheRepository>();
             services.AddSingleton<ICategoryCacheRepository, CategoryCacheRepository>();    
             services.AddScoped<IImagesCacheRepository, ImagesCacheRepository>();    
+            services.AddScoped<IConfigCacheRespository, ConfigCacheRepository>();
 
             return services;
         }

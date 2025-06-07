@@ -47,7 +47,7 @@ namespace Mshop.Application.UseCases.Image.GetImage
             var outPut = useCase.Handle(new useCase.GetImageInPut(Guid.NewGuid()), CancellationToken.None);
 
 
-            //var action = async () => await useCase.Handle(new useCase.GetImageInPut(Guid.NewGuid()), CancellationToken.None);
+            //var action = async () => await useCase.BuildCache(new useCase.GetImageInPut(Guid.NewGuid()), CancellationToken.None);
             //var exception = Assert.ThrowsAsync<ApplicationValidationException>(action);
 
             repository.Verify(r => r.GetById(It.IsAny<Guid>()), Times.Once);

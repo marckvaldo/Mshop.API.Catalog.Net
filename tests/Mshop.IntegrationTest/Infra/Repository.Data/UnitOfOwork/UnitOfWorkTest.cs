@@ -1,5 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using MediatR;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using Mshop.Core.Message.DomainEvent;
 using Mshop.Infra.Data.Context;
 using Mshop.Infra.Data.UnitOfWork;
 using Mshop.IntegrationTests.Common;
@@ -12,14 +14,17 @@ namespace Mshop.IntegrationTests.Infra.Repository.Data.UnitOfOwork
     {
         private readonly RepositoryDbContext _DbContext;
         private readonly UnitOfWork _unitOfWork;
+        private readonly IDomainEventPublisher _publisher;
       
         public UnitOfWorkTest() : base()
         {
             _DbContext = _serviceProvider.GetRequiredService<RepositoryDbContext>();
+            _publisher = _serviceProvider.GetRequiredService<IDomainEventPublisher>();
+
             DeleteDataBase(_DbContext, false).Wait();
             AddMigartion(_DbContext).Wait();
 
-            _unitOfWork = new UnitOfWork(_DbContext);
+            _unitOfWork = new UnitOfWork(_DbContext, _publisher);
            
         }
 

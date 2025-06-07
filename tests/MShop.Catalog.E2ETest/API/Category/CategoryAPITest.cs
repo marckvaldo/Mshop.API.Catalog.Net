@@ -145,7 +145,7 @@ namespace MShop.Catalog.E2ETests.API.Category
             await _unitOfWork.CommitAsync();
 
             var query = new ListCategoryInPut(page, perPager, "", "", SearchOrder.Desc);
-            var (response, outPut) = await _apiClient.Get<CustomResponse<ListCategoryOutPut>>($"{Configuration.URL_API_CATEGORY}list-category", query);
+            var (response, outPut) = await _apiClient.Get<CustomResponse<ListCategoryOutPut>>($"{Configuration.URL_API_CATEGORY}", query);
 
             var categoryDb = (await _categoryRepository.Filter(c => c.Name != null)).ToList();
 

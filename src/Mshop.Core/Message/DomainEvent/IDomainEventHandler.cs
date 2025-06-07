@@ -4,6 +4,6 @@ namespace Mshop.Core.Message.DomainEvent
 {
     public interface IDomainEventHandler<TDomainEvent> where TDomainEvent : CoreObject.DomainEvent
     {
-        Task HandlerAsync(TDomainEvent domainEvent);
+        Task<bool> HandlerAsync(TDomainEvent domainEvent);
     }
 }

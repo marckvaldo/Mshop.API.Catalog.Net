@@ -15,21 +15,24 @@ namespace Mshop.Application.UseCases.Image.ListImage
         [Trait("Application-UseCase", "List Image")]
         public async void ListImage()
         {
-            var repository = new Mock<IImageRepository>();
+            var repositoryImage = new Mock<IImageRepository>();
+            var repositoryProduct = new Mock<IProductRepository>();
             var notification = new Mock<INotification>();
 
-            var productId = Guid.NewGuid();
+            var product = FakerProduct(FakerCategory());
+            var productId = product.Id;
             var imagens = FakerImages(productId, 3);
 
             var request = FakerImage(productId);
-            repository.Setup(r => r.Filter(It.IsAny<Expression<Func<DomainEntity.Image, bool>>>())).ReturnsAsync(imagens);
+            repositoryImage.Setup(r => r.Filter(It.IsAny<Expression<Func<DomainEntity.Image, bool>>>())).ReturnsAsync(imagens);
+            repositoryProduct.Setup(r => r.GetById(It.IsAny<Guid>())).ReturnsAsync(product);
 
-            var useCase = new useCase.ListImage(notification.Object, repository.Object);
+            var useCase = new useCase.ListImage(notification.Object, repositoryImage.Object, repositoryProduct.Object);
             var outPut = await useCase.Handle( new useCase.ListImageInPut(productId), CancellationToken.None);
 
             var result = outPut.Data;
 
-            repository.Verify(r => r.Filter(It.IsAny<Expression<Func<DomainEntity.Image, bool>>>()), Times.Once);
+            repositoryImage.Verify(r => r.Filter(It.IsAny<Expression<Func<DomainEntity.Image, bool>>>()), Times.Once);
             Assert.NotNull(result);
 
             foreach (var item in result.Images) 
@@ -48,19 +51,21 @@ namespace Mshop.Application.UseCases.Image.ListImage
         public void ShoudReturNullWhenListImage()
         {
             var notification = new Mock<INotification>();
-            var repository = new Mock<IImageRepository>();
+            var repositoryImage = new Mock<IImageRepository>();
+            var repositoryProduct = new Mock<IProductRepository>();
+            var product = FakerProduct(FakerCategory());
 
-            //repository.Setup(r => r.Filter(It.IsAny<Expression<Func<DomainEntity.Image, bool>>>())).ThrowsAsync(new NotFoundException(""));
-            repository.Setup(r => r.Filter(It.IsAny<Expression<Func<DomainEntity.Image, bool>>>())).ReturnsAsync((List<DomainEntity.Image>?)null);
+            repositoryImage.Setup(r => r.Filter(It.IsAny<Expression<Func<DomainEntity.Image, bool>>>()))
+                .ReturnsAsync((List<DomainEntity.Image>?)null);
 
-            var useCase = new useCase.ListImage(notification.Object, repository.Object);
+            repositoryProduct.Setup(r => r.GetById(It.IsAny<Guid>()))
+                .ReturnsAsync(product);
+
+            var useCase = new useCase.ListImage(notification.Object, repositoryImage.Object, repositoryProduct.Object);
             var outPut = useCase.Handle(new useCase.ListImageInPut(Guid.NewGuid()), CancellationToken.None);
 
-            //var outPut = async () => await useCase.Handle(new useCase.ListImageInPut(Guid.NewGuid()), CancellationToken.None);
-            //var exception = Assert.ThrowsAsync<NotFoundException>(outPut);
-
             notification.Verify(r=>r.AddNotifications(It.IsAny<string>()),Times.Never);
-            repository.Verify(r=>r.Filter(It.IsAny<Expression<Func<DomainEntity.Image, bool>>>()),Times.Once);
+            repositoryImage.Verify(r=>r.Filter(It.IsAny<Expression<Func<DomainEntity.Image, bool>>>()),Times.Once);
 
         }
     }

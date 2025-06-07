@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Mshop.Infra.Data")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+162487271b8cfa7cf7659ef91c787c84bb28d184")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ff145e279465ce3456d14ad9be055627113eb9be")]
 [assembly: System.Reflection.AssemblyProductAttribute("Mshop.Infra.Data")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Mshop.Infra.Data")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

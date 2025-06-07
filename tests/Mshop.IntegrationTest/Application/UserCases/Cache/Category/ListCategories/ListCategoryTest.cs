@@ -20,7 +20,7 @@ namespace Mshop.IntegrationTests.Application.UserCases.Cache.Category.ListCatego
     {
         private readonly ICategoryRepository _categoryRepository;
         private readonly ICategoryCacheRepository _categoryCacheRepository;
-        private readonly IBuildCacheCategory _buildCacheCategory;
+        private readonly IServiceCacheCategory _buildCacheCategory;
         private readonly INotification _notification;
         private readonly IUnitOfWork _unitOfWork;
         private readonly RepositoryDbContext _DbContext;
@@ -35,7 +35,7 @@ namespace Mshop.IntegrationTests.Application.UserCases.Cache.Category.ListCatego
             _DbContext = _serviceProvider.GetRequiredService<RepositoryDbContext>();
             _categoryRepository = _serviceProvider.GetRequiredService<ICategoryRepository>();
             _categoryCacheRepository = _serviceProvider.GetRequiredService<ICategoryCacheRepository>();
-            _buildCacheCategory = _serviceProvider.GetRequiredService<IBuildCacheCategory>();
+            _buildCacheCategory = _serviceProvider.GetRequiredService<IServiceCacheCategory>();
             _notification = _serviceProvider.GetRequiredService<INotification>();
             _unitOfWork = _serviceProvider.GetRequiredService<IUnitOfWork>();
             _startIndex = _serviceProvider.GetRequiredService<StartIndex>();

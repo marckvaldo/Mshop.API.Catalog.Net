@@ -156,12 +156,12 @@ namespace Mshop.UnitTests.Application.UseCases.Cache.Products.GetProductCache
             _productCacheRepository.Setup(r => r.Create(It.IsAny<DomainEntity.Category>(), It.IsAny<DateTime>(), CancellationToken.None)).ReturnsAsync(true);
 
             var useCase = new useCase.GetCategoryCache(_notification.Object, _productCacheRepository.Object, _productRepository.Object, _buildCacheCategory.Object);
-            var outPut = useCase.Handle(new useCase.GetCategoryCacheInPut(dadosResult.Id), CancellationToken.None);
+            var outPut = useCase.BuildCache(new useCase.GetCategoryCacheInPut(dadosResult.Id), CancellationToken.None);
 
             _notification.Verify(r => r.AddNotifications(It.IsAny<string>()), Times.Once);
             _productCacheRepository.Verify(r => r.GetById(It.IsAny<Guid>()), Times.Once);
             _productCacheRepository.Verify(r => r.Create(It.IsAny<DomainEntity.Category>(), It.IsAny<DateTime>(), CancellationToken.None), Times.AtMost(10));
-            _buildCacheCategory.Verify(r => r.Handle(), Times.Once);
+            _buildCacheCategory.Verify(r => r.BuildCache(), Times.Once);
             _productRepository.Verify(r => r.GetById(It.IsAny<Guid>()), Times.Once);
 
             Assert.Null(outPut.Result.Data);

@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Mshop.Core.Data;
 using Mshop.Core.Message;
+using Mshop.Infra.Cache.Interface;
 using Mshop.Infra.Data.Context;
 using Mshop.Infra.Data.Interface;
 using ApplicationUseCase = Mshop.Application.UseCases.Category.UpdateCategory;
@@ -12,6 +13,7 @@ namespace Mshop.IntegrationTests.Application.UserCases.Category.UpdateCategory
     public class UpdateCategoryTest : UpdateCategoryTestFixture, IDisposable
     {
         private readonly ICategoryRepository _categoryRepository;
+        private readonly ICategoryCacheRepository _categoryCacheRepository;
         private readonly INotification _notification;
         private readonly IUnitOfWork _unitOfWork;
         private readonly RepositoryDbContext _DbContext;
@@ -19,7 +21,8 @@ namespace Mshop.IntegrationTests.Application.UserCases.Category.UpdateCategory
         public UpdateCategoryTest() : base()
         {
             _DbContext = _serviceProvider.GetRequiredService<RepositoryDbContext>();
-            _categoryRepository = _serviceProvider.GetRequiredService<ICategoryRepository>();            
+            _categoryRepository = _serviceProvider.GetRequiredService<ICategoryRepository>();
+            _categoryCacheRepository = _serviceProvider.GetRequiredService<ICategoryCacheRepository>();
             _notification = _serviceProvider.GetRequiredService<INotification>();
             _unitOfWork = _serviceProvider.GetRequiredService<IUnitOfWork>();
 
@@ -39,23 +42,28 @@ namespace Mshop.IntegrationTests.Application.UserCases.Category.UpdateCategory
             await _unitOfWork.CommitAsync();
             request.Id = category.Id;
 
-             //await _categoryPersistence.Create(category);
-
             var useCase = new ApplicationUseCase.UpdateCategory(
                 _categoryRepository, 
                 _notification,
                 _unitOfWork);
+
             var outPut = await useCase.Handle(request, CancellationToken.None);
 
             var categoryDb = await _categoryRepository.GetById(category.Id);
+            var categoryCache = await _categoryCacheRepository.GetById(category.Id);
 
             var result = outPut.Data;
 
             Assert.False(_notification.HasErrors());
             Assert.NotNull(result);
             Assert.NotNull(categoryDb);
-            Assert.Equal(result.Name, categoryDb.Name);
             Assert.NotEmpty(result.Name);
+            Assert.Equal(result.Name, categoryDb.Name);
+            Assert.Equal(result.IsActive, categoryDb.IsActive);
+            Assert.Equal(result.Id, categoryDb.Id);
+            Assert.Equal(categoryDb.Name, categoryCache.Name);
+            Assert.Equal(categoryDb.IsActive, categoryCache.IsActive);
+            Assert.Equal(categoryDb.Id, categoryCache.Id);
         }
 
         public void Dispose()

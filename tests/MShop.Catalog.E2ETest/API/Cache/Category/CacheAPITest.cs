@@ -52,7 +52,7 @@ namespace Mshop.Catalog.E2ETests.API.Cache.Category
             await _categoryCacheRepository.DeleteById(category,CancellationToken.None);
             var categoryNull = await _categoryCacheRepository.GetById(category.Id);
 
-            var (response, outPut) = await _apiClient.Get<CustomResponse<CategoryModelOutPut>>($"{Configuration.URL_API_CACHE}category-cache/{category.Id}");
+            var (response, outPut) = await _apiClient.Get<CustomResponse<CategoryModelOutPut>>($"{Configuration.URL_API_CACHE}categories/{category.Id}");
             Thread.Sleep(2000);
             var categoryDb = (await _categoryRepository.Filter(c => c.Id == outPut.Data.Id)).First();
             var categoryCache = await _categoryCacheRepository.GetById(category.Id);
@@ -83,7 +83,7 @@ namespace Mshop.Catalog.E2ETests.API.Cache.Category
             var categoryCache = await _categoryCacheRepository.GetById(category.Id);
             var categoryDb = await _categoryRepository.GetById(category.Id);
 
-            var (response, outPut) = await _apiClient.Get<CustomResponse<CategoryModelOutPut>>($"{Configuration.URL_API_CACHE}category-cache/{category.Id}");
+            var (response, outPut) = await _apiClient.Get<CustomResponse<CategoryModelOutPut>>($"{Configuration.URL_API_CACHE}categories/{category.Id}");
             Thread.Sleep(2000);
             categoryDb = await _categoryRepository.GetById(category.Id);
 
@@ -125,7 +125,7 @@ namespace Mshop.Catalog.E2ETests.API.Cache.Category
                     SearchOrder.Asc),CancellationToken.None);
 
             var query = new ListCategoriesCacheInPut(page, perPager, "", "", SearchOrder.Desc);
-            var (response, outPut) = await _apiClient.Get<CustomResponse<ListCategoriesCacheOutPut>>($"{Configuration.URL_API_CACHE}list-categories-cache", query);
+            var (response, outPut) = await _apiClient.Get<CustomResponse<ListCategoriesCacheOutPut>>($"{Configuration.URL_API_CACHE}categories", query);
             Thread.Sleep(2000);
             var categoriesDb = (await _categoryRepository.Filter(c => c.Name != null)).ToList();
 
@@ -191,7 +191,7 @@ namespace Mshop.Catalog.E2ETests.API.Cache.Category
 
 
             var query = new ListCategoriesCacheInPut(page, perPager, "", "", SearchOrder.Desc);
-            var (response, outPut) = await _apiClient.Get<CustomResponse<ListCategoriesCacheOutPut>>($"{Configuration.URL_API_CACHE}list-categories-cache", query);
+            var (response, outPut) = await _apiClient.Get<CustomResponse<ListCategoriesCacheOutPut>>($"{Configuration.URL_API_CACHE}categories", query);
             Thread.Sleep(2000);
             var categoriesDb = (await _categoryRepository.Filter(c => c.Name != null)).ToList();
 

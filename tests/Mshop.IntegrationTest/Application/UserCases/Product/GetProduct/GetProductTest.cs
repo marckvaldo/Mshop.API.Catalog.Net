@@ -80,7 +80,7 @@ namespace Mshop.IntegrationTests.Application.UserCases.Product.GetProduct
             //await _DbContext.SaveChangesAsync();
 
             var useCase = new ApplicationUseCase.GetProduct(_productRepository, _imageRepository, _notification);
-            //var outPut = async () => await useCase.Handle(new ApplicationUseCase.GetProductInPut(Guid.NewGuid()), CancellationToken.None);
+            //var outPut = async () => await useCase.BuildCache(new ApplicationUseCase.GetProductInPut(Guid.NewGuid()), CancellationToken.None);
             //var exception = await Assert.ThrowsAsync<ApplicationValidationException>(outPut);
             //Assert.Equal("Error", exception.Message);
 

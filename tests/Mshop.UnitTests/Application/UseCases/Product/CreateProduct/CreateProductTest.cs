@@ -86,7 +86,7 @@ namespace Mshop.Application.UseCases.Product.CreateProduct
                 storageService.Object, 
                 unitOfWork.Object);
 
-            //var action = async () => await productUseCase.Handle(request,CancellationToken.None);
+            //var action = async () => await productUseCase.BuildCache(request,CancellationToken.None);
             //var exception =  Assert.ThrowsAsync<EntityValidationException>(action);
 
             var outPut = productUseCase.Handle(request, CancellationToken.None);
@@ -124,7 +124,7 @@ namespace Mshop.Application.UseCases.Product.CreateProduct
                 storageService.Object,
                 unitOfWork.Object);
 
-            //var action = async () => await productUseCase.Handle(request, CancellationToken.None);
+            //var action = async () => await productUseCase.BuildCache(request, CancellationToken.None);
             //var exception = Assert.ThrowsAsync<ApplicationException>(action);
 
             var outPut =  productUseCase.Handle(request, CancellationToken.None);

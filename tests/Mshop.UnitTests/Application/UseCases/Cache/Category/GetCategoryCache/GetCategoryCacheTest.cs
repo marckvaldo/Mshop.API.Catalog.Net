@@ -13,13 +13,13 @@ namespace Mshop.UnitTests.Application.UseCases.Cache.Category.GetCategoryCache
     {
         private Mock<ICategoryCacheRepository> _categoryCacheRepository;
         private Mock<ICategoryRepository> _categoryRepository;
-        private Mock<IBuildCacheCategory> _buildCacheCategory;
+        private Mock<IServiceCacheCategory> _buildCacheCategory;
         private Mock<INotification> _notification;
         public GetCategoryCacheTest() : base()
         {
             _categoryRepository = new Mock<ICategoryRepository>();
             _categoryCacheRepository = new Mock<ICategoryCacheRepository>();
-            _buildCacheCategory = new Mock<IBuildCacheCategory>();
+            _buildCacheCategory = new Mock<IServiceCacheCategory>();
             _notification = new Mock<INotification>();
         }
 
@@ -29,7 +29,7 @@ namespace Mshop.UnitTests.Application.UseCases.Cache.Category.GetCategoryCache
         {
             //_productRepository = new Mock<ICategoryRepository>();
             //var repositoryCache = new Mock<ICategoryCacheRepository>();
-            //var buildCache = new Mock<IBuildCacheCategory>();
+            //var buildCache = new Mock<IServiceCacheCategory>();
             //var notification = new Mock<INotification>();
 
             var dadosResult = FakerCategory();
@@ -41,7 +41,7 @@ namespace Mshop.UnitTests.Application.UseCases.Cache.Category.GetCategoryCache
 
             _notification.Verify(r => r.AddNotifications(It.IsAny<string>()), Times.Never);
             _categoryCacheRepository.Verify(r => r.GetById(It.IsAny<Guid>()), Times.Once);
-            _buildCacheCategory.Verify(r => r.Handle(), Times.Never);
+            _buildCacheCategory.Verify(r => r.BuildCache(), Times.Never);
             _categoryRepository.Verify(r => r.GetById(It.IsAny<Guid>()), Times.Never);
 
             Assert.NotNull(outPut.Result);
@@ -58,7 +58,7 @@ namespace Mshop.UnitTests.Application.UseCases.Cache.Category.GetCategoryCache
         {
             //_productRepository = new Mock<ICategoryRepository>();
             //var repositoryCache = new Mock<ICategoryCacheRepository>();
-            //var buildCache = new Mock<IBuildCacheCategory>();
+            //var buildCache = new Mock<IServiceCacheCategory>();
             //var notification = new Mock<INotification>();
 
             var listCategories = FakerCategories(10);
@@ -77,7 +77,7 @@ namespace Mshop.UnitTests.Application.UseCases.Cache.Category.GetCategoryCache
             _categoryCacheRepository.Verify(r => r.GetById(It.IsAny<Guid>()), Times.Once);
             _categoryRepository.Verify(r => r.GetById(It.IsAny<Guid>()), Times.Once);
             _categoryCacheRepository.Verify(r => r.Create(It.IsAny<DomainEntity.Category>(), It.IsAny<DateTime>(), CancellationToken.None), Times.AtMost(10));
-            _buildCacheCategory.Verify(r => r.Handle(), Times.Once);
+            _buildCacheCategory.Verify(r => r.BuildCache(), Times.Once);
 
 
             Assert.NotNull(outPut.Result);
@@ -94,7 +94,7 @@ namespace Mshop.UnitTests.Application.UseCases.Cache.Category.GetCategoryCache
         {
             //_productRepository = new Mock<ICategoryRepository>();
             //var repositoryCache = new Mock<ICategoryCacheRepository>();
-            //var buildCache = new Mock<IBuildCacheCategory>();
+            //var buildCache = new Mock<IServiceCacheCategory>();
             //var notification = new Mock<INotification>();
 
             var listCategories = FakerCategories(10);
@@ -111,7 +111,7 @@ namespace Mshop.UnitTests.Application.UseCases.Cache.Category.GetCategoryCache
             _notification.Verify(r => r.AddNotifications(It.IsAny<string>()), Times.Once);
             _categoryCacheRepository.Verify(r => r.GetById(It.IsAny<Guid>()), Times.Once);
             _categoryCacheRepository.Verify(r => r.Create(It.IsAny<DomainEntity.Category>(), It.IsAny<DateTime>(), CancellationToken.None), Times.AtMost(10));
-            _buildCacheCategory.Verify(r => r.Handle(), Times.Once);
+            _buildCacheCategory.Verify(r => r.BuildCache(), Times.Once);
             _categoryRepository.Verify(r => r.GetById(It.IsAny<Guid>()), Times.Once);
 
             Assert.Null(outPut.Result.Data);
