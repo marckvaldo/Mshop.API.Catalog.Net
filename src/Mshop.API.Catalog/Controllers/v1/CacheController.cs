@@ -4,11 +4,8 @@ using Microsoft.AspNetCore.Mvc;
 using Mshop.Application.UseCases.Cache.Category.GetCategory;
 using Mshop.Application.UseCases.Cache.Category.ListCategoriesCache;
 using Mshop.Application.UseCases.Cache.Products.GetProductCache;
-using Mshop.Application.UseCases.Cache.Products.ListProductByCategoryCache;
 using Mshop.Application.UseCases.Cache.Products.ListProductCache;
-using Mshop.Application.UseCases.Cache.Products.ListProductsPromotionCache;
 using Mshop.Application.UseCases.Category.Common;
-using Mshop.Application.UseCases.Product.Common;
 
 
 namespace Mshop.API.Catalog.Controllers.v1

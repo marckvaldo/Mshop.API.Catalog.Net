@@ -77,7 +77,7 @@ namespace Mshop.API.Catalog.Configuration
         {
             var info = new OpenApiInfo()
             {
-                Title = "Mshop API Catelago - Products",
+                Title = "Mshop API Catalago - Products",
                 Version = description.ApiVersion.ToString(),
                 Description = description.IsDeprecated ? "This API version has been deprecated." : string.Empty,
                 //Contact = new OpenApiContact() { Name = "", Email = "", Url = new Uri("") },

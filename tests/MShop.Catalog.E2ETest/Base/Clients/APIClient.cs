@@ -2,12 +2,12 @@
 using System.Text;
 using System.Text.Json;
 
-namespace Mshop.Catalog.E2ETest.Base
+namespace Mshop.Catalog.E2ETests.Base.Clients
 {
     public class APIClient
     {
         private readonly HttpClient _httpClient;
-        public APIClient(HttpClient httpClient) 
+        public APIClient(HttpClient httpClient)
         {
             _httpClient = httpClient;
         }

@@ -3,8 +3,6 @@ using Mshop.API.Catalog.Configuration;
 using Mshop.Application;
 using Mshop.Infra.Cache;
 using Mshop.Infra.Data;
-using Serilog;
-using Serilog.Extensions.Hosting;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -46,7 +44,7 @@ builder.Services.AddConfigurationController()
     //opt.LoggingFields = Microsoft.AspNetCore.HttpLogging.HttpLoggingFields.All; // Loga tudo
     //});
 
-builder.Configuration.SetBasePath(Directory.GetCurrentDirectory());
+//builder.Configuration.SetBasePath(Directory.GetCurrentDirectory());
 var app = builder.Build();
 
 

@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
 
-namespace Mshop.Catalog.E2ETests.Base
+namespace Mshop.Catalog.E2ETests.Base.FactoriesWeb
 {
-    public class GraphQLWebApplicationFactory<TStartup> : WebApplicationFactory<TStartup> where TStartup : class
+    public class GrpcWebApplicationFactory<TStartup> : WebApplicationFactory<TStartup> where TStartup : class
     {
         protected override void ConfigureWebHost(IWebHostBuilder builder)
         {

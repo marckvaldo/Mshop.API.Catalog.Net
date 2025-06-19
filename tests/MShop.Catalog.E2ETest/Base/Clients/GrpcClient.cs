@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Channels;
 using System.Threading.Tasks;
 
-namespace Mshop.Catalog.E2ETests.Base
+namespace Mshop.Catalog.E2ETests.Base.Clients
 {
     public class GrpcClient
     {
@@ -17,7 +17,7 @@ namespace Mshop.Catalog.E2ETests.Base
         public GrpcClient(HttpClient httpClient)
         {
             _grpcClient = httpClient;
-            
+
             _channel = GrpcChannel.ForAddress(_grpcClient.BaseAddress, new GrpcChannelOptions
             {
                 HttpClient = _grpcClient
@@ -26,11 +26,11 @@ namespace Mshop.Catalog.E2ETests.Base
 
         public async Task<(Metadata?, TOutPut?)> SimpleCall<TClient, TRequest, TOutPut>(
             Func<TClient, TRequest, Task<TOutPut>> method,
-            TRequest request )
+            TRequest request)
           where TClient : class
           where TRequest : class
           where TOutPut : class
-          
+
         {
             // Criação do cliente gRPC e adionar o canal o mesmo que 
             //var client = new ProductProto.ProductProtoClient(channel);
@@ -43,11 +43,11 @@ namespace Mshop.Catalog.E2ETests.Base
             {
                 // Fazendo a chamada gRPC
                 var output = await method(client, request);
-                
+
                 // Retorno bem-sucedido com os metadados (se precisar)
                 return (null, output);
             }
-            catch (Grpc.Core.RpcException ex)
+            catch (RpcException ex)
             {
                 // Retorna os metadados no caso de erro
                 return (ex.Trailers, null);
@@ -55,9 +55,9 @@ namespace Mshop.Catalog.E2ETests.Base
         }
 
 
-        public async Task<(Grpc.Core.Metadata?, List<TOutPut>?)> ServerStreamingCall<TClient, TRequest, TOutPut>(
+        public async Task<(Metadata?, List<TOutPut>?)> ServerStreamingCall<TClient, TRequest, TOutPut>(
            Func<TClient, TRequest, IAsyncEnumerable<TOutPut>> method,
-           TRequest request) 
+           TRequest request)
             where TClient : class
             where TOutPut : class
             where TRequest : class
@@ -76,7 +76,7 @@ namespace Mshop.Catalog.E2ETests.Base
 
                 return (null, outputs);
             }
-            catch (Grpc.Core.RpcException ex)
+            catch (RpcException ex)
             {
                 return (ex.Trailers, null);
             }

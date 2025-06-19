@@ -3,8 +3,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Mshop.Core.Test.Common;
 using Mshop.Infra.Cache.StartIndex;
 using Mshop.Infra.Data.Context;
-using Mshop.Catalog.E2ETest.Base;
 using StackExchange.Redis;
+using Mshop.Catalog.E2ETests.Base.FactoriesWeb;
+using Mshop.Catalog.E2ETests.Base.Clients;
 
 namespace Mshop.Catalog.E2ETests.Base
 {

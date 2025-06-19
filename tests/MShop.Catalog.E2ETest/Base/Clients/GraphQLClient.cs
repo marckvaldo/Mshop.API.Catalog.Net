@@ -2,7 +2,7 @@
 using System.Text;
 using System.Text.Json;
 
-namespace Mshop.Catalog.E2ETests.Base
+namespace Mshop.Catalog.E2ETests.Base.Clients
 {
     public class GraphQLClient
     {

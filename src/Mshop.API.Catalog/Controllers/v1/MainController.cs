@@ -1,10 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
-using CoreResult = Mshop.Core.DomainObject;
+using Mshop.Core.DomainObject;
 using Mshop.Core.Message;
 using Mshop.ProductAPI.Extension;
-using Mshop.Core.DomainObject;
-using Microsoft.AspNetCore.Http.HttpResults;
 
 namespace Mshop.API.Catalog.Controllers.v1
 {
@@ -39,6 +37,7 @@ namespace Mshop.API.Catalog.Controllers.v1
         {
             return CustomResponse(null, statusCode);
         }
+        
         protected ActionResult CustomResponse(object result = null, int statusCode = StatusCodes.Status200OK)
         {
             if (OperationIsValid())
@@ -49,10 +48,14 @@ namespace Mshop.API.Catalog.Controllers.v1
                 return StatusCode(statusCode, ExtensionResponse.Success(result));
             }
 
-            if (result is null && statusCode == 404)
-                return NotFound(ExtensionResponse.Error(_notification.Errors().Select(x => x.Message).ToList()));
+            var erros = ExtensionResponse.Error(_notification.Errors().Select(x => x.Message).ToList());
 
-            return BadRequest(ExtensionResponse.Error(_notification.Errors().Select(x => x.Message).ToList()));
+            return statusCode == StatusCodes.Status404NotFound ? NotFound(erros) : BadRequest(erros);
+
+            //if (result is null && statusCode == 404)
+                //return NotFound(ExtensionResponse.Error(_notification.Errors().Select(x => x.Message).ToList()));
+
+            //return BadRequest(ExtensionResponse.Error(_notification.Errors().Select(x => x.Message).ToList()));
         }
 
         protected void NotifyInvalidModelError(ModelStateDictionary modelState)

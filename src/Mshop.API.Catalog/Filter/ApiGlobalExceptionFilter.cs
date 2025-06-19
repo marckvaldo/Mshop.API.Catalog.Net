@@ -54,7 +54,7 @@ namespace Mshop.API.Catalog.Filter
 
 
             details.Title = "An unexpected error ocurred";
-            details.Status = StatusCodes.Status400BadRequest;
+            details.Status = StatusCodes.Status500InternalServerError;
             details.Detail = exception!.Message;
             details.Type = "UnprocessableEntity";
             context.HttpContext.Response.StatusCode = (int) details.Status;
