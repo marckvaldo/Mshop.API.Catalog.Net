@@ -34,9 +34,7 @@ namespace Mshop.Catalog.E2ETests.Base
                 BuildWebAplicationGrpc().Wait();
             
             if(typeProjetct == TypeProjetct.GraphQL)
-            {
                 BuildWebAplicationGraphQL().Wait();
-            }
         }
 
         protected async Task DeleteDataBase(RepositoryDbContext dbContext, bool disposeDBContext = true)

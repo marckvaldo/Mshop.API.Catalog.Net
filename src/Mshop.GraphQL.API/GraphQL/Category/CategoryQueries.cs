@@ -1,8 +1,6 @@
 ﻿using MediatR;
 using Mshop.Application.UseCases.Cache.Category.GetCategory;
 using Mshop.Application.UseCases.Cache.Category.ListCategoriesCache;
-using Mshop.Application.UseCases.Category.GetCategory;
-using Mshop.Application.UseCases.Category.ListCategories;
 using Mshop.Core.Enum.Paginated;
 using Notification = Mshop.Core.Message;
 

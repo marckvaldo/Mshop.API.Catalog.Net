@@ -3,7 +3,7 @@ using MySqlConnector;
 using System.Data;
 using System.Data.Common;
 
-namespace Mshop.API.Catalog.Filter
+namespace Mshop.API.Catalog.HealChecks
 {
     public class HealthDataBase : IHealthCheck
     {

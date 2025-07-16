@@ -1,7 +1,7 @@
 version: '3.8'
 
 services:
-  msho-api:
+  msho-api-catalag:
     build:
       context: ../
       dockerfile: docker/Dockerfile  # Caminho para o seu Dockerfile
@@ -11,11 +11,19 @@ services:
       - "90:8082"        # Porta para o gRPC API
 
     environment:
-      - ASPNETCORE_ENVIRONMENT=Production
-    #command: tail -f /dev/null
+      ASPNETCORE_ENVIRONMENT: "Production"
+
+      # Mysql
+      ConnectionStrings__RepositoryMysql: "Server=catalagoDb-dev;Port=3306;Database=mshop;User id=mshop;Password=mshop;Convert Zero Datetime=True"
+
+      # Redis
+      Redis__Endpoint: "redis-dev:6379"
+      Redis__Password: ""
+      Redis__User: ""
+
     networks:
       - app-catalago
-    container_name: msho-api
+    container_name: msho-api-catalag
     restart: always
     deploy:
       resources:

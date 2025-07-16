@@ -77,7 +77,7 @@ namespace Mshop.Catalog.E2ETests.API.Product
             var request = await RequestUpdate(category);
             request.Id = product.Id;
                                    
-
+            //91020410@Php
             var (response, output) = await _apiClient.Put<CustomResponse<ProductModelOutPut>>(
             $"{Configuration.URL_API_PRODUCT}{request.Id}",
             request);

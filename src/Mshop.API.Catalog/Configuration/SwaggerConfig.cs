@@ -40,7 +40,7 @@ namespace Mshop.API.Catalog.Configuration
 
         public static WebApplication UseDocumentation(this WebApplication app)
         {
-            if (app.Environment.IsDevelopment())
+            if (app.Environment.IsDevelopment() || app.Environment.IsProduction())
             {
                 app.UseSwagger();
                 app.UseSwaggerUI(options =>

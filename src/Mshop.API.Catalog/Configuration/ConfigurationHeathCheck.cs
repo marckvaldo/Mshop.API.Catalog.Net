@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Mshop.API.Catalog.Filter;
 using HealthChecks.UI.Client;
+using Mshop.API.Catalog.HealChecks;
 
 namespace Mshop.API.Catalog.Configuration
 {
