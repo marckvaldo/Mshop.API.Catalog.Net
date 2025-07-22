@@ -1,7 +1,7 @@
 # Mshop Catalog
 
 <div style="background-color: #f0f0f0; height:20vh; display: flex; flex-direction: row; justify-content: center;">
-<img src="https://github.com/marckvaldo/Mshop.Compose/blob/main/Imagens/Mshop.Shopping.png">
+<img src="https://github.com/marckvaldo/Mshop.Compose/blob/main/Imagens/Mshop.Catalag.png">
 </div>
 
 ## Project Description
@@ -35,16 +35,17 @@ or if you prefer an IDE, the good old [Visual Studio 2022](https://visualstudio.
 
 ```bash
 # Clone this reposiopty
-$ git clone https://github.com/marckvaldo/Mshop.API.Cart MShop.Cart
+$ git clone https://github.com/marckvaldo/Mshop.API.Catalog.Net MShop.Catalog
 
 # Access the project directory in the terminal/cmd
-$ cd MShop.Cart/src/docker
+$ cd MShop.Catalog/src/docker
 
 # Run the containers 
 $ docker-compose up -d
 
-# The service starts on port 91 - acesse at <http://localhost:91/swagger/index.html>
-# and port 92 - acesse at <http://localhost:92/graphql/>
+# The service starts on port 88 - acesse at <http://localhost:88/swagger/index.html>
+# and port 89 - acesse at <http://localhost:89/graphql/>
+# and port 90 - acesse at <http://localhost:90/gRPC>
 # We have new the API working.
 ```
 ### 🚀 Some images
@@ -74,3 +75,4 @@ this project is under the MIT license.
 Made with ❤️ by Marckvaldo Wallas 👋🏽 Contact me by (marckvaldo@hotmail.com, marckvaldowallas@gmail.com) <br/>
 
 My linkedin https://www.linkedin.com/in/marckvaldo/
+
